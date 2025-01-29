@@ -3,11 +3,11 @@ import welcomeImage from '/assets/welcomeImage.jpg';
 
 function Image() {
   return (
-    <div className="px-6 pt-4">
+    <div className="bg-black max-w-screen flex justify-center items-center">
       <img
         src={welcomeImage}
         alt="Welcome"
-        className="w-full"
+        className="mx-[30px] w-full h-[625px]"
       />
     </div>
   );
