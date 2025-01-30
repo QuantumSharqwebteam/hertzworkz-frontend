@@ -4,6 +4,7 @@ import icon2 from "/assets/Icon2.png";
 import icon3 from "/assets/Icon3.png";
 import icon4 from "/assets/Icon4.png";
 import iconback from "/assets/Iconback.png";
+import '../../App.css';
 
 function WelcomePage() {
   const cardData = [
@@ -14,7 +15,7 @@ function WelcomePage() {
   ];
 
   return (
-    <section className="welcomePage stm:py-4 px-6 font-sans bg-black min-h-screen flex flex-col items-center justify-between">
+    <section className="welcomePage stm:py-4 px-6 font-sans bg-black min-h-screen flex flex-col items-center justify-between select-none">
       {/* Top Content */}
       <div className="topContent flex flex-col md:flex-row items-center justify-center w-full mx-auto md:h-[70vh]">
         {/* Left Content */}

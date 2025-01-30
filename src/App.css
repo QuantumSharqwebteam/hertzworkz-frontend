@@ -3,3 +3,7 @@
 .whole{
     font-family: Inter;
 }
+
+select-none { 
+    user-select: none;
+  }
