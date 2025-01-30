@@ -126,11 +126,11 @@ const AimlServices = () => {
 </div>
 <HorizontalLine/>
 
-<img 
+{/* <img 
   src="/assets/images/aimlrobot.svg" 
   alt="aiml" 
   className="w-full max-w-[831px] h-auto sm:h-[500px] md:h-[685px] mx-auto mt-5"
-/>
+/> */}
 
 <div className="w-full flex flex-col sm:flex-row items-start justify-start gap-4 mt-6">
   <img

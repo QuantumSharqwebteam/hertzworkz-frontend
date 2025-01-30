@@ -51,10 +51,10 @@ function Model({ glbUrl, cursorPosition }) {
 const ModelViewer = ({ glbUrl }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0, z: 0 });
 
-  const fov = window.innerWidth < 768 ? 4 : 3;
+  const fov = window.innerWidth < 768 ? 12 : 7;
 
   return (
-    <div className="w-full md:w-full h-[40vh] md:h-[50vh]  bg-black">
+    <div className="max-w-full md:w-full h-[40vh] md:h-[30vh] xl:h-[50vh] md:pl-2 pl-4  bg-black">
       <Canvas camera={{ position: [0, 0, 10], fov }}>
         {/* Lights */}
         <ambientLight intensity={0.5} />
@@ -73,8 +73,8 @@ const ModelViewer = ({ glbUrl }) => {
           rotateSpeed={0.3}
           
           // Zoom limits
-          minDistance={4}  // Min zoom distance (camera cannot go closer than this)
-          maxDistance={8.5} // Max zoom distance (camera cannot go farther than this)
+          minDistance={8}  // Min zoom distance (camera cannot go closer than this)
+          maxDistance={10} // Max zoom distance (camera cannot go farther than this)
           
           // Rotation limits
           minPolarAngle={Math.PI / 4}  // Min vertical rotation (downward)

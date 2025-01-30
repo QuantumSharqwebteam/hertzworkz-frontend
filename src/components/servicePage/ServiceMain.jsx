@@ -5,6 +5,7 @@ import EmbeddedSystems from './embedded';
 import BlockChain from './blockChain'
 import OurStory from './ourStory';
 import DesignStages from './Applicationdesignstages';
+import ContactFooter from '../careerPage/contactFooter';
 
 export default function ServiceMain() {
   const HorizontalLine = () => {
@@ -60,6 +61,7 @@ export default function ServiceMain() {
         <EmbeddedSystems />
         <BlockChain />
         <OurStory />
+        <ContactFooter />
       </section>
     </>
   );

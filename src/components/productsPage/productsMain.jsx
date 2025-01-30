@@ -9,6 +9,8 @@ import MediApp from "./mediApp";
 import EggsProApp from "./eggsProApp";
 import TextilesHub from "./TextilesHub";
 import FleetPulseProject from "./FleetPulseProject";
+import ContactFooter from "../careerPage/contactFooter";
+
 export default function ProductsMain(){
     return(
         <>
@@ -21,6 +23,7 @@ export default function ProductsMain(){
         <EggsProApp/>
         <TextilesHub/>
         <FleetPulseProject/>
+        <ContactFooter />
         </>
     );
 }
