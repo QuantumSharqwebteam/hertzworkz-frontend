@@ -7,12 +7,14 @@ import WhatWeDo from "./WhatWeDo"
 import Features from "./Features"
 import Mission from "./Mission"
 import FaqPage from "./FaqPage"
+import ModelViewer from "./ThreeDModel";
+
 
 export default function HomeMain() {
     return (
         <>
             <Navbar />
-            <Image />
+            <ModelViewer glbUrl="/logo.glb"  />
             <WelcomePage />
             <ChoosePage/>
             <ValuePage/>
