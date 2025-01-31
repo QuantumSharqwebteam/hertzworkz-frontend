@@ -232,7 +232,7 @@ const ourStory = () => {
   immutability, smart contracts, and consensus <span className="text-orange-600">mechanisms</span>, empower businesses to streamline operations,
   <span className="text-orange-600"> enhance data security</span>, and unlock <span className="text-orange-600">new opportunities.</span>
 </p>
-<HorizontalLine/>
+{/* <HorizontalLine/> */}
       </>
   );
   };

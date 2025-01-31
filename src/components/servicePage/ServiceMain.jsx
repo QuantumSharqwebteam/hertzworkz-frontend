@@ -1,11 +1,11 @@
 import DesignServices from './designServices';
 import AimlServices from './aiml';
-import Navbar from "./navbar"
+import Navbar from "../navbar"
 import EmbeddedSystems from './embedded';
 import BlockChain from './blockChain'
 import OurStory from './ourStory';
 import DesignStages from './Applicationdesignstages';
-import ContactFooter from '../careerPage/contactFooter';
+import ContactFooter from '../contactPage/contactFooter';
 
 export default function ServiceMain() {
   const HorizontalLine = () => {
@@ -51,6 +51,7 @@ export default function ServiceMain() {
         <p className="text-center text-white font-light text-base sm:text-lg md:text-2xl lg:text-[28px] sm:p-10 relative leading-[30px] sm:leading-[45px] pb-8 w-full max-w-[1178px] mx-auto">
           We specialize in developing products that not only meet user needs but exceed their expectations. With a perfect balance of cutting-edge technology, thoughtful design, and unmatched functionality, we craft solutions that people genuinely love to use. Our goal is to create experiences that are intuitive, engaging, and leave a lasting impression, ensuring that every product we deliver becomes an integral part of our users’ lives.
         </p>
+        
 
         <HorizontalLine />
 
@@ -61,8 +62,9 @@ export default function ServiceMain() {
         <EmbeddedSystems />
         <BlockChain />
         <OurStory />
+        </section>
         <ContactFooter />
-      </section>
+      
     </>
   );
 }

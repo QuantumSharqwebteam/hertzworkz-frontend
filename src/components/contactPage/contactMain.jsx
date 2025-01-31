@@ -1,4 +1,4 @@
-import Navbar from "./navbar"
+import Navbar from "../navbar"
 import GetInTouch from "./getInTouch"
 import Application from "./application"
 import ContactFooter from "./contactFooter"

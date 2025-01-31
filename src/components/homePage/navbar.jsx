@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import logo from "/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate()
 
   return (
     <nav className="flex justify-between items-center p-4 bg-black text-white font-segoe relative z-10">
@@ -68,9 +69,11 @@ function Navbar() {
           <li className="hover:text-orange-500 p-2 cursor-pointer"><Link to="/contact">Contact Us</Link></li>
         </ul>
 
-        <button className="border border-lightOrange p-2 px-5 py-2 rounded font-urbanist text-11.25 font-medium hover:text-white mt-4">
+        
+        <button className="border border-lightOrange p-2 px-5 py-2 rounded font-urbanist text-11.25 font-medium hover:text-white mt-4" onClick={navigate('/contact')}>
           Enquire Now
         </button>
+        
       </div>
     </nav>
   );

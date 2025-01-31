@@ -1,4 +1,4 @@
-import Navbar from "./navbar"
+import Navbar from "../navbar"
 import Image from "./Image"
 import WelcomePage from "./WelcomePage"
 import ChoosePage from "./ChoosePage"

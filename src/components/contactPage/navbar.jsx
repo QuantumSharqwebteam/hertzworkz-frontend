@@ -69,10 +69,12 @@ function Navbar() {
           <li className="hover:text-orange-500 p-2 cursor-pointer"><Link to="/career">Career</Link></li>
           <li className="border rounded border-gray-800 border-opacity-80 text-orange-500 p-2 cursor-pointer">Contact Us</li>
         </ul>
-
-        <button className="border border-lightOrange p-2 px-5 py-2 rounded font-urbanist text-11.25 font-medium hover:text-white mt-4">
+        
+        <Link to="/contact">
+        <button className="border border-lightOrange p-2 px-5 py-2 rounded font-urbanist text-11.25 font-medium hover:text-white mt-4">     
           Enquire Now
-        </button>
+          </button>
+        </Link>
       </div>
     </nav>
   );
