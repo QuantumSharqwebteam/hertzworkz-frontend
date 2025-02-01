@@ -74,10 +74,10 @@ function Model({ glbUrl }) {
 }
 
 const ModelViewer = ({ glbUrl }) => {
-  const fov = window.innerWidth < 584 ? 13 : 7;
+  const fov = window.innerWidth < 584 ? 13 : 6;
 
   return (
-    <div className="max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[60vh] md:pl-2 pl-4 bg-black">
+    <div className="max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[90vh] md:pl-2 pl-4 bg-black">
       <Canvas camera={{ position: [0, 0, 10], fov }}>
         {/* Lights */}
         <ambientLight intensity={0.5} />
