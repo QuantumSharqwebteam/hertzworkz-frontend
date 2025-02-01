@@ -85,18 +85,18 @@ function ValuePage() {
           </p>
         </div>
         {/* Heading1 */}
-        <div className="border-8 text-white mx-8 md:col-span-2 rounded-xl border-[#262626] h-fit w-fit grid grid-cols-2 grid-rows-2 bg-[#141414]">
+        <div className="border-8 text-white mx-2 md:mx-8 md:col-span-2 rounded-xl border-[#262626] h-fit w-fit grid grid-cols-2 grid-rows-2 bg-[#141414]">
           {valueData.map((value, index) => (
             <div
               key={index}
-              className="p-4 flex flex-col h-40 justify-center items-start text-left border border-[#262626]"
+              className="p-2 md:p-4 flex flex-col h-40 justify-center items-start text-left border border-[#262626]"
             >
               <div className="hover:scale-105 cursor-pointer ease-in-out duration-300 ps-5">
-              <div className="flex items-center space-x-6 mb-2">
+              <div className="flex items-center space-x-2 mb-2">
                 <img src={value.icon} alt={value.title} className="w-10 h-10 p-2 border-2 rounded-full border-[#34a353]" />
-                <p className="text-lg font-bold text-white">{value.title}</p>
+                <p className="text-sm font-bold text-white md:text-lg">{value.title}</p>
               </div>
-              <p className="text-csLightGray text-sm">{value.subTitle}</p>
+              <p className="text-csLightGray text-xs md:text-sm">{value.subTitle}</p>
               </div>
             </div>
           ))}

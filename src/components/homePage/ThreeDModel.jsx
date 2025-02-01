@@ -1,12 +1,15 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { Suspense, useState, useEffect, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
 
-function Model({ glbUrl, cursorPosition }) {
+function Model({ glbUrl }) {
   const [model, setModel] = useState(null);
+  const groupRef = useRef();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  // Load the model
   useEffect(() => {
     const loader = new GLTFLoader();
     loader.load(
@@ -17,18 +20,22 @@ function Model({ glbUrl, cursorPosition }) {
         // Center the object
         const box = new THREE.Box3().setFromObject(object);
         const center = box.getCenter(new THREE.Vector3());
-        object.position.sub(center);
+        object.position.sub(center);  // Subtract the center to center the object at [0, 0, 0]
+
+        // Add an offset to move the model slightly up
+      object.position.y += 0.3;  // Adjust the Y value as needed
+      object.position.x -= 0.2;  // Adjust the Y value as needed
 
         // Scale the object
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
         const scale = 2 / maxDim;
-        object.scale.multiplyScalar(scale);
+        object.scale.set(scale, scale, scale);  // Apply uniform scaling
 
         setModel(object);
       },
       (xhr) => {
-        console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+        // console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
       },
       (error) => {
         console.error('Error loading GLB:', error);
@@ -36,25 +43,41 @@ function Model({ glbUrl, cursorPosition }) {
     );
   }, [glbUrl]);
 
+  // Mouse move event listener
   useEffect(() => {
-    if (model) {
-      // Update the model's position based on cursor
-      model.position.x = cursorPosition.x * 5; // Scale movement for x
-      model.position.y = cursorPosition.y * 5; // Scale movement for y
-      model.position.z = cursorPosition.z * 5; // Add Z-axis movement
-    }
-  }, [cursorPosition, model]);
+    const handleMouseMove = (event) => {
+      const x = (event.clientX / window.innerWidth) * 2 - 1; // Normalize X
+      const y = -(event.clientY / window.innerHeight) * 2 + 1; // Normalize Y
+      setMousePosition({ x, y });
+    };
 
-  return model ? <primitive object={model} /> : null;
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  // Update model rotation based on mouse position
+  useFrame(() => {
+    if (groupRef.current) {
+      const { x, y } = mousePosition;
+      const targetX = -y * Math.PI * 0.15; // Invert Y-axis rotation
+      const targetY = x * Math.PI * 0.3;  // Rotate on X-axis
+
+      // Smooth transition to target rotation
+      groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.1;
+      groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.1;
+    }
+  });
+
+  return model ? <primitive ref={groupRef} object={model} /> : null;
 }
 
 const ModelViewer = ({ glbUrl }) => {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0, z: 0 });
-
-  const fov = window.innerWidth < 768 ? 12 : 7;
+  const fov = window.innerWidth < 584 ? 13 : 7;
 
   return (
-    <div className="max-w-full md:w-full h-[40vh] md:h-[30vh] xl:h-[50vh] md:pl-2 pl-4  bg-black">
+    <div className="max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[60vh] md:pl-2 pl-4 bg-black">
       <Canvas camera={{ position: [0, 0, 10], fov }}>
         {/* Lights */}
         <ambientLight intensity={0.5} />
@@ -64,7 +87,7 @@ const ModelViewer = ({ glbUrl }) => {
         
         {/* Model */}
         <Suspense fallback={null}>
-          <Model glbUrl={glbUrl} cursorPosition={cursorPosition} />
+          <Model glbUrl={glbUrl} />
         </Suspense>
 
         {/* Controls with rotation and zoom limits */}
@@ -72,18 +95,13 @@ const ModelViewer = ({ glbUrl }) => {
           enableDamping
           dampingFactor={0.05}
           rotateSpeed={0.3}
-
           enableZoom={false}
-          
-          // Zoom limits
-          minDistance={8}  // Min zoom distance (camera cannot go closer than this)
-          maxDistance={10} // Max zoom distance (camera cannot go farther than this)
-          
-          // Rotation limits
-          minPolarAngle={Math.PI / 4}  // Min vertical rotation (downward)
-          maxPolarAngle={Math.PI / 1.5} // Max vertical rotation (upward)
-          minAzimuthAngle={-Math.PI / 4} // Min horizontal rotation (left)
-          maxAzimuthAngle={Math.PI / 4}  // Max horizontal rotation (right)
+          minDistance={8}
+          maxDistance={10}
+          minPolarAngle={Math.PI / 4}
+          maxPolarAngle={Math.PI / 1.5}
+          minAzimuthAngle={-Math.PI / 4}
+          maxAzimuthAngle={Math.PI / 4}
         />
       </Canvas>
     </div>
