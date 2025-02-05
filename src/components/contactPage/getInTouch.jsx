@@ -13,7 +13,7 @@ export default function GetInTouch() {
 
             <div className="bg-opacity-35 bg-cust mx-4 sm:mx-6 md:mx-12 lg:mx-16 text-white font-segoe px-6 sm:px-12 md:px-20 lg:px-28 py-8 sm:py-12 md:py-16 lg:py-20">
                 <h1 className="text-[32px] sm:text-[36px] md:text-[38px] lg:text-[40px] font-semibold mb-4">
-                    Get in Touch with Hertzworkz
+                    Get in Touch with <span className='text-[#fe5d26]'>Hertzworkz</span> 
                 </h1>
                 <p className="text-lightGray3 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-normal">
                     Welcome to Hertzworkz's Contact Us page. We’re here to assist you with any
@@ -129,7 +129,7 @@ export default function GetInTouch() {
                     </svg>
                 </div>
                 <h1 className="text-[32px] sm:text-[36px] md:text-[38px] lg:text-[40px] font-semibold mb-4 mt-6">
-                    Let's Connect
+                    Let's <span className='text-[#fe5d26]'>Connect</span>
                 </h1>
                 <p className="text-lightGray3 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-normal">
                     We’re thrilled to connect with you and explore how we can support your needs. Use the form below to reach out to Hertzworkz. Whether you’re a potential client, partner, or simply curious about our services, we’re here to answer your questions and provide the guidance you’re looking for.

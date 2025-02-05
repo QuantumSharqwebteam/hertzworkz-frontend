@@ -121,7 +121,7 @@ function Features() {
             >
               <div className="heading flex justify-between">
                 <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-              <img src={BackIcon} alt="Back Icon" className="w-4 mb-2 hover:rotate-45 hover:cursor-pointer duration-200 ease-in-out" />
+              {/* <img src={BackIcon} alt="Back Icon" className="w-4 mb-2 hover:rotate-45 hover:cursor-pointer duration-200 ease-in-out" /> */}
 
               </div>
               <p>{card.description}</p>

@@ -31,7 +31,7 @@ function ChoosePage() {
     <section className="choosePage max-h-screen max-w-screen bg-black text-white ">
       {/* Top Portion */}
       <div className="topPortion  text-center p-8">
-        <h1 className="text-glow text-[50px] font-bold text-[#fe5d26] m-10">
+        <h1 className=" text-[50px] font-bold text-[#fe5d26] m-10">
           Why Choose Us<span className="text-white">?</span>
         </h1>
         <p className="md:text-3xl sm:text-xl italic mb-4">

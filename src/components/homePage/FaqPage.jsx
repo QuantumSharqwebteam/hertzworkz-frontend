@@ -60,7 +60,7 @@ function FaqPage() {
   // FAQ Item Component
   const FaqItem = ({ question, answer, index, isVisible, onClick }) => (
     <div
-      className="faq-item border-b border-[#86868B] pb-4 cursor-pointer hover:bg-[#333333]"
+      className="faq-item border-b border-[#86868B] pb-4 cursor-pointer hover:bg-[#333333] p-2 rounded"
       onClick={onClick}
     >
       <span className="flex items-center">

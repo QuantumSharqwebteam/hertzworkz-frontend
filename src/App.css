@@ -7,3 +7,21 @@
 select-none { 
     user-select: none;
   }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .animate-slide {
+    animation: slide 3s ease-in-out infinite;
+  }

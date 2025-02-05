@@ -286,7 +286,7 @@ return (
   className="h-auto max-h-[845px] w-full sm:w-[80%] md:w-[70%] lg:w-[60%] top-[6574px] left-[140px] ml-0 item-end"
 />
 
-<div className="flex flex-col mt-10 md:flex-row justify-center items-center md:space-x-6 space-y-6 md:space-y-0 border-y-[1px] border-y-[#222] bg-black p-6 text-white group">
+<div className="flex flex-col mt-10 md:flex-row justify-center items-center md:space-x-6 space-y-6 md:space-y-0 border-y-[1px] border-y-[#222] bg-black p-6 text-white group lg:h-48">
   {/* Card 1 */}
   <div className="flex flex-col items-center md:items-start text-center md:text-start w-full md:w-1/4 p-5">
     <div className="flex justify-center items-center text-orange-500  bg-[#fe5d26] bg-opacity-[20%] border-[#262626] border-[1px] h-[70px] w-[33%] md:w-[45%] lg:w-[50%] rounded-lg text-2xl mb-2 group-hover:h-[100px] group-hover:w-[55%] duration-300">
@@ -372,14 +372,14 @@ return (
 
 
 
-<div className="flex flex-col mt-10 md:flex-row justify-center items-center md:space-x-6 space-y-6 md:space-y-0 border-y-[1px] border-y-[#222] bg-black p-6 text-white group">
+<div className="flex flex-col mt-10 md:flex-row justify-center items-center md:space-x-6 space-y-6 md:space-y-0 border-y-[1px] border-y-[#222] bg-black p-6 text-white group lg:h-48">
   {/* Card 1 */}
   <div className="flex flex-col items-center md:items-start text-center md:text-start w-full md:w-1/4 p-5">
     <div className="flex justify-center items-center text-orange-500  bg-transparent border-[#262626] border-[1px] h-[70px] w-[33%] md:w-[45%] lg:w-[50%] rounded-lg text-2xl mb-2 group-hover:h-[100px] group-hover:w-[55%] duration-300">
       <img src="/assets/images/web1.svg" className="h-[70%] w-[70%]" alt="Frontend Development" />
     </div>
     <h3 className="text-sm font-thin">
-      Front-End Development (HTML, <br /> CSS, JavaScript)
+      Front-End Development (HTML, <br /> CSS, JavaScript, React)
     </h3>
   </div>
 
@@ -392,7 +392,7 @@ return (
       <img src="/assets/images/web2.svg" className="h-[70%] w-[70%]" alt="Backend Development" />
     </div>
     <h3 className="text-sm font-thin">
-      Back-End Development (PHP, <br /> Python, Ruby)
+      Back-End Development (Node, <br /> Python, Java)
     </h3>
   </div>
 

@@ -23,14 +23,14 @@ const AimlServices = () => {
   />
 
   {/* Paragraph on the Right */}
-  <p class="text-left text-white font-segoe font-light text-[18px] leading-[26px]  md:text-[20px] md:leading-[38px] lg:text-[24px] lg:leading-[38px] max-w-full md:max-w-[100%] px-4 md:px-10 md:p-10 md:mt-auto lg:mt-auto mt-4">
+  <p class="text-left text-white font-segoe font-light text-[18px] leading-[26px]  md:text-[20px] md:leading-[38px] lg:text-[24px] lg:leading-[38px] max-w-full md:max-w-[100%] px-4 md:px-10 md:p-10 md:mt-auto lg:mt-auto mt-4 ">
     Our team offers end-to-end AI/ML solutions designed to drive business growth, 
     improve efficiency, and deliver exceptional customer experiences. 
     We create custom, scalable AI systems to help you stay competitive 
     in today’s fast-evolving market.
   </p>
 </div>
-  <div className="relative h-auto lg:w-[1218px] md:w-full flex flex-col items-center bg-[#1E1E1E] text-white py-8 px-6">
+  <div className="relative h-auto lg:w-[1218px] md:w-full flex flex-col items-center bg-[#1E1E1E] text-white py-8 px-6 ">
   <div className="text-center mb-8">
     <h2 className="max-w-[1026px] text-[#9C9C9C] text-[20px] font-normal leading-[26.6px] md:text-[24px] lg:text-[28px]">
       AI/ML Solutions
@@ -40,7 +40,7 @@ const AimlServices = () => {
     </h1>
   </div>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1200px] mx-auto">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1200px] mx-auto lg:h-80">
     {[...Array(4)].map((_, index) => {
       const headings = [
         "Predictive Insights",
@@ -64,7 +64,7 @@ const AimlServices = () => {
       return (
         <div
           key={index}
-          className="group relative w-full max-w-[274.5px] h-auto bg-[#FFFFFF0D] p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-0 mx-auto hover:border-2 hover:border-blue-500"
+          className="group relative w-full max-w-[274.5px] h-auto bg-[#FFFFFF0D] p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-0 mx-auto hover:border-2 hover:border-blue-500 "
         >
           {/* Icon container */}
           <div
@@ -173,9 +173,9 @@ const AimlServices = () => {
     </span>
   </h1>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 max-w-6xl mx-auto mt-20 gap-y-12">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 max-w-6xl mx-auto mt-20 gap-y-12 lg:h-96">
     {/* Section 1 */}
-    <div className="flex flex-col items-center relative group mt-12">
+    <div className="flex flex-col items-center relative group mt-12 ">
       {/* SVG Image Positioned at the Top-Right of Heading */}
       <img
         src="/assets/images/SVG (2).svg"
@@ -209,7 +209,7 @@ const AimlServices = () => {
         />
       </div>
 
-      <p className="text-gray-400 text-left mt-12 text-base transition-all duration-300 transform group-hover:text-xl group-hover:mt-6  md:text-left">
+      <p className="text-gray-400 text-left mt-12 text-base transition-all duration-300 transform group-hover:text-xl group-hover:mt-6  md:text-left ">
         Unlike traditional AI platforms, our AI/ML solutions don’t
         require extensive technical expertise. Designed for a seamless plug-and-play experience, our platform empowers businesses to harness
         the capabilities of Artificial Intelligence and Machine Learning
@@ -218,7 +218,7 @@ const AimlServices = () => {
     </div>
 
     {/* Section 2 */}
-    <div className="flex flex-col items-center relative group mt-12">
+    <div className="flex flex-col items-center relative group mt-12 lg:h-96">
       {/* SVG Image Positioned at the Top-Right of Heading */}
       <img
         src="/assets/images/SVG (2).svg"

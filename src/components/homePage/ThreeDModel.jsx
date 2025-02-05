@@ -3,11 +3,13 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
+import '../../App.css'
 
 function Model({ glbUrl }) {
   const [model, setModel] = useState(null);
   const groupRef = useRef();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
 
   // Load the model
   useEffect(() => {
@@ -75,9 +77,10 @@ function Model({ glbUrl }) {
 
 const ModelViewer = ({ glbUrl }) => {
   const fov = window.innerWidth < 584 ? 13 : 6;
+  
 
   return (
-    <div className="max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[90vh] md:pl-2 pl-4 bg-black">
+    <div className="relative max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[83vh] md:pl-2 pl-4 bg-black">
       <Canvas camera={{ position: [0, 0, 10], fov }}>
         {/* Lights */}
         <ambientLight intensity={0.5} />
@@ -98,12 +101,19 @@ const ModelViewer = ({ glbUrl }) => {
           enableZoom={false}
           minDistance={8}
           maxDistance={10}
-          minPolarAngle={Math.PI / 4}
+          minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 1.5}
-          minAzimuthAngle={-Math.PI / 4}
-          maxAzimuthAngle={Math.PI / 4}
+          minAzimuthAngle={-Math.PI / 6}
+          maxAzimuthAngle={Math.PI / 6}
         />
       </Canvas>
+
+      {/* <div className="absolute bottom-4 max-w-screen text-center">
+        <span className={`text-white text-xl font-semibold animate-slide ${scrolling ? 'hidden' : 'block'}`}>
+          Scroll Down
+        </span>
+      </div> */}
+    
     </div>
   );
 };

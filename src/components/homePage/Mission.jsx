@@ -7,7 +7,7 @@ function Mission() {
     <section className="Mission min-h-screen max-w-screen bg-black text-[#B3B3B3] ">
       {/* Title Section */}
       <div className="title p-4">
-        <h1 className="text-[50px] text-center font-bold text-[#fe5d26] text-glow m-3">
+        <h1 className="text-[50px] text-center font-bold text-[#fe5d26]  m-3">
           Mission & Vision
         </h1>
         <p className="text-[20px] lg:text-[28px] mx-4 lg:mx-10 leading-relaxed">

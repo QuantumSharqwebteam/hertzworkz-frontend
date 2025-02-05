@@ -3,7 +3,7 @@ import obj from "/assets/obj.png";
 function ProductsHeader() {
   return (
     <section className="my-16 bg-black text-white text-center font-segoe">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lightOrange  glow-effect mb-5">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lightOrange  mb-5">
         Our Products
       </h2>
       <p className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-semibold text-white mb-4 md:mb-6 text-center ">

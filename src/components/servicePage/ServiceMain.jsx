@@ -24,7 +24,7 @@ export default function ServiceMain() {
       <Navbar />
 
       <section className="bg-black overflow-x-hidden flex items-center justify-center text-center flex-col pb-20">
-        <h1 className="text-glow text-4xl sm:text-5xl md:text-6xl font-bold text-[#fe5d26] m-6 sm:m-10">
+        <h1 className=" text-4xl sm:text-5xl md:text-6xl font-bold text-[#fe5d26] m-6 sm:m-10">
           What We Do?
         </h1>
 
