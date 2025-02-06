@@ -1,20 +1,23 @@
 import React from "react";
 import obj from "/assets/obj.png";
+import productbg from "/productbg.svg";
 function ProductsHeader() {
   return (
-    <section className="my-16 bg-black text-white text-center font-segoe">
+    <section className="my-16 bg-black text-white text-center font-segoe ">
+      <div className="bg-[url('/productbg.svg')] bg-cover bg-center">
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lightOrange  mb-5">
         Our Products
       </h2>
       <p className="text-xl sm:text-2xl md:text-3xl lg:text-[36px] font-semibold text-white mb-4 md:mb-6 text-center ">
         At the heart of innovation and technology
       </p>
-      <div className="flex justify-center  mb-0">
+      <div className="flex justify-center  mb-0 ">
         <img
           src="/public/obj1.svg"
           alt="3D Object"
           className="w-auto  h-40 md:h-60 lg:h-96 my-5"
         />
+      </div>
       </div>
       <div className="flex justify-center">
         <p className="text-base sm:text-lg md:text-xl lg:text-[28px] font-normal lg:leading-[45px] lg:w-3/4 mx-3 lg:mx-0 tracking-wide my-10 text-gray-400">

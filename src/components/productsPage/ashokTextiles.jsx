@@ -5,6 +5,8 @@ import uil from "/assets/uil_feedback.svg"
 import textilesimageGrp from "/assets/textilesPhotoGrp.svg"
 import image from "/assets/textile.png"
 import flow from "/assets/Flow.svg"
+
+
 function AshokTextiles() {
   const buttons = [
     { label: "Design", icon: fluent },
@@ -13,8 +15,8 @@ function AshokTextiles() {
     { label: "Feedback", icon: uil },
   ];
   return (
-    <section className=" font-segoe">
-      <div className="bg-black text-white flex flex-col sm:flex-row items-center mx-5  py-2">
+    <section className=" font-segoe ">
+      <div className=" text-white flex flex-col sm:flex-row items-center mx-5  py-2 ">
         <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
           A
         </h1>
@@ -23,7 +25,7 @@ function AshokTextiles() {
         </span>
       </div>
 
-      <div className="bg-black flex items-center justify-end text-white mt-4 lg:mt-0 mb-10 mx-10">
+      <div className=" flex items-center justify-end text-white mt-4 lg:mt-0 mb-10 mx-10">
         <div className="flex justify-center items-center gap-8 flex-wrap">
           {buttons.map((button, index) => (
             <button
@@ -36,7 +38,7 @@ function AshokTextiles() {
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-center  bg-black px-5">
+      <div className="flex items-center justify-center  px-5 ">
         <img src={textilesimageGrp} ></img>
       </div>
       <div>

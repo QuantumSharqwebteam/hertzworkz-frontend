@@ -1,9 +1,9 @@
-import welcomePerson from "/assets/welcomePerson.png";
 import icon1 from "/assets/icon1.png";
 import icon2 from "/assets/Icon2.png";
 import icon3 from "/assets/Icon3.png";
 import icon4 from "/assets/Icon4.png";
 import iconback from "/assets/Iconback.png";
+import welcome from "/assets/welcome.svg";
 import '../../App.css';
 
 function WelcomePage() {
@@ -15,12 +15,12 @@ function WelcomePage() {
   ];
 
   return (
-    <section className="welcomePage stm:py-4 px-6 font-sans bg-black min-h-screen flex flex-col items-center justify-between select-none">
+    <section className="welcomePage stm:py-2 px-6 font-sans bg-black xl:h-screen flex flex-col items-center justify-between select-none mb-6">
       {/* Top Content */}
-      <div className="topContent flex flex-col md:flex-row items-center justify-center w-full mx-auto md:h-[70vh]">
+      <div className="topContent flex flex-col md:flex-row items-center justify-center w-full mx-auto md:h-[80vh]">
         {/* Left Content */}
-        <div className="leftContent bg-darkGray text-left text-welcometext p-8 md:rounded-br-[4rem] flex flex-col justify-center md:w-1/2">
-          <h2 className="text-2xl md:text-4xl mb-6 text-white">
+        <div className="leftContent bg-[#1A1A1A] text-left text-welcometext p-8 md:rounded-br-[4rem] flex flex-col justify-center md:w-1/2">
+          <h2 className="text-2xl md:text-4xl mb-6 text-white font-bold">
             Welcome to <span className="text-orange-600">Hertzworkz!</span>
           </h2>
           <p className="text-lg md:text-xl leading-relaxed text-white">
@@ -28,11 +28,11 @@ function WelcomePage() {
           </p>
         </div>
         {/* Right Content */}
-        <div className="rightContent flex justify-center items-center p-6 md:w-1/2">
+        <div className="rightContent flex justify-center items-center p-6 md:w-1/2 md:size-full">
           <img
-            src={welcomePerson}
+            src={welcome}
             alt="Hertzworkz Visual"
-            className="rounded-md object-cover w-full max-w-[300px] md:max-w-[400px] lg:max-w-[500px]"
+            className="rounded-md object-contain w-full max-w-[300px] md:max-w-[400px] lg:max-w-full md:size-full mt-4"
           />
         </div>
       </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-import whatDoWe from '/assets/whatDoWe.png';
+import wedo from '/assets/wedo.svg';
 
 
 function WhatWeDo() {
     return(
-        <section className='whatWeDo min-h-screen max-w-screen bg-black text-white'>
+        <section className='whatWeDo  max-w-screen bg-black text-white'>
          {/* Title */}
          <div className='title text-center p-8'>
          <h1 className="  text-[50px] font-bold text-[#fe5d26] m-10">
@@ -23,7 +23,7 @@ function WhatWeDo() {
         {/*Image*/}
 
         <div className="relative flex justify-center items-center">
-    <img className="h-auto max-w-[80%]" src={whatDoWe} alt="What We Do" />
+    <img className="h-auto max-w-[80%]" src={wedo} alt="What We Do" />
   </div>
         </section> 
     )
