@@ -86,11 +86,11 @@ function FaqPage() {
     <section className="FAQ_Page p-4 bg-black max-w-screen max-w-full overflow-x-hidden">
       <div className="Content border-2 border-[#86868B]">
         {/* Header */}
-        <div className="Heading h-[260px] flex flex-col justify-center items-center border-[#86868B] border-b-2 text-white">
+        <div className="Heading p-4 h-[260px] flex flex-col justify-center items-center border-[#86868B] border-b-2 text-white">
           <h1 className="text-[35px] mb-2">Frequently Asked Questions</h1>
           <p className="text-[18px]">
             Still have questions? Contact our team at
-            <span className="text-[#22F95B] ml-1">hello@hertzworkz.com</span>
+            <span className="text-[#22F95B] ml-1">hertzworkspvt@gmail.com</span>
           </p>
         </div>
 

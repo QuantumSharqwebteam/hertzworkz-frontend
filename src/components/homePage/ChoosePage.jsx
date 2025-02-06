@@ -1,37 +1,43 @@
 import React from 'react';
 import sampleVideo from '/assets/videos/space.mp4';
 import buildings from '/assets/space building.png';
+import icon1 from '/assets/ChoosePage/Icon1.svg';
+import icon2 from '/assets/ChoosePage/Icon2.svg';
+import icon3 from '/assets/ChoosePage/Icon3.svg';
+import icon4 from '/assets/ChoosePage/Icon4.svg';
+import task from '/assets/task.svg';
+import person from '/assets/person.svg';
 
 
 function ChoosePage() {
-  // const cardData = [
-  //   {
-  //     title: "Proven expertise across industries",
-  //     icon: icon1,
-  //     subTitle: "Our extensive experience spans diverse sectors, enabling us to deliver solutions that meet unique industry needs.",
-  //   },
-  //   {
-  //     title: "Client-focused approach for personalized solutions",
-  //     icon: icon2,
-  //     subTitle: "We prioritize understanding your goals to create tailored strategies that drive meaningful results.",
-  //   },
-  //   {
-  //     title: "Cutting-edge technology and design practices",
-  //     icon: icon3,
-  //     subTitle: "We leverage the latest tools and trends to craft innovative, future-ready solutions.",
-  //   },
-  //   {
-  //     title: "Reliable support and continuous improvement",
-  //     icon: icon4,
-  //     subTitle: "Our commitment to excellence includes ongoing support and enhancements to ensure long-term success.",
-  //   },
-  // ];
+  const cardData = [
+    {
+      title: "Proven expertise across industries",
+      icon: icon1,
+      subTitle: "Our extensive experience spans diverse sectors, enabling us to deliver solutions that meet unique industry needs.",
+    },
+    {
+      title: "Client-focused approach for personalized solutions",
+      icon: icon2,
+      subTitle: "We prioritize understanding your goals to create tailored strategies that drive meaningful results.",
+    },
+    {
+      title: "Cutting-edge technology and design practices",
+      icon: icon3,
+      subTitle: "We leverage the latest tools and trends to craft innovative, future-ready solutions.",
+    },
+    {
+      title: "Reliable support and continuous improvement",
+      icon: icon4,
+      subTitle: "Our commitment to excellence includes ongoing support and enhancements to ensure long-term success.",
+    },
+  ];
 
   return (
-    <section className="choosePage max-h-screen max-w-screen bg-black text-white ">
+    <section className="choosePage  max-w-screen bg-black text-white bg-cover bg-center bg-no-repeat bg-[url('/assets/bgblue.svg')]">
       {/* Top Portion */}
       <div className="topPortion  text-center p-8">
-        <h1 className=" text-[50px] font-bold text-[#fe5d26] m-10">
+        <h1 className=" text-[50px] font-bold text-[#fe5d26] m-10 mt-24">
           Why Choose Us<span className="text-white">?</span>
         </h1>
         <p className="md:text-3xl sm:text-xl italic mb-4">
@@ -44,19 +50,30 @@ function ChoosePage() {
         </p>
       </div>
 
-      {/* Video Section */}
-      <div className="relative h-[60vh] w-full z-50">
-        <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover">
-          <source src={sampleVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <img
-          src={buildings}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80"
-          alt="Centered Building"
-        />
+      <div className=' max-w-screen'>
+        <div className='flex flex-col justify-center items-center max-w-screen lg:flex-row px-6' >
+          <img src={task} alt='' className='w-full md:hidden  md:w-1/2 lg:block lg:h-[70vh]'/>
+          <img src={person} alt='' className='hidden md:block w-3/5 lg:h-[70vh]'/>
+        </div>
+
+        <div className="BelowContent text-white grid md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+        {cardData.map((card, index) => (
+          <div
+            key={index}
+            className={`hover:scale-105 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center p-6 text-center ${
+              index < 3 ? index==1?"lg:border-r-2 lg:border-white":'md:border-r-2 md:border-white' : ''
+            } `}
+          >
+            <img src={card.icon} alt={card.title} className="w-16 mb-4" />
+            <h3 className="text-lg font-bold mb-2">{card.title}</h3>
+            <p className="text-sm text-csLightGray">{card.subTitle}</p>
+          </div>
+        ))}
       </div>
+      </div>
+
+      
+      
 
     </section>
   );

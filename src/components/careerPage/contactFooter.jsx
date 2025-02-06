@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ContactFooter() {
     return (
-        <footer className="bg-black text-white mt-[250px] min-w-screen">
+        <footer className="bg-black text-white mt-[100px] min-w-screen">
             <div className="h-[1px] bg-lightOrange"></div>
 
             <div className="py-6 flex flex-col items-center text-center mt-14">

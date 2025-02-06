@@ -59,20 +59,7 @@ function ValuePage() {
   return (
     <section className="bg-black pt-6 mt-5 z-0 max-w-screen">
       {/* Top Content */}
-      <div className="BelowContent bg-black text-white grid md:grid-cols-4 gap-6 p-8">
-        {cardData.map((card, index) => (
-          <div
-            key={index}
-            className={`hover:scale-105 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center p-6 text-center ${
-              index < 3 ? 'md:border-r-2 md:border-white' : ''
-            }`}
-          >
-            <img src={card.icon} alt={card.title} className="w-16 mb-4" />
-            <h3 className="text-lg font-bold mb-2">{card.title}</h3>
-            <p className="text-sm text-csLightGray">{card.subTitle}</p>
-          </div>
-        ))}
-      </div>
+      
 
       {/* Bottom Content */}
       <div className="ButtomContent justify-center align-middle grid grid-cols-1 md:grid-cols-3">
