@@ -54,7 +54,7 @@ export default function GetInTouch() {
                             </defs>
                         </svg>
                     </div>
-                    <p className="font-semibold text-base text-white">hello@hertzworkz.com</p>
+                    <p className="font-semibold text-base text-white">hertzworkspvt@gmail.com</p>
                 </div>
 
                 <div className="flex flex-col items-center justify-center bg-cust1 border-2 border-cust bg-opacity-70 p-6">
@@ -85,7 +85,7 @@ export default function GetInTouch() {
                             </defs>
                         </svg>
                     </div>
-                    <p className="font-semibold text-base text-white">+91 6383538529</p>
+                    <p className="font-semibold text-base text-white">+91 9080011750</p>
                 </div>
             </div>
 
