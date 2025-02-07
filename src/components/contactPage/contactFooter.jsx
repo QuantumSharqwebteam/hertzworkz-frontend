@@ -1,8 +1,14 @@
 import LogoImg from '/logo.svg';
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 
 export default function ContactFooter() {
+    const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+    const toggleServicesDropdown = () => {
+        setIsServicesOpen(!isServicesOpen);
+      };
     return (
         <footer className="bg-black text-white mt-28">
             <div className="h-[1px] bg-lightOrange"></div>
@@ -14,7 +20,66 @@ export default function ContactFooter() {
 
                 <nav className="flex flex-wrap justify-center px-3 sm:justify-between gap-4 text-[14px] font-normal font-segoe mt-3 mb-6 text-footer">
                     <a href="#" className="hover:text-orange-500"><Link to="/">Home</Link></a>
-                    <a href="#" className="hover:text-orange-500"><Link to="/service">Services</Link></a>
+                    <a
+  
+  className="hover:text-orange-500 relative" // Add 'relative' to the Service button
+  onClick={toggleServicesDropdown}
+>
+  Service
+  {isServicesOpen && (
+    <ul className="absolute bg-black text-white shadow-md -mt-64 p-2 w-48 rounded-lg z-10 ">
+      <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
+        <Link to="/service/web-design" className="flex">
+          <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+            <img src="/nav1.svg" className="h-3" alt="Web/App Design" />
+          </div>
+          Web/App Design
+        </Link>
+      </li>
+      <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
+        <Link to="/service/web-development" className="flex">
+          <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+            <img src="/nav2.svg" className="h-3" alt="Web Development" />
+          </div>
+          Web Development
+        </Link>
+      </li>
+      <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
+        <Link to="/service/mob-development" className="flex">
+          <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+            <img src="/nav3.svg" className="h-3" alt="Mob Development" />
+          </div>
+          App Development
+        </Link>
+      </li>
+      <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
+        <Link to="/service/ai-ml-development" className="flex">
+          <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+            <img src="/nav4.svg" className="h-3" alt="AI/ML Development" />
+          </div>
+          AI/ML Development
+        </Link>
+      </li>
+      <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
+        <Link to="/service/blockchain" className="flex">
+          <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+            <img src="/nav5.svg" className="h-3" alt="Blockchain" />
+          </div>
+          Blockchain
+        </Link>
+      </li>
+      <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
+        <Link to="/service/embedded-solution" className="flex">
+          <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+            <img src="/nav6.svg" className="h-3" alt="Embedded Solution" />
+          </div>
+          Embedded Solution
+        </Link>
+      </li>
+    </ul>
+  )}
+</a>
+
                     <a href="#" className="hover:text-orange-500"><Link to="/product">Products</Link></a>
                     <a href="#" className="hover:text-orange-500"><Link to="/career">Career</Link></a>
                     <a href="#" className="hover:text-orange-500"><Link to="/contact">Contact Us</Link></a>
@@ -41,7 +106,7 @@ export default function ContactFooter() {
                         <span>+91 9080011750</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                         <span>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.58734 14.2399C7.60622 14.2509 7.62106 14.2593 7.63157 14.2652L7.64902 14.2749C7.78831 14.3514 7.9611 14.3508 8.10053 14.2752L8.11843 14.2652C8.12894 14.2593 8.14378 14.2509 8.16266 14.2399C8.20041 14.218 8.25436 14.1861 8.32219 14.1444C8.45779 14.0609 8.64922 13.9377 8.87788 13.7762C9.33443 13.4537 9.94359 12.9752 10.5541 12.3501C11.7692 11.106 13.0312 9.23686 13.0312 6.83301C13.0312 3.98529 10.7227 1.67676 7.875 1.67676C5.02728 1.67676 2.71875 3.98529 2.71875 6.83301C2.71875 9.23686 3.98083 11.106 5.19591 12.3501C5.80641 12.9752 6.41557 13.4537 6.87212 13.7762C7.10078 13.9377 7.29221 14.0609 7.42781 14.1444C7.49564 14.1861 7.54959 14.218 7.58734 14.2399ZM7.875 8.70801C8.91053 8.70801 9.75 7.86854 9.75 6.83301C9.75 5.79747 8.91053 4.95801 7.875 4.95801C6.83947 4.95801 6 5.79747 6 6.83301C6 7.86854 6.83947 8.70801 7.875 8.70801Z" fill="#FE5D26" />
@@ -54,7 +119,7 @@ export default function ContactFooter() {
 
             <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-24 mt-3 bg-lightOrange text-white text-sm flex flex-col sm:flex-row items-center justify-between p-4 rounded-none sm:rounded-full">
                 <div className="flex space-x-4 mb-4 sm:mb-0">
-                    <a href="#" className="hover:opacity-80">
+                    {/* <a href="#" className="hover:opacity-80">
                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_1038_469)">
                                 <path d="M15 8.02051C15 3.87837 11.6421 0.520508 7.5 0.520508C3.35786 0.520508 0 3.87837 0 8.02051C0 11.7639 2.74263 14.8667 6.32812 15.4294V10.1885H4.42383V8.02051H6.32812V6.36816C6.32812 4.48848 7.44785 3.4502 9.16099 3.4502C9.9813 3.4502 10.8398 3.59668 10.8398 3.59668V5.44238H9.89414C8.9625 5.44238 8.67188 6.02056 8.67188 6.61426V8.02051H10.752L10.4194 10.1885H8.67188V15.4294C12.2574 14.8667 15 11.7639 15 8.02051Z" fill="white" />
@@ -77,7 +142,7 @@ export default function ContactFooter() {
                                 </clipPath>
                             </defs>
                         </svg>
-                    </a>
+                    </a> */}
                     <a href="#" className="hover:opacity-80">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_1038_475)">

@@ -112,10 +112,10 @@ const ourStory = () => {
   <>   
   {/*our story part 1 */}  
   <HorizontalLine/>
-  <h1 className="flex flex-wrap justify-center sm:justify-start text-center sm:text-left underline text-[24px] sm:text-[28px] md:text-[32px] mt-[50px] sm:mt-[100px] md:mt-[50px] text-white">
+  <h1 className="text-left md:text-center  underline text-[24px] sm:text-[28px] md:text-[32px] mt-[50px] sm:mt-[100px] md:mt-[50px] mb-6 p-4 text-white">
   <span className="text-[#fe5d26]">O</span>ur Story in Blockchain Technology
 </h1>
-  <div class="  inset-100 bg-radial-gradient from-orange-600/80 via-transparent to-transparent relative flex items-center justify-center h-[739.16px] w-[1000px] bg-black">
+  <div class="  inset-100 bg-radial-gradient from-orange-600/80 via-transparent to-transparent relative flex items-center justify-center md:h-[739.16px]  max-w-screen bg-black">
   <img 
   src="/assets/images/blockChain.svg" 
   alt="Centered Image" 
@@ -195,16 +195,16 @@ const ourStory = () => {
 </div>
   
   {/*our story part 3 */}
-  <div className="relative w-full h-[150vw] max-w-[400px] max-h-[300px] min-h-[150px] mx-auto my-[250px] flex items-center justify-center bg-black">
-  <div className="absolute w-[600px] h-[600px] bg-[#616161] opacity-[7%] rounded-full "></div>
-  <div className="absolute w-[400px] h-[400px] bg-gradient-to-br from-[#fe5d26] to-blue-900 rounded-full blur-xl opacity-75 "></div>
-  {generateDots()}
+  <div className="relative w-full  my-4 bg-black max-w-screen">
+  {/* <div className="absolute w-[600px] h-[600px] bg-[#616161] opacity-[7%] rounded-full"></div>
+  <div className="absolute  md:w-[400px] md:h-[400px] bg-gradient-to-br from-[#fe5d26] to-blue-900 rounded-full blur-xl opacity-75 max-w-screen"></div>
+  {generateDots()} */}
   <img
-      src="/assets/images/ourStory/os4.svg"
+      src="/bc.svg"
       alt="Blockchain Centered"
-      className="z-10 w-[202px] h-[220px]"
+      className="z-10 w-screen p-2"
   />
-  {divisions.map((division, index) => {
+  {/* {divisions.map((division, index) => {
           const angle = (Math.PI * index) / (divisions.length - 1); 
           const radius = 110; 
           const x = 35 + radius * Math.cos(angle); 
@@ -220,7 +220,7 @@ const ourStory = () => {
               <div className=" h-[40px] w-[40px] rounded-full flex items-center justify-center bg-[#fff] bg-opacity-[10%] text-[#fff] border-[#fff] border-2 border-opacity-[10%] mx-auto my-[30px]">{division.number}</div>
             </div>
           );
-  })}
+  })} */}
   </div>
   
   {/*footer paragraph */}

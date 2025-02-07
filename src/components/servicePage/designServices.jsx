@@ -72,7 +72,7 @@ return (
 <>
 
         {/* DESIGN SERVICES*/}
-        <h1 className="text-glow text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 flex flex-row mt-6 sm:mt-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 flex flex-row mt-6 sm:mt-10">
   <span className="text-[#fe5d26] underline">D</span>esign Services
 </h1>
 
@@ -232,6 +232,46 @@ return (
 </div>
 
 </div>
+</div>
+<HorizontalLine />
+<h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-semibold relative text-glow2 w-full sm:w-[600px] md:w-[724px] lg:w-[800px] h-auto sm:h-[80px] md:h-[74px] lg:h-[90px] p-6 sm:p-8 md:p-[50px]">
+  Application Design Stages
+</h1>
+
+
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 p-6 sm:p-12 lg:p-20 group">
+  {[
+    { src: "/assets/images/1.svg", alt: "Analysis", title: "Analysis" },
+    { src: "/assets/images/2.svg", alt: "Design", title: "Design" },
+    { src: "/assets/images/3.svg", alt: "Development", title: "Development" },
+    { src: "/assets/images/4.svg", alt: "Testing", title: "Testing" },
+    { src: "/assets/images/5.svg", alt: "Launching", title: "Launching" },
+    { src: "/assets/images/6.svg", alt: "Support", title: "Support" },
+  ].map((item, index) => (
+    <div
+      key={index}
+      className={`bg-black border-neutral-400 text-center w-full sm:w-[220px] h-auto border-[0.5px] p-4 sm:p-[12px] gap-4 transform transition-transform duration-500 ${
+        index === 0 || index === 2
+          ? "group-hover:translate-y-[-30px]" 
+          : index === 1
+          ? "group-hover:translate-y-[-60px]" 
+          : index === 3 || index === 5
+          ? "group-hover:translate-y-[30px]" 
+          : index === 4
+          ? "group-hover:translate-y-[60px]" 
+          : ""
+      } group-hover:scale-135 group-hover:scale-135`} 
+    >
+      <img
+        src={item.src}
+        alt={item.alt}
+        className="w-[150px] sm:w-[200px] h-auto mx-auto transition-transform duration-500 group-hover:scale-140"
+      />
+      <p className="font-bold text-lg sm:text-xl mt-4 text-white transition-transform duration-500 group-hover:scale-140">
+        {item.title}
+      </p>
+    </div>
+  ))}
 </div>
 
 

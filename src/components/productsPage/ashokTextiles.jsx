@@ -42,7 +42,7 @@ function AshokTextiles() {
         <img src={textilesimageGrp} ></img>
       </div>
       <div>
-        <img src={image} className="w-full mb-16 mt-8" />
+        <img src={image} className="w-full mb-16 mt-8 object-contain" />
       </div>
       <div className="p-10 border border-dashed border-orange-500 mx-8  ">
         <p className="text-orange-500 md:text-2xl text-xl text-3xl">Ashok Textiles (Web and App)</p>

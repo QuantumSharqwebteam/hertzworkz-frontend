@@ -9,7 +9,7 @@ import MediApp from "./mediApp";
 import EggsProApp from "./eggsProApp";
 import TextilesHub from "./TextilesHub";
 import FleetPulseProject from "./FleetPulseProject";
-import ContactFooter from "../careerPage/contactFooter";
+import ContactFooter from "../contactPage/contactFooter";
 
 export default function ProductsMain(){
     return(

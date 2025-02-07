@@ -39,8 +39,8 @@ function FeaturesSection() {
   ];
 
   return (
-    <section className="text-center font-segoe">
-      <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+    <section className="text-center font-segoe ">
+      <h2 className=" text-2xl lg:text-4xl font-bold mb-4 text-white">
         <span className="text-blue-500">Key Features</span> of Our Projects
       </h2>
       <p className="text-gray-400 text-sm lg:text-base max-w-3xl mx-auto mb-12">

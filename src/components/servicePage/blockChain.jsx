@@ -132,18 +132,18 @@ const blockChain = () => {
     return(
 <>
 <div className="inset-0 min-w-full mt-[50px] min-h-screen bg-radial-gradient from-orange-900/80 via-transparent to-transparent">
-  <h2 className="text-3xl sm:text-4xl md:text-5xl text-white font-semibold max-w-full text-center mx-auto">
+  <h2 className="text-3xl sm:text-4xl md:text-5xl text-white font-semibold max-w-screen text-center mx-auto">
     <span className="text-[#fe5d26] underline ml-2">B</span>lockChain Technology
   </h2>
 
   <img 
   src='/assets/images/bc.svg' 
-  className='m-auto  rotate-90 w-[633.59px] h-[637.63px] sm:w-[70%] sm:h-auto' 
+  className='m-auto  rotate-90 w-[633.59px] lg:h-[637.63px] sm:w-[70%] sm:h-auto' 
   alt="Blockchain" 
 />
 
   <div className="max-h-screen flex items-center justify-center ">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12  p-6 max-w-7xl transform-all duration-300">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12  p-6 max-w-7xl transform-all duration-300">
       {blockchain.map((service) => (
         <div
           key={service.id}

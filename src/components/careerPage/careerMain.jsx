@@ -1,7 +1,7 @@
 import Navbar from "../navbar"
 import OurTeam from "./ourTeam"
 import CurrentOpenings from "./currentOpening"
-import ContactFooter from "./contactFooter"
+import ContactFooter from "../contactPage/contactFooter"
 
 export default function CareerMain() {
     return (

@@ -12,18 +12,17 @@ const AimlServices = () => {
   };
   return (
     <>
-    <HorizontalLine />
-      <h1 className=" text-glow text-[50px] font-bold text-gray-100 mb-4 flex flex-row mt-9 h-[47px]"><h1 className="text-[#fe5d26] underline">AI/ML</h1> Services</h1>
-      <div class="flex flex-col  md:flex-col lg:flex-row items-center md:items-start space-y-6  md:space-y-0 md:space-x-8 p-20 ml-6  md:ml-10 mt-12 mb-12 md:mr-20">
+      <h1 className=" text-[50px] font-bold text-gray-100 mb-4 text-center mt-9 h-[47px]"><span className="text-[#fe5d26] underline">AI/ML</span> Services</h1>
+      <div class="flex flex-col  md:flex-col lg:flex-row justify-center items-center md:items-start space-y-10  md:space-y-0 md:space-x-4 md:p-20 ml-2  md:ml-6 mt-12 mb-12 md:mr-20 w-screen md:w-auto">
   {/* Image on the Left */}
   <img
     src="/assets/images/ai.svg"
     alt="aiml"
-    class="w-full max-w-[100%]  md:w-[100%] md:max-w-[721px] md:h-[481px] lg:w-[50%] lg:max-w-[721px] lg:h-[481px] md:p-8 object-cover"
+    class="w-full   md:p-8 object-contain"
   />
 
   {/* Paragraph on the Right */}
-  <p class="text-left text-white font-segoe font-light text-[18px] leading-[26px]  md:text-[20px] md:leading-[38px] lg:text-[24px] lg:leading-[38px] max-w-full md:max-w-[100%] px-4 md:px-10 md:p-10 md:mt-auto lg:mt-auto mt-4 ">
+  <p class="text-left text-white font-segoe font-light text-[18px] leading-[26px]  md:text-[20px] md:leading-[38px] lg:text-[24px] lg:leading-[38px] max-w-full md:max-w-[100%] px-4 md:px-10 md:p-10 md:mt-auto lg:mt-auto mt-4 text-center md:text-left ">
     Our team offers end-to-end AI/ML solutions designed to drive business growth, 
     improve efficiency, and deliver exceptional customer experiences. 
     We create custom, scalable AI systems to help you stay competitive 
@@ -173,7 +172,7 @@ const AimlServices = () => {
     </span>
   </h1>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 max-w-6xl mx-auto mt-20 gap-y-12 lg:h-96">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 max-w-6xl mx-auto mt-20 gap-y-4 lg:h-96">
     {/* Section 1 */}
     <div className="flex flex-col items-center relative group mt-12 ">
       {/* SVG Image Positioned at the Top-Right of Heading */}
@@ -265,7 +264,7 @@ const AimlServices = () => {
 <img 
   src="/assets/images/aitoy.svg" 
   alt="aiml" 
-  className="w-full max-w-[90%] sm:max-w-[80%] md:max-w-[70%] md:p-10 lg:max-w-[60%] h-auto mx-auto"
+  className="w-full max-w-[90%] sm:max-w-[80%] md:max-w-[70%] md:p-10 lg:max-w-[60%] h-auto mx-auto mt-6"
 />
 
 <div class="ml-10 mr-[auto] text-left p-6 sm:p-8 md:p-10">
@@ -280,7 +279,7 @@ const AimlServices = () => {
   <div class="flex flex-col items-center">
     <div class="flex flex-wrap justify-evenly w-full gap-[70px] sm:gap-[50px]">
       
-      <div class="flex flex-col items-center flex-1">
+      <div class="flex flex-col items-center flex-1 mr-6 md:mr-0">
         <h3 class="text-[24px] sm:text-[20px] md:text-[20px] font-normal text-center mb-2">
           Access To Cutting-<br />Edge <span class="text-orange-500">Technology</span>
         </h3>
@@ -328,7 +327,7 @@ const AimlServices = () => {
   </div>
 </div>
 </div>
-<HorizontalLine />
+
 
     </>
   );

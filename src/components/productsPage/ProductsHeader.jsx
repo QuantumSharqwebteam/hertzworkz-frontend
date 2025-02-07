@@ -4,7 +4,7 @@ import productbg from "/productbg.svg";
 function ProductsHeader() {
   return (
     <section className="my-16 bg-black text-white text-center font-segoe ">
-      <div className="bg-[url('/productbg.svg')] bg-cover bg-center">
+      <div className="bg-[url('/productbg.svg')] bg-contain bg-no-repeat xl:bg-cover bg-center">
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lightOrange  mb-5">
         Our Products
       </h2>
@@ -13,7 +13,7 @@ function ProductsHeader() {
       </p>
       <div className="flex justify-center  mb-0 ">
         <img
-          src="/public/obj1.svg"
+          src="/obj1.svg"
           alt="3D Object"
           className="w-auto  h-40 md:h-60 lg:h-96 my-5"
         />

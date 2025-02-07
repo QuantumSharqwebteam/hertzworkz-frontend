@@ -15,7 +15,7 @@ const EmbeddedSystems = () => {
   return (
     <>
       <div className="text-center mt-9">
-  <h1 className="text-glow text-[32px] sm:text-[40px] md:text-[50px] font-bold text-gray-100 mb-4 flex items-center justify-center">
+  <h1 className=" text-[32px] sm:text-[40px] md:text-[50px] font-bold text-gray-100 mb-4 flex items-center justify-center">
     <span className="text-[#fe5d26] underline mr-1">E</span>mbedded Services
   </h1>
   <img
@@ -133,7 +133,7 @@ const EmbeddedSystems = () => {
   tailored to your unique needs, ensuring your business stays ahead in today’s 
   competitive landscape.
 </p>
-<HorizontalLine/>
+
     </>
   );
 }
