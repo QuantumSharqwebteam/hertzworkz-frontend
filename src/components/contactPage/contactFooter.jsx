@@ -86,24 +86,24 @@ export default function ContactFooter() {
                 </nav>
 
 
-                <div className="mt-4 flex flex-wrap items-center justify-center text-[12px] font-normal border-cust border-t-1 border-b-1 bg-black text-white text-sm p-6 gap-4">
-                    <div className="flex items-center gap-2">
+                <div className="mt-4 flex flex-wrap items-center justify-center text-[12px] font-normal border-cust border-t-1 md:border-b-1 bg-black text-white text-sm p-6 gap-4">
+                    <div className="flex items-center gap-2 text-base">
                         <span>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1.8125 5.68869V11.0518C1.8125 12.0873 2.65197 12.9268 3.6875 12.9268H13.0625C14.098 12.9268 14.9375 12.0873 14.9375 11.0518V5.68869L9.35768 9.12243C8.75504 9.49328 7.99496 9.49328 7.39232 9.12243L1.8125 5.68869Z" fill="#FE5D26" />
                                 <path d="M14.9375 4.5879V4.48926C14.9375 3.45372 14.098 2.61426 13.0625 2.61426H3.6875C2.65197 2.61426 1.8125 3.45372 1.8125 4.48926V4.5879L7.88366 8.324C8.18498 8.50942 8.56502 8.50942 8.86634 8.324L14.9375 4.5879Z" fill="#FE5D26" />
                             </svg>
                         </span>
-                        <span>hertzworkspvt@gmail.com</span>
+                        <a href="mailto:hertzworkspvt@gmail.com">hertzworkspvt@gmail.com</a>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 text-base">
                         <span>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.0625 3.08301C1.0625 2.04747 1.90197 1.20801 2.9375 1.20801H3.79477C4.3325 1.20801 4.80123 1.57398 4.93165 2.09566L5.62277 4.86015C5.73713 5.31757 5.56621 5.79897 5.18901 6.08187L4.3805 6.68826C4.29654 6.75122 4.27829 6.84343 4.30188 6.90781C5.01157 8.84519 6.55032 10.3839 8.4877 11.0936C8.55208 11.1172 8.64428 11.099 8.70725 11.015L9.31364 10.2065C9.59653 9.8293 10.0779 9.65838 10.5354 9.77273L13.2998 10.4639C13.8215 10.5943 14.1875 11.063 14.1875 11.6007V12.458C14.1875 13.4935 13.348 14.333 12.3125 14.333H10.9062C5.4697 14.333 1.0625 9.92581 1.0625 4.48926V3.08301Z" fill="#FE5D26" />
                             </svg>
                         </span>
-                        <span>+91 9080011750</span>
+                        <a href="tel:+919080011750">+91 9080011750</a>
                     </div>
 
                     <div className="flex items-center gap-1">
@@ -117,7 +117,7 @@ export default function ContactFooter() {
                 </div>
             </div>
 
-            <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-24 mt-3 bg-lightOrange text-white text-sm flex flex-col sm:flex-row items-center justify-between p-4 rounded-none sm:rounded-full">
+            <div className="md:mx-4 sm:mx-8 md:mx-16 lg:mx-24 mt-3 bg-lightOrange text-white text-sm flex flex-col sm:flex-row items-center justify-between p-4 rounded-none sm:rounded-full">
                 <div className="flex space-x-4 mb-4 sm:mb-0">
                     {/* <a href="#" className="hover:opacity-80">
                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +161,7 @@ export default function ContactFooter() {
                     ©All Copyrights are reserved by Hertzworkz
                 </div>
 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 pb-5 md:pb-0">
                     <a href="#" className="hover:opacity-80">Privacy Policy</a>
                     <span>|</span>
                     <a href="#" className="hover:opacity-80">Terms of Service</a>
@@ -169,7 +169,7 @@ export default function ContactFooter() {
             </div>
 
 
-            <div className="pb-10"></div>
+            <div className="pb-0 md:pb-10"></div>
         </footer>
 
     )
