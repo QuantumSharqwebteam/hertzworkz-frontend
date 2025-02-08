@@ -142,8 +142,8 @@ const blockChain = () => {
   alt="Blockchain" 
 />
 
-  <div className="max-h-screen flex items-center justify-center ">
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12  p-6 max-w-7xl transform-all duration-300">
+  <div className="max-h-screen flex items-center justify-center max-w-screen ">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-6 lg:gap-12  p-1 mr-1 md:p-6 max-w-screen transform-all duration-300 x-overflow-hidden">
       {blockchain.map((service) => (
         <div
           key={service.id}
