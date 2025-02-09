@@ -44,7 +44,7 @@ function WelcomePage() {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className="relative bg-[#1a1a1a] rounded-md hover:scale-105 transition-transform duration-200 p-6 flex flex-col items-center space-y-4"
+            className="relative bg-[#1a1a1a] rounded-md hover:scale-110 transition-transform duration-200 p-6 flex flex-col items-center space-y-4"
           >
             <a href={card.link}>
               <img
@@ -55,7 +55,7 @@ function WelcomePage() {
             />
             </a>
 
-            <img src={card.icon} alt={card.title} className="relative z-10" />
+            <img src={card.icon} alt={card.title} className="relative z-10 h-14" />
             <p className="text-welcometext stm:text-center text-lg text-white font-medium">{card.title}</p>
           </div>
         ))}

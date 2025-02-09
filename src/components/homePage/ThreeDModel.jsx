@@ -3,12 +3,14 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
+import { FaArrowDown } from "react-icons/fa6";
 import '../../App.css'
 
 function Model({ glbUrl }) {
   const [model, setModel] = useState(null);
   const groupRef = useRef();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
   
 
   // Load the model
@@ -77,6 +79,20 @@ function Model({ glbUrl }) {
 
 const ModelViewer = ({ glbUrl }) => {
   const fov = window.innerWidth < 584 ? 13 : 6;
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
 
   return (
@@ -108,11 +124,16 @@ const ModelViewer = ({ glbUrl }) => {
         />
       </Canvas>
 
-      {/* <div className="absolute bottom-4 max-w-screen text-center">
-        <span className={`text-white text-xl font-semibold animate-slide ${scrolling ? 'hidden' : 'block'}`}>
-          Scroll Down
-        </span>
-      </div> */}
+      <div className="hidden lg:block absolute left-[45vw] mt-0 bottom-4 max-w-screen text-center">
+      {scrollPosition <= 50 && (
+        <div className="animate-pulse flex items-center justify-center">
+          <p className="text-gray-400 text-xl ">Scroll Down</p>
+          <span className="mt-1 ml-3 bg-gray-400 rounded-xl py-2 px-1">
+            <FaArrowDown />
+          </span>
+        </div>
+      )}
+    </div>
     
     </div>
   );
