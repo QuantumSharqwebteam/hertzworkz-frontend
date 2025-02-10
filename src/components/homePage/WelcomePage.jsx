@@ -46,14 +46,14 @@ function WelcomePage() {
             key={index}
             className="relative bg-[#1a1a1a] rounded-md hover:scale-110 transition-transform duration-200 p-6 flex flex-col items-center space-y-4"
           >
-            <a href={card.link}>
+            {/* <a href={card.link}>
               <img
                 src={iconback}
                 alt="Icon Background"
                 // onClick={}
                 className="absolute top-0 right-0 m-3 cursor-pointer transition-transform duration-300 transform hover:rotate-45"
             />
-            </a>
+            </a> */}
 
             <img src={card.icon} alt={card.title} className="relative z-10 h-14" />
             <p className="text-welcometext stm:text-center text-lg text-white font-medium">{card.title}</p>

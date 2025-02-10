@@ -1,5 +1,6 @@
 import EggsMob from "/assets/EggsProMob.png"
 import EggsiPad from "/assets/EggsProiPad.png"
+import GLBViewer from "../three/egg"
 
 export default function EggsProApp() {
     return (
@@ -13,9 +14,8 @@ export default function EggsProApp() {
                 </span>
             </div>
 
-            <div className="bg-black items-center justify-center flex flex-col px-5">
-                <img className="pb-12" src={EggsiPad} alt="" />
-                <img src={EggsMob} alt="" />
+            <div className="bg-black h-[60vh] xl:h-[100vh]  px-5 overflow-x-hidden overflow-y-hidden">
+            <GLBViewer/>
             </div>
 
             <div className="md:pt-[70px] lg:pt-[100px] bg-black text-white flex items-center justify-center px-6 font-segoe">

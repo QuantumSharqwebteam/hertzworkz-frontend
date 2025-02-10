@@ -1,6 +1,8 @@
-import medImg from "/assets/MedApp.png"
-import medBg from "/assets/MedAppBg.png"
-import medMockup from "/assets/MedAppMockup.png"
+import medImg from "/assets/MedApp.png";
+import medBg from "/assets/MedAppBg.png";
+import medMockup from "/assets/MedAppMockup.png";
+import Siddha from "../three/siddha";
+import GLBViewer from "../three/egg";
 
 function MediApp() {
     return (
@@ -16,7 +18,12 @@ function MediApp() {
 
 
             <div className="relative bg-black border-none">
-                <img src={medBg} alt="Background" className="absolute inset-0  h-full object-cover" />
+                <img src={medBg} alt="Background" className="absolute inset-0  w-full object-cover" />
+                {/* <div className="relative z-10 mx-auto my-auto center px-5 pt-8">
+                    <Siddha glbUrl="/siddha.glb"/>
+
+                </div> */}
+                
                 <img src={medImg} alt="Med App Sample Display" className="relative z-10 mx-auto my-auto center px-5 pt-8" />
             </div>
 

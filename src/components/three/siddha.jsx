@@ -27,7 +27,7 @@ function Model({ glbUrl }) {
         object.position.sub(center);  // Subtract the center to center the object at [0, 0, 0]
 
         // Add an offset to move the model slightly up
-      object.position.y += 0.3;  // Adjust the Y value as needed
+      object.position.y -= 0.1;  // Adjust the Y value as needed
       object.position.x -= 0.2;  // Adjust the Y value as needed
 
         // Scale the object
@@ -77,7 +77,7 @@ function Model({ glbUrl }) {
   return model ? <primitive ref={groupRef} object={model} /> : null;
 }
 
-const ModelViewer = ({ glbUrl }) => {
+const Siddha = ({ glbUrl }) => {
   const fov = window.innerWidth < 584 ? 13 : 6;
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -96,25 +96,13 @@ const ModelViewer = ({ glbUrl }) => {
   
 
   return (
-    <div className="relative max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[83vh] md:pl-2 pl-4 bg-black">
-      <Canvas camera={{ position: [0, 0, 10], fov }}>
+    <div className="relative max-w-screen md:w-full h-[40vh] md:h-[30vh] xl:h-[83vh] md:pl-2 pl-4 ">
+      <Canvas camera={{ position: [0, 5, 10], fov }}>
         {/* Lights */}
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, -10, 5]} intensity={0} />
         <directionalLight position={[0, 0, 10]} intensity={1} />
         <directionalLight position={[0, 8, 5]} intensity={1} />
-
-        <pointLight position={[10, 5, 10]} intensity={0.5} color="white" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="white" />
-
-        {/* Spot Light */}
-        <spotLight
-          position={[0, 10, 10]}
-          angle={0.15}
-          penumbra={1}
-          intensity={1}
-          castShadow
-        />
         
         {/* Model */}
         <Suspense fallback={null}>
@@ -136,7 +124,7 @@ const ModelViewer = ({ glbUrl }) => {
         />
       </Canvas>
 
-      <div className="hidden lg:block absolute left-[45vw] mt-0 bottom-4 max-w-screen text-center">
+      {/* <div className="hidden lg:block absolute left-[45vw] mt-0 bottom-4 max-w-screen text-center">
       {scrollPosition <= 50 && (
         <div className="animate-pulse flex items-center justify-center">
           <p className="text-gray-400 text-xl ">Scroll Down</p>
@@ -145,10 +133,10 @@ const ModelViewer = ({ glbUrl }) => {
           </span>
         </div>
       )}
-    </div>
+    </div> */}
     
     </div>
   );
 };
 
-export default ModelViewer;
+export default Siddha;
