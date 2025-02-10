@@ -4,7 +4,10 @@ export default function Application() {
         <>
 
             <div className="mx-4 sm:mx-6 md:mx-12 lg:mx-16 flex items-center justify-center bg-black mt-10">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfroMMExkyqAmvGnxG28LS0rxmvPYMjDBO5CTMop7E9rC8tuQ/viewform?embedded=true" width="640" height="1322" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfroMMExkyqAmvGnxG28LS0rxmvPYMjDBO5CTMop7E9rC8tuQ/viewform?usp=header" target="__blank">
+                    <button className="p-3 bg-orange-600 rounded-md text-white font-semibold">Get in Touch</button>
+                </a>
+            {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfroMMExkyqAmvGnxG28LS0rxmvPYMjDBO5CTMop7E9rC8tuQ/viewform?embedded=true" width="640" height="1322" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
                 
                 {/* <div className="w-full px-6 sm:px-12 lg:px-18 pt-16 md:pt-24 pb-10 border border-cust text-white rounded-lg shadow-lg">
                     <form className="space-y-8">
