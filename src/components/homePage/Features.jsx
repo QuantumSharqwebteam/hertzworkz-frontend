@@ -78,9 +78,9 @@ function Features() {
   };
 
   return (
-    <section className="Feature page bg-black max-w-screen">
+    <section className="Feature page bg-black max-w-screen overflow-x-hidden overflow-y-hidden">
       {/* Top Content */}
-      <div className="topContent py-6">
+      <div data-aos="fade-up"  className="topContent py-6">
         <p className="text-4xl font-bold mb-2 text-left text-white px-8">
           Our
           <span className="text-4xl font-bold text-orange-600"> Features</span>
@@ -94,7 +94,7 @@ function Features() {
       </div>
 
       {/* Bottom Content */}
-      <div className="ButtonContent w-full my-auto py-6 ps-4 grid md:grid-cols-5">
+      <div data-aos="fade-zoom-out"  className="ButtonContent w-full my-auto py-6 ps-4 grid md:grid-cols-5">
         {/* Categories Section */}
         <div className="categories bg-[#1c1c1c] justify-between py-10 col-span-1 flex md:flex-col stm:py-8 stm:w-screen stm:mx-9 gap-4 my-2 ps-8 w-full">
           {List.map((item) => (

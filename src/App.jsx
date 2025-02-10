@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeMain from "./components/homePage/homeMain"
 import ProductsMain from "./components/productsPage/productsMain";
@@ -13,8 +13,17 @@ import AiMl from './components/servives/AIML';
 import Embedded from './components/servives/Embedded';
 import AppDev from './components/servives/AppDevelopment';
 import WebDev from './components/servives/WebDevelopment';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,  // Duration of animation
+      once: true,      // Animation happens only once
+    });
+  }, []);
   return (
     <>
       <div className='bg-black'>

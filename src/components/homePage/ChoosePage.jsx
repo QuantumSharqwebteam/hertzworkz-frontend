@@ -34,9 +34,9 @@ function ChoosePage() {
   ];
 
   return (
-    <section className="choosePage  max-w-screen bg-black text-white bg-cover bg-center bg-no-repeat bg-[url('/assets/bgblue.svg')]">
+    <section className="choosePage  max-w-screen bg-black text-white bg-cover bg-center bg-no-repeat bg-[url('/assets/bgblue.svg')] overflow-x-hidden overflow-y-hidden">
       {/* Top Portion */}
-      <div className="topPortion  text-center p-8">
+      <div data-aos="fade-up"  className="topPortion  text-center p-8">
         <h1 className=" text-[50px] font-bold text-[#fe5d26] m-10 mt-24">
           Why Choose Us<span className="text-white">?</span>
         </h1>
@@ -52,11 +52,11 @@ function ChoosePage() {
 
       <div className=' max-w-screen'>
         <div className='flex flex-col justify-center items-center max-w-screen lg:flex-row px-6' >
-          <img src={task} alt='' className='w-full md:hidden  md:w-1/2 lg:block lg:h-[70vh]'/>
-          <img src={person} alt='' className='hidden md:block w-3/5 lg:h-[70vh]'/>
+          <img data-aos="fade-right"  src={task} alt='' className='w-full md:hidden  md:w-1/2 lg:block lg:h-[70vh]'/>
+          <img data-aos="fade-left"  src={person} alt='' className='hidden md:block w-3/5 lg:h-[70vh]'/>
         </div>
 
-        <div className="BelowContent text-white grid md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+        <div data-aos="fade-up"  className="BelowContent text-white grid md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
         {cardData.map((card, index) => (
           <div
             key={index}

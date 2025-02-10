@@ -22,7 +22,7 @@ export default function GLBViewer() {
         const updateFov = () => {
           // Set the fov based on window width
           if (window.innerWidth < 568) {
-            setFov(50);
+            setFov(35);
           } else if (window.innerWidth >= 568 && window.innerWidth < 768) {
             setFov(35);
           } else if (window.innerWidth >= 768 && window.innerWidth <= 1024) {

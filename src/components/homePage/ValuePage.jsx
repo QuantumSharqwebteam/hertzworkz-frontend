@@ -57,13 +57,13 @@ function ValuePage() {
   ];
 
   return (
-    <section className="bg-black pt-6 mt-5 z-0 max-w-screen">
+    <section className="bg-black pt-6 mt-5 z-0 max-w-screen overflow-x-hidden overflow-y-hidden">
       {/* Top Content */}
       
 
       {/* Bottom Content */}
       <div className="ButtomContent justify-center align-middle grid grid-cols-1 md:grid-cols-3">
-        <div className="p-12">
+        <div data-aos="fade-right"  className="p-12">
           <img src={icon9} alt="Our Values Icon" />
           <br />
           <p className="text-3xl font-bold mb-2 text-left text-white">Our Values</p>
@@ -72,7 +72,7 @@ function ValuePage() {
           </p>
         </div>
         {/* Heading1 */}
-        <div className="border-8 text-white mx-2 md:mx-8 md:col-span-2 rounded-xl border-[#262626] h-fit w-fit grid grid-cols-2 grid-rows-2 bg-[#141414]">
+        <div data-aos="fade-left"  className="border-8 text-white mx-2 md:mx-8 md:col-span-2 rounded-xl border-[#262626] h-fit w-fit grid grid-cols-2 grid-rows-2 bg-[#141414]">
           {valueData.map((value, index) => (
             <div
               key={index}

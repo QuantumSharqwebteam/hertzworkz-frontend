@@ -60,6 +60,7 @@ function FaqPage() {
   // FAQ Item Component
   const FaqItem = ({ question, answer, index, isVisible, onClick }) => (
     <div
+      data-aos="fade-up"
       className="faq-item border-b border-[#86868B] pb-4 cursor-pointer hover:bg-[#333333] p-2 rounded"
       onClick={onClick}
     >
@@ -68,6 +69,7 @@ function FaqPage() {
           {index + 1}
         </div>
         <h3
+           
           className={`text-[18px] font-bold ${
             isVisible ? "text-[#22F95B]" : "text-white"
           }`}
@@ -77,16 +79,16 @@ function FaqPage() {
         <FaPlus className="ms-auto text-white me-8 hover:scale-110 transition-all duration-200 ease-in-out" />
       </span>
       {isVisible && (
-        <p className="text-[16px] text-[#B3B3B3] mt-2">{answer}</p>
+        <p  className="text-[16px] text-[#B3B3B3] mt-2">{answer}</p>
       )}
     </div>
   );
 
   return (
-    <section className="FAQ_Page p-4 bg-black max-w-screen max-w-full overflow-x-hidden">
+    <section className="FAQ_Page p-4 bg-black max-w-screen max-w-full overflow-x-hidden overflow-y-hidden">
       <div className="Content border-2 border-[#86868B]">
         {/* Header */}
-        <div className="Heading p-4 h-[260px] flex flex-col justify-center items-center border-[#86868B] border-b-2 text-white">
+        <div data-aos="fade-up"  className="Heading p-4 h-[260px] flex flex-col justify-center items-center border-[#86868B] border-b-2 text-white">
           <h1 className="text-[35px] mb-2">Frequently Asked Questions</h1>
           <p className="text-[18px]">
             Still have questions? Contact our team at

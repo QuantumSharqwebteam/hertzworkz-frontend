@@ -15,9 +15,9 @@ function WelcomePage() {
   ];
 
   return (
-    <section className="welcomePage stm:py-2 px-6 font-sans bg-black xl:h-screen flex flex-col items-center justify-between select-none mb-6">
+    <section className="welcomePage stm:py-2 px-6 font-sans bg-black xl:h-screen flex flex-col items-center justify-between select-none mb-6  ">
       {/* Top Content */}
-      <div className="topContent flex flex-col md:flex-row items-center justify-center w-full mx-auto md:h-[80vh]">
+      <div data-aos="fade-zoom-in"  className="topContent flex flex-col md:flex-row items-center justify-center w-full mx-auto md:h-[80vh]">
         {/* Left Content */}
         <div className="leftContent bg-[#1A1A1A] text-left text-welcometext p-8 md:rounded-br-[4rem] flex flex-col justify-center md:w-1/2">
           <h2 className="text-2xl md:text-4xl mb-6 text-white font-bold">
@@ -38,7 +38,7 @@ function WelcomePage() {
       </div>
 
       {/* Bottom Content */}
-      <div className="bottomContent grid 
+      <div data-aos="fade-zoom-in"  className="bottomContent grid 
       stm:grid-cols-2
        md:grid-cols-4 gap-6 bg-[#313132] p-6 rounded-md w-full px-6 mx-auto mt-8">
         {cardData.map((card, index) => (
