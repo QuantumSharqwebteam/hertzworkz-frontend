@@ -2,8 +2,8 @@ import ContactImg from '/contactimage.png'
 
 export default function GetInTouch() {
     return (
-        <>
-            <div className="flex justify-center items-center mx-auto px-2 mt-8 mb-[-30px] sm:mb-[-40px] md:mb-[-50px] lg:mb-[-60px]">
+        <div className='overflow-y-hidden overflow-x-hidden'>
+            <div data-aos="zoom-out" className="flex justify-center items-center mx-auto px-2 mt-8 mb-[-30px] sm:mb-[-40px] md:mb-[-50px] lg:mb-[-60px]">
                 <img
                     src={ContactImg}
                     alt="Illustration"
@@ -11,7 +11,7 @@ export default function GetInTouch() {
                 />
             </div>
 
-            <div className="bg-opacity-35 bg-cust mx-4 sm:mx-6 md:mx-12 lg:mx-16 text-white font-segoe px-6 sm:px-12 md:px-20 lg:px-28 py-8 sm:py-12 md:py-16 lg:py-20">
+            <div data-aos="fade-up" className="bg-opacity-35 bg-cust mx-4 sm:mx-6 md:mx-12 lg:mx-16 text-white font-segoe px-6 sm:px-12 md:px-20 lg:px-28 py-8 sm:py-12 md:py-16 lg:py-20">
                 <h1 className="text-[32px] sm:text-[36px] md:text-[38px] lg:text-[40px] font-semibold mb-4">
                     Get in Touch with <span className='text-[#fe5d26]'>Hertzworkz</span> 
                 </h1>
@@ -25,7 +25,7 @@ export default function GetInTouch() {
             </div>
 
             <div className="mx-4 pb-10 sm:mx-6 md:mx-12 lg:mx-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
-                <div className="flex flex-col items-center justify-center bg-cust1 border-2 border-cust p-6 bg-opacity-70">
+                <div data-aos="fade-left" className="flex flex-col items-center justify-center bg-cust1 border-2 border-cust p-6 bg-opacity-70">
                     <div className="mb-4">
                         <svg width="61" height="60" viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="0.5" width="59" height="59" rx="29.5" stroke="url(#paint0_linear_160_10782)" />
@@ -57,7 +57,7 @@ export default function GetInTouch() {
                     <p className="font-semibold text-base text-white">hertzworkspvt@gmail.com</p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center bg-cust1 border-2 border-cust bg-opacity-70 p-6">
+                <div data-aos="fade-right" className="flex flex-col items-center justify-center bg-cust1 border-2 border-cust bg-opacity-70 p-6">
                     <div className="mb-4">
                         <svg width="61" height="60" viewBox="0 0 61 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="1" y="0.5" width="59" height="59" rx="29.5" stroke="url(#paint0_linear_160_10790)" />
@@ -91,7 +91,7 @@ export default function GetInTouch() {
 
 
 
-            <div className='px-4   text-white mx-4 sm:mx-6 md:mx-12 lg:mx-16 pb-10'>
+            <div data-aos="fade-up" className='px-4   text-white mx-4 sm:mx-6 md:mx-12 lg:mx-16 pb-10'>
                 <div className="mt-6">
                     <svg width="55" height="24" viewBox="0 0 55 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_160_10801)">
@@ -139,6 +139,6 @@ export default function GetInTouch() {
 
 
 
-        </>
+        </div>
     )
 }

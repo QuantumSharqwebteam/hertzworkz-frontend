@@ -2,8 +2,8 @@ import TableImg from '/carrerTable.png'
 
 export default function OurTeam() {
     return (
-        <>
-            <div className="font-segoe mt-10">
+        <div className='overflow-y-hidden overflow-x-hidden'>
+            <div data-aos="zoom-out" className="font-segoe mt-10">
                 <h1 className="text-center text-white text-lg font-semibold lg:text-[35.49px]">Join Our Team at <span className="text-lightOrange">Hertzworkz</span></h1>
                 <p className="text-lightGray text-center px-4 text-[13.31px] font-normal mt-6">Unleash your potential and become part of our innovative and dynamic team.</p>
                 <div className=" items-center flex flex-col px-5">
@@ -11,7 +11,7 @@ export default function OurTeam() {
                 </div>
             </div>
 
-            <div className="bg-black text-white  flex flex-col items-center border mx-5 pt-20 font-segoe border-cust ">
+            <div data-aos="zoom-out" className="bg-black text-white  flex flex-col items-center border mx-5 pt-20 font-segoe border-cust ">
                 <div className="text-center sm:text-left px-4 sm:px-12 w-full">
                     <h1 className="text-[28px] sm:text-[35.49px] font-semibold mb-4 w-full">
                         Welcome to Hertzworkz, Where Vision Meets Opportunity!
@@ -25,7 +25,7 @@ export default function OurTeam() {
                 </div>
 
 
-                <div className="grid grid-cols-1 md:grid-cols-2  mt-10 px-0 ">
+                <div data-aos="zoom-out" className="grid grid-cols-1 md:grid-cols-2  mt-10 px-0 ">
                     <div className="shadow-lg ">
                         <h2 className="py-6 sm:py-8 md:py-12 px-4 sm:px-6 md:px-8 border border-cust text-[24px] sm:text-[29.57px] font-normal text-lightOrange">
                             Innovative and Impactful Projects
@@ -66,7 +66,7 @@ export default function OurTeam() {
 
 
 
-        </>
+        </div>
 
     )
 }

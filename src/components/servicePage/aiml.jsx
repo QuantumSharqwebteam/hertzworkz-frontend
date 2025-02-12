@@ -12,6 +12,7 @@ const AimlServices = () => {
   };
   return (
     <>
+    <div className="bg-[url('/aimlbg.svg')] bg-contain bg-center bg-no-repeat">
       <h1 className=" text-[50px] font-bold text-gray-100 mb-4 text-center mt-9 h-[47px]"><span className="text-[#fe5d26] underline">AI/ML</span> Services</h1>
       <div class="flex flex-col  md:flex-col lg:flex-row justify-center items-center md:items-start space-y-10  md:space-y-0 md:space-x-4 md:p-20 ml-2  md:ml-6 mt-12 mb-12 md:mr-20 w-screen md:w-auto">
   {/* Image on the Left */}
@@ -29,7 +30,7 @@ const AimlServices = () => {
     in today’s fast-evolving market.
   </p>
 </div>
-  <div className="relative h-auto lg:w-[1218px] md:w-full flex flex-col items-center bg-[#1E1E1E] text-white py-8 px-6 ">
+  <div className=" h-auto rounded lg:w-[90vw] md:w-full flex flex-col items-center bg-[#1E1E1E] text-white py-8 px-3 mx-auto ">
   <div className="text-center mb-8">
     <h2 className="max-w-[1026px] text-[#9C9C9C] text-[20px] font-normal leading-[26.6px] md:text-[24px] lg:text-[28px]">
       AI/ML Solutions
@@ -94,6 +95,7 @@ const AimlServices = () => {
       );
     })}
   </div>
+</div>
 </div>
 
 

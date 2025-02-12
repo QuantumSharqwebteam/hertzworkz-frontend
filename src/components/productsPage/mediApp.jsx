@@ -1,13 +1,12 @@
 import medImg from "/assets/MedApp.png";
 import medBg from "/assets/MedAppBg.png";
 import medMockup from "/assets/MedAppMockup.png";
-import Siddha from "../three/siddha";
-import GLBViewer from "../three/egg";
+import GGLBViewerSiddha from '../three/SiddhaLaptop';
 
 function MediApp() {
     return (
-        <>
-            <div className="mx-10 bg-black text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
+        <div className="overflow-y-hidden overflow-x-hidden">
+            < div data-aos="fade-up" className="mx-10 bg-black text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
                 <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
                     M
                 </h1>
@@ -17,21 +16,25 @@ function MediApp() {
             </div>
 
 
-            <div className="relative bg-black border-none">
-                <img src={medBg} alt="Background" className="absolute inset-0  w-full object-cover" />
-                {/* <div className="relative z-10 mx-auto my-auto center px-5 pt-8">
-                    <Siddha glbUrl="/siddha.glb"/>
-
-                </div> */}
+            <div data-aos="fade-zoom-out" className="relative bg-black border-none overflow-y-hidden overflow-x-hidden">
+                <img src={medBg} alt="Background" className="absolute inset-0  w-full  object-contain" />
+                
                 
                 <img src={medImg} alt="Med App Sample Display" className="relative z-10 mx-auto my-auto center px-5 pt-8" />
             </div>
 
-            <div className="bg-black flex items-center justify-center border-none   ">
-                <img src={medMockup} alt="Mockup Image" className=" px-5" />
-            </div>
+            
+            <div data-aos="fade-right" className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden">
+            <img src='lbg.svg' alt="Background" className="absolute inset-0  w-full object-cover" />
+            <div className="relative z-10 mx-auto my-auto center px-5 pt-8">
+            <GGLBViewerSiddha/>
+            </div >
+                    
 
-            <div className="bg-black px-5 py-6 font-segoe">
+                </div>
+            
+
+            <div data-aos="fade-up" className="bg-black px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
                 <h1 className="border-2 border-dotted border-lightOrange rounded text-[20px] sm:text-[24px] lg:text-[28px] font-normal leading-[30px] sm:leading-[34px] lg:leading-[37px] text-white px-5 py-4 sm:py-5 lg:py-6 mx-auto text-left">
                     <span className="text-lightOrange block text-[24px] sm:text-[28px] lg:text-[32px] font-semibold mb-2">
                         Medi App (Web and App)
@@ -40,16 +43,16 @@ function MediApp() {
                 </h1>
             </div>
 
-            <div className="bg-black px-5 py-6 font-segoe">
+            <div data-aos="fade-zoom-out" className="bg-black px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
                 <h1 className="text-custom-base sm:text-custom-md lg:text-custom-lg font-semi-bold leading-custom-base sm:leading-custom-md lg:leading-custom-lg text-white">
                     <span className="text-lightOrange">Navigating</span> the MediApp Experience
                 </h1>
                 <p className="text-white text-[18px] font-normal text-lightGray2 pt-3 lg:max-w-5xl">At MediApp, we’ve streamlined the process to make managing your healthcare needs as effortless as possible. Here's a step-by-step guide to how it works.</p>
             </div>
 
-            <div className="bg-black py-12 px-5 font-segoe">
+            <div className="bg-black py-12 px-5 font-segoe overflow-y-hidden overflow-x-hidden">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div className="text-white shadow-lg border-l-2 md:mb-14" style={{
+                    <div data-aos="fade-right" className="text-white shadow-lg border-l-2 md:mb-14" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",
                     }}>
                         <h3 className="text-[15.28px] font-normal mb-4 pb-3 pl-6" style={{
@@ -62,7 +65,7 @@ function MediApp() {
                         </p>
                     </div>
 
-                    <div className=" text-white shadow-lg border-l-2" style={{
+                    <div data-aos="fade-up" className=" text-white shadow-lg border-l-2" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",
                     }}>
                         <h3 className="text-[15.28px] font-normal mb-4 pb-3 pl-6" style={{
@@ -75,7 +78,7 @@ function MediApp() {
                         </p>
                     </div>
 
-                    <div className=" text-white shadow-lg border-l-2" style={{
+                    <div data-aos="fade-left" className=" text-white shadow-lg border-l-2" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",
                     }}>
                         <h3 className="text-[15.28px] font-normal mb-4 pb-3 pl-6" style={{
@@ -88,7 +91,7 @@ function MediApp() {
                         </p>
                     </div>
 
-                    <div className=" text-white shadow-lg border-l-2" style={{
+                    <div data-aos="fade-right" className=" text-white shadow-lg border-l-2" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",
                     }}>
                         <h3 className="text-[15.28px] font-normal mb-4 pb-3 pl-6" style={{
@@ -101,7 +104,7 @@ function MediApp() {
                         </p>
                     </div>
 
-                    <div className=" text-white shadow-lg border-l-2" style={{
+                    <div data-aos="fade-up" className=" text-white shadow-lg border-l-2" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",
                     }}>
                         <h3 className="text-[15.28px] font-normal mb-4 pb-3 pl-6" style={{
@@ -114,7 +117,7 @@ function MediApp() {
                         </p>
                     </div>
 
-                    <div className=" text-white shadow-lg border-l-2" style={{
+                    <div data-aos="fade-left" className=" text-white shadow-lg border-l-2" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",
                     }}>
                         <h3 className="text-[15.28px] font-normal mb-4 pb-3 pl-6" style={{
@@ -131,7 +134,7 @@ function MediApp() {
 
 
 
-        </>
+        </div>
     )
 }
 

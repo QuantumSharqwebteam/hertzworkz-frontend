@@ -5,6 +5,7 @@ import uil from "/assets/uil_feedback.svg"
 import textilesimageGrp from "/assets/textilesPhotoGrp.svg"
 import image from "/assets/textile.png"
 import flow from "/assets/Flow.svg"
+import Textiles from "../three/TextileLaptop"
 
 
 function AshokTextiles() {
@@ -15,8 +16,9 @@ function AshokTextiles() {
     { label: "Feedback", icon: uil },
   ];
   return (
-    <section className=" font-segoe ">
-      <div className=" text-white flex flex-col sm:flex-row items-center mx-5  py-2 ">
+    <section className=" font-segoe overflow-y-hidden overflow-x-hidden">
+      
+      <div data-aos="fade-up" className=" text-white flex flex-col sm:flex-row items-center mx-5  py-2 ">
         <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
           A
         </h1>
@@ -29,6 +31,7 @@ function AshokTextiles() {
         <div className="flex justify-center items-center gap-8 flex-wrap">
           {buttons.map((button, index) => (
             <button
+              data-aos="fade-left"
               key={index}
               className="flex items-center  gap-4 space-x-3 px-4 py-3 border-2 border-orange-500 rounded-tr-xl transition"
             >
@@ -38,17 +41,19 @@ function AshokTextiles() {
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-center  px-5 ">
+      <div data-aos="zoom-out" className="flex items-center justify-center  px-5 ">
         <img src={textilesimageGrp} ></img>
       </div>
-      <div>
-        <img src={image} className="w-full mb-16 mt-8 object-contain" />
-      </div>
-      <div className="p-10 border border-dashed border-orange-500 mx-8  ">
+      
+      {/* <div  className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden" >
+      <Textiles  />
+      </div > */}
+      
+      <div data-aos="zoom-in" className="p-10 border border-dashed border-orange-500 mx-8  ">
         <p className="text-orange-500 md:text-2xl text-xl text-3xl">Ashok Textiles (Web and App)</p>
         <p className="text-lg md:text-xl my-3 text-white">Streamline textile management with Ashok Textiles. Our web and mobile applications offer inventory tracking, order management, and seamless customer engagement tools, ensuring efficiency across every step of the textile business process.</p>
       </div>
-      <div className=" flex  my-2 justify-center items-center">
+      <div data-aos="fade-down" className=" flex  my-2 justify-center items-center">
         <img src={flow} />
       </div>
 

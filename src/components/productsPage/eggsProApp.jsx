@@ -4,8 +4,8 @@ import GLBViewer from "../three/egg"
 
 export default function EggsProApp() {
     return (
-        <>
-            <div className="bg-black text-white sm:mx-5 mx-10 flex flex-col sm:flex-row items-center py-2 font-segoe">
+        <div className="overflow-y-hidden overflow-x-hidden">
+            <div data-aos="fade-up" className="bg-black text-white sm:mx-5 mx-10 flex flex-col sm:flex-row items-center py-2 font-segoe">
                 <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
                     E
                 </h1>
@@ -13,6 +13,8 @@ export default function EggsProApp() {
                     <span className="text-lightOrange">E</span>ggspro App - Project
                 </span>
             </div>
+            
+            
 
             <div className="bg-black h-[60vh] xl:h-[100vh]  px-5 overflow-x-hidden overflow-y-hidden">
             <GLBViewer/>
@@ -20,7 +22,7 @@ export default function EggsProApp() {
 
             <div className="md:pt-[70px] lg:pt-[100px] bg-black text-white flex items-center justify-center px-6 font-segoe">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
-                    <div className=" p-10 rounded-lg shadow-md border border-[#333] h-fit mt-10 ">
+                    <div data-aos="fade-right" className=" p-10 rounded-lg shadow-md border border-[#333] h-fit mt-10 ">
                         <h2 className=" mb-4 text-[18.05px] font-bold">Description</h2>
                         <p className="text-lightGray2 text-[13.53px] font-normal">
                             Discover the perfect harmony of quality and freshness with our
@@ -32,7 +34,7 @@ export default function EggsProApp() {
                         </p>
                     </div>
 
-                    <div className="p-6 rounded-lg shadow-md border border-[#333]">
+                    <div data-aos="fade-left" className="p-6 rounded-lg shadow-md border border-[#333]">
                         <h2 className="text-2xl font-bold mb-4">Key Features and Amenities</h2>
                         <ul className="space-y-4">
                             {[
@@ -43,6 +45,7 @@ export default function EggsProApp() {
                                 "Convenient Delivery: Timely doorstep delivery ensuring freshness every time.",
                             ].map((feature, index) => (
                                 <li
+                                    data-aos="fade-up"
                                     key={index}
                                     className="flex items-center space-x-3 bg-[#262626] p-4  border-l-2 border-orange-500"
                                 >
@@ -60,6 +63,6 @@ export default function EggsProApp() {
 
                 </div>
             </div>
-        </>
+        </div>
     )
 }

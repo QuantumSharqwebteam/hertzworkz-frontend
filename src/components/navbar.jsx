@@ -41,7 +41,7 @@ function Navbar() {
           </svg>
 
           {isServicesOpen && (
-            <ul className="absolute bg-black text-white shadow-md mt-2 p-2 w-48 rounded-lg">
+            <ul data-aos="fade-down" className="absolute bg-black text-white shadow-md mt-2 p-2 w-48 rounded-lg">
               <li className={`p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded ${isActive("/service/web-design")}`}>
                 <Link to="/service/web-design" className="flex">
                   <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">

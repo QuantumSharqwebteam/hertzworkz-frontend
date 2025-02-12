@@ -39,7 +39,7 @@ function FeaturesSection() {
   ];
 
   return (
-    <section className="text-center font-segoe ">
+    <section className="text-center font-segoe overflow-y-hidden overflow-x-hidden">
       <h2 className=" text-2xl lg:text-4xl font-bold mb-4 text-white">
         <span className="text-blue-500">Key Features</span> of Our Projects
       </h2>
@@ -49,9 +49,11 @@ function FeaturesSection() {
         ROI. Our tailored solutions are designed to meet your unique business
         needs, ensuring lasting success.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex flex-wrap justify-center align center  mx-4 gap-8 bg-[rgba(255,255,255,0.07)] rounded">
+      <div  className="grid grid-cols-1 sm:grid-cols-2 lg:flex flex-wrap justify-center align center  mx-4 gap-8 bg-[rgba(255,255,255,0.07)] rounded">
         {features.map((feature, index) => (
           <div
+            data-aos="fade-left"
+            data-aos-anchor-placement="center-bottom"
             key={index}
             className="p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow lg:w-[400px]"
           >

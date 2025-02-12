@@ -1,10 +1,10 @@
 
 const ProjectManagement = () => {
   return (
-    <div className="bg-black text-white font-segoe ">
+    <div className="bg-black text-white font-segoe overflow-y-hidden overflow-x-hidden">
       <div className="mx-auto px-6 py-5">
         {/* Header Section */}
-        <div className=" px-12 py-10 border border-cust ">
+        <div data-aos="fade-up" className=" px-12 py-10 border border-cust ">
           <h1 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight sm:leading-snug md:leading-relaxed">
             Project Management
           </h1>
@@ -18,8 +18,8 @@ const ProjectManagement = () => {
 
         {/* Project Planning and Scoping */}
         <SectionHeader title="Project Planning and Scoping" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
-          <Card title="Requirements Gathering and Analysis" icon={
+        <div data-aos="fade-right" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+          <Card data-aos="fade-right" title="Requirements Gathering and Analysis" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10010)" fill-opacity="0.2" />
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" stroke="#262626" stroke-width="0.739812" />
@@ -35,7 +35,7 @@ const ProjectManagement = () => {
           }
 
           />
-          <Card className="bg-white" title="Project Roadmap and Timeline Development" icon={
+          <Card data-aos="fade-right" className="bg-white" title="Project Roadmap and Timeline Development" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10016)" fill-opacity="0.2" />
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" stroke="#262626" stroke-width="0.739812" />
@@ -50,7 +50,7 @@ const ProjectManagement = () => {
               </defs>
             </svg>
           } />
-          <Card title="Resource Allocation and Task Assignment" icon={
+          <Card data-aos="fade-right" title="Resource Allocation and Task Assignment" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10022)" fill-opacity="0.2" />
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" stroke="#262626" stroke-width="0.739812" />
@@ -66,7 +66,7 @@ const ProjectManagement = () => {
               </defs>
             </svg>
           } />
-          <Card title="Risk Assessment and Mitigation Strategies" icon={
+          <Card data-aos="fade-up" title="Risk Assessment and Mitigation Strategies" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10016)" fill-opacity="0.2" />
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" stroke="#262626" stroke-width="0.739812" />
@@ -85,7 +85,7 @@ const ProjectManagement = () => {
 
         {/* Agile Development */}
         <SectionHeader title="Agile Development" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+        <div data-aos="fade-left" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
           <Card title="Iterative Development and Sprints" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.696566" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10037)" fill-opacity="0.2" />
@@ -152,7 +152,7 @@ const ProjectManagement = () => {
 
         {/* Quality Assurance and Testing */}
         <SectionHeader title="Quality Assurance and Testing" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+        <div data-aos="fade-right" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
           <Card title="Test Planning and Execution" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.95682" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10067)" fill-opacity="0.2" />

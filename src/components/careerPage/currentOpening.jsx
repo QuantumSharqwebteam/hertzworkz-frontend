@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function CurrentOpenings() {
     return (
-        <div className="bg-black text-white mx-5 border border-cust">
-            <header className="text-left border border-cust pt-20 px-12 pb-12">
+        <div className="bg-black text-white mx-5 border border-cust overflow-y-hidden overflow-x-hidden">
+            <header data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" className="text-left border border-cust pt-20 px-12 pb-12">
                 <h1 className="text-[35.49px] font-semibold max-w-4xl font-segoe">Current Openings</h1>
                 <p className="text-[16px] font-[400] text-lightGray pt-3 font-segoe">
                     We are always on the lookout for talented individuals who are passionate about creating exceptional digital experiences. Whether you’re a designer, engineer, project manager, or QA tester, we encourage you to explore our open positions.
@@ -12,7 +13,7 @@ export default function CurrentOpenings() {
             </header>
 
             <div>
-                <section>
+                <section data-aos="fade-right">
                     <h2 className="font-barlow text-[20.71px] py-8 font-medium text-grayCustom px-12 border border-cust">
                         Design Job Openings
                     </h2>
@@ -96,7 +97,7 @@ export default function CurrentOpenings() {
                     </div>
                 </section>
 
-                <section>
+                <section data-aos="fade-left">
                     <h2 className="font-barlow text-[20.71px] py-8 font-medium text-grayCustom px-12 border border-cust">
                         Development Job Openings
                     </h2>
@@ -174,7 +175,7 @@ export default function CurrentOpenings() {
                     </div>
                 </section>
 
-                <section>
+                <section data-aos="fade-right">
                     <h2 className="font-barlow text-[20.71px] py-8 font-medium text-grayCustom px-12 border border-cust">
                         Management Job Openings
                     </h2>
@@ -257,7 +258,7 @@ export default function CurrentOpenings() {
                     </div>
                 </section>
 
-                <section>
+                <section data-aos="fade-left">
                     <h2 className="font-barlow text-[20.71px] py-8 font-medium text-grayCustom px-12 border border-cust">
                         QA Job Openings
                     </h2>

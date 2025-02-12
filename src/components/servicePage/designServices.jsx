@@ -222,11 +222,11 @@ return (
 </span>
 
       {/* Arrow */}
-      <span className="text-2xl rotate-[90deg] sm:text-3xl text-[#86868b] rounded-lg transform transition-transform duration-700 
+      {/* <span className="text-2xl rotate-[90deg] sm:text-3xl text-[#86868b] rounded-lg transform transition-transform duration-700 
                        group-hover:text-blue-500  group-hover:translate-y-[-10px] sm:group-hover:translate-y-[-20px] lg:group-hover:translate-y-[-40px] 
                        group-hover:rotate-[-1deg]">
          ▲
-      </span>
+      </span> */}
     </div>
   ))}
 </div>

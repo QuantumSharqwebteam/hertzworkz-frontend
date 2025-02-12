@@ -34,13 +34,9 @@ function Mission() {
         <div data-aos="fade-right"  className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Mission</h1>
           <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-            At YourBank, our mission is to empower our customers to achieve
-            financial success. We are dedicated to delivering innovative banking
-            solutions that cater to their unique needs. Through personalized
-            services, expert guidance, and cutting-edge technology, we aim to
-            build strong, lasting relationships with our customers. Our mission
-            is to be their trusted partner, helping them navigate their
-            financial journey and realize their dreams.
+          Our mission is web and mobile development is to deliver high-quality, user-centric solutions that drive 
+          business growth and enhance user experiences. It aims to align with the vision of leveraging innovative 
+          technologies to create accessible, efficient, and impactful applications that meet the needs of users and businesses alike.
           </p>
         </div>
       </div>
@@ -51,14 +47,11 @@ function Mission() {
         <div className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Vision</h1>
           <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-            Our vision at YourBank is to redefine banking by creating a seamless
-            and personalized experience for our customers. We envision a future
-            where banking is accessible, transparent, and tailored to individual
-            preferences. Through continuous innovation and collaboration, we
-            strive to be at the forefront of the industry, setting new standards
-            for customer-centric banking. Our vision is to be the preferred
-            financial institution, known for our unwavering commitment to
-            excellence, trust, and customer satisfaction.
+          Our vision is web and mobile development focuses on creating seamless, 
+          user-centric experiences that leverage emerging technologies like AI, 
+          cloud computing, and enhanced security. It aims to integrate applications 
+          across platforms, ensuring accessibility, performance, and innovation to 
+          meet evolving user needs.
           </p>
         </div>
 
