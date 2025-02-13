@@ -25,7 +25,7 @@ function MediApp() {
 
             
             <div data-aos="fade-right" className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden">
-            <img src='lbg.svg' alt="Background" className="absolute inset-0  w-full object-cover" />
+            <img src='/lbg.svg' alt="Background" className="absolute inset-0  w-full object-cover" />
             <div className="relative z-10 mx-auto my-auto center px-5 pt-8">
             <GGLBViewerSiddha/>
             </div >
