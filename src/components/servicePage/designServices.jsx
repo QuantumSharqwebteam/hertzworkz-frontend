@@ -72,7 +72,7 @@ return (
 <>
 
         {/* DESIGN SERVICES*/}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 flex flex-row mt-6 sm:mt-10">
+        <h1 data-aos="fade-up" className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 flex flex-row mt-6 sm:mt-10">
   <span className="text-[#fe5d26] underline">D</span>esign Services
 </h1>
 
@@ -80,7 +80,7 @@ return (
 
 
        {/* Mobile Application*/}
-       <div className="flex gap-2 ml-0 mr-[auto] mt-8 sm:mt-[100px]  sm:p-6 md:p-10 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto">
+       <div data-aos="fade-right" className="flex gap-2 ml-0 mr-[auto] mt-8 sm:mt-[100px]  sm:p-6 md:p-10 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto">
   <h1 className="text-xl sm:text-2xl md:text-[32px] lg:text-[36px] font-bold text-white flex">
     In<span className="text-[#fe5d26] underline ml-2">M</span>obile Application
   </h1>
@@ -99,6 +99,7 @@ return (
     {boxes.map((box, index) => (
       <div
         key={index}
+        data-aos="fade-right"
         className={`relative bg-transparent border border-orange-600 rounded-lg shadow-lg inline-flex items-center px-3 sm:px-4 gap-2`}
         style={{
           boxShadow: "8px 8px 4px 0px #FFFFFF40, 12px 12px 200px 0px #FFFFFF40",
@@ -114,7 +115,7 @@ return (
   </div>
 
   {/* Image Section */}
-  <div className="relative aspect-[4/3] lg:w-[60%] lg:h-[594px]  ml-auto mr-0 sm:w-[80%]  flex flex-col sm:flex-row items-center sm:items-end rounded-tl-[24px] rounded-bl-[24px] bg-[#1d1d1f] mt-[20px] sm:mt-[30px]">
+  <div data-aos="fade-left" className="relative aspect-[4/3] lg:w-[60%] lg:h-[594px]  ml-auto mr-0 sm:w-[80%]  flex flex-col sm:flex-row items-center sm:items-end rounded-tl-[24px] rounded-bl-[24px] bg-[#1d1d1f] mt-[20px] sm:mt-[30px]">
     {/* Gradient Circle */}
     <div
       className="absolute 
@@ -144,6 +145,7 @@ return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-3">
         {steps.map((step, index) => (
           <div
+            data-aos="fade-up"
             key={index}
             className="flex flex-col items-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group"
           > 
@@ -167,7 +169,7 @@ return (
 
 
           
-    <p className="text-center text-gray-500 text-xl sm:text-xl md:text-2xl px-4 sm:px-8 md:px-5 leading-10 sm:leading-9 md:leading-10 max-w-[90%] sm:max-w-[full] md:max-w-full mx-auto mt-12 sm:mt-16 md:mt-10 p-6 sm:p-8 md:p-8">
+    <p data-aos="flip-up" className="text-center text-gray-500 text-xl sm:text-xl md:text-2xl px-4 sm:px-8 md:px-5 leading-10 sm:leading-9 md:leading-10 max-w-[90%] sm:max-w-[full] md:max-w-full mx-auto mt-12 sm:mt-16 md:mt-10 p-6 sm:p-8 md:p-8">
   We specialize in developing products that not only meet user needs but exceed their expectations. With a
   perfect balance of cutting-edge technology, thoughtful design, and unmatched functionality, we craft
   solutions that people genuinely love to use. Our goal is to create experiences that are intuitive,
@@ -179,7 +181,7 @@ return (
 
 {/*Web Application*/}
 
-<div className="flex gap-2 ml-0 mr-[auto] mt-4 sm:mt-[30px] md:mt-[40px] lg:mt-[30px] p-4 sm:p-6 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto">
+<div data-aos="zoom-out" className="flex gap-2 ml-0 mr-[auto] mt-4 sm:mt-[30px] md:mt-[40px] lg:mt-[30px] p-4 sm:p-6 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto">
   <h1 className="text-xl sm:text-2xl md:text-[32px] lg:text-[36px] font-bold text-white flex">
     In<span className="text-[#fe5d26] underline ml-2">W</span>eb Application
   </h1>
@@ -204,7 +206,7 @@ return (
   <span className="text-orange-500 font-bold underline">T</span>ransform Your Digital Presence with Exceptional Website Design
 </h2>
 
-  <div className="flex flex-wrap justify-center items-center gap-4">
+  <div data-aos="fade-left" className="flex flex-wrap justify-center items-center gap-4">
   {items.map((item, index) => (
     <div
       key={index}
@@ -234,7 +236,7 @@ return (
 </div>
 </div>
 <HorizontalLine />
-<h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-semibold relative text-glow2 w-full sm:w-[600px] md:w-[724px] lg:w-[800px] h-auto sm:h-[80px] md:h-[74px] lg:h-[90px] p-6 sm:p-8 md:p-[50px]">
+<h1 data-aos="fade-up" className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-semibold relative text-glow2 w-full sm:w-[600px] md:w-[724px] lg:w-[800px] h-auto sm:h-[80px] md:h-[74px] lg:h-[90px] p-6 sm:p-8 md:p-[50px]">
   Application Design Stages
 </h1>
 
@@ -248,7 +250,7 @@ return (
     { src: "/assets/images/5.svg", alt: "Launching", title: "Launching" },
     { src: "/assets/images/6.svg", alt: "Support", title: "Support" },
   ].map((item, index) => (
-    <div
+    <div data-aos="fade-left"
       key={index}
       className={`bg-black border-neutral-400 text-center w-full sm:w-[220px] h-auto border-[0.5px] p-4 sm:p-[12px] gap-4 transform transition-transform duration-500 ${
         index === 0 || index === 2

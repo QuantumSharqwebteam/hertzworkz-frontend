@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     AOS.init({
       duration: 1200,  // Duration of animation
-      once: true,      // Animation happens only once
+      once: false,      // Animation happens only once
     });
   }, []);
   return (

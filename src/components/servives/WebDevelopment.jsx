@@ -61,7 +61,7 @@ export default function WebDev() {
 
   const Development = () => {
     return (
-        <>
+        <div className='overflow-x-hidden overflow-y-hidden'>
 
           <div className="flex gap-2 ml-0 mr-[auto] mt-8 sm:mt-[40px] md:mt-[50px] lg:mt-[40px] p-4 sm:p-6 md:p-10 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto justify-center">
             <h1 className="text-xl sm:text-2xl md:text-[32px] lg:text-[36px] font-bold text-white text-center">
@@ -253,7 +253,7 @@ export default function WebDev() {
           </div>
         </div>
       </div>
-      </>
+      </div>
     );
   };
 
