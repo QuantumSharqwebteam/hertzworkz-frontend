@@ -48,7 +48,7 @@ select-none {
 
 /* Style the thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #555;      /* Darker color when the thumb is hovered */
+  background-color: #FE5D26;      /* Darker color when the thumb is hovered */
 }
 
 /* Optional: Style the scrollbar corner (where horizontal and vertical scrollbars meet) */

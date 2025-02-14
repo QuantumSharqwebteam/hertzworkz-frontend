@@ -10,7 +10,7 @@ export default function ContactFooter() {
         setIsServicesOpen(!isServicesOpen);
       };
     return (
-        <footer data-aos="fade-zoom-out" data-aos-offset="200" className="bg-black text-white mt-28 overflow-x-hidden overflow-y-hidden">
+        <footer data-aos="fade-zoom-out" data-aos-offset="150" className="bg-black text-white mt-28 overflow-x-hidden ">
             <div className="h-[1px] bg-lightOrange"></div>
 
             <div className="py-6 flex flex-col items-center text-center mt-14">
@@ -27,7 +27,7 @@ export default function ContactFooter() {
 >
   Service
   {isServicesOpen && (
-    <ul className="absolute bg-black text-white shadow-md -mt-64 p-2 w-48 rounded-lg z-10 ">
+    <ul className="absolute bg-black text-white shadow-md -mt-48 ml-14 p-2 w-48 rounded-lg z-10 ">
       <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
         <Link to="/service/web-design" className="flex">
           <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">

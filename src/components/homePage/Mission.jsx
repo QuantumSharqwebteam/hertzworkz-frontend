@@ -34,11 +34,11 @@ function Mission() {
         <div data-aos="fade-right"  className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Mission</h1>
           <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-          At HertzWorkz, our mission is to engineer transformative solutions that 
-          simplify complex challenges and drive meaningful impact. We are committed 
-          to pushing the boundaries of technological advancements by integrating AI, 
-          ML, and electronic systems into everyday operations, making them smarter and more efficient.
-          <br/>
+          HertzWorkz creates innovative technology solutions that simplify complex challenges through AI, ML, 
+          and electronic systems integration. We partner with talent, academia, and businesses to build an innovation 
+          ecosystem. Our customer-centric approach delivers practical, scalable solutions that address current needs while 
+          anticipating future demands. We're dedicated to excellence and advancing technology for meaningful impact.
+          {/* <br/>
           We believe in fostering a culture of creativity, 
           continuous learning, and collaboration. By partnering with emerging talents, 
           academic institutions, and businesses, we aim to build an ecosystem that nurtures 
@@ -47,7 +47,7 @@ function Mission() {
           Our approach is driven by a deep commitment to excellence, adaptability, and customer-centricity. 
           Every product and service we develop is designed to not only meet current industry needs but also 
           to anticipate future demands. By embracing the latest advancements and staying ahead of trends, 
-          HertzWorkz is dedicated to shaping the future of technology with solutions that are practical, scalable, and impactful.
+          HertzWorkz is dedicated to shaping the future of technology with solutions that are practical, scalable, and impactful. */}
           </p>
         </div>
       </div>
