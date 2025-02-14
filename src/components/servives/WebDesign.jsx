@@ -10,7 +10,7 @@ import ContactFooter from '../contactPage/contactFooter';
 export default function WebDesign() {
   const HorizontalLine = () => {
     return (
-      <div className="w-full flex justify-center">
+      <div data-aos="zoom-in" className="w-full flex justify-center">
         {/* Adjust the width and padding */}
         <div className="w-full max-w-screen-2xl mx-auto px-10">
           <hr className="border-[1px] border-gray-300" />

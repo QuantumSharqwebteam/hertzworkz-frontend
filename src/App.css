@@ -25,3 +25,34 @@ select-none {
   .animate-slide {
     animation: slide 3s ease-in-out infinite;
   }
+
+  /* Style the scrollbar itself */
+::-webkit-scrollbar {
+  width: 8px;  /* Set the width of the scrollbar */
+  height: 12px; /* Set the height of the horizontal scrollbar */
+  background-color: black;
+}
+
+/* Style the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: black;  /* Light gray background for the scrollbar track */
+  border-radius: 8px;         /* Rounded corners */
+}
+
+/* Style the thumb (the draggable part) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888;      /* Default thumb color */
+  border-radius: 10px;         /* Rounded corners for the thumb */
+  border: 3px solid transparent;  /* Border around the thumb to make it stand out */
+}
+
+/* Style the thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;      /* Darker color when the thumb is hovered */
+}
+
+/* Optional: Style the scrollbar corner (where horizontal and vertical scrollbars meet) */
+::-webkit-scrollbar-corner {
+  background-color: #1c1a1a2f;
+
+}

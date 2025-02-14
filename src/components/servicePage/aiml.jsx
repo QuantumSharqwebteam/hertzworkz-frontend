@@ -2,7 +2,7 @@ const AimlServices = () => {
 
   const HorizontalLine = () => {
     return (
-      <div className="w-full flex justify-center">
+      <div data-aos="zoom-out" className="w-full flex justify-center">
         {/* Adjust the width and padding */}
         <div className="w-full max-w-screen-2xl mx-auto px-10">
           <hr className="border-[1px] border-gray-300" />
@@ -13,17 +13,18 @@ const AimlServices = () => {
   return (
     <>
     <div className="bg-[url('/aimlbg.svg')] bg-contain bg-center bg-no-repeat">
-      <h1 className=" text-[50px] font-bold text-gray-100 mb-4 text-center mt-9 h-[47px]"><span className="text-[#fe5d26] underline">AI/ML</span> Services</h1>
+      <h1 data-aos="fade-up" className=" text-[50px] font-bold text-gray-100 mb-4 text-center mt-9 h-[47px]"><span className="text-[#fe5d26] underline">AI/ML</span> Services</h1>
       <div class="flex flex-col  md:flex-col lg:flex-row justify-center items-center md:items-start space-y-10  md:space-y-0 md:space-x-4 md:p-20 ml-2  md:ml-6 mt-12 mb-12 md:mr-20 w-screen md:w-auto">
   {/* Image on the Left */}
   <img
+    data-aos="fade-right"
     src="/assets/images/ai.svg"
     alt="aiml"
     class="w-full   md:p-8 object-contain"
   />
 
   {/* Paragraph on the Right */}
-  <p class="text-left text-white font-segoe font-light text-[18px] leading-[26px]  md:text-[20px] md:leading-[38px] lg:text-[24px] lg:leading-[38px] max-w-full md:max-w-[100%] px-4 md:px-10 md:p-10 md:mt-auto lg:mt-auto mt-4 text-center md:text-left ">
+  <p data-aos="fade-left" class="text-left text-white font-segoe font-light text-[18px] leading-[26px]  md:text-[20px] md:leading-[38px] lg:text-[24px] lg:leading-[38px] max-w-full md:max-w-[100%] px-4 md:px-10 md:p-10 md:mt-auto lg:mt-auto mt-4 text-center md:text-left ">
     Our team offers end-to-end AI/ML solutions designed to drive business growth, 
     improve efficiency, and deliver exceptional customer experiences. 
     We create custom, scalable AI systems to help you stay competitive 
@@ -31,7 +32,7 @@ const AimlServices = () => {
   </p>
 </div>
   <div className=" h-auto rounded lg:w-[90vw] md:w-full flex flex-col items-center bg-[#1E1E1E] text-white py-8 px-3 mx-auto ">
-  <div className="text-center mb-8">
+  <div data-aos="fade-up" className="text-center mb-8">
     <h2 className="max-w-[1026px] text-[#9C9C9C] text-[20px] font-normal leading-[26.6px] md:text-[24px] lg:text-[28px]">
       AI/ML Solutions
     </h2>
@@ -63,6 +64,7 @@ const AimlServices = () => {
 
       return (
         <div
+          data-aos="fade-right"
           key={index}
           className="group relative w-full max-w-[274.5px] h-auto bg-[#FFFFFF0D] p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-0 mx-auto hover:border-2 hover:border-blue-500 "
         >
@@ -106,17 +108,17 @@ const AimlServices = () => {
 <div className="flex flex-col gap-y-[40px]">
   {/* First Grid */}
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-[40px] px-5 md:px-10 ">
-    <img src="/assets/images/AI (1).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
-    <img src="/assets/images/AI (2).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
+    <img data-aos="fade-up-right" src="/assets/images/AI (1).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
+    <img data-aos="fade-up-left" src="/assets/images/AI (2).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
   </div>
 
   {/* Second Grid */}
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-[40px] px-5 md:px-10">
-    <img src="/assets/images/AI (3).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
-    <img src="/assets/images/AI (4).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
+    <img data-aos="fade-up-right" src="/assets/images/AI (3).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
+    <img data-aos="fade-up-left" src="/assets/images/AI (4).svg" alt="ai" className="w-full sm:w-[500px] h-[332.58px] mx-auto" />
   </div>
 </div>
-<div className="w-full max-w-[1304px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-10 mt-10">
+<div data-aos="flip-up" className="w-full max-w-[1304px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-10 mt-10">
   <p className="text-neutral-400 font-segoe text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-normal leading-[30px] sm:leading-[35px] md:leading-[40px] lg:leading-[43px] text-center p-4 sm:p-8 md:p-12 lg:p-20">
     We harness the transformative power of Artificial Intelligence (AI) and Machine <span className="text-white"> Learning (ML)</span> to help businesses 
     stay ahead in an ever-evolving digital landscape. Our AI/ML solutions are designed to <span className="text-white">automate processes</span>,
@@ -133,7 +135,7 @@ const AimlServices = () => {
   className="w-full max-w-[831px] h-auto sm:h-[500px] md:h-[685px] mx-auto mt-5"
 /> */}
 
-<div className="w-full flex flex-col sm:flex-row items-start justify-start gap-4 mt-6">
+<div data-aos="zoom-out" className="w-full flex flex-col sm:flex-row items-start justify-start gap-4 mt-6">
   <img
     src="/assets/images/aiml2.svg"
     alt="aiml2"
@@ -142,7 +144,7 @@ const AimlServices = () => {
 </div>
 
 
-<div className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 gap-[24px]">
+<div data-aos="fade-up" className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 gap-[24px]">
   <h1 className="text-4xl md:text-6xl font-normal text-[45.56px] mb-16 text-center relative max-w-[800px] mx-auto">
     Unleash your{" "}
     <span className="relative inline-block px-4 py-2">
@@ -263,17 +265,18 @@ const AimlServices = () => {
   </div>
 </div>
 
-<img 
+<img
+  data-aos="zoom-out"
   src="/assets/images/aitoy.svg" 
   alt="aiml" 
-  className="w-full max-w-[90%] sm:max-w-[80%] md:max-w-[70%] md:p-10 lg:max-w-[60%] h-auto mx-auto mt-6"
+  className="w-screen lg:h-[80vh]  lg:w-screen h-auto mt-6"
 />
 
 <div class="ml-10 mr-[auto] text-left p-6 sm:p-8 md:p-10">
-  <h1 class="w-full text-[#4280EF] text-[16.62px] sm:text-[18px] md:text-[20px] font-semibold">
+  <h1 data-aos="fade-up-right" class="w-full text-[#4280EF] text-[16.62px] sm:text-[18px] md:text-[20px] font-semibold">
     How it works
   </h1>
-  <h1 class="w-full text-white font-semibold text-[33.97px] sm:text-[28px] md:text-[33px] leading-[-0.45px] mt-3">
+  <h1 data-aos="fade-up-right" class="w-full text-white font-semibold text-[33.97px] sm:text-[28px] md:text-[33px] leading-[-0.45px] mt-3">
     We Can Expect To Get From The <br />AI ML
   </h1>
 
@@ -281,7 +284,7 @@ const AimlServices = () => {
   <div class="flex flex-col items-center">
     <div class="flex flex-wrap justify-evenly w-full gap-[70px] sm:gap-[50px]">
       
-      <div class="flex flex-col items-center flex-1 mr-6 md:mr-0">
+      <div data-aos="fade-up-right" class="flex flex-col items-center flex-1 mr-6 md:mr-0">
         <h3 class="text-[24px] sm:text-[20px] md:text-[20px] font-normal text-center mb-2">
           Access To Cutting-<br />Edge <span class="text-orange-500">Technology</span>
         </h3>
@@ -292,7 +295,7 @@ const AimlServices = () => {
         </p>
       </div>
 
-      <div class="flex flex-col items-center flex-1">
+      <div data-aos="fade-up-right" class="flex flex-col items-center flex-1">
         <h3 class="text-[24px] sm:text-[20px] md:text-[20px] font-normal text-center mb-2">
           Data-Driven <span class="text-orange-500">Decision Making</span>
         </h3>
@@ -303,7 +306,7 @@ const AimlServices = () => {
         </p>
       </div>
 
-      <div class="flex flex-col items-center flex-1">
+      <div data-aos="fade-up-right" class="flex flex-col items-center flex-1">
         <h3 class="text-[24px] sm:text-[20px] md:text-[20px] font-normal text-center mb-2">
           Focus on Core <span class="text-orange-500">Competencies</span>
         </h3>
@@ -314,7 +317,7 @@ const AimlServices = () => {
         </p>
       </div>
 
-      <div class="flex flex-col items-center flex-1">
+      <div data-aos="fade-up-right" class="flex flex-col items-center flex-1">
         <h3 class="text-[24px] sm:text-[20px] md:text-[20px] font-normal text-center mb-2">
           Expert Digital <br /><span class="text-orange-500">Solutions</span>
         </h3>

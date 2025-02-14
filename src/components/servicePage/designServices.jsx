@@ -57,7 +57,7 @@ const steps = [
 
 const HorizontalLine = () => {
   return (
-    <div className="w-full flex justify-center">
+    <div data-aos="zoom-in" className="w-full flex justify-center">
       {/* Adjust the width and padding */}
       <div className="w-full max-w-screen-2xl mx-auto px-10">
         <hr className="border-[1px] border-gray-300" />
@@ -129,7 +129,7 @@ return (
     </div>
 
     {/* Image Section */}
-    <div className="relative mx-auto pt-16 pr-8">
+    <div data-aos="fade-right" className="relative mx-auto pt-16 pr-8">
       <img
         src="/assets/images/img3.png"
         alt="Phones"
@@ -142,7 +142,7 @@ return (
 
         {/* Content Section */}
    <div className="bg-black text-white py-10 px-6 md:px-20">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-3">
+      <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-3">
         {steps.map((step, index) => (
           <div
             data-aos="fade-up"

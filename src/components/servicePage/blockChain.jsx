@@ -95,28 +95,6 @@ const blockChain = () => {
     },
   ]; 
 
-  
-  {/*random dots */}
-  
-  const numDots = 50;
-  const generateDots = () => {
-    return Array.from({ length: numDots }).map((_, index) => {
-      const x = Math.random() * 100; 
-      const y = Math.random() * 100;
-      return (
-        <div
-          key={index}
-          className="absolute bg-white rounded-full"
-          style={{
-            width: "2px",
-            height: "2px",
-            left: `${x}%`,
-            top: `${y}%`,
-          }}
-        ></div>
-      );
-    });
-  };
 
   const HorizontalLine = () => {
     return (
@@ -131,12 +109,13 @@ const blockChain = () => {
 
     return(
 <>
-<div className="inset-0 min-w-full mt-[50px] min-h-screen bg-radial-gradient from-orange-900/80 via-transparent to-transparent">
+<div data-aos="fade-up" className="inset-0 min-w-full mt-[50px] min-h-screen bg-radial-gradient from-orange-900/80 via-transparent to-transparent">
   <h2 className="text-3xl sm:text-4xl md:text-5xl text-white font-semibold max-w-screen text-center mx-auto">
     <span className="text-[#fe5d26] underline ml-2">B</span>lockChain Technology
   </h2>
 
   <img 
+  data-aos="zoom-out"
   src='/assets/images/bc.svg' 
   className='m-auto  rotate-90 w-[633.59px] lg:h-[637.63px] sm:w-[70%] sm:h-auto' 
   alt="Blockchain" 
@@ -146,6 +125,7 @@ const blockChain = () => {
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-6 lg:gap-12  p-1 mr-1 md:p-6 max-w-screen transform-all duration-300 x-overflow-hidden">
       {blockchain.map((service) => (
         <div
+          data-aos="flip-up"
           key={service.id}
           className="bg-[#090909] border border-[#222222] w-[177.59px] h-[143.2px] sm:w-auto sm:h-auto hover:rounded-lg shadow-lg p-6 text-center transition duration-300"
         >
@@ -162,7 +142,7 @@ const blockChain = () => {
     </div>
   </div>
 
-  <p className="text-center text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-loose font-normal w-full max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[85%] mx-auto px-4 sm:px-6 md:px-8 lg:px-2 p-10">
+  <p data-aos="fade-up" className="text-center text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-loose font-normal w-full max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[85%] mx-auto px-4 sm:px-6 md:px-8 lg:px-2 p-10">
     Revolutionize the way you do business with our cutting-edge blockchain solutions.
     <span className="text-blue-800"> Blockchain</span> is more than just a technology; it’s a transformative approach to achieving transparency, security, and efficiency across industries. 
     Our expertise covers decentralized applications, smart contracts, and secure digital ledgers, enabling businesses to 

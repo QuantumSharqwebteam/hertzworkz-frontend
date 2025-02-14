@@ -23,7 +23,7 @@ export default function AiMl() {
     <>
       <Navbar />
 
-      <section className="bg-black overflow-x-hidden flex items-center justify-center text-center flex-col pb-20">
+      <section className="bg-black overflow-x-hidden overflow-y-hidden flex items-center justify-center text-center flex-col pb-20">
         
         
         <AimlServices />

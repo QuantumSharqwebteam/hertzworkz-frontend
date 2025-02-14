@@ -15,10 +15,11 @@ const EmbeddedSystems = () => {
   return (
     <>
       <div className="text-center mt-9">
-  <h1 className=" text-[32px] sm:text-[40px] md:text-[50px] font-bold text-gray-100 mb-4 flex items-center justify-center">
+  <h1 data-aos="fade-up" className=" text-[32px] sm:text-[40px] md:text-[50px] font-bold text-gray-100 mb-4 flex items-center justify-center">
     <span className="text-[#fe5d26] underline mr-1">E</span>mbedded Services
   </h1>
   <img
+    data-aos="zoom-out"
     className="h-auto  sm:max-w-[80%] md:max-w-[70%] lg:max-w-[100%] rounded-xl mt-8 mx-auto"
     src="/assets/images/emb.svg"
     alt="Embedded Service"
@@ -27,10 +28,10 @@ const EmbeddedSystems = () => {
 
 
 <div class="bg-black text-white py-10 px-4">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto">
+  <div data-aos="fade-left" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1200px] mx-auto">
 
     
-    <div class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-full">
+    <div  class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-full">
       <div>
         <div class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
           <img src="/assets/images/emb1.svg" alt="Custom Development" class="w-[40px] h-[40px]" />
@@ -89,7 +90,7 @@ const EmbeddedSystems = () => {
     
     <div class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-full">
       <div>
-        <div class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
+        <div data-aos="fade-right" class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
           <img src="/assets/images/emb4.svg" alt="Testing and Optimization" class="w-[40px] h-[40px]" />
         </div>
         <h3 class="text-2xl text-left mb-2">Testing and Optimization</h3>
@@ -108,7 +109,7 @@ const EmbeddedSystems = () => {
   </div>
 </div>
       
-<div className="flex flex-col lg:flex-row items-start justify-start w-full p-6 sm:p-8 md:p-10 bg-black text-white my-12 gap-6">
+<div data-aos="fade-right" className="flex flex-col lg:flex-row items-start justify-start w-full p-6 sm:p-8 md:p-10 bg-black text-white my-12 gap-6">
   <img 
     src="/assets/images/hex.svg" 
     alt="IoT Solutions" 
@@ -116,7 +117,7 @@ const EmbeddedSystems = () => {
   />
 
   <div className="text-left w-full lg:max-w-[400px] font-light lg:ml-20 lg:mt-20">
-    <ul className="list-disc text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] leading-[30px] sm:leading-[40px] md:leading-[50px] lg:leading-[61px] marker:text-orange-600 pl-6 sm:pl-8 lg:pl-0">
+    <ul data-aos="fade-left" className="list-disc text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] leading-[30px] sm:leading-[40px] md:leading-[50px] lg:leading-[61px] marker:text-orange-600 pl-6 sm:pl-8 lg:pl-0">
       <li><span className="text-orange-500">C</span>ustomized Embedded Solutions</li>
       <li><span className="text-orange-500">R</span>eal-Time Processing</li>
       <li><span className="text-orange-500">S</span>eamless Hardware Integration</li>
@@ -126,7 +127,7 @@ const EmbeddedSystems = () => {
   </div>
 </div>
 
-<p className="text-center text-neutral-600 text-[20px] pb-8 sm:text-[24px] md:text-[28px] lg:text-[32px] px-4 sm:px-6 md:px-8 lg:px-10 leading-[30px] sm:leading-[35px] md:leading-[40px] lg:leading-[43px] max-w-full lg:max-w-[1300px] mx-auto mt-6 sm:mt-8 lg:mt-5">
+<p data-aos="flip-up" className="text-center text-neutral-600 text-[20px] pb-8 sm:text-[24px] md:text-[28px] lg:text-[32px] px-4 sm:px-6 md:px-8 lg:px-10 leading-[30px] sm:leading-[35px] md:leading-[40px] lg:leading-[43px] max-w-full lg:max-w-[1300px] mx-auto mt-6 sm:mt-8 lg:mt-5">
   At the heart of technological innovation lies embedded systems, seamlessly 
   <span className="text-white"> integrating software</span> and hardware to power modern devices and solutions. Our 
   embedded services are designed to provide <span className="text-white">robust, efficient</span>, and <span className="text-white">scalable systems </span> 

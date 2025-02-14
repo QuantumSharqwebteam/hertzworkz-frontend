@@ -34,9 +34,20 @@ function Mission() {
         <div data-aos="fade-right"  className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Mission</h1>
           <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-          Our mission is web and mobile development is to deliver high-quality, user-centric solutions that drive 
-          business growth and enhance user experiences. It aims to align with the vision of leveraging innovative 
-          technologies to create accessible, efficient, and impactful applications that meet the needs of users and businesses alike.
+          At HertzWorkz, our mission is to engineer transformative solutions that 
+          simplify complex challenges and drive meaningful impact. We are committed 
+          to pushing the boundaries of technological advancements by integrating AI, 
+          ML, and electronic systems into everyday operations, making them smarter and more efficient.
+          <br/>
+          We believe in fostering a culture of creativity, 
+          continuous learning, and collaboration. By partnering with emerging talents, 
+          academic institutions, and businesses, we aim to build an ecosystem that nurtures 
+          innovation and creates opportunities for growth.
+          <br/>
+          Our approach is driven by a deep commitment to excellence, adaptability, and customer-centricity. 
+          Every product and service we develop is designed to not only meet current industry needs but also 
+          to anticipate future demands. By embracing the latest advancements and staying ahead of trends, 
+          HertzWorkz is dedicated to shaping the future of technology with solutions that are practical, scalable, and impactful.
           </p>
         </div>
       </div>
@@ -47,11 +58,12 @@ function Mission() {
         <div className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Vision</h1>
           <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-          Our vision is web and mobile development focuses on creating seamless, 
-          user-centric experiences that leverage emerging technologies like AI, 
-          cloud computing, and enhanced security. It aims to integrate applications 
-          across platforms, ensuring accessibility, performance, and innovation to 
-          meet evolving user needs.
+          HertzWorkz Private Limited envisions a future where technology seamlessly bridges 
+          the gap between challenges and solutions, enabling businesses and individuals to 
+          unlock their full potential. We strive to be a global leader in innovation by developing 
+          cutting-edge solutions in web applications, artificial intelligence, machine learning, 
+          and electronic development. Our goal is to create intelligent, efficient, and 
+          sustainable technologies that redefine industries and set new benchmarks in problem-solving.
           </p>
         </div>
 
