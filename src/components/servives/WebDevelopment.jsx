@@ -192,7 +192,7 @@ export default function WebDev() {
                   <p className="text-gray-400 font-semibold leading-[22.13px] text-[14.75px]">
                     {service.description}
                   </p>
-                  <div
+                  {/* <div
                     className={`w-[75.59px] h-[51.63px] rounded-[92.19px] border-[0.92px] 
                       border-[#1f1f1f] flex items-center justify-center mt-[40px]`}
                   >
@@ -202,7 +202,7 @@ export default function WebDev() {
                     >
                       ➔
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               ))}
           </div>
@@ -237,7 +237,7 @@ export default function WebDev() {
                   <p className="text-gray-400 font-semibold leading-[22.13px] text-[14.75px]">
                     {service.description}
                   </p>
-                  <div
+                  {/* <div
                     className={`w-[75.59px] h-[51.63px] rounded-[92.19px] border-[0.92px] 
                       border-[#1f1f1f] flex items-center justify-center mt-[40px]`}
                   >
@@ -247,7 +247,7 @@ export default function WebDev() {
                     >
                       ➔
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               ))}
           </div>
