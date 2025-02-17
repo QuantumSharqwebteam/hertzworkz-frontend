@@ -1,3 +1,5 @@
+import Embedded  from "/assets/images/emb.svg";
+
 const EmbeddedSystems = () => {
 
 
@@ -21,7 +23,7 @@ const EmbeddedSystems = () => {
   <img
     data-aos="zoom-out"
     className="h-auto  sm:max-w-[80%] md:max-w-[70%] lg:max-w-[100%] rounded-xl mt-8 mx-auto"
-    src="/assets/images/emb.svg"
+    src={Embedded}
     alt="Embedded Service"
   />
 </div>

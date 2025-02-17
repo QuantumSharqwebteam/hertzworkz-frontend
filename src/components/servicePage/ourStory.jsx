@@ -109,7 +109,7 @@ const ourStory = () => {
       
   
   return (
-  <>   
+  <div className="overflow-hidden">   
   {/*our story part 1 */}  
   <HorizontalLine/>
   <h1 data-aos="fade-up" className="text-left md:text-center  underline text-[24px] sm:text-[28px] md:text-[32px] mt-[50px] sm:mt-[100px] md:mt-[50px] mb-6 p-4 text-white">
@@ -220,7 +220,7 @@ const ourStory = () => {
   <span className="text-orange-600"> enhance data security</span>, and unlock <span className="text-orange-600">new opportunities.</span>
 </p>
 {/* <HorizontalLine/> */}
-      </>
+      </div>
   );
   };
   

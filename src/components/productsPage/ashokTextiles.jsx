@@ -41,8 +41,8 @@ function AshokTextiles() {
           ))}
         </div>
       </div>
-      <div data-aos="zoom-out" className="flex items-center justify-center  px-5 ">
-        <img src={textilesimageGrp} ></img>
+      <div data-aos="zoom-out" className="flex items-center justify-center w-screen">
+        <img className="w-screen" src={textilesimageGrp} ></img>
       </div>
       
       {/* <div  className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden" >

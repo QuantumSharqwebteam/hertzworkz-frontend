@@ -1,14 +1,31 @@
 import LogoImg from '/logo.svg';
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState,useEffect, useRef } from "react";
 
 
 export default function ContactFooter() {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const servicesRef = useRef(null);  // Ref for Services dropdown
 
     const toggleServicesDropdown = () => {
         setIsServicesOpen(!isServicesOpen);
       };
+    
+    // Close the services dropdown when clicking outside of it
+      useEffect(() => {
+        const handleClickOutside = (event) => {
+          if (servicesRef.current && !servicesRef.current.contains(event.target)) {
+            setIsServicesOpen(false); // Close services dropdown
+          }
+        };
+    
+        document.addEventListener("mousedown", handleClickOutside); // Listen for outside clicks
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside); // Cleanup the event listener
+        };
+      }, []); // Empty dependency array to ensure this runs only once  
+      
+
     return (
         <footer data-aos="fade-zoom-out" data-aos-offset="150" className="bg-black text-white mt-28 overflow-x-hidden ">
             <div className="h-[1px] bg-lightOrange"></div>
@@ -22,12 +39,12 @@ export default function ContactFooter() {
                     <a href="#" className="hover:text-orange-500"><Link to="/">Home</Link></a>
                     <a
   
-  className="hover:text-orange-500 relative" // Add 'relative' to the Service button
+  className="hover:text-orange-500 relative cursor-pointer" // Add 'relative' to the Service button
   onClick={toggleServicesDropdown}
 >
   Service
   {isServicesOpen && (
-    <ul className="absolute bg-black text-white shadow-md -mt-48 ml-14 p-2 w-48 rounded-lg z-10 ">
+    <ul ref={servicesRef} className="absolute bg-black text-white shadow-md -mt-48 ml-14 p-2 w-48 rounded-lg z-10 ">
       <li className="p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded">
         <Link to="/service/web-design" className="flex">
           <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">

@@ -1,4 +1,4 @@
-import TextilesHubImg from "/assets/textilesHubImg.png"
+import safeNest from "/assets/safeNest.svg"
 import textilesHubTechStack from "/assets/textilesHubTechStack.png"
 import textilesGoodDesign from "/assets/textilesGoodDesign.svg"
 export default function TextilesHub() {
@@ -6,14 +6,14 @@ export default function TextilesHub() {
     <div className="overflow-y-hidden overflow-x-hidden">
       <div data-aos="fade-up"  className=" mx-10 bg-black text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
         <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
-          T
+          S
         </h1>
         <span className="text-[40px] sm:text-[50px] md:text-[70px] font-bold leading-[50px] sm:leading-[75px] md:leading-[105px] ml-0 sm:ml-[-20px] md:ml-[-40px] text-center mt-5">
-          <span className="text-lightOrange">T</span>extiles Hub - Project
+          <span className="text-lightOrange">S</span>afe Nest - Project
         </span>
       </div>
-      <div data-aos="zoom-out"  className="flex justify-center items-center ">
-        <img className="w-4/5 my-4 lg:my-0" src={TextilesHubImg} alt="Textiles Hub" />
+      <div data-aos="zoom-out"  className="flex justify-center items-center h-auto xl:h-screen">
+        <img className="w-screen " src={safeNest} alt="Textiles Hub" />
       </div>
 
       <div className="bg-black text-white  flex items-center   justify-center p-6 font-segoe">

@@ -2,6 +2,7 @@ import medImg from "/assets/MedApp.png";
 import medBg from "/assets/MedAppBg.png";
 import medMockup from "/assets/MedAppMockup.png";
 import GGLBViewerSiddha from '../three/SiddhaLaptop';
+import Laptop from "../three/laptop";
 
 function MediApp() {
     return (
@@ -17,21 +18,24 @@ function MediApp() {
 
 
             <div data-aos="fade-zoom-out" className="relative bg-black border-none overflow-y-hidden overflow-x-hidden">
-                <img src={medBg} alt="Background" className="absolute inset-0  w-full  object-contain" />
+                {/* <img src={medBg} alt="Background" className="absolute inset-0  w-full  object-contain" /> */}
                 
                 
-                <img src={medImg} alt="Med App Sample Display" className="relative z-10 mx-auto my-auto center px-5 pt-8" />
+                <img src={medImg} alt="Med App Sample Display" className="relative z-10 w-screen lg:h-[120vh]" />
             </div>
 
             
-            <div data-aos="fade-right" className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden">
+            {/* <div data-aos="fade-right" className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden">
             <img src='/lbg.svg' alt="Background" className="absolute inset-0  w-full object-cover" />
-            <div className="relative z-10 mx-auto my-auto center px-5 pt-8">
-            <GGLBViewerSiddha/>
+            <div className=" z-10 mx-auto my-auto center px-5 pt-8 h-screen">
+            
             </div >
                     
 
-                </div>
+                </div> */}
+            
+
+                
             
 
             <div data-aos="fade-up" className="bg-black px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
@@ -41,6 +45,14 @@ function MediApp() {
                     </span>
                     Empowering traditional medicine with modern technology. Siddha’s web and app platforms bring advanced features for managing patient records, prescriptions, and appointments while enhancing accessibility to Siddha practitioners and treatments.
                 </h1>
+            </div>
+
+            <div className="w-screen lg:h-screen mx-auto" >  
+            <video className="xl:h-screen mx-auto" id="mockup-video" autoPlay loop muted playsInline>
+            <source src="/siddha.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+
             </div>
 
             <div data-aos="fade-zoom-out" className="bg-black px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">

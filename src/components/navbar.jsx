@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "/logo.svg";
 
@@ -6,12 +6,28 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
+  const servicesRef = useRef(null);  // Ref for Services dropdown
+  const menuRef = useRef(null);  // Ref for the menu container
 
   const isActive = (path) => location.pathname === path ? "text-lightOrange" : "";
 
   const toggleServicesDropdown = () => {
     setIsServicesOpen(!isServicesOpen);
   };
+
+  // Close the services dropdown when clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target) && !menuRef.current.contains(event.target)) {
+        setIsServicesOpen(false); // Close services dropdown
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside); // Listen for outside clicks
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); // Cleanup the event listener
+    };
+  }, []); // Empty dependency array to ensure this runs only once
 
   return (
     <nav className="flex justify-between items-center p-4 bg-black text-white font-segoe relative z-10">
@@ -41,7 +57,7 @@ function Navbar() {
           </svg>
 
           {isServicesOpen && (
-            <ul data-aos="fade-down" className="absolute bg-black text-white shadow-md mt-2 p-2 w-48 rounded-lg">
+            <ul ref={servicesRef} data-aos="fade-down" className="absolute bg-black text-white shadow-md mt-2 p-2 w-48 rounded-lg">
               <li className={`p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded ${isActive("/service/web-design")}`}>
                 <Link to="/service/web-design" className="flex">
                   <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
@@ -61,7 +77,7 @@ function Navbar() {
               <li className={`p-2 hover:bg-gray-700 hover:scale-105 hover:border-1 border-orange-600 cursor-pointer rounded ${isActive("/service/mob-development")}`}>
                 <Link to="/service/mob-development" className="flex">
                   <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                    <img src="/nav3.svg" className="h-3" alt="Mob Development" />
+                    <img src="/nav3.svg" className="h-3" alt="App Development" />
                   </div>
                   App Development
                 </Link>
@@ -141,97 +157,91 @@ function Navbar() {
       </div>
 
       <div
-  className={`absolute top-full left-0 right-0 bg-black text-white flex flex-col items-center py-4 md:hidden shadow-lg z-20 transition-all duration-300 ease-in-out ${isMenuOpen ? "block" : "hidden"} overflow-hidden`}
->
-  <ul className="flex flex-col items-center space-y-4">
-    <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/")}`}>
-      <Link to="/">Home</Link>
-    </li>
-    <li
-      className={`relative hover:text-orange-500 p-2 cursor-pointer ${isActive("/service")}`}
-      onClick={toggleServicesDropdown}
-    >
-      Services
-      <svg
-        className="w-4 h-4 inline-block ml-2"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
+        ref={menuRef}
+        className={`absolute top-full left-0 right-0 bg-black text-white flex flex-col items-center py-4 md:hidden shadow-lg z-20 transition-all duration-300 ease-in-out ${isMenuOpen ? "block" : "hidden"} overflow-hidden`}
       >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-      </svg>
-      {isServicesOpen && (
-        <ul className="absolute bg-black text-white shadow-md mt-2 py-2 w-48">
-          <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/web-design")}`}>
-            <Link to="/service/web-design" className="flex">
-              <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                <img src="/nav1.svg" className="h-3" alt="Web/App Design" />
-              </div>
-              Web/App Design
-            </Link>
+        <ul className="flex flex-col items-center space-y-4">
+          <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/")}`}>
+            <Link to="/">Home</Link>
           </li>
-          <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/web-development")}`}>
-            <Link to="/service/web-development" className="flex">
-              <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                <img src="/nav2.svg" className="h-3" alt="Web Development" />
-              </div>
-              Web Development
-            </Link>
+          <li
+            className={`relative hover:text-orange-500 p-2 cursor-pointer ${isActive("/service")}`}
+            onClick={toggleServicesDropdown}
+          >
+            Services
+            <svg
+              className="w-4 h-4 inline-block ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+            {isServicesOpen && (
+              <ul className="absolute bg-black text-white shadow-md mt-2 py-2 w-48">
+                <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/web-design")}`}>
+                  <Link to="/service/web-design" className="flex">
+                    <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+                      <img src="/nav1.svg" className="h-3" alt="Web/App Design" />
+                    </div>
+                    Web/App Design
+                  </Link>
+                </li>
+                <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/web-development")}`}>
+                  <Link to="/service/web-development" className="flex">
+                    <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+                      <img src="/nav2.svg" className="h-3" alt="Web Development" />
+                    </div>
+                    Web Development
+                  </Link>
+                </li>
+                <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/mob-development")}`}>
+                  <Link to="/service/mob-development" className="flex">
+                    <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+                      <img src="/nav3.svg" className="h-3" alt="App Development" />
+                    </div>
+                    App Development
+                  </Link>
+                </li>
+                <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/ai-ml-development")}`}>
+                  <Link to="/service/ai-ml-development" className="flex">
+                    <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+                      <img src="/nav4.svg" className="h-3" alt="AI/ML Development" />
+                    </div>
+                    AI/ML Development
+                  </Link>
+                </li>
+                <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/blockchain")}`}>
+                  <Link to="/service/blockchain" className="flex">
+                    <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+                      <img src="/nav5.svg" className="h-3" alt="Blockchain" />
+                    </div>
+                    Blockchain
+                  </Link>
+                </li>
+                <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/embedded-solution")}`}>
+                  <Link to="/service/embedded-solution" className="flex">
+                    <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
+                      <img src="/nav6.svg" className="h-3" alt="Embedded Solution" />
+                    </div>
+                    Embedded Solution
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
-          <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/mob-development")}`}>
-            <Link to="/service/mob-development" className="flex">
-              <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                <img src="/nav3.svg" className="h-3" alt="App Development" />
-              </div>
-              App Development
-            </Link>
+          <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/product")}`}>
+            <Link to="/product">Products</Link>
           </li>
-          <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/ai-ml-development")}`}>
-            <Link to="/service/ai-ml-development" className="flex">
-              <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                <img src="/nav4.svg" className="h-3" alt="AI/ML Development" />
-              </div>
-              AI/ML Development
-            </Link>
+          <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/career")}`}>
+            <Link to="/career">Career</Link>
           </li>
-          <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/blockchain")}`}>
-            <Link to="/service/blockchain" className="flex">
-              <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                <img src="/nav5.svg" className="h-3" alt="Blockchain" />
-              </div>
-              Blockchain
-            </Link>
-          </li>
-          <li className={`p-2 hover:bg-gray-700 cursor-pointer ${isActive("/service/embedded-solution")}`}>
-            <Link to="/service/embedded-solution" className="flex">
-              <div className="bg-orange-600 w-5 h-5 rounded-full mr-2 flex justify-center items-center">
-                <img src="/nav6.svg" className="h-3" alt="Embedded Solution" />
-              </div>
-              Embedded Solution
-            </Link>
+          <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/contact")}`}>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
-      )}
-    </li>
-    <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/product")}`}>
-      <Link to="/product">Products</Link>
-    </li>
-    <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/career")}`}>
-      <Link to="/career">Career</Link>
-    </li>
-    <li className={`hover:text-orange-500 p-2 cursor-pointer ${isActive("/contact")}`}>
-      <Link to="/contact">Contact Us</Link>
-    </li>
-  </ul>
-
-  <Link to="/contact">
-    <button className="border border-lightOrange p-2 px-5 py-2 rounded font-urbanist text-11.25 font-medium hover:text-white mt-4">
-      Enquire Now
-    </button>
-  </Link>
-</div>
-
+      </div>
     </nav>
   );
 }
