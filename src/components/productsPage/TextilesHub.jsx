@@ -9,7 +9,7 @@ export default function TextilesHub() {
           S
         </h1>
         <span className="text-[40px] sm:text-[50px] md:text-[70px] font-bold leading-[50px] sm:leading-[75px] md:leading-[105px] ml-0 sm:ml-[-20px] md:ml-[-40px] text-center mt-5">
-          <span className="text-lightOrange">S</span>afe Nest - Project
+          <span className="text-lightOrange">S</span>afe Nest 
         </span>
       </div>
       <div data-aos="zoom-out"  className="flex justify-center items-center h-auto xl:h-screen">

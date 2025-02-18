@@ -1,4 +1,4 @@
-import medImg from "/assets/MedApp.png";
+import medImg from "/assets/medi.png";
 import medBg from "/assets/MedAppBg.png";
 import medMockup from "/assets/MedAppMockup.png";
 import GGLBViewerSiddha from '../three/SiddhaLaptop';
@@ -12,7 +12,7 @@ function MediApp() {
                     M
                 </h1>
                 <span className="text-[40px] sm:text-[50px] md:text-[70px] font-bold leading-[50px] sm:leading-[75px] md:leading-[105px] ml-0 sm:ml-[-20px] md:ml-[-40px] text-center mt-5">
-                    <span className="text-lightOrange">M</span>edi App - Project
+                    <span className="text-lightOrange">M</span>edi App 
                 </span>
             </div>
 
@@ -21,7 +21,7 @@ function MediApp() {
                 {/* <img src={medBg} alt="Background" className="absolute inset-0  w-full  object-contain" /> */}
                 
                 
-                <img src={medImg} alt="Med App Sample Display" className="relative z-10 w-screen lg:h-[120vh]" />
+                <img src={medImg} alt="Med App Sample Display" className="relative z-10 w-screen " />
             </div>
 
             

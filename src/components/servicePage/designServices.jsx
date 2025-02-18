@@ -115,7 +115,7 @@ return (
   </div>
 
   {/* Image Section */}
-  <div data-aos="fade-left" className="relative aspect-[4/3] lg:w-[60%] lg:h-[594px]  ml-auto mr-0 sm:w-[80%]  flex flex-col sm:flex-row items-center sm:items-end rounded-tl-[24px] rounded-bl-[24px] bg-[#1d1d1f] mt-[20px] sm:mt-[30px]">
+  <div data-aos="fade-left" className="relative aspect-[4/3]  lg:w-[60%] lg:h-[594px]  ml-auto mr-0 sm:w-[80%]  flex flex-col sm:flex-row items-center sm:items-end rounded-tl-[24px] rounded-bl-[24px] bg-[#1d1d1f] mt-[20px] sm:mt-[30px]">
     {/* Gradient Circle */}
     <div
       className="absolute 
@@ -123,7 +123,7 @@ return (
         right-[-5%] sm:right-[-2%] md:right-[0%] lg:right-[-2%] 
         transform 
         translate-x-[50%] sm:translate-x-[60%] md:translate-x-[85%] lg:translate-x-[70%] 
-        -translate-y-[50%]"
+        -translate-y-[50%] blur-md"
     >
       <div className="w-[100px] sm:w-[160px] md:w-[220px] lg:w-[260px] h-[100px] sm:h-[160px] md:h-[220px] lg:h-[260px] bg-gradient-to-b from-[#7e3535] to-[#fe5d26] rounded-full"></div>
     </div>
@@ -131,7 +131,7 @@ return (
     {/* Image Section */}
     <div data-aos="fade-right" className="relative mx-auto pt-16 pr-8">
       <img
-        src="/assets/images/img3.png"
+        src="/assets/images/img3.svg"
         alt="Phones"
         className="w-[70%] mr-auto ml-0 h-auto top-auto bottom-10 sm:w-[400px] md:w-[600px] lg:w-[750px] transform -translate-y-4 md:-translate-y-8 lg:-translate-y-10"
       />

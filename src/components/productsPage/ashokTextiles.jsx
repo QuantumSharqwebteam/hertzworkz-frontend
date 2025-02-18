@@ -2,7 +2,7 @@ import fluent from "/assets/fluent_design-ideas-24-filled.svg"
 import la from "/assets/la_connectdevelop.svg"
 import nrk from "/assets/nrk_latest-news.svg"
 import uil from "/assets/uil_feedback.svg"
-import textilesimageGrp from "/assets/textilesPhotoGrp.svg"
+import textilesimageGrp from "/assets/textileApp.png"
 import image from "/assets/textile.png"
 import flow from "/assets/Flow.svg"
 import Textiles from "../three/TextileLaptop"
@@ -23,7 +23,7 @@ function AshokTextiles() {
           A
         </h1>
         <span className="text-[40px] sm:text-[50px] md:text-[70px] font-bold leading-[50px] sm:leading-[75px] md:leading-[105px] ml-0 sm:ml-[-20px] md:ml-[-40px] text-center mt-5">
-          <span className="text-lightOrange">A</span>shok Textiles - Project
+          <span className="text-lightOrange">A</span>shok Textiles
         </span>
       </div>
 
