@@ -17,7 +17,10 @@ export default function HomeMain() {
     return (
         <>
             <Navbar />
-            <ModelViewer  glbUrl="/logo2.glb"  />
+            {/* <ModelViewer  glbUrl="/logo2.glb"  /> */}
+            <div>
+                <img src="/home.jpg" className=" w-full"/>
+            </div>
             <WelcomePage />
             <ChoosePage/>
             <ValuePage/>

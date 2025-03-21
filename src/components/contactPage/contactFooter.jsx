@@ -1,4 +1,4 @@
-import LogoImg from '/logo.svg';
+import LogoImg from '/logo_black.png';
 import { Link } from "react-router-dom";
 import React, { useState,useEffect, useRef } from "react";
 
@@ -30,9 +30,9 @@ export default function ContactFooter() {
         <footer data-aos="fade-zoom-out" data-aos-offset="150" className="bg-black text-white mt-28 overflow-x-hidden ">
             <div className="h-[1px] bg-lightOrange"></div>
 
-            <div className="py-6 flex flex-col items-center text-center mt-14">
+            <div className="py-6 flex flex-col items-center text-center md:mt-14">
                 <div className="mb-4">
-                <Link to="/">  <img src={LogoImg} alt="Hertzworkz Logo" className="h-12" /></Link>
+                <Link to="/">  <img src={LogoImg} alt="Hertzworkz Logo" className="h-24" /></Link>
                 </div>
 
                 <nav className="flex flex-wrap justify-center px-3 sm:justify-between gap-4 text-[14px] font-normal font-segoe mt-3 mb-6 text-footer">

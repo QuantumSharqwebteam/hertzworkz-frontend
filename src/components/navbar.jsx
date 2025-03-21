@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "/logo.svg";
+import logo from "/logo_black.png";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +33,7 @@ function Navbar() {
     <nav className="flex justify-between items-center p-4 bg-black text-white font-segoe relative z-10">
       <div className="flex items-center">
         <Link to="/">
-          <img src={logo} alt="Logo" className="w-36 h-14 mx-4" />
+          <img src={logo} alt="Logo" className=" h-14 mx-4 " />
         </Link>
       </div>
 
