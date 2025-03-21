@@ -30,10 +30,10 @@ function Navbar() {
   }, []); // Empty dependency array to ensure this runs only once
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-black text-white font-segoe relative z-10">
+    <nav className="flex justify-between items-center p-4 bg-black text-white font-segoe relative z-10 h-14">
       <div className="flex items-center">
         <Link to="/">
-          <img src={logo} alt="Logo" className=" h-14 mx-4 " />
+          <img src={logo} alt="Logo" className=" h-10 mx-4 " />
         </Link>
       </div>
 
@@ -120,7 +120,7 @@ function Navbar() {
         </li>
       </ul>
       <Link to="/contact">
-        <button className="hidden md:block border border-lightOrange p-2 px-5 py-3 font-urbanist text-11.25 font-medium mx-4 rounded hover:bg-orange-500 hover:text-white">
+        <button className="hidden md:block border border-lightOrange px-5  font-urbanist text-11.25 font-medium mx-4 rounded hover:bg-orange-500 hover:text-white h-8 ">
           Enquire Now
         </button>
       </Link>
