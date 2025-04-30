@@ -67,7 +67,7 @@ function ValuePage() {
           <img src={icon9} alt="Our Values Icon" />
           <br />
           <p className="text-3xl font-bold mb-2 text-left text-white">Our Values</p>
-          <p className="text-[#b3b3b3] p-4 text-xs space-x-8 space-y-8 justify-center text-left">
+          <p className="text-[#b3b3b3] p-4 text-xs space-x-8 space-y-8 justify-center text-left text-justify">
             Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.
           </p>
         </div>

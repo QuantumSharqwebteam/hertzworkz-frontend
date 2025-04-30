@@ -45,7 +45,7 @@ function ChoosePage() {
           <span className="text-csblue2 underline">deliver</span>; it’s who we are
           <span className="text-csblue2">"</span>
         </p>
-        <p className="text-2xl tracking-widest px-8">
+        <p className="text-2xl tracking-widest px-8 ">
           We are committed to delivering excellence through innovative solutions tailored to your needs. Our focus is on building lasting relationships, ensuring client satisfaction, and consistently exceeding expectations.
         </p>
       </div>

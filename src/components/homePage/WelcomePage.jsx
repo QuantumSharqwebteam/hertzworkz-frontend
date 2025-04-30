@@ -23,7 +23,7 @@ function WelcomePage() {
           <h2 className="text-2xl md:text-4xl mb-6 text-white font-bold">
             Welcome to <span className="text-orange-600">Hertzworkz!</span>
           </h2>
-          <p className="text-lg md:text-xl leading-relaxed text-white ">
+          <p className="text-lg md:text-xl leading-relaxed text-white text-justify">
             Discover a world where innovation meets excellence. At Hertzworkz, we are dedicated to delivering cutting-edge solutions that empower businesses to thrive in a dynamic landscape. With a passion for design, development, and advanced technologies, we create impactful experiences that drive success. Join us on our journey to shape the future and make a meaningful difference together.
           </p>
         </div>

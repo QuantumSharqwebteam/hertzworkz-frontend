@@ -85,7 +85,7 @@ function Features() {
           Our
           <span className="text-4xl font-bold text-orange-600"> Features</span>
         </p>
-        <p className="text-2xl text-white tracking-widest px-8">
+        <p className="text-2xl text-white tracking-widest px-8 text-justify">
           Discover a wide range of powerful features at Hertzworkz, designed to
           streamline your business operations and enhance productivity. From
           innovative solutions to seamless user experiences, we provide tools

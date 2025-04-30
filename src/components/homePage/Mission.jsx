@@ -10,7 +10,7 @@ function Mission() {
         <h1 className="text-[50px] text-center font-bold text-[#fe5d26]  m-3">
           Mission & Vision
         </h1>
-        <p className="text-[20px] lg:text-[28px] mx-4 lg:mx-10 leading-relaxed">
+        <p className="text-[20px] lg:text-[28px] mx-4 lg:mx-10 leading-relaxed text-justify">
           We envision being a leading force in the industry, driven by
           innovation, integrity, and inclusivity, creating a brighter financial
           future for individuals and businesses while maintaining a strong
@@ -33,8 +33,8 @@ function Mission() {
         {/* Mission Content */}
         <div data-aos="fade-right"  className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Mission</h1>
-          <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-          HertzWorkz creates innovative technology solutions that simplify complex challenges through AI, ML, 
+          <p className="text-[20px] leading-relaxed text-[#B3B3B3] text-justify">
+          Hertzworkz creates innovative technology solutions that simplify complex challenges through AI, ML, 
           and electronic systems integration. We partner with talent, academia, and businesses to build an innovation 
           ecosystem. Our customer-centric approach delivers practical, scalable solutions that address current needs while 
           anticipating future demands. We're dedicated to excellence and advancing technology for meaningful impact.
@@ -57,8 +57,8 @@ function Mission() {
         {/* Vision Content */}
         <div className="text-white font-sans max-w-2xl text-center lg:text-left">
           <h1 className="text-[29.5px] mb-4">Vision</h1>
-          <p className="text-[20px] leading-relaxed text-[#B3B3B3]">
-          HertzWorkz Private Limited envisions a future where technology seamlessly bridges 
+          <p className="text-[20px] leading-relaxed text-[#B3B3B3] text-justify">
+          Hertzworkz  envisions a future where technology seamlessly bridges 
           the gap between challenges and solutions, enabling businesses and individuals to 
           unlock their full potential. We strive to be a global leader in innovation by developing 
           cutting-edge solutions in web applications, artificial intelligence, machine learning, 
