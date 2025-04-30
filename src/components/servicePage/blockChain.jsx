@@ -142,7 +142,7 @@ const blockChain = () => {
     </div>
   </div>
 
-  <p data-aos="fade-up" className="text-center text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-loose font-normal w-full max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[85%] mx-auto px-4 sm:px-6 md:px-8 lg:px-2 p-10">
+  <p data-aos="fade-up" className="text-center text-gray-500 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-loose font-normal w-full max-w-full sm:max-w-[90%] md:max-w-[85%] lg:max-w-[85%] mx-auto px-4 sm:px-6 md:px-8 lg:px-2 p-10 text-justify">
     Revolutionize the way you do business with our cutting-edge blockchain solutions.
     <span className="text-blue-800"> Blockchain</span> is more than just a technology; it’s a transformative approach to achieving transparency, security, and efficiency across industries. 
     Our expertise covers decentralized applications, smart contracts, and secure digital ledgers, enabling businesses to 

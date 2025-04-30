@@ -115,14 +115,14 @@ const ourStory = () => {
   <h1 data-aos="fade-up" className="text-left md:text-center  underline text-[24px] sm:text-[28px] md:text-[32px] mt-[50px] sm:mt-[100px] md:mt-[50px] mb-6 p-4 text-white">
   <span className="text-[#fe5d26]">O</span>ur Story in Blockchain Technology
 </h1>
-  <div class="  inset-100 bg-radial-gradient from-orange-600/80 via-transparent to-transparent relative flex items-center justify-center md:h-[739.16px]  max-w-screen bg-black">
+  {/* <div class="  inset-100 bg-radial-gradient from-orange-600/80 via-transparent to-transparent relative flex items-center justify-center md:h-[739.16px]  max-w-screen bg-black">
   <img 
   data-aos="zoom-out"
   src="/assets/images/blockChain.svg" 
   alt="Centered Image" 
   className="z-10 w-[90%] max-w-[1000px] h-auto mx-auto" 
 />
-</div>
+</div> */}
 
 
 <div data-aos="fade-right" className="flex flex-col md:flex-row justify-around items-start p-6 md:space-x-6 space-y-6 md:space-y-0">
@@ -141,7 +141,7 @@ const ourStory = () => {
             {block.title}
           </h2>
         </div>
-        <p className="text-[#98989A] text-[14px] sm:text-[16px] md:text-[15px] leading-[24px] sm:leading-[27px] mt-4">
+        <p className="text-[#98989A] text-[14px] sm:text-[16px] md:text-[15px] leading-[24px] sm:leading-[27px] mt-4 text-justify">
           {block.description}
         </p>
       </div>
@@ -173,7 +173,7 @@ const ourStory = () => {
             {block.title}
           </h2>
         </div>
-        <p className="text-[#98989A] text-[14px] sm:text-[16px] md:text-[15px] leading-[24px] sm:leading-[27px] md:leading-[30px] mt-4">
+        <p className="text-[#98989A] text-[14px] sm:text-[16px] md:text-[15px] leading-[24px] sm:leading-[27px] md:leading-[30px] mt-4 text-justify">
           {block.description}
         </p>
       </div>
