@@ -1,10 +1,5 @@
 import DesignServices from '../servicePage/designServices';
-import AimlServices from '../servicePage/aiml';
 import Navbar from "../navbar"
-import EmbeddedSystems from '../servicePage/embedded';
-import BlockChain from '../servicePage/blockChain'
-import OurStory from '../servicePage/ourStory';
-import DesignStages from '../servicePage/Applicationdesignstages';
 import ContactFooter from '../contactPage/contactFooter';
 
 export default function WebDesign() {
@@ -24,6 +19,7 @@ export default function WebDesign() {
       <Navbar />
 
       <section className="bg-black overflow-y-hidden overflow-x-hidden flex items-center justify-center text-center flex-col pb-20 ">
+        <div className="bg-[url('/webBg.svg')] bg-cover bg-center">
         <h1 data-aos="fade-up" className=" text-4xl sm:text-5xl md:text-6xl font-bold text-[#fe5d26] m-6 sm:m-10">
           What We Do?
         </h1>
@@ -32,27 +28,35 @@ export default function WebDesign() {
           We Develop Products That People Love to Use.
         </p>
 
-        <div className="w-full flex flex-col sm:flex-row items-center">
-          {/* First Image */}
+        <div className="w-full flex justify-center items-center">
+          {/* First Image – Hidden on mobile */}
           <img
             data-aos="fade-right"
             src="/assets/images/service1.svg"
             alt="aiml2"
-            className="w-full max-w-[500px] h-auto mb-4 sm:mb-0 sm:ml-0"
+            className="w-auto hidden xl:block"
           />
 
-          {/* Second Image */}
+          {/* Second Image – Always visible */}
           <img
             src="/assets/images/service2.svg"
             alt="Product Image"
-            className="h-auto w-full max-w-[650px] sm:w-auto sm:-ml-10 mb-2"
+            className="h-auto xl:w-[35vw]"
+          />
+
+          {/* Third Image – Hidden on mobile */}
+          <img
+            src="/web4.svg"
+            alt="Product Image"
+            className="h-auto hidden xl:block"
           />
         </div>
 
-        <p data-aos="fade-left" className="text-center text-white font-light text-base sm:text-lg md:text-2xl lg:text-[28px] sm:p-10 relative leading-[30px] sm:leading-[45px] pb-8 w-full max-w-[1178px] mx-auto">
+
+        <p data-aos="fade-left" className="text-center text-white font-light text-base sm:text-lg md:text-2xl lg:text-[28px] sm:p-10 relative leading-[30px] sm:leading-[45px] pb-8 w-full max-w-[1178px] mx-auto px-8">
           We specialize in developing products that not only meet user needs but exceed their expectations. With a perfect balance of cutting-edge technology, thoughtful design, and unmatched functionality, we craft solutions that people genuinely love to use. Our goal is to create experiences that are intuitive, engaging, and leave a lasting impression, ensuring that every product we deliver becomes an integral part of our users’ lives.
         </p>
-        
+        </div>
 
         <HorizontalLine />
 

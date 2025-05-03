@@ -72,7 +72,7 @@ return (
 <>
 
         {/* DESIGN SERVICES*/}
-        <h1 data-aos="fade-up" className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 flex flex-row mt-6 sm:mt-10">
+        <h1 data-aos="fade-up" className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 flex flex-row mt-6 sm:mt-10 ">
   <span className="text-[#fe5d26] underline">D</span>esign Services
 </h1>
 
@@ -80,7 +80,7 @@ return (
 
 
        {/* Mobile Application*/}
-       <div data-aos="fade-right" className="flex gap-2 ml-0 mr-[auto] mt-8 sm:mt-[100px]  sm:p-6 md:p-10 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto">
+       <div data-aos="fade-right" className="flex gap-2 ml-0 mr-[auto] mt-8 sm:mt-[100px]  sm:p-6 md:p-10 w-full sm:w-[375px] md:w-[450px] lg:w-[600px] h-auto px-8">
   <h1 className="text-xl sm:text-2xl md:text-[32px] lg:text-[36px] font-bold text-white flex">
     In<span className="text-[#fe5d26] underline ml-2">M</span>obile Application
   </h1>
@@ -93,7 +93,7 @@ return (
 
 
   
-<div className="w-full flex flex-col justify-between sm:flex-row  lg:gap-10 md:gap-2">
+<div className="w-full flex flex-col justify-between sm:flex-row  lg:gap-10 md:gap-2 ">
   {/* Boxes Section */}
   <div className="relative flex-col flex-wrap px-8 sm:px-6 ml-15 lg:ml-20  gap-8 lg:gap-12 my-4 flex justify-center"> 
     {boxes.map((box, index) => (
@@ -141,7 +141,7 @@ return (
 
 
         {/* Content Section */}
-   <div className="bg-black text-white py-10 px-6 md:px-20">
+   <div className="bg-black text-white py-10 px-8 md:px-20">
       <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-3">
         {steps.map((step, index) => (
           <div
@@ -169,7 +169,7 @@ return (
 
 
           
-    <p data-aos="flip-up" className="text-center text-gray-500 text-xl sm:text-xl md:text-2xl px-4 sm:px-8 md:px-5 leading-10 sm:leading-9 md:leading-10 max-w-[90%] sm:max-w-[full] md:max-w-full mx-auto mt-12 sm:mt-16 md:mt-10 p-6 sm:p-8 md:p-8">
+    <p data-aos="flip-up" className="text-center text-gray-500 text-xl  md:text-2xl  sm:max-w-[full] md:max-w-full mt-12 sm:mt-16 md:mt-10 mb-6 text-justify">
   We specialize in developing products that not only meet user needs but exceed their expectations. With a
   perfect balance of cutting-edge technology, thoughtful design, and unmatched functionality, we craft
   solutions that people genuinely love to use. Our goal is to create experiences that are intuitive,
