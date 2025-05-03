@@ -16,9 +16,9 @@ export default function EggsProApp() {
             
             
 
-            <div className="bg-black h-[60vh] lg:h-[80vh] xl:h-[100vh]  overflow-x-hidden overflow-y-hidden">
+            {/* <div className="bg-black h-[60vh] lg:h-[80vh] xl:h-[100vh]  overflow-x-hidden overflow-y-hidden">
             <GLBViewer/>
-            </div>
+            </div> */}
 
             <div className="md:pt-[70px] lg:pt-[100px] bg-black text-white flex items-center justify-center px-6 font-segoe">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
