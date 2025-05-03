@@ -94,13 +94,13 @@ function Features() {
       </div>
 
       {/* Bottom Content */}
-      <div data-aos="fade-zoom-out"  className="ButtonContent w-full my-auto py-6 ps-4 grid md:grid-cols-5">
+      <div data-aos="fade-zoom-out"  className="ButtonContent w-full my-auto py-6 grid md:grid-cols-5 px-8">
         {/* Categories Section */}
-        <div className="categories bg-[#1c1c1c] justify-between py-10 col-span-1 flex md:flex-col stm:py-8 stm:w-screen stm:mx-9 gap-4 my-2 ps-8 w-full">
+        <div className="categories bg-[#1c1c1c] justify-between py-10 col-span-1 flex md:flex-col stm:py-8 rounded-lg stm:w-screen stm:mx-9 gap-4 mb-8 md:mb-0 px-3  w-full">
           {List.map((item) => (
             <button
               key={item}
-              className={`px-4 py-2 text-sm text-white font-bold rounded-s-full rounded-e-full ${
+              className={`px-4 md:px-3 py-2  md:text-sm text-white font-bold rounded-s-full rounded-e-full ${
                 selectedCategory === item
                   ? "border-orange-600 border-2"
                   : "bg-[#1c1c1c] hover:border-orange-500 hover:border-2"
@@ -113,7 +113,7 @@ function Features() {
         </div>
 
         {/* Cards Section */}
-        <div className="cards col-span-4 grid grid-cols-1 md:grid-cols-2 gap-6 px-8">
+        <div className="cards col-span-4 grid grid-cols-1 md:grid-cols-2 gap-6 md:px-8">
           {categoryData[selectedCategory].map((card, index) => (
             <div
               key={index}

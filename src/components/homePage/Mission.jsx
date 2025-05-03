@@ -73,7 +73,7 @@ function Mission() {
         {/* Vision Image */}
         <img
           data-aos="fade-right"
-          data-aos-offset="300" 
+          data-aos-offset="500" 
           src={vision}
           alt="Vision"
           className="w-full lg:w-[25%] h-auto max-h-[350px] object-cover"

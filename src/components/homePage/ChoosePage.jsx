@@ -37,7 +37,7 @@ function ChoosePage() {
     <section className="choosePage  max-w-screen bg-black text-white bg-cover bg-center bg-no-repeat bg-[url('/assets/bgblue.svg')] overflow-x-hidden overflow-y-hidden">
       {/* Top Portion */}
       <div data-aos="fade-up"  className="topPortion  text-center p-8">
-        <h1 className=" text-[50px] font-bold text-[#fe5d26] m-10 mt-24">
+        <h1 className=" text-[40px] font-bold text-[#fe5d26] md:m-10 mb-10 mt-24">
           Why Choose Us<span className="text-white">?</span>
         </h1>
         <p className="md:text-3xl sm:text-xl italic mb-4">
@@ -56,20 +56,29 @@ function ChoosePage() {
           <img data-aos="fade-left"  src={person} alt='' className='hidden md:block w-3/5 lg:h-[70vh]'/>
         </div>
 
-        <div data-aos="fade-up"  className="BelowContent text-white grid md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
-        {cardData.map((card, index) => (
-          <div
-            key={index}
-            className={`hover:scale-105 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center p-6 text-center ${
-              index < 3 ? index==1?"lg:border-r-2 lg:border-white":'md:border-r-2 md:border-white' : ''
-            } `}
-          >
-            <img src={card.icon} alt={card.title} className="w-16 mb-4" />
-            <h3 className="text-lg font-bold mb-2">{card.title}</h3>
-            <p className="text-sm text-csLightGray">{card.subTitle}</p>
-          </div>
-        ))}
-      </div>
+        <div
+  data-aos="fade-up"
+  className="BelowContent text-white grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6 md:p-8"
+>
+  {cardData.map((card, index) => (
+    <div
+      key={index}
+      className={`hover:scale-105 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center p-4 sm:p-6 text-center
+        ${
+          index < 3
+            ? index === 1
+              ? 'lg:border-r-2 lg:border-white'
+              : 'border-r-2 border-white lg:border-r-2'
+            : ''
+        }`}
+    >
+      <img src={card.icon} alt={card.title} className="w-12 sm:w-14 md:w-16 mb-3 sm:mb-4" />
+      <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 ">{card.title}</h3>
+      <p className="text-xs sm:text-sm md:text-base text-csLightGray ">{card.subTitle}</p>
+    </div>
+  ))}
+</div>
+
       </div>
 
       

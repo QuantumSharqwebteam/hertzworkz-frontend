@@ -38,28 +38,23 @@ function WelcomePage() {
       </div>
 
       {/* Bottom Content */}
-      <div data-aos="fade-zoom-in"  className="bottomContent grid 
-      stm:grid-cols-2
-       md:grid-cols-4 gap-6 bg-[#313132] p-6 rounded-md w-full px-6 mx-auto mt-8">
-        {cardData.map((card, index) => (
-          <div
-            key={index}
-            className="relative bg-[#1a1a1a] rounded-md hover:scale-110 transition-transform duration-200 p-6 flex flex-col items-center space-y-4"
-          >
-            {/* <a href={card.link}>
-              <img
-                src={iconback}
-                alt="Icon Background"
-                // onClick={}
-                className="absolute top-0 right-0 m-3 cursor-pointer transition-transform duration-300 transform hover:rotate-45"
-            />
-            </a> */}
+      <div
+  data-aos="fade-zoom-in"
+  className="bottomContent grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 bg-[#313132] p-6 rounded-md w-full mx-auto mt-8 text-xs"
+>
+  {cardData.map((card, index) => (
+    <div
+      key={index}
+      className="relative bg-[#1a1a1a] rounded-md hover:scale-110 transition-transform duration-200 p-6 flex flex-col items-center space-y-4"
+    >
+      <img src={card.icon} alt={card.title} className="relative z-10 h-14" />
+      <p className="text-center text-xs sm:text-sm md:text-base text-white font-medium">
+        {card.title}
+      </p>
+    </div>
+  ))}
+</div>
 
-            <img src={card.icon} alt={card.title} className="relative z-10 h-14" />
-            <p className="text-welcometext stm:text-center text-lg text-white font-medium">{card.title}</p>
-          </div>
-        ))}
-      </div>
     </section>
   );
 }

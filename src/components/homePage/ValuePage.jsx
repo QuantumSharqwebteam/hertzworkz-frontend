@@ -72,7 +72,7 @@ function ValuePage() {
           </p>
         </div>
         {/* Heading1 */}
-        <div data-aos="fade-left"  className="border-8 text-white mx-2 md:mx-8 md:col-span-2 rounded-xl border-[#262626] h-fit w-fit grid grid-cols-2 grid-rows-2 bg-[#141414]">
+        <div data-aos="fade-left"  className="border-8 text-white mx-2 md:mx-8 col-span-2 rounded-xl border-[#262626] h-fit w-fit grid grid-cols-2 grid-rows-2 bg-[#141414]">
           {valueData.map((value, index) => (
             <div
               key={index}
