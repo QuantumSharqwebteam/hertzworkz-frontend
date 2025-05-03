@@ -14,19 +14,9 @@ const DesignStages = () => {
 
 return (
     <>
-      {/* APPLICATION DESIGN STAGES */}
+     
 
-
-
-
-
-
-
-
-{/* TRANSFORMATION */}
-
-
-<section className="bg-black text-white flex flex-col items-center p-20 relative  h-[180vh]  md:h-[135vh] lg:h-[120vh] xl:h-[140vh] ">
+<section className="bg-black text-white flex flex-col items-center p-20 relative  h-[155vh]  md:h-[150vh] lg:h-[120vh] xl:h-[140vh] scroll-y-hidden">
   {/* Semicircle Gradient Background */}
   <div
     className="absolute right-0 top-0 h-full w-[500px]"
@@ -67,7 +57,7 @@ return (
     </div>
 
     {/* Step 3 */}
-    <div data-aos="fade-left" className="flex flex-col items-center sm:items-start xl:absolute xl:top-[560px] xl:left-52 gap-4 w-full sm:w-[380px] h-auto border-dashed border-[2px] border-[#86868B] rounded-[12px] p-[16px]">
+    <div data-aos="fade-left" className="flex flex-col items-center sm:items-start xl:absolute xl:top-[560px] xl:left-52 lg:gap-4 w-full sm:w-[380px] h-auto border-dashed border-[2px] border-[#86868B] rounded-[12px] p-[16px]">
       <div className="text-[40px] font-bold text-gray-400 mb-[8px]">03.</div>
       <img
         src="/assets/images/03page.svg"

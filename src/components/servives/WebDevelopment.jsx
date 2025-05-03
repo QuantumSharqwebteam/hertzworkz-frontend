@@ -112,9 +112,9 @@ export default function WebDev() {
             optimized, and aligned with the latest industry trends.
           </p>
 
-          <div className='flex flex-col lg:flex-row px-12 my-12 lg:h-[60vh] max-w-screen'>
+          <div className='flex flex-col lg:flex-row px-8 my-12 lg:h-[60vh] max-w-screen'>
             <img className='md:h-80 lg:h-full lg:w-1/2' src='/web.svg' alt='web' />
-            <div className='text-gray-400 text-2xl p-6 my-auto mx-1 text-center md:mx-8'>
+            <div className='text-gray-400 text-2xl  my-auto mx-1 text-center md:mx-10 '>
               <p className='mb-10 text-justify'><span className='text-orange-600 font-semibold '>Front-End Development: </span>They are focuses on the our client-facing side of web applications. Front-end developers work on the visual aspects that users interact with, using languages like HTML, CSS, JavaScript, React. They ensure that websites are responsive and user-friendly across different devices.</p>
               <p className='text-justify'><span className='text-orange-600 font-semibold '>Back-End Development: </span> This involves server-side programming, where developers manage the database, server, and application logic. They use languages such as PHP, Ruby, and Python to create the underlying structure that supports the front end.</p>
             </div>

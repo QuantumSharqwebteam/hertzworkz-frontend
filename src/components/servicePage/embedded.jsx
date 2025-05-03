@@ -113,23 +113,23 @@ const EmbeddedSystems = () => {
       
 <div data-aos="fade-right" className="flex flex-col lg:flex-row items-start justify-start w-full p-6 sm:p-8 md:p-10 bg-black text-white my-12 gap-6">
   <img 
-    src="/assets/images/hex.svg" 
+    src="/embedded.svg" 
     alt="IoT Solutions" 
-    className="w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:w-[600px] h-auto border-neutral-600 border rounded-xl"
+    className="w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:w-[600px] h-auto rounded-xl"
   />
 
-  <div className="text-left w-full lg:max-w-[400px] font-light lg:ml-20 lg:mt-20">
-    <ul data-aos="fade-left" className="list-disc text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] leading-[30px] sm:leading-[40px] md:leading-[50px] lg:leading-[61px] marker:text-orange-600 pl-6 sm:pl-8 lg:pl-0">
-      <li><span className="text-orange-500">C</span>ustomized Embedded Solutions</li>
-      <li><span className="text-orange-500">R</span>eal-Time Processing</li>
-      <li><span className="text-orange-500">S</span>eamless Hardware Integration</li>
-      <li><span className="text-orange-500">L</span>ow Power Consumption</li>
-      <li><span className="text-orange-500">S</span>calable and Secure Architectures</li>
+  <div className="text-left w-full lg:w-2/5 font-light lg:ml-20 lg:mt-20">
+    <ul data-aos="fade-left" className=" text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] leading-[35px] sm:leading-[40px] md:leading-[50px] lg:leading-[61px] marker:text-orange-600 pl-6 sm:pl-8 lg:pl-0">
+      <li className="border-2 border-[#86868B] rounded-3xl px-4 text-center mb-6">🖥️ 🔧   Customized Embedded Solutions</li>
+      <li className="border-2 border-[#86868B] rounded-3xl px-4 text-center mb-6">⏳⚡  Real-Time Processing</li>
+      <li className="border-2 border-[#86868B] rounded-3xl px-4 text-center mb-6">🔌🤖  Seamless Hardware Integration</li>
+      <li className="border-2 border-[#86868B] rounded-3xl px-4 text-center mb-6">🌱💡  Low Power Consumption</li>
+      <li className="border-2 border-[#86868B] rounded-3xl px-4 text-center mb-6">🔐📊  Scalable and Secure Architectures</li>
     </ul>
   </div>
 </div>
 
-<p data-aos="flip-up" className="text-center text-neutral-600 text-[20px] pb-8 sm:text-[24px] md:text-[28px] lg:text-[32px] px-4 sm:px-6 md:px-8 lg:px-10 leading-[30px] sm:leading-[35px] md:leading-[40px] lg:leading-[43px] max-w-full lg:max-w-[1300px] mx-auto mt-6 sm:mt-8 lg:mt-5">
+<p data-aos="flip-up" className="text-center text-neutral-600 text-[20px] pb-8 sm:text-[24px] md:text-[28px] lg:text-[32px] px-8 sm:px-6 md:px-8 lg:px-10 leading-[30px] sm:leading-[35px] md:leading-[40px] lg:leading-[43px] max-w-full lg:max-w-[1300px] mx-auto mt-6 sm:mt-8 lg:mt-5 text-justify">
   At the heart of technological innovation lies embedded systems, seamlessly 
   <span className="text-white"> integrating software</span> and hardware to power modern devices and solutions. Our 
   embedded services are designed to provide <span className="text-white">robust, efficient</span>, and <span className="text-white">scalable systems </span> 
