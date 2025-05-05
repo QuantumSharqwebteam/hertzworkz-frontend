@@ -157,7 +157,7 @@ const ourStory = () => {
       class=" w-screen  lg:h-[90vh] px-4 lg:px-0"
     />
 </div>
-<div data-aos="fade-left" className="flex flex-col md:flex-row justify-around items-start p-6 md:space-x-6 space-y-6 md:space-y-0 md:w-full">
+<div data-aos="fade-left" className="flex flex-col md:flex-row justify-around items-start p-6 md:space-x-6 space-y-6 md:space-y-0 mx-8">
   {blocks
     .filter((block) => [4, 5, 6].includes(block.id))
     .map((block, index) => (
@@ -212,7 +212,7 @@ const ourStory = () => {
   
   {/*footer paragraph */}
   
-  <p data-aos="fade-up" className="text-center sm:text-centre text-gray-500 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] px-8 sm:px-6 md:px-8 lg:px-8 leading-[24px] sm:leading-[30px] md:leading-[35px] lg:leading-[47px] max-w-[100vw]  mx-auto mt-6 sm:mt-8 md:mt-10 pb-8 text-justify">
+  <p data-aos="fade-up" className="text-center sm:text-centre text-gray-500 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] px-8 sm:px-6 md:px-8 lg:px-8 leading-[24px] sm:leading-[30px] md:leading-[35px] lg:leading-[47px] max-w-[100vw] mt-6 sm:mt-8 md:mt-10 pb-8 mx-8 text-justify">
   Blockchain technology is a transformative force that enables secure, transparent, and tamper-proof digital 
   interactions. By leveraging decentralized networks, it eliminates intermediaries, reduces costs, and enhances trust
   across industries such as finance, supply chain, healthcare, and real estate. Blockchain's core features, including
