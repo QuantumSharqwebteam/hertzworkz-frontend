@@ -1,3 +1,4 @@
+
 const blockChain = () => {
   const blockchain = [
     {
@@ -109,15 +110,15 @@ const blockChain = () => {
 
     return(
 <>
-<div data-aos="fade-up" className="inset-0 min-w-full mt-[50px] min-h-screen bg-radial-gradient from-orange-900/80 via-transparent to-transparent">
+<div data-aos="fade-up" className="inset-0 min-w-full mt-[50px] min-h-screen bg-radial-gradient from-orange-900/80 via-transparent to-transparent max-w-screen overflow-hidden">
   <h2 className="text-3xl sm:text-4xl md:text-5xl text-white font-semibold max-w-screen text-center mx-auto">
     <span className="text-[#fe5d26] underline ml-2">B</span>lockChain Technology
   </h2>
 
   <img 
   data-aos="zoom-out"
-  src='/assets/images/bc.svg' 
-  className='m-auto  rotate-90 w-[633.59px] lg:h-[637.63px] sm:w-[70%] sm:h-auto' 
+  src='/blockchain.png' 
+  className='w-[633.59px] lg:w-4/5 my-6 sm:w-[90%] mx-auto sm:h-auto' 
   alt="Blockchain" 
 />
 

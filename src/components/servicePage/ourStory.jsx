@@ -152,9 +152,9 @@ const ourStory = () => {
   <div data-aos="zoom-out" class="flex items-center justify-center bg-black">
 
     <img
-      src="/assets/images/ourStory/os3.svg"
+      src="/blockchain2.svg"
       alt="Bottom Right Decoration"
-      class=" w-screen  lg:h-[80vh]"
+      class=" w-screen  lg:h-[90vh] px-4 lg:px-0"
     />
 </div>
 <div data-aos="fade-left" className="flex flex-col md:flex-row justify-around items-start p-6 md:space-x-6 space-y-6 md:space-y-0 md:w-full">
@@ -189,7 +189,7 @@ const ourStory = () => {
       data-aos="zoom-out"
       src="/bc.svg"
       alt="Blockchain Centered"
-      className="z-10 w-screen p-2"
+      className="z-10 w-screen lg:w-[90vw] mx-auto p-2"
   />
   {/* {divisions.map((division, index) => {
           const angle = (Math.PI * index) / (divisions.length - 1); 
@@ -212,7 +212,7 @@ const ourStory = () => {
   
   {/*footer paragraph */}
   
-  <p data-aos="fade-up" className="text-center sm:text-centre text-gray-500 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] px-4 sm:px-6 md:px-8 lg:px-12 leading-[24px] sm:leading-[30px] md:leading-[35px] lg:leading-[47px] max-w-full md:max-w-[800px] lg:max-w-[1300px] mx-auto mt-6 sm:mt-8 md:mt-10 pb-8">
+  <p data-aos="fade-up" className="text-center sm:text-centre text-gray-500 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] px-8 sm:px-6 md:px-8 lg:px-8 leading-[24px] sm:leading-[30px] md:leading-[35px] lg:leading-[47px] max-w-[100vw]  mx-auto mt-6 sm:mt-8 md:mt-10 pb-8 text-justify">
   Blockchain technology is a transformative force that enables secure, transparent, and tamper-proof digital 
   interactions. By leveraging decentralized networks, it eliminates intermediaries, reduces costs, and enhances trust
   across industries such as finance, supply chain, healthcare, and real estate. Blockchain's core features, including
