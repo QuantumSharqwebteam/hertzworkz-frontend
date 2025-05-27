@@ -55,6 +55,39 @@ const steps = [
   },
 ];  
 
+const DesignStages = [
+  {
+    title: "Analysis",
+    description:
+      "Analysis is the process of breaking down a problem, system, or user need into smaller parts to understand its structure, function, and requirements. In application design, analysis helps identify what users want, what the app must do, and how to design it effectively for usability and performance.",
+  },
+  {
+    title: "Design",
+    description:
+      "Design is the process of planning and creating the structure, visuals, and interactions of an application to ensure it is functional, user-friendly, and visually appealing. It combines creativity with problem-solving to deliver a seamless user experience.",
+  },
+  {
+    title: "Development",
+    description:
+      "Development is the process of turning the design and requirements into a working application through coding and technical implementation. It involves building the backend, frontend, and integrating features to ensure the app functions as intended.",
+  },
+  {
+    title: "Testing",
+    description:
+      "Testing is the process of evaluating an application to identify and fix bugs, ensure functionality, and validate that the app meets user requirements. It involves various methods, such as usability, performance, and security testing, to guarantee a smooth user experience.",
+  },
+  {
+    title: "Launching",
+    description:
+      "Launching is the process of releasing the application to the public or a targeted user group. It involves final preparations, such as deploying the app, marketing it, and monitoring its performance to ensure it meets user needs and functions as intended.",
+  },
+  {
+    title: "Support",
+    description:
+      "Support refers to the ongoing assistance provided after the app is launched, including troubleshooting, fixing bugs, addressing user feedback, and making updates or improvements to ensure the app continues to function effectively and meet user needs.",
+  },
+];
+
 const HorizontalLine = () => {
   return (
     <div data-aos="zoom-in" className="w-full flex justify-center">
@@ -243,12 +276,12 @@ return (
 
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 p-6 sm:p-12 lg:p-20 group">
   {[
-    { src: "/assets/images/1.svg", alt: "Analysis", title: "Analysis" },
-    { src: "/assets/images/2.svg", alt: "Design", title: "Design" },
-    { src: "/assets/images/3.svg", alt: "Development", title: "Development" },
-    { src: "/assets/images/4.svg", alt: "Testing", title: "Testing" },
-    { src: "/assets/images/5.svg", alt: "Launching", title: "Launching" },
-    { src: "/assets/images/6.svg", alt: "Support", title: "Support" },
+    { src: "/assets/images/Analysis.png", alt: "Analysis", title: "Analysis" },
+    { src: "/assets/images/Design.png", alt: "Design", title: "Design" },
+    { src: "/assets/images/Development.png", alt: "Development", title: "Development" },
+    { src: "/assets/images/Testing.png", alt: "Testing", title: "Testing" },
+    { src: "/assets/images/Launching.png", alt: "Launching", title: "Launching" },
+    { src: "/assets/images/Support.png", alt: "Support", title: "Support" },
   ].map((item, index) => (
     <div data-aos="fade-left"
       key={index}
@@ -276,7 +309,20 @@ return (
   ))}
 </div>
 
+      <section className="bg-black text-white py-16 px-6 sm:px-10 lg:px-20">
+      <div className="relative border-l-4 border-orange-500 pl-8">
+        {DesignStages.map((step, index) => (
+          <div key={index} className="mb-12 relative">
+            {/* Orange Circle */}
+            <span className="absolute -left-[42px] top-0 w-4 h-4 rounded-full bg-orange-500 border-4 border-orange-500"></span>
 
+            {/* Text Content */}
+            <h3 className="text-xl font-bold mb-2 text-left">{step.title}</h3>
+            <p className="text-gray-300 text-sm  text-left leading-relaxed ">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 </>
     
   );
