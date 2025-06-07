@@ -4,7 +4,7 @@ import wedo from '/assets/wedo.svg';
 
 function WhatWeDo() {
     return(
-        <section className='whatWeDo  max-w-screen bg-black text-white overflow-x-hidden overflow-y-hidden'>
+        <section className='whatWeDo  max-w-screen  text-white overflow-x-hidden overflow-y-hidden'>
          {/* Title */}
          <div data-aos="fade-up"  className='title text-center p-8'>
          <h1 className="  text-[50px] font-bold text-[#fe5d26] my-10">  

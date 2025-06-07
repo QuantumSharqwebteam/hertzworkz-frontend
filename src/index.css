@@ -23,5 +23,14 @@
 .filter-orange {
   filter: brightness(0) saturate(100%) invert(47%) sepia(69%) saturate(748%) hue-rotate(356deg) brightness(102%) contrast(102%);
 }
+
+body {
+  background-image: url('/bg.jpg'); /* Replace with your image path */
+  background-size: cover;                  /* Scale image to cover the screen */
+  background-repeat: no-repeat;            /* Prevent tiling */
+  background-position: center;             /* Center the image */
+  min-height: 100vh;                       /* Ensure it covers full height */
+  background-attachment: fixed;
+}
   
 }

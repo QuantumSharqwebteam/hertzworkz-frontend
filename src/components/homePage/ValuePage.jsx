@@ -57,7 +57,7 @@ function ValuePage() {
   ];
 
   return (
-    <section className="bg-black pt-6 mt-5 z-0 max-w-screen overflow-x-hidden overflow-y-hidden">
+    <section className=" pt-6 mt-5 z-0 max-w-screen overflow-x-hidden overflow-y-hidden">
       {/* Top Content */}
       
 

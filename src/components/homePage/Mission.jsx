@@ -4,7 +4,7 @@ import vision from "/assets/vision.svg";
 
 function Mission() {
   return (
-    <section className="Mission min-h-screen max-w-screen bg-black text-[#B3B3B3] overflow-x-hidden overflow-y-hidden">
+    <section className="Mission min-h-screen max-w-screen  text-[#B3B3B3] overflow-x-hidden overflow-y-hidden">
       {/* Title Section */}
       <div data-aos="fade-up"  className="title p-4">
         <h1 className="text-[50px] text-center font-bold text-[#fe5d26]  m-3">

@@ -7,7 +7,7 @@ import Laptop from "../three/laptop";
 function MediApp() {
     return (
         <div className="overflow-y-hidden overflow-x-hidden">
-            < div data-aos="fade-up" className="mx-10 bg-black text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
+            < div data-aos="fade-up" className="mx-10  text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
                 <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
                     M
                 </h1>
@@ -17,7 +17,7 @@ function MediApp() {
             </div>
 
 
-            <div data-aos="fade-zoom-out" className="relative bg-black border-none overflow-y-hidden overflow-x-hidden">
+            <div data-aos="fade-zoom-out" className="relative  border-none overflow-y-hidden overflow-x-hidden">
                 {/* <img src={medBg} alt="Background" className="absolute inset-0  w-full  object-contain" /> */}
                 
                 
@@ -38,9 +38,9 @@ function MediApp() {
                 
             
 
-            <div data-aos="fade-up" className="bg-black px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
-                <h1 className="border-2 border-dotted border-lightOrange rounded text-[20px] sm:text-[24px] lg:text-[28px] font-normal leading-[30px] sm:leading-[34px] lg:leading-[37px] text-white px-5 py-4 sm:py-5 lg:py-6 mx-auto text-left">
-                    <span className="text-lightOrange block text-[24px] sm:text-[28px] lg:text-[32px] font-semibold mb-2">
+            <div data-aos="fade-up" className=" px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
+                <h1 className="border-2 border-dotted border-lightOrange rounded text-[20px] sm:text-[24px] lg:text-[28px] font-normal leading-[30px] sm:leading-[34px] lg:leading-[37px] text-white px-5 py-4 sm:py-5 lg:py-6 mx-auto text-left text-justify">
+                    <span className="text-lightOrange block text-[24px] sm:text-[28px] lg:text-[32px] font-semibold mb-2 ">
                         Medi App (Web and App)
                     </span>
                     Empowering traditional medicine with modern technology. Siddha’s web and app platforms bring advanced features for managing patient records, prescriptions, and appointments while enhancing accessibility to Siddha practitioners and treatments.
@@ -55,14 +55,14 @@ function MediApp() {
 
             </div>
 
-            <div data-aos="fade-zoom-out" className="bg-black px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
+            <div data-aos="fade-zoom-out" className=" px-5 py-6 font-segoe overflow-y-hidden overflow-x-hidden">
                 <h1 className="text-custom-base sm:text-custom-md lg:text-custom-lg font-semi-bold leading-custom-base sm:leading-custom-md lg:leading-custom-lg text-white">
                     <span className="text-lightOrange">Navigating</span> the MediApp Experience
                 </h1>
                 <p className="text-white text-[18px] font-normal text-lightGray2 pt-3 lg:max-w-5xl">At MediApp, we’ve streamlined the process to make managing your healthcare needs as effortless as possible. Here's a step-by-step guide to how it works.</p>
             </div>
 
-            <div className="bg-black py-12 px-5 font-segoe overflow-y-hidden overflow-x-hidden">
+            <div className=" py-12 px-5 font-segoe overflow-y-hidden overflow-x-hidden">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div data-aos="fade-right" className="text-white shadow-lg border-l-2 md:mb-14" style={{
                         borderImage: "linear-gradient(to bottom, #FE5D26, black) 1",

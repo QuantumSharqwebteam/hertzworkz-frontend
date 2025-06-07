@@ -42,7 +42,7 @@ function FeaturesSection() {
   return (
     <section className="text-white font-segoe">
       {/* Desktop radial layout */}
-      <div className="relative hidden sm:block h-[600px] w-full text-center">
+      <div className="relative hidden sm:block h-[600px] w-full text-center ">
         <h2 className="absolute lg:top-1/2 sm:top-96 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl lg:text-4xl font-bold z-10">
           <span className="text-blue-500">Key Features</span> of Our Projects
         </h2>

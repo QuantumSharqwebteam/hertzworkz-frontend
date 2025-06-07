@@ -3,7 +3,7 @@ export default function Application() {
     return (
         <>
 
-            <div data-aos="fade-up" className="mx-4 sm:mx-6 md:mx-12 lg:mx-16 flex items-center justify-center bg-black mt-10">
+            <div data-aos="fade-up" className="mx-4 sm:mx-6 md:mx-12 lg:mx-16 flex items-center justify-center  mt-10">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfroMMExkyqAmvGnxG28LS0rxmvPYMjDBO5CTMop7E9rC8tuQ/viewform?usp=header" target="__blank">
                     <button className="p-3 bg-orange-600 rounded-md text-white font-semibold">Get in Touch</button>
                 </a>

@@ -1,14 +1,14 @@
 
 const ProjectManagement = () => {
   return (
-    <div className="bg-black text-white font-segoe overflow-y-hidden overflow-x-hidden">
+    <div className=" text-white font-segoe overflow-y-hidden overflow-x-hidden ">
       <div className="mx-auto px-6 py-5">
         {/* Header Section */}
         <div data-aos="fade-up" className=" px-12 py-10 border border-cust ">
           <h1 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight sm:leading-snug md:leading-relaxed">
             Project Management
           </h1>
-          <p className="text-base font-normal leading-6 text-lightGray mb-6">
+          <p className="text-base font-normal leading-6 text-lightGray mb-6 text-justify">
             Our experienced project management team ensures that your projects are delivered on time, within budget, and according to your specifications. We follow industry-standard methodologies and employ effective communication and collaboration tools to keep you informed throughout the development process.
           </p>
           <button className="bg-lightOrange text-white px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-2 font-normal rounded text-sm sm:text-base md:text-lg">
@@ -18,7 +18,7 @@ const ProjectManagement = () => {
 
         {/* Project Planning and Scoping */}
         <SectionHeader title="Project Planning and Scoping" />
-        <div data-aos="fade-right" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+        <div data-aos="fade-right" className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 ">
           <Card data-aos="fade-right" title="Requirements Gathering and Analysis" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.436312" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10010)" fill-opacity="0.2" />
@@ -85,7 +85,7 @@ const ProjectManagement = () => {
 
         {/* Agile Development */}
         <SectionHeader title="Agile Development" />
-        <div data-aos="fade-left" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+        <div data-aos="fade-left" className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 ">
           <Card title="Iterative Development and Sprints" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.696566" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10037)" fill-opacity="0.2" />
@@ -152,7 +152,7 @@ const ProjectManagement = () => {
 
         {/* Quality Assurance and Testing */}
         <SectionHeader title="Quality Assurance and Testing" />
-        <div data-aos="fade-right" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+        <div data-aos="fade-right" className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 ">
           <Card title="Test Planning and Execution" icon={
             <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.360629" y="0.95682" width="64.3636" height="64.3636" rx="8.50784" fill="url(#paint0_linear_160_10067)" fill-opacity="0.2" />
@@ -221,7 +221,7 @@ const SectionHeader = ({ title }) => (
 );
 
 const Card = ({ title, icon }) => (
-  <div className="bg-black p-12  text-center border border-cust">
+  <div className=" p-12  text-center border border-cust">
     <div className="mb-6">{icon}</div>
     <h3 className="text-[14.8px] font-normal leading-[22.19px] text-lightGray text-left">{title}</h3>
   </div>

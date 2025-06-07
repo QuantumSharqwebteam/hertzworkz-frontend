@@ -4,7 +4,7 @@ import textilesGoodDesign from "/assets/textilesGoodDesign.svg"
 export default function TextilesHub() {
   return (
     <div className="overflow-y-hidden overflow-x-hidden">
-      <div data-aos="fade-up"  className=" mx-10 bg-black text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
+      <div data-aos="fade-up"  className=" mx-10  text-white flex flex-col sm:flex-row items-center py-2 font-segoe">
         <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText">
           S
         </h1>
@@ -16,8 +16,8 @@ export default function TextilesHub() {
         <img className="w-screen " src={safeNest} alt="Textiles Hub" />
       </div>
 
-      <div className="bg-black text-white  flex items-center   justify-center p-6 font-segoe">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl">
+      <div className=" text-white  flex items-center   justify-center p-6 font-segoe">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl text-justify">
           <div data-aos="fade-right" className="flex items-center justify-center">
             <ul className="space-y-4 list-disc tracking-wider lg:w-11/12">
               <li>

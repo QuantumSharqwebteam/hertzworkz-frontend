@@ -85,7 +85,7 @@ function FaqPage() {
   );
 
   return (
-    <section className="FAQ_Page p-4 bg-black max-w-screen max-w-full overflow-x-hidden overflow-y-hidden">
+    <section className="FAQ_Page p-4  max-w-screen max-w-full overflow-x-hidden overflow-y-hidden">
       <div className="Content border-2 border-[#86868B]">
         {/* Header */}
         <div data-aos="fade-up"  className="Heading p-4 h-[260px] flex flex-col justify-center items-center border-[#86868B] border-b-2 text-white">

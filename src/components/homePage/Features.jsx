@@ -78,7 +78,7 @@ function Features() {
   };
 
   return (
-    <section className="Feature page bg-black max-w-screen overflow-x-hidden overflow-y-hidden">
+    <section className="Feature page  max-w-screen overflow-x-hidden overflow-y-hidden">
       {/* Top Content */}
       <div data-aos="fade-up"  className="topContent py-6">
         <p className="text-4xl font-bold mb-2 text-left text-white px-8">

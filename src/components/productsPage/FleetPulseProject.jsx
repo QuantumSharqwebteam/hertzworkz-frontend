@@ -3,7 +3,7 @@ export default function FleetPulseProject() {
   return (
     <div className="overflow-y-hidden overflow-x-hidden">
       <div data-aos="fade-up"
-     data-aos-anchor-placement="center-bottom" className=" mx-10 bg-black text-white flex flex-col sm:flex-row items-center font-segoe">
+     data-aos-anchor-placement="center-bottom" className=" mx-10  text-white flex flex-col sm:flex-row items-center font-segoe">
         <h1 className="text-[120px] sm:text-[200px] md:text-[300px] font-bold leading-[150px] sm:leading-[250px] md:leading-[450px] text-bigText lg:me-10">
           F
         </h1>
