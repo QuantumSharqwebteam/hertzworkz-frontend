@@ -20,6 +20,14 @@ export default function EggsProApp() {
             <GLBViewer/>
             </div> */}
 
+            <div className="w-screen lg:h-screen mx-auto my-10" >  
+            <video className="xl:h-screen mx-auto rounded-2xl" id="mockup-video" autoPlay loop muted playsInline>
+            <source src="/assets/videos/Vitayolk.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+
+            </div>
+
             <div className="md:pt-[70px] lg:pt-[100px]  text-white flex items-center justify-center px-6 font-segoe">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl">
                     <div data-aos="fade-right" className=" p-10 rounded-lg shadow-md border border-[#333] h-fit mt-10 ">

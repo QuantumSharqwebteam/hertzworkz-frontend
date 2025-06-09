@@ -41,8 +41,8 @@ export default function TextilesHub() {
             </ul>
           </div>
 
-          <div data-aos="fade-left" className="flex  items-center">
-            <img src={textilesHubTechStack} className="" />
+          <div data-aos="fade-left" className="flex  items-center ">
+            <img src={textilesHubTechStack} className="rounded-xl" />
           </div>
         </div>
       </div>

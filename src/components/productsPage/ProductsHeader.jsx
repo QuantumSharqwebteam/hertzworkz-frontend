@@ -3,7 +3,7 @@ import obj from "/assets/obj.png";
 import productbg from "/productbg.svg";
 function ProductsHeader() {
   return (
-    <section className="my-16 bg-black text-white text-center font-segoe overflow-y-hidden overflow-x-hidden">
+    <section className="my-16  text-white text-center font-segoe overflow-y-hidden overflow-x-hidden">
       <div data-aos="zoom-out" className="bg-[url('/productbg.svg')] bg-contain bg-no-repeat xl:bg-cover bg-center">
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-lightOrange  mb-5">
         Our Products

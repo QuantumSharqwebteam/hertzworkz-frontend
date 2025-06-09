@@ -41,9 +41,17 @@ function AshokTextiles() {
           ))}
         </div>
       </div>
-      <div data-aos="zoom-out" className="flex items-center justify-center w-screen">
+      {/* <div data-aos="zoom-out" className="flex items-center justify-center w-screen mix-blend-screen">
         <img className="w-screen" src={textilesimageGrp} ></img>
-      </div>
+      </div> */}
+
+      <div className="w-screen lg:h-screen mx-auto my-10" >  
+            <video className="xl:h-screen mx-auto rounded-2xl" id="mockup-video" autoPlay loop muted playsInline>
+            <source src="/assets/videos/TexturaWorks.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+
+            </div>
       
       {/* <div  className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden" >
       <Textiles  />

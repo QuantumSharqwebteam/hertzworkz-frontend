@@ -48,7 +48,7 @@ function MediApp() {
             </div>
 
             <div className="w-screen lg:h-screen mx-auto" >  
-            <video className="xl:h-screen mx-auto" id="mockup-video" autoPlay loop muted playsInline>
+            <video className="xl:h-screen mx-auto mix-blend-lighten" id="mockup-video" autoPlay loop muted playsInline>
             <source src="/siddha.mp4" type="video/mp4" />
             Your browser does not support the video tag.
             </video>
