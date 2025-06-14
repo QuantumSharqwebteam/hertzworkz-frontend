@@ -22,7 +22,7 @@ export default function ProductsMain(){
         <MediApp/>
         <EggsProApp/>
         <TextilesHub/>
-        <FleetPulseProject/>
+        {/* <FleetPulseProject/> */}
         <ContactFooter />
         </>
     );

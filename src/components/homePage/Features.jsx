@@ -1,8 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BackIcon from "/assets/Feature Page/Back Icon.svg";
 
 function Features() {
   const [selectedCategory, setSelectedCategory] = useState("Online Solutions");
+const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          video.muted = false;
+          video.play().catch((err) => {
+            console.warn("Autoplay with sound blocked:", err.message);
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 } // play when 50% of the video is visible
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, []);
 
   const List = ["Online Solutions", "Business Tools", "Customer Support"];
   const cards1 = [
@@ -79,6 +109,19 @@ function Features() {
 
   return (
     <section className="Feature page  max-w-screen overflow-x-hidden overflow-y-hidden">
+       <div className="w-screen xl:h-screen mx-auto my-10">
+      <video
+        ref={videoRef}
+        className="xl:h-screen mx-auto xl:rounded-2xl"
+        autoPlay
+        loop
+        playsInline
+        // not muted initially — unmuted when section is in view
+      >
+        <source src="/assets/videos/KKP.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
       {/* Top Content */}
       <div data-aos="fade-up"  className="topContent py-6">
         <p className="text-4xl font-bold mb-2 text-left text-white px-8">

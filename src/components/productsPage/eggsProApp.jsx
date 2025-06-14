@@ -1,8 +1,40 @@
 import EggsMob from "/assets/EggsProMob.png"
 import EggsiPad from "/assets/EggsProiPad.png"
 import GLBViewer from "../three/egg"
+import React, { useEffect, useRef } from "react";
 
 export default function EggsProApp() {
+
+    const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          video.muted = false;
+          video.play().catch((err) => {
+            console.warn("Autoplay with sound blocked:", err.message);
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 } // play when 50% of the video is visible
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, []);
     return (
         <div className="overflow-y-hidden overflow-x-hidden">
             <div data-aos="fade-up" className=" text-white sm:mx-5 mx-10 flex flex-col sm:flex-row items-center py-2 font-segoe">
@@ -20,12 +52,18 @@ export default function EggsProApp() {
             <GLBViewer/>
             </div> */}
 
-            <div className="w-screen lg:h-screen mx-auto my-10" >  
-            <video className="xl:h-screen mx-auto rounded-2xl" id="mockup-video" autoPlay loop muted playsInline>
-            <source src="/assets/videos/Vitayolk.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+             <div className="w-screen xl:h-screen mx-auto my-10">
+            <video
+                ref={videoRef}
+                className="xl:h-screen mx-auto xl:rounded-2xl"
+                autoPlay
+                loop
+                playsInline
+                // not muted initially — unmuted when section is in view
+            >
+                <source src="/assets/videos/Vitayolk.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
             </video>
-
             </div>
 
             <div className="md:pt-[70px] lg:pt-[100px]  text-white flex items-center justify-center px-6 font-segoe">

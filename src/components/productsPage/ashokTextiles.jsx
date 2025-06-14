@@ -2,13 +2,43 @@ import fluent from "/assets/fluent_design-ideas-24-filled.svg"
 import la from "/assets/la_connectdevelop.svg"
 import nrk from "/assets/nrk_latest-news.svg"
 import uil from "/assets/uil_feedback.svg"
-import textilesimageGrp from "/assets/textileApp.png"
-import image from "/assets/textile.png"
 import flow from "/assets/Flow.svg"
 import Textiles from "../three/TextileLaptop"
+import React, { useRef, useEffect } from "react";
 
 
 function AshokTextiles() {
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          video.muted = false;
+          video.play().catch((err) => {
+            console.warn("Autoplay with sound blocked:", err.message);
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 } // play when 50% of the video is visible
+    );
+
+    if (video) {
+      observer.observe(video);
+    }
+
+    return () => {
+      if (video) {
+        observer.unobserve(video);
+      }
+    };
+  }, []);
   const buttons = [
     { label: "Design", icon: fluent },
     { label: "Development", icon: la },
@@ -45,13 +75,20 @@ function AshokTextiles() {
         <img className="w-screen" src={textilesimageGrp} ></img>
       </div> */}
 
-      <div className="w-screen lg:h-screen mx-auto my-10" >  
-            <video className="xl:h-screen mx-auto rounded-2xl" id="mockup-video" autoPlay loop muted playsInline>
-            <source src="/assets/videos/TexturaWorks.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-            </video>
-
-            </div>
+       <div className="w-screen xl:h-screen mx-auto my-10">
+      <video
+        ref={videoRef}
+        className="xl:h-screen mx-auto xl:rounded-2xl"
+        autoPlay
+        loop
+        playsInline
+        preload="auto"
+        // not muted initially — unmuted when section is in view
+      >
+        <source src="/assets/videos/TexturaWorks.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
       
       {/* <div  className="relative mx-auto my-auto center  pt-8 overflow-y-hidden overflow-x-hidden" >
       <Textiles  />
