@@ -116,6 +116,8 @@ const videoRef = useRef(null);
         autoPlay
         loop
         playsInline
+        preload="auto"
+        poster="/assets/videos/load.png"
         // not muted initially — unmuted when section is in view
       >
         <source src="/assets/videos/KKP.mp4" type="video/mp4" />
