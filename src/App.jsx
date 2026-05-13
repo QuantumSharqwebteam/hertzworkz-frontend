@@ -20,8 +20,9 @@ export default function App() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1200,  // Duration of animation
-      once: false,      // Animation happens only once
+      duration: 1000, // Animation duration in ms
+      once: true, // Whether animation should happen only once
+      easing: "ease-in-out", // Easing function
     });
   }, []);
   return (
