@@ -19,6 +19,7 @@ export default {
         lightGray3:'#86868B',
         footer:'#E4E4E7',
         footerLight:'#677489',
+        ink: '#0B0B0E',
       },
       borderRadius: {
         'custom-lg': '0.74px',
@@ -29,9 +30,13 @@ export default {
       fontFamily: {
         segoe: ['"Segoe UI"', 'sans-serif'], 
         urbanist: ['Urbanist', 'sans-serif'],
-        barlow: ['Barlow', 'sans-serif'], 
+        barlow: ['Barlow', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
       },
       backgroundImage: {
+        'brand-gradient': 'linear-gradient(90deg, #FF8A3D 0%, #F0503A 100%)',
+        'brand-gradient-hover': 'linear-gradient(90deg, #D9502F 0%, #B83A26 100%)',
+        'hero-sphere': 'radial-gradient(circle at 25% 20%, #FFA27A 0%, #F2641E 22%, #E4651A 45%, #C8452E 80%, #B63A2E 100%)',
         'custom-radial': 'radial-gradient(circle,rgb(245, 110, 0),rgb(27, 14, 1),rgb(12, 8, 3))',
         'radial-gradient': 'radial-gradient(circle, var(--tw-gradient-stops))',
         'radial-at-t': 'radial-gradient(circle at top, var(--tw-gradient-stops))',
@@ -59,6 +64,15 @@ export default {
       borderWidth: {
         1: '1px',
     },
+      keyframes: {
+        'sphere-pulse': {
+          '0%, 100%': { filter: 'brightness(1)', boxShadow: '0 0 80px 10px rgba(255,120,50,0.45)' },
+          '50%': { filter: 'brightness(0.88)', boxShadow: '0 0 60px 6px rgba(255,120,50,0.3)' },
+        },
+      },
+      animation: {
+        'sphere-pulse': 'sphere-pulse 10s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
