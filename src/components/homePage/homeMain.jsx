@@ -2,6 +2,7 @@ import HeroNavbar from "./HeroNavbar";
 import Hero from "./Hero";
 import NodeGraphHero from "./NodeGraphHero";
 import ProcessPipeline from "./ProcessPipeline";
+import ApproachMerge from "./ApproachMerge";
 import Image from "./Image"
 import WelcomePage from "./WelcomePage";
 import ChoosePage from "./ChoosePage";
@@ -63,6 +64,7 @@ export default function HomeMain() {
             {/* <ModelViewer  glbUrl="/logo2.glb"  /> */}
             <NodeGraphHero />
             <ProcessPipeline />
+            <ApproachMerge />
             <WelcomePage />
             <ChoosePage/>
             <ValuePage/>

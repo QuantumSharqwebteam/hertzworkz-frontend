@@ -1,0 +1,14 @@
+import { Link } from "react-router-dom";
+
+// eslint-disable-next-line react/prop-types
+export default function ServiceCard({ slug, icon, label }) {
+  return (
+    <Link
+      to={`/service/${slug}`}
+      className="group flex min-h-[18rem] flex-col items-center justify-center gap-6 rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center transition-[box-shadow,border-color] duration-300 hover:border-lightOrange/60 hover:shadow-[0_0_40px_8px_rgba(254,93,38,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+    >
+      <img src={icon} alt="" aria-hidden="true" className="h-28 w-auto object-contain sm:h-32" />
+      <span className="text-lg font-medium text-white sm:text-xl">{label}</span>
+    </Link>
+  );
+}

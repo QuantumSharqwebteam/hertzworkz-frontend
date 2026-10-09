@@ -4,7 +4,7 @@ import logo from "/logo.svg";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/#services", label: "Services" },
+  { to: "/service", label: "Services" },
   { to: "/product", label: "Products" },
   { to: "/career", label: "Careers" },
   { to: "/#about", label: "About Us" },
