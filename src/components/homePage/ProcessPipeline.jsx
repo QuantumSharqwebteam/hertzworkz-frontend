@@ -1,9 +1,56 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useRef, useState } from "react";
 
 // Wire geometry is drawn in a 1235x370 box traced from the design; HTML cards are placed in % of it.
 const W = 1235;
 const H = 370;
 const pct = (x, y) => ({ left: `${(x / W) * 100}%`, top: `${(y / H) * 100}%` });
+
+// --- Load-in animation --------------------------------------------------
+// Plays once when the section scrolls into view, so every visitor sees the
+// full sequence regardless of how fast they scroll.
+const DOT_DELAY_MS = 400;
+const DOT_STAGGER_MS = 50;
+const HUB_DELAY_MS = 700;
+const CARD_DELAY_MS = 900;
+const CARD_STAGGER_MS = 120;
+
+const delayStyle = (ms) => ({ animationDelay: `${ms}ms` });
+
+// Each element renders in a "pre" hidden state (matching the animation's own
+// 0% keyframe) until `inView` flips true, then switches to the animate-*
+// class so the sequence plays from the start every time it's scrolled to.
+// motion-reduce always wins, showing the settled final state with no motion.
+const dotBase = "[transform-box:fill-box] [transform-origin:center] motion-reduce:opacity-100 motion-reduce:scale-100";
+const dotAnim = (inView) => `${dotBase} ${inView ? "animate-dot-in motion-reduce:animate-none" : "opacity-0 scale-90"}`;
+
+const hubBase = "motion-reduce:opacity-100 motion-reduce:scale-100";
+const hubAnim = (inView) => `${hubBase} ${inView ? "animate-hub-in motion-reduce:animate-none" : "opacity-0 scale-[0.85]"}`;
+
+const cardBase = "motion-reduce:opacity-100 motion-reduce:translate-y-0";
+const cardAnim = (inView) => `${cardBase} ${inView ? "animate-card-up motion-reduce:animate-none" : "opacity-0 translate-y-3"}`;
+
+const ringAnim = (inView) => `motion-reduce:opacity-100 ${inView ? "animate-ring-sequence motion-reduce:animate-none" : "opacity-0"}`;
+
+// IntersectionObserver hook: flips to true once the section is ~15% visible,
+// then disconnects (the animation only needs to play once per visit).
+const IN_VIEW_OPTIONS = { rootMargin: "-10% 0px -10% 0px", threshold: 0.15 };
+function useInViewOnce(ref) {
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || inView) return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+        observer.disconnect();
+      }
+    }, IN_VIEW_OPTIONS);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [ref, inView]);
+  return inView;
+}
 
 // Left funnel: [x, y, radius, glows?]
 const FUNNEL_NODES = [
@@ -41,6 +88,16 @@ const PIPE_WIRES = [
 const PIPE_DOTS = [[495, 117], [495, 245], [622, 540 - 360], [788, 180], [760, 108 + 90], [920, 108 + 75], [958, 180], [1003, 180], [653, 180]];
 
 const stroke = { fill: "none", stroke: "white", strokeWidth: 1.5, strokeLinecap: "round", vectorEffect: "non-scaling-stroke" };
+// pathLength=1 lets every path - regardless of its real length - use the same
+// 0-1 stroke-dasharray/dashoffset range for the "draw the line in" effect.
+// Dashoffset is forced to 1 (hidden) inline until inView; once true the inline
+// override is removed so the animate-draw-line keyframe (or, under
+// prefers-reduced-motion, the browser's default dashoffset:0) takes over.
+const lineDraw = (inView) => ({
+  pathLength: 1,
+  style: { strokeDasharray: 1, strokeDashoffset: inView ? undefined : 1 },
+  className: inView ? "animate-draw-line motion-reduce:animate-none" : "",
+});
 
 function Defs({ p }) {
   return (
@@ -120,7 +177,8 @@ function Badge({ children }) {
 }
 
 // Desktop stage: card centred on (x,y); badge + caption sit above or below it.
-function Stage({ kind, x, y, w, above, gap = "mt-2", captionW = "w-48", children }) {
+// cardClassName/cardStyle drive the fade-up-on-load animation for the whole stage.
+function Stage({ kind, x, y, w, above, gap = "mt-2", captionW = "w-48", children, cardClassName = "", cardStyle }) {
   const s = STAGES[kind];
   const label = (
     <div className={`absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-center ${captionW} ${
@@ -131,53 +189,88 @@ function Stage({ kind, x, y, w, above, gap = "mt-2", captionW = "w-48", children
     </div>
   );
   return (
+    // Positioning (pct + centering transform) lives on the outer div so the
+    // inner div's own animated `transform` (translateY, for the fade-up)
+    // doesn't clobber it - they'd otherwise fight over the same CSS property.
     <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ ...pct(x, y), width: `${(w / W) * 100}%` }}>
-      {children || <GlassCard kind={kind} className="aspect-[2/1] w-full" />}
-      {label}
+      <div style={cardStyle} className={cardClassName}>
+        {children || <GlassCard kind={kind} className="aspect-[2/1] w-full" />}
+        {label}
+      </div>
     </div>
   );
 }
 
-function Hub({ className = "" }) {
+function Hub({ className = "", delayMs = HUB_DELAY_MS, inView }) {
   return (
-    <div aria-hidden="true" className={`rounded-2xl border border-white/20 bg-white/5 p-[9%] shadow-[0_0_60px_rgba(254,93,38,0.45)] backdrop-blur-md ${className}`}>
+    <div
+      aria-hidden="true"
+      style={delayStyle(delayMs)}
+      className={`rounded-2xl border border-white/20 bg-white/5 p-[9%] shadow-[0_0_60px_rgba(254,93,38,0.45)] backdrop-blur-md ${hubAnim(inView)} ${className}`}
+    >
       <div className="h-full w-full rounded-xl bg-[radial-gradient(circle,#FF6A2B_0%,#FE5D26_55%,#E8412A_100%)] shadow-[inset_0_0_14px_rgba(255,200,150,0.6)]" />
     </div>
   );
 }
 
-function Desktop() {
+// Desktop stages animate left-to-right in this order, matching their render order below.
+const DESKTOP_CARD_ORDER = ["ideas", "plan", "design", "build", "launch"];
+
+function Desktop({ inView }) {
   return (
     <div className="relative mx-auto hidden w-full max-w-[1235px] lg:block" style={{ aspectRatio: `${W} / ${H}` }}>
       <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden="true" focusable="false">
         <Defs p="ppd" />
         <g filter="url(#ppd-soft)">
-          {FUNNEL_WIRES.map((d) => <path key={d} d={d} {...stroke} strokeOpacity="0.9" />)}
-          {PIPE_WIRES.map((d) => <path key={d} d={d} {...stroke} strokeOpacity="0.9" />)}
+          {FUNNEL_WIRES.map((d) => <path key={d} d={d} {...stroke} {...lineDraw(inView)} strokeOpacity="0.9" />)}
+          {PIPE_WIRES.map((d) => <path key={d} d={d} {...stroke} {...lineDraw(inView)} strokeOpacity="0.9" />)}
         </g>
-        {FUNNEL_NODES.map(([cx, cy, r, glow]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} fill="white" filter={glow ? "url(#ppd-glow)" : undefined} />
+        {FUNNEL_NODES.map(([cx, cy, r, glow], i) => (
+          <circle
+            key={`${cx}-${cy}`}
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="white"
+            filter={glow ? "url(#ppd-glow)" : undefined}
+            style={delayStyle(DOT_DELAY_MS + i * DOT_STAGGER_MS)}
+            className={dotAnim(inView)}
+          />
         ))}
-        {PIPE_DOTS.map(([cx, cy]) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" fill="white" />)}
-        {/* Launch orbit rings */}
-        <circle cx="1090" cy="180" r="95" fill="none" stroke="#FE5D26" strokeWidth="1.5" filter="url(#ppd-glow)" vectorEffect="non-scaling-stroke" />
-        <circle cx="1090" cy="180" r="78" fill="none" stroke="#FE5D26" strokeOpacity="0.4" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+        {PIPE_DOTS.map(([cx, cy], i) => (
+          <circle
+            key={`${cx}-${cy}`}
+            cx={cx}
+            cy={cy}
+            r="4"
+            fill="white"
+            style={delayStyle(DOT_DELAY_MS + i * DOT_STAGGER_MS)}
+            className={dotAnim(inView)}
+          />
+        ))}
+        {/* Launch orbit rings: fade in, then pulse forever */}
+        <circle cx="1090" cy="180" r="95" fill="none" stroke="#FE5D26" strokeWidth="1.5" filter="url(#ppd-glow)" vectorEffect="non-scaling-stroke" className={ringAnim(inView)} />
+        <circle cx="1090" cy="180" r="78" fill="none" stroke="#FE5D26" strokeOpacity="0.4" strokeWidth="1" vectorEffect="non-scaling-stroke" className={ringAnim(inView)} />
       </svg>
 
-      <Stage kind="ideas" x={565} y={117} w={112} above />
-      <Stage kind="plan" x={560} y={245} w={108} />
-      <Stage kind="design" x={836} y={108} w={112} above />
-      <Stage kind="build" x={843} y={247} w={112} captionW="w-56" />
-      <Stage kind="launch" x={1088} y={178} w={146} gap="mt-[4.5rem]" captionW="w-64" />
+      {DESKTOP_CARD_ORDER.map((kind, i) => {
+        const style = { ...delayStyle(CARD_DELAY_MS + i * CARD_STAGGER_MS) };
+        const cardClassName = cardAnim(inView);
+        if (kind === "ideas") return <Stage key={kind} kind={kind} x={565} y={117} w={112} above cardClassName={cardClassName} cardStyle={style} />;
+        if (kind === "plan") return <Stage key={kind} kind={kind} x={560} y={245} w={108} cardClassName={cardClassName} cardStyle={style} />;
+        if (kind === "design") return <Stage key={kind} kind={kind} x={836} y={108} w={112} above cardClassName={cardClassName} cardStyle={style} />;
+        if (kind === "build") return <Stage key={kind} kind={kind} x={843} y={247} w={112} captionW="w-56" cardClassName={cardClassName} cardStyle={style} />;
+        return <Stage key={kind} kind={kind} x={1088} y={178} w={146} gap="mt-[4.5rem]" captionW="w-64" cardClassName={cardClassName} cardStyle={style} />;
+      })}
       <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ ...pct(710, 180), width: `${(92 / W) * 100}%` }}>
-        <Hub className="aspect-square w-full" />
+        <Hub className="aspect-square w-full" inView={inView} />
       </div>
     </div>
   );
 }
 
 // Below lg: small funnel SVG, then one stage per row joined by a vertical wire.
-function Mobile() {
+function Mobile({ inView }) {
   const order = ["ideas", "plan", "hub", "design", "build", "launch"];
   return (
     <div className="mx-auto w-full max-w-sm lg:hidden">
@@ -185,22 +278,36 @@ function Mobile() {
         <Defs p="ppm" />
         <g filter="url(#ppm-soft)">
           {["M30 20 C90 30 120 110 180 150", "M330 30 C270 40 240 110 180 150", "M60 100 C110 100 140 130 180 150", "M300 110 C250 110 220 130 180 150", "M180 0 C180 60 180 100 180 150"].map((d) => (
-            <path key={d} d={d} {...stroke} strokeOpacity="0.9" />
+            <path key={d} d={d} {...stroke} {...lineDraw(inView)} strokeOpacity="0.9" />
           ))}
         </g>
-        {[[30, 20, 10, true], [330, 30, 8], [60, 100, 14, true], [300, 110, 6], [180, 20, 5]].map(([cx, cy, r, g]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={r} fill="white" filter={g ? "url(#ppm-glow)" : undefined} />
+        {[[30, 20, 10, true], [330, 30, 8], [60, 100, 14, true], [300, 110, 6], [180, 20, 5]].map(([cx, cy, r, g], i) => (
+          <circle
+            key={`${cx}-${cy}`}
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="white"
+            filter={g ? "url(#ppm-glow)" : undefined}
+            style={delayStyle(DOT_DELAY_MS + i * DOT_STAGGER_MS)}
+            className={dotAnim(inView)}
+          />
         ))}
       </svg>
       <ol className="relative flex flex-col items-center gap-10 pt-2">
         <span aria-hidden="true" className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/30" />
-        {order.map((k) =>
-          k === "hub" ? (
+        {order.map((k, i) => {
+          const delayMs = CARD_DELAY_MS + i * CARD_STAGGER_MS;
+          return k === "hub" ? (
             <li key={k} aria-hidden="true" className="relative">
-              <Hub className="h-20 w-20" />
+              <Hub className="h-20 w-20" delayMs={delayMs} inView={inView} />
             </li>
           ) : (
-            <li key={k} className="relative flex flex-col items-center gap-3 bg-ink py-1 text-center">
+            <li
+              key={k}
+              style={delayStyle(delayMs)}
+              className={`relative flex flex-col items-center gap-3 bg-ink py-1 text-center ${cardAnim(inView)}`}
+            >
               {k === "launch" ? (
                 <div className="rounded-[2.5rem] border border-lightOrange p-4 shadow-[0_0_30px_rgba(254,93,38,0.45)]">
                   <GlassCard kind={k} className="h-24 w-48 bg-ink" />
@@ -211,14 +318,17 @@ function Mobile() {
               <Badge>{STAGES[k].label}</Badge>
               <p className="max-w-[16rem] text-sm leading-snug text-gray-300">{STAGES[k].caption}</p>
             </li>
-          )
-        )}
+          );
+        })}
       </ol>
     </div>
   );
 }
 
 export default function ProcessPipeline() {
+  const graphRef = useRef(null);
+  const inView = useInViewOnce(graphRef);
+
   return (
     <section
       id="process"
@@ -233,9 +343,9 @@ export default function ProcessPipeline() {
           They struggle to turn those ideas into technology that is useful, scalable, and built to last.
         </p>
       </div>
-      <div className="mt-16 lg:mt-20">
-        <Desktop />
-        <Mobile />
+      <div ref={graphRef} className="mt-16 lg:mt-20">
+        <Desktop inView={inView} />
+        <Mobile inView={inView} />
       </div>
     </section>
   );

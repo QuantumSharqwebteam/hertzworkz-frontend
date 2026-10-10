@@ -80,10 +80,43 @@ export default {
           '88%': { transform: 'translateY(0%) rotate(-1.5deg)' },
           '100%': { transform: 'translateY(0%) rotate(0deg)', opacity: '1' },
         },
+        // ProcessPipeline load-in: lines "draw" via a pathLength=1 stroke-dashoffset trick.
+        'draw-line': {
+          '0%': { strokeDashoffset: '1' },
+          '100%': { strokeDashoffset: '0' },
+        },
+        'dot-in': {
+          '0%': { opacity: '0.5', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'hub-in': {
+          '0%': { opacity: '0', transform: 'scale(0.85)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'card-up': {
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'ring-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'ring-pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.4' },
+        },
       },
       animation: {
         'sphere-pulse': 'sphere-pulse 10s ease-in-out infinite',
         'phone-drop': 'phone-drop 2.6s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'draw-line': 'draw-line 900ms ease-out both',
+        'dot-in': 'dot-in 400ms ease-out both',
+        'hub-in': 'hub-in 500ms ease-out both',
+        'card-up': 'card-up 500ms ease-out both',
+        // One-shot fade-in, then an endless pulse - used together on the launch orbit rings.
+        'ring-in': 'ring-in 600ms ease-out both',
+        'ring-pulse': 'ring-pulse 4s ease-in-out infinite',
+        'ring-sequence': 'ring-in 600ms ease-out 900ms both, ring-pulse 4s ease-in-out 1500ms infinite',
       },
     },
   },
