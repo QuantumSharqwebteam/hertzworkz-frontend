@@ -23,6 +23,8 @@ Project guidelines for Claude Code sessions on the Hertzworkz frontend.
 - Use **semantic HTML** (`header`, `nav`, `main`, `section`, `button`, etc.), not `div` for everything.
 - **Accessibility (a11y):** meaningful `alt` text, labels for inputs, keyboard focus and operability, sufficient contrast, ARIA only when native semantics are not enough.
 - Use **Tailwind theme tokens** from `tailwind.config.js` (colors, fonts, spacing). No arbitrary hardcoded values (`w-[437px]`, `#a1b2c3`) unless the value comes from the Figma design.
+- **Every change must be mobile responsive** — check it at mobile width before calling it done, not just desktop.
+- **Forms need validation + error handling**: required fields, email format, phone number format, etc. Validate on blur/submit, show a clear inline error message, and block submit until fixed.
 
 ## 4. Code Quality
 
