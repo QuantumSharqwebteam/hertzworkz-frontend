@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import NodeGraphHero from "./NodeGraphHero";
 import ProcessPipeline from "./ProcessPipeline";
 import ApproachMerge from "./ApproachMerge";
+import ServicesSection from "./ServicesSection";
 import Image from "./Image"
 import ModelViewer from "./ThreeDModel";;
 import ContactFooter from "../contactPage/contactFooter";
@@ -58,6 +59,7 @@ export default function HomeMain() {
             <NodeGraphHero />
             <ProcessPipeline />
             <ApproachMerge />
+            <ServicesSection />
             <ContactFooter />
         </div>
     )
