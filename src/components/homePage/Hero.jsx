@@ -7,7 +7,7 @@ import { FaArrowRight } from "react-icons/fa6";
  * - `data-hero-step` marks this screen for future observers.
  * - `id` is the anchor for this section.
  */
-const AUTO_DELAY_MS = 3000;
+const AUTO_DELAY_MS = 1500;
 
 // Props are plain JS (no prop-types dependency), so skip the prop-types rule here.
 // eslint-disable-next-line react/prop-types
@@ -36,7 +36,7 @@ export default function Hero({ id = "hero", onGetStarted, step = "hero" }) {
         id={id}
         data-hero-step={step}
         aria-labelledby="hero-heading"
-        className="relative isolate flex h-screen w-full items-center overflow-hidden bg-ink px-4 pb-8 pt-28 font-manrope sm:px-8 lg:px-12"
+        className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-ink px-4 pb-8 pt-28 font-manrope sm:px-8 lg:px-12 max-[400px]:items-start max-[400px]:pt-28 max-[400px]:pb-10"
       >
         {/* Sphere: sits behind text on mobile, dominant right-side arc on lg+. Pulses slowly, matching the reference animation. */}
         <div
