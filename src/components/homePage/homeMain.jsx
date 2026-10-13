@@ -6,6 +6,7 @@ import ApproachMerge from "./ApproachMerge";
 import ServicesSection from "./ServicesSection";
 import IdeasCta from "./IdeasCta";
 import PartnersAndSupporters from "./PartnersAndSupporters";
+import CtaGlowBackground from "./CtaGlowBackground";
 import Image from "./Image"
 import ModelViewer from "./ThreeDModel";;
 import ContactFooter from "../contactPage/contactFooter";
@@ -62,8 +63,11 @@ export default function HomeMain() {
             <ProcessPipeline />
             <ApproachMerge />
             <ServicesSection />
-            <IdeasCta />
-            <PartnersAndSupporters />
+            <div className="relative overflow-hidden bg-ink">
+                <CtaGlowBackground />
+                <IdeasCta />
+                <PartnersAndSupporters />
+            </div>
             <ContactFooter />
         </div>
     )

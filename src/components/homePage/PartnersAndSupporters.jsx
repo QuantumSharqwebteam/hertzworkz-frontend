@@ -31,7 +31,7 @@ function LogoBox({ src, alt }) {
 
 export default function PartnersAndSupporters() {
   return (
-    <section className="bg-ink px-6 py-20 font-manrope sm:px-12 lg:px-16">
+    <section className="relative px-6 py-20 font-manrope sm:px-12 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
           Trusted by leading industry partners in
