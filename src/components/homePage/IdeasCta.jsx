@@ -47,9 +47,14 @@ export default function IdeasCta() {
       aria-labelledby="ideas-cta-heading"
       className="relative overflow-hidden bg-ink px-6 py-24 text-center font-manrope sm:px-12 lg:px-16"
     >
+      {/* Fades in slightly after and slower than the text (per reference video), then
+          keeps pulsing forever via animate-sphere-pulse once visible - that keyframe only
+          touches filter/box-shadow, so it doesn't fight with this opacity transition. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[28rem] w-[56rem] -translate-x-1/2 -translate-y-1/3 animate-sphere-pulse rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.05)_45%,transparent_75%)] opacity-70 motion-reduce:animate-none"
+        className={`pointer-events-none absolute left-1/2 top-0 -z-10 h-[28rem] w-[56rem] -translate-x-1/2 -translate-y-1/3 animate-sphere-pulse rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.05)_45%,transparent_75%)] transition-opacity delay-150 duration-[900ms] ease-out motion-reduce:animate-none motion-reduce:opacity-70 motion-reduce:transition-none motion-reduce:delay-0 ${
+          inView ? "opacity-70" : "opacity-0"
+        }`}
       />
 
       <div
