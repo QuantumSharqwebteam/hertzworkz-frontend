@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
-// Scroll-position hook: flips to true once ~15% of the viewport height is
-// covered by the element, then stops listening (plays once per visit).
-// Same scroll+rAF approach as ProcessPipeline.jsx's useInViewOnce -
-// IntersectionObserver proved unreliable there, so this skips straight to
-// the version that works.
+// Scroll-position hook: flips to true as soon as the element's top edge
+// enters the viewport (not after it's already well into view), so the
+// fade-in plays out while the section is still scrolling into frame instead
+// of mostly completing before anyone notices. Stops listening once fired
+// (plays once per visit). Same scroll+rAF approach as ProcessPipeline.jsx's
+// useInViewOnce - IntersectionObserver proved unreliable there.
 function useInViewOnce(ref) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -17,8 +18,7 @@ function useInViewOnce(ref) {
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
-      if (visible > vh * 0.15) setInView(true);
+      if (rect.top < vh && rect.bottom > 0) setInView(true);
     };
     const onScroll = () => {
       if (raf == null) raf = requestAnimationFrame(check);
@@ -52,15 +52,17 @@ export default function IdeasCta() {
           touches filter/box-shadow, so it doesn't fight with this opacity transition. */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute left-1/2 top-0 -z-10 h-[28rem] w-[56rem] -translate-x-1/2 -translate-y-1/3 animate-sphere-pulse rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.05)_45%,transparent_75%)] transition-opacity delay-150 duration-[900ms] ease-out motion-reduce:animate-none motion-reduce:opacity-70 motion-reduce:transition-none motion-reduce:delay-0 ${
+        className={`pointer-events-none absolute left-1/2 top-0 -z-10 h-[28rem] w-[56rem] -translate-x-1/2 -translate-y-1/3 animate-sphere-pulse rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.05)_45%,transparent_75%)] transition-opacity delay-200 duration-[1200ms] ease-out motion-reduce:animate-none motion-reduce:opacity-70 motion-reduce:transition-none motion-reduce:delay-0 ${
           inView ? "opacity-70" : "opacity-0"
         }`}
       />
 
+      {/* translate-y (not just opacity) so the fade reads clearly even on a fast scroll -
+          a pure opacity fade was hard to notice during normal scrolling. */}
       <div
         ref={contentRef}
-        className={`relative mx-auto max-w-3xl transition-opacity duration-700 ease-out motion-reduce:opacity-100 motion-reduce:transition-none ${
-          inView ? "opacity-100" : "opacity-0"
+        className={`relative mx-auto max-w-3xl transition-[opacity,transform] duration-1000 ease-out motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
         <h2 id="ideas-cta-heading" className="text-3xl font-medium leading-tight text-white sm:text-4xl">
