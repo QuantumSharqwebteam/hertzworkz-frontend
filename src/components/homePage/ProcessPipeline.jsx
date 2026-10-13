@@ -32,22 +32,36 @@ const cardAnim = (inView) => `${cardBase} ${inView ? "animate-card-up motion-red
 
 const ringAnim = (inView) => `motion-reduce:opacity-100 ${inView ? "animate-ring-sequence motion-reduce:animate-none" : "opacity-0"}`;
 
-// IntersectionObserver hook: flips to true once the section is ~15% visible,
-// then disconnects (the animation only needs to play once per visit).
-const IN_VIEW_OPTIONS = { rootMargin: "-10% 0px -10% 0px", threshold: 0.15 };
+// Scroll-position hook: flips to true once ~15% of the viewport height is
+// covered by the section, then stops listening (plays once per visit).
+// Uses a scroll+rAF check rather than IntersectionObserver, matching the
+// pattern ApproachMerge.jsx already uses - IntersectionObserver here proved
+// unreliable, missing the crossing on some real scroll patterns.
 function useInViewOnce(ref) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
-    const el = ref.current;
-    if (!el || inView) return undefined;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setInView(true);
-        observer.disconnect();
-      }
-    }, IN_VIEW_OPTIONS);
-    observer.observe(el);
-    return () => observer.disconnect();
+    if (inView) return undefined;
+    let raf = null;
+    const check = () => {
+      raf = null;
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+      if (visible > vh * 0.15) setInView(true);
+    };
+    const onScroll = () => {
+      if (raf == null) raf = requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf != null) cancelAnimationFrame(raf);
+    };
   }, [ref, inView]);
   return inView;
 }
