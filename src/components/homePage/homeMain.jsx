@@ -4,6 +4,8 @@ import NodeGraphHero from "./NodeGraphHero";
 import ProcessPipeline from "./ProcessPipeline";
 import ApproachMerge from "./ApproachMerge";
 import ServicesSection from "./ServicesSection";
+import IdeasCta from "./IdeasCta";
+import PartnersAndSupporters from "./PartnersAndSupporters";
 import Image from "./Image"
 import ModelViewer from "./ThreeDModel";;
 import ContactFooter from "../contactPage/contactFooter";
@@ -60,6 +62,8 @@ export default function HomeMain() {
             <ProcessPipeline />
             <ApproachMerge />
             <ServicesSection />
+            <IdeasCta />
+            <PartnersAndSupporters />
             <ContactFooter />
         </div>
     )
