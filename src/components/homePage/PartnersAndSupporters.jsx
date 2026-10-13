@@ -1,18 +1,17 @@
-/* eslint-disable react/prop-types -- repo has no prop-types dependency; LogoBox/TextLogoBox are file-local */
+/* eslint-disable react/prop-types -- repo has no prop-types dependency; LogoBox is file-local */
 
-// Logo images don't exist yet - the project owner will drop them into these paths later.
 // Each logo sits in a fixed-size box so a missing file never shifts the layout.
 const CLIENT_LOGOS = [
-  { src: "/assets/images/partners/ok.png", alt: "OK" },
-  { src: "/assets/images/partners/kr-textiles.png", alt: "KR Textiles" },
+  { src: "/assets/images/partners/ashok-textile-mills.png", alt: "Ashok Textile Mills Pvt Ltd" },
+  { src: "/assets/images/partners/kkp-textiles.png", alt: "KKP Textiles" },
   {
     src: "/assets/images/partners/thenpandian-spinning-mills.png",
     alt: "Thenpandian Spinning Mills India Pvt Ltd",
   },
   { src: "/assets/images/partners/mahendra-feeds.png", alt: "MahendraFeeds" },
+  { src: "/assets/images/partners/vinay-poultry-farm.png", alt: "Vinay Poultry Farm Private Limited" },
+  { src: "/assets/images/partners/mas-idyl-medical-solutions.png", alt: "Mas Idyl Medical Solutions" },
 ];
-
-const CLIENT_TEXT_LOGOS = ["Vinay Poultry Farm Private Limited", "Mas Idyl Medical Solutions"];
 
 const SUPPORTER_LOGOS = [
   { src: "/assets/images/supporters/google-cloud.png", alt: "Google Cloud" },
@@ -30,14 +29,6 @@ function LogoBox({ src, alt }) {
   );
 }
 
-function TextLogoBox({ label }) {
-  return (
-    <div className="flex h-14 w-40 shrink-0 items-center justify-center text-center text-sm font-medium leading-snug text-white sm:w-48 sm:text-base">
-      {label}
-    </div>
-  );
-}
-
 export default function PartnersAndSupporters() {
   return (
     <section className="bg-ink px-6 py-20 font-manrope sm:px-12 lg:px-16">
@@ -48,9 +39,6 @@ export default function PartnersAndSupporters() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 overflow-x-auto">
           {CLIENT_LOGOS.map((logo) => (
             <LogoBox key={logo.alt} src={logo.src} alt={logo.alt} />
-          ))}
-          {CLIENT_TEXT_LOGOS.map((label) => (
-            <TextLogoBox key={label} label={label} />
           ))}
         </div>
       </div>
