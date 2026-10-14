@@ -1,5 +1,5 @@
 
-import Navbar from "../navbar";
+import HeroNavbar from "../homePage/HeroNavbar";
 import ProductsHeader from "./ProductsHeader";
 import FeaturesSection from "./FeaturesSection";
 import AshokTextiles from "./ashokTextiles";
@@ -14,7 +14,7 @@ import ContactFooter from "../contactPage/contactFooter";
 export default function ProductsMain(){
     return(
         <>
-        <Navbar />
+        <HeroNavbar onLight />
         <ProductsHeader />
         <FeaturesSection/>
         <AshokTextiles/>

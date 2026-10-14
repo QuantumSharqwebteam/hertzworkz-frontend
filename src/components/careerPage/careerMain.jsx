@@ -1,4 +1,4 @@
-import Navbar from "../navbar"
+import HeroNavbar from "../homePage/HeroNavbar"
 import OurTeam from "./ourTeam"
 import CurrentOpenings from "./currentOpening"
 import ContactFooter from "../contactPage/contactFooter"
@@ -6,7 +6,7 @@ import ContactFooter from "../contactPage/contactFooter"
 export default function CareerMain() {
     return (
         <>
-            <Navbar />
+            <HeroNavbar onLight />
             <OurTeam />
             <CurrentOpenings />
             <ContactFooter />

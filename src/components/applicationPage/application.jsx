@@ -2,7 +2,7 @@
 export default function Application() {
     return (
         <>
-            <div className="text-lightGray3 font-segoe text-[20.71px] font-normal p-12">
+            <div className="text-lightGray3 font-segoe text-[20.71px] font-normal px-12 pb-12 pt-28 sm:pt-32">
                 <h1>Career/<span className="text-lightOrange">Design Application</span></h1>
             </div>
 

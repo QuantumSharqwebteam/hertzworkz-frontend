@@ -1,11 +1,11 @@
-import Navbar from "../navbar"
+import HeroNavbar from "../homePage/HeroNavbar"
 import Application from "./application"
 import ContactFooter from "./contactFooter"
 
 export default function ApplicationMain(){
     return(
         <>
-        <Navbar/>
+        <HeroNavbar onLight />
         <Application/>
         <ContactFooter/>
         </>
