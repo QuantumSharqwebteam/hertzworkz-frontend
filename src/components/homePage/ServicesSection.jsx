@@ -15,7 +15,7 @@ export default function ServicesSection() {
           Services
         </h2>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-[6.75rem] sm:gap-y-[6.625rem]">
           {services.map((service) => (
             <ServiceCard key={service.slug} slug={service.slug} icon={service.icon} label={service.label} />
           ))}

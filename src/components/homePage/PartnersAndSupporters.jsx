@@ -43,7 +43,11 @@ export default function PartnersAndSupporters() {
         </div>
       </div>
 
-      <div className="mx-auto mt-20 max-w-6xl">
+      {/* Figma (node 5233:16746) leaves ~517px of empty space here on desktop, so the
+          CTA glow's bottom arc fades out gracefully instead of cutting through content -
+          our previous mt-20 was far too tight, making the arc look like it was slicing
+          between the two logo rows instead of fading behind empty space. */}
+      <div className="mx-auto mt-16 max-w-6xl sm:mt-28 lg:mt-[32rem]">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">Supported &amp; Recognized By</h2>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 overflow-x-auto">
           {SUPPORTER_LOGOS.map((logo) => (

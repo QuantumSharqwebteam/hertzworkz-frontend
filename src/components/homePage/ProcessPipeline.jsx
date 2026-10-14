@@ -34,16 +34,18 @@ const ringAnim = (inView) => `motion-reduce:opacity-100 ${inView ? "animate-ring
 
 // Scroll-position hook: flips to true once ~15% of the viewport height is
 // covered by the section, then stops listening (plays once per visit).
-// Uses a scroll+rAF check rather than IntersectionObserver, matching the
-// pattern ApproachMerge.jsx already uses - IntersectionObserver here proved
-// unreliable, missing the crossing on some real scroll patterns.
+// Checks directly in the scroll handler, no requestAnimationFrame throttle -
+// rAF can be delayed/skipped (backgrounded tabs, battery saver, etc.), which
+// could cause this to never fire even when clearly scrolled into view. The
+// check is one cheap getBoundingClientRect call, so there's no real cost to
+// running it on every scroll event directly. (Previously used
+// IntersectionObserver, which proved unreliable, missing the crossing on
+// some real scroll patterns - matches the pattern ApproachMerge.jsx uses.)
 function useInViewOnce(ref) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
     if (inView) return undefined;
-    let raf = null;
     const check = () => {
-      raf = null;
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -51,16 +53,12 @@ function useInViewOnce(ref) {
       const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
       if (visible > vh * 0.15) setInView(true);
     };
-    const onScroll = () => {
-      if (raf == null) raf = requestAnimationFrame(check);
-    };
     check();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf != null) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
     };
   }, [ref, inView]);
   return inView;

@@ -82,10 +82,10 @@ function CultureCard({ title, body }) {
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
-        style={{ background: "linear-gradient(45deg, rgba(254,93,38,0.45) 0%, rgba(254,93,38,0) 60%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(254,93,38,0.45) 0%, rgba(254,93,38,0) 70%)" }}
       />
       <div className="relative">
-        <h2 className="flex items-center gap-2 text-xl font-semibold text-lightOrange sm:text-2xl">
+        <h2 className="flex items-center gap-2 text-xl font-semibold text-lightOrange transition-colors duration-300 group-hover:text-white group-focus-visible:text-white sm:text-2xl">
           <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-lightOrange" />
           {title}
         </h2>

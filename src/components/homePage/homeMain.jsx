@@ -63,7 +63,7 @@ export default function HomeMain() {
             <ProcessPipeline />
             <ApproachMerge />
             <ServicesSection />
-            <div className="relative overflow-hidden bg-ink">
+            <div className="relative isolate overflow-hidden bg-ink">
                 <CtaGlowBackground />
                 <IdeasCta />
                 <PartnersAndSupporters />

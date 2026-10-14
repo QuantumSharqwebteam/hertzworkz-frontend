@@ -5,31 +5,29 @@ import { FaArrowRight } from "react-icons/fa6";
 // enters the viewport (not after it's already well into view), so the
 // fade-in plays out while the section is still scrolling into frame instead
 // of mostly completing before anyone notices. Stops listening once fired
-// (plays once per visit). Same scroll+rAF approach as ProcessPipeline.jsx's
-// useInViewOnce - IntersectionObserver proved unreliable there.
+// (plays once per visit). Checks directly in the scroll handler, no
+// requestAnimationFrame throttle - rAF can be delayed/skipped (backgrounded
+// tabs, battery saver, etc.), which caused this to sometimes never fire even
+// when clearly scrolled into view. The check is one cheap
+// getBoundingClientRect call, so there's no real cost to running it on every
+// scroll event directly.
 function useInViewOnce(ref) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
     if (inView) return undefined;
-    let raf = null;
     const check = () => {
-      raf = null;
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
       if (rect.top < vh && rect.bottom > 0) setInView(true);
     };
-    const onScroll = () => {
-      if (raf == null) raf = requestAnimationFrame(check);
-    };
     check();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf != null) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
     };
   }, [ref, inView]);
   return inView;
