@@ -20,7 +20,9 @@ export default function CurrentOpenings() {
       <div className="space-y-16 px-6 pb-24 sm:px-12 lg:px-16">
         {JOB_CATEGORIES.map(({ category, metaLabel, jobs }) => (
           <section key={category} data-aos="fade-up">
-            <h3 className="mb-8 text-sm font-bold uppercase tracking-wider text-white">{category}</h3>
+            <h3 className="mb-8 text-2xl font-semibold uppercase tracking-wide text-white sm:text-3xl lg:text-[2rem]">
+              {category}
+            </h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {jobs.map((job) => (
                 <JobCard

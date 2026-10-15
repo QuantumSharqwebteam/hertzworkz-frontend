@@ -32,6 +32,7 @@ export default {
         urbanist: ['Urbanist', 'sans-serif'],
         barlow: ['Barlow', 'sans-serif'],
         manrope: ['Manrope', 'sans-serif'],
+        lovely: ['"Lovely Baby"', 'cursive'],
       },
       backgroundImage: {
         'brand-gradient': 'linear-gradient(90deg, #FF8A3D 0%, #F0503A 100%)',
