@@ -7,14 +7,21 @@ import services from "./servicesData";
 // 5233:14226 - reference anchors, not pixel-exact. Percentages are set via inline
 // style (same approach NodeGraphHero.jsx uses for its scattered nodes) since Tailwind
 // can't generate arbitrary classes from values computed at runtime.
+//
+// The raw Figma `left` values only span ~4%-71%, so the whole cluster read as pushed
+// into the left two-thirds of the frame once centered on a wide viewport (reported:
+// "too much left side"). HORIZONTAL_SHIFT re-centers that cluster's midpoint on 50%
+// without changing the icons' relative spacing to one another.
+const HORIZONTAL_SHIFT = 12.75;
 const POSITIONS = {
-  "ai-ml-development": { left: 18.7, top: 12.9 },
-  blockchain: { left: 62.9, top: 10.7 },
-  "web-design": { left: 3.7, top: 29.5 },
-  "web-development": { left: 70.8, top: 29.1 },
-  "embedded-solution": { left: 19.8, top: 48.2 },
-  "mob-development": { left: 62.9, top: 48.2 },
+  "ai-ml-development": { left: 18.7 + HORIZONTAL_SHIFT, top: 12.9 },
+  blockchain: { left: 62.9 + HORIZONTAL_SHIFT, top: 10.7 },
+  "web-design": { left: 3.7 + HORIZONTAL_SHIFT, top: 29.5 },
+  "web-development": { left: 70.8 + HORIZONTAL_SHIFT, top: 29.1 },
+  "embedded-solution": { left: 19.8 + HORIZONTAL_SHIFT, top: 48.2 },
+  "mob-development": { left: 62.9 + HORIZONTAL_SHIFT, top: 48.2 },
 };
+const HEADING_POSITION = { left: 39.7 + HORIZONTAL_SHIFT, top: 30.6 };
 
 export default function ServicesGrid() {
   return (
@@ -25,10 +32,10 @@ export default function ServicesGrid() {
         {/* Below lg: the Figma scatter layout is desktop-only, so this falls back to a
             simple centered single-column stack (heading, then each icon in turn). At
             lg+ the same elements switch to absolute positioning within the frame. */}
-        <div className="relative mx-auto flex max-w-sm flex-col items-center gap-12 text-center lg:aspect-[1440/1792] lg:block lg:max-w-[90rem] lg:gap-0">
+        <div className="relative mx-auto flex max-w-sm flex-col items-center gap-12 text-center lg:aspect-[1440/1792] lg:block lg:max-w-7xl lg:gap-0">
           <div
             className="lg:absolute lg:max-w-md lg:-translate-x-1/2 lg:-translate-y-1/2"
-            style={{ left: "39.7%", top: "30.6%" }}
+            style={{ left: `${HEADING_POSITION.left}%`, top: `${HEADING_POSITION.top}%` }}
           >
             <h1 id="services-heading" className="text-4xl font-semibold text-white sm:text-5xl">
               What we build.
