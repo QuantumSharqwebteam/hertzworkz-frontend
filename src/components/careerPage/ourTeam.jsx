@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
+import teamIdeaImg from "/assets/images/career/team-idea.png";
 
-// Matches Figma node 5233:17387 ("Career Page - Final 2"): script "Join Our Team at" +
-// gradient "HertzWorkz" wordmark, a single welcome line, then four alternating
-// left/right culture bars. The Figma frame's own hero instance is a nearly-empty
-// placeholder (just a broken 10x18px graphic), but its sibling component definitions -
-// the actual headline, body copy and culture-bar styling - are fully specified, so those
-// are what's implemented here. Drops the earlier desk illustration since this Figma
-// version doesn't include one.
+// Hero order per the latest reference: illustration, then the "Welcome to
+// Hertzworkz..." heading/copy, then the script "Join Our Team at HertzWorkz" wordmark
+// at the bottom. `team-idea.png` is cropped from the reference screenshot itself (the
+// only source available) - it's a small, slightly soft source image; swap in a
+// higher-resolution original if/when one is available.
+// Culture bars below still follow Figma node 5233:17387 ("Career Page - Final 2").
 //
 // Per the Figma prototype's animation spec: the opening section pushes upward into
 // place automatically on load (linear, 0.3s); each benefit row smoothly shifts its
@@ -50,20 +50,28 @@ export default function OurTeam() {
       >
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-16 -z-10 h-72 w-72 -translate-x-1/2 animate-sphere-pulse rounded-full bg-hero-sphere opacity-30 shadow-[0_0_80px_10px_rgba(255,120,50,0.45)] motion-reduce:animate-none sm:h-96 sm:w-96 sm:opacity-40"
+          className="pointer-events-none absolute left-1/2 top-8 -z-10 h-72 w-72 -translate-x-1/2 animate-sphere-pulse rounded-full bg-hero-sphere opacity-20 shadow-[0_0_80px_10px_rgba(255,120,50,0.45)] motion-reduce:animate-none sm:h-96 sm:w-96 sm:opacity-25"
         />
 
-        <p className="font-lovely text-5xl leading-none text-white sm:text-6xl lg:text-7xl">Join Our Team at</p>
-        <p className="mt-2 bg-brand-gradient bg-clip-text text-4xl font-bold leading-none text-transparent sm:text-5xl lg:text-6xl">
-          HertzWorkz
-        </p>
+        <img
+          src={teamIdeaImg}
+          alt="Team at Hertzworkz reviewing an idea together"
+          className="mx-auto w-full max-w-md sm:max-w-lg"
+        />
 
-        <h1 className="mx-auto mt-10 max-w-3xl text-2xl font-medium leading-snug sm:text-3xl lg:text-[2.2rem]">
+        <h1 className="mx-auto mt-8 max-w-3xl text-2xl font-medium leading-snug sm:text-3xl lg:text-[2.2rem]">
           Welcome to Hertzworkz, Where Vision Meets Opportunity!
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-lightGray sm:text-base">
           We believe our strength lies in our talented, passionate team. Join us to innovate, collaborate, and shape
           the future through exciting technology projects.
+        </p>
+
+        <p className="mt-10 font-lovely text-3xl leading-none text-white sm:text-4xl lg:text-5xl">
+          Join Our Team at{" "}
+          <span className="bg-brand-gradient bg-clip-text font-manrope font-bold not-italic text-transparent">
+            HertzWorkz
+          </span>
         </p>
       </div>
 
