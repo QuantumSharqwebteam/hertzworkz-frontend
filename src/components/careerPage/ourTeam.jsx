@@ -3,9 +3,7 @@ import teamIdeaImg from "/assets/images/career/team-idea.webp";
 
 // Hero order per the latest reference: illustration, then the "Welcome to
 // Hertzworkz..." heading/copy, then the script "Join Our Team at HertzWorkz" wordmark
-// at the bottom. `team-idea.webp` ships with a solid black background baked in (its
-// source had no alpha channel) rather than true transparency, which blends with the
-// page's near-black bg-ink.
+// at the bottom. `team-idea.webp` has a true transparent background.
 // Culture bars below still follow Figma node 5233:17387 ("Career Page - Final 2").
 //
 // Per the Figma prototype's animation spec: the opening section pushes upward into
