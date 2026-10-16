@@ -67,7 +67,7 @@ export default function OurTeam() {
         </p>
       </div>
 
-      <div data-aos="zoom-out" className="mx-auto mt-16 max-w-5xl px-4 pb-20 sm:px-8">
+      <div data-aos="zoom-out" className="mx-auto mt-16 max-w-[90rem] px-4 pb-20 sm:px-8 lg:px-16">
         <h2 className="text-center text-3xl font-medium text-white sm:text-4xl">Why Work at Hertzworkz?</h2>
 
         <div className="mt-10 flex flex-col gap-5">
@@ -87,7 +87,7 @@ function CultureRow({ title, body, align }) {
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
         tabIndex={0}
-        className={`group w-full px-8 py-8 transition-[filter,transform] duration-500 ease-linear hover:brightness-125 hover:scale-[1.015] focus-visible:brightness-125 focus-visible:scale-[1.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus-visible:scale-100 sm:w-5/6 sm:px-12 sm:py-10 lg:w-2/3 ${
+        className={`group w-full px-8 py-8 transition-[filter,transform] duration-500 ease-linear hover:brightness-125 hover:scale-[1.015] focus-visible:brightness-125 focus-visible:scale-[1.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus-visible:scale-100 sm:w-5/6 sm:px-12 sm:py-10 ${
           isRight ? "rounded-l-[2.5rem] text-right" : "rounded-r-[2.5rem] text-left"
         }`}
         style={{ background: "linear-gradient(180deg, rgba(141,54,26,0.15) 0%, rgba(168,52,52,0.5) 100%)" }}
