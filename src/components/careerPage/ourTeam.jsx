@@ -67,7 +67,7 @@ export default function OurTeam() {
         </p>
       </div>
 
-      <div data-aos="zoom-out" className="mx-auto mt-16 max-w-[90rem] px-4 pb-20 sm:px-8 lg:px-16">
+      <div data-aos="zoom-out" className="mt-16 px-4 pb-20 sm:px-8 lg:px-16">
         <h2 className="text-center text-3xl font-medium text-white sm:text-4xl">Why Work at Hertzworkz?</h2>
 
         <div className="mt-10 flex flex-col gap-5">
