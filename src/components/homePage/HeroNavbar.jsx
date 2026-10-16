@@ -34,7 +34,7 @@ export default function HeroNavbar({ onLight = false }) {
               <li key={item.label}>
                 <Link
                   to={item.to}
-                  className={`rounded text-xs font-medium uppercase tracking-wider text-gray-300 transition-colors hover:text-white ${focusRing}`}
+                  className={`rounded text-xs font-medium uppercase tracking-wider text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white ${focusRing}`}
                 >
                   {item.label}
                 </Link>
@@ -77,7 +77,7 @@ export default function HeroNavbar({ onLight = false }) {
               <Link
                 to={item.to}
                 onClick={close}
-                className={`block rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-wider text-gray-300 hover:text-white ${focusRing}`}
+                className={`block rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-wider text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white ${focusRing}`}
               >
                 {item.label}
               </Link>

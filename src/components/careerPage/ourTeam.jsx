@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 // Matches Figma node 5233:17387 ("Career Page - Final 2"): script "Join Our Team at" +
 // gradient "HertzWorkz" wordmark, a single welcome line, then four alternating
 // left/right culture bars. The Figma frame's own hero instance is a nearly-empty
@@ -5,6 +7,10 @@
 // the actual headline, body copy and culture-bar styling - are fully specified, so those
 // are what's implemented here. Drops the earlier desk illustration since this Figma
 // version doesn't include one.
+//
+// Per the Figma prototype's animation spec: the opening section pushes upward into
+// place automatically on load (linear, 0.3s); each benefit row smoothly shifts its
+// visual state on pointer-enter (linear, 0.5s).
 const CULTURE_ROWS = [
   {
     align: "left",
@@ -29,9 +35,19 @@ const CULTURE_ROWS = [
 ];
 
 export default function OurTeam() {
+  const [opened, setOpened] = useState(false);
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setOpened(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   return (
     <div className="overflow-x-hidden bg-ink font-manrope text-white">
-      <div data-aos="zoom-out" className="relative px-4 pt-28 text-center sm:pt-32">
+      <div
+        className={`relative px-4 pt-28 text-center transition-[opacity,transform] duration-300 ease-linear motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none sm:pt-32 ${
+          opened ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-16 -z-10 h-72 w-72 -translate-x-1/2 animate-sphere-pulse rounded-full bg-hero-sphere opacity-30 shadow-[0_0_80px_10px_rgba(255,120,50,0.45)] motion-reduce:animate-none sm:h-96 sm:w-96 sm:opacity-40"
@@ -70,7 +86,8 @@ function CultureRow({ title, body, align }) {
   return (
     <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
       <div
-        className={`w-full px-8 py-8 sm:w-5/6 sm:px-12 sm:py-10 lg:w-2/3 ${
+        tabIndex={0}
+        className={`group w-full px-8 py-8 transition-[filter,transform] duration-500 ease-linear hover:brightness-125 hover:scale-[1.015] focus-visible:brightness-125 focus-visible:scale-[1.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus-visible:scale-100 sm:w-5/6 sm:px-12 sm:py-10 lg:w-2/3 ${
           isRight ? "rounded-l-[2.5rem] text-right" : "rounded-r-[2.5rem] text-left"
         }`}
         style={{ background: "linear-gradient(180deg, rgba(141,54,26,0.15) 0%, rgba(168,52,52,0.5) 100%)" }}

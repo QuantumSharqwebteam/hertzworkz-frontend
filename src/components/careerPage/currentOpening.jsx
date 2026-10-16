@@ -32,6 +32,7 @@ export default function CurrentOpenings() {
                   description={job.description}
                   Icon={job.Icon}
                   applyHref={job.applyHref}
+                  fast={category === "Design"}
                 />
               ))}
             </div>
