@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import teamIdeaImg from "/assets/images/career/team-idea.png";
+import teamIdeaImg from "/assets/images/career/team-idea.webp";
 
 // Hero order per the latest reference: illustration, then the "Welcome to
 // Hertzworkz..." heading/copy, then the script "Join Our Team at HertzWorkz" wordmark
-// at the bottom. `team-idea.png` is cropped from the reference screenshot itself (the
-// only source available) - it's a small, slightly soft source image; swap in a
-// higher-resolution original if/when one is available.
+// at the bottom. `team-idea.webp` ships with a solid black background baked in (its
+// source had no alpha channel) rather than true transparency, which blends with the
+// page's near-black bg-ink.
 // Culture bars below still follow Figma node 5233:17387 ("Career Page - Final 2").
 //
 // Per the Figma prototype's animation spec: the opening section pushes upward into
@@ -56,7 +56,7 @@ export default function OurTeam() {
         <img
           src={teamIdeaImg}
           alt="Team at Hertzworkz reviewing an idea together"
-          className="mx-auto w-full max-w-md sm:max-w-lg"
+          className="mx-auto w-full max-w-xl sm:max-w-2xl lg:max-w-3xl"
         />
 
         <h1 className="mx-auto mt-8 max-w-3xl text-2xl font-medium leading-snug sm:text-3xl lg:text-[2.2rem]">
