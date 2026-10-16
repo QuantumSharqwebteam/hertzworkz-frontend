@@ -46,11 +46,6 @@ export default function OurTeam() {
           opened ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-8 -z-10 h-72 w-72 -translate-x-1/2 animate-sphere-pulse rounded-full bg-hero-sphere opacity-20 shadow-[0_0_80px_10px_rgba(255,120,50,0.45)] motion-reduce:animate-none sm:h-96 sm:w-96 sm:opacity-25"
-        />
-
         <img
           src={teamIdeaImg}
           alt="Team at Hertzworkz reviewing an idea together"
