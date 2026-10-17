@@ -68,7 +68,7 @@ function ProductCircle({ name, img }) {
 
 export default function ProductsShowcase() {
   return (
-    <section aria-label="Our products" className="bg-ink pb-24 font-manrope">
+    <section aria-label="Our products" className="bg-ink font-manrope">
       <ProductTabs />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-12 lg:grid-cols-2 lg:px-16">
