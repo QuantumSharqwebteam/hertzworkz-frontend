@@ -8,8 +8,13 @@ export default function ProductsMain(){
         <>
         <HeroNavbar onLight />
         <ProductsHero />
-        <ProductsShowcase />
-        <ContactFooter />
+        {/* bg-ink wrapper: ContactFooter's own mt-28 is a margin, which sits outside both
+            elements' backgrounds - without this, the page's global body background
+            image shows through that gap. */}
+        <div className="bg-ink">
+          <ProductsShowcase />
+          <ContactFooter />
+        </div>
         </>
     );
 }
