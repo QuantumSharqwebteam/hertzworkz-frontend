@@ -1,28 +1,12 @@
-
 import HeroNavbar from "../homePage/HeroNavbar";
-import ProductsHeader from "./ProductsHeader";
-import FeaturesSection from "./FeaturesSection";
-import AshokTextiles from "./ashokTextiles";
-import ProjectManagement from "./projectManagement";
-import "../../App.css";
-import MediApp from "./mediApp";
-import EggsProApp from "./eggsProApp";
-import TextilesHub from "./TextilesHub";
-import FleetPulseProject from "./FleetPulseProject";
+import ProductsHero from "./ProductsHero";
 import ContactFooter from "../contactPage/contactFooter";
 
 export default function ProductsMain(){
     return(
         <>
         <HeroNavbar onLight />
-        <ProductsHeader />
-        <FeaturesSection/>
-        <AshokTextiles/>
-        <ProjectManagement/>
-        <MediApp/>
-        <EggsProApp/>
-        <TextilesHub/>
-        {/* <FleetPulseProject/> */}
+        <ProductsHero />
         <ContactFooter />
         </>
     );
