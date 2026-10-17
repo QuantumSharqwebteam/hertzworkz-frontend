@@ -17,7 +17,7 @@ function ProductTabs() {
     <div
       role="tablist"
       aria-label="Products"
-      className="flex flex-wrap items-center justify-center gap-4 px-6 py-16 sm:px-12"
+      className="grid grid-cols-2 place-items-center gap-4 px-6 py-16 sm:flex sm:flex-wrap sm:justify-center sm:px-12"
     >
       {TABS.map((tab) => {
         const isActive = tab === active;
@@ -28,7 +28,7 @@ function ProductTabs() {
             role="tab"
             aria-selected={isActive}
             onClick={() => setActive(tab)}
-            className={`rounded-full px-8 py-3 text-base font-medium shadow-lg shadow-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 ${
+            className={`w-full rounded-full px-8 py-3 text-base font-medium shadow-[0_8px_24px_rgba(255,255,255,0.12)] transition-colors sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
               isActive
                 ? "border-2 border-lightOrange bg-white text-lightOrange"
                 : "border-2 border-transparent bg-white text-gray-700 hover:border-lightOrange/40"
