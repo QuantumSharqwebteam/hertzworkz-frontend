@@ -8,7 +8,7 @@ export default function ProductsHero() {
   return (
     <section
       aria-labelledby="products-hero-heading"
-      className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-ink px-6 py-32 text-center font-manrope sm:px-12"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-ink px-6 py-32 text-center font-manrope sm:px-12"
       style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
       <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
