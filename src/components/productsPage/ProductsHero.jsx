@@ -4,22 +4,14 @@ import heroBg from "/assets/images/products/hero-bg.webp";
 // New starting point for the Products page, replacing the old section stack. Both CTAs
 // have no confirmed destination yet, so they're inert (href="#"), matching the pattern
 // used elsewhere on the site for placeholder buttons.
-//
-// hero-bg.webp is a screenshot with its own heading/button text baked in (the only
-// source available) - blurred and heavily darkened so it reads as an ambient photo
-// behind the real, live heading below rather than showing as duplicate ghost text.
 export default function ProductsHero() {
   return (
     <section
       aria-labelledby="products-hero-heading"
       className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-ink px-6 py-32 text-center font-manrope sm:px-12"
+      style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 scale-110 bg-cover bg-center blur-md"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-      <div aria-hidden="true" className="absolute inset-0 bg-black/80" />
+      <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
 
       <div className="relative mx-auto max-w-3xl">
         <h1
