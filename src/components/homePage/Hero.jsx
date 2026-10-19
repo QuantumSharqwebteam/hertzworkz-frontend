@@ -7,7 +7,7 @@ import { FaArrowRight } from "react-icons/fa6";
  * - `data-hero-step` marks this screen for future observers.
  * - `id` is the anchor for this section.
  */
-const AUTO_DELAY_MS = 3000;
+const AUTO_DELAY_MS = 6000;
 
 // Props are plain JS (no prop-types dependency), so skip the prop-types rule here.
 // eslint-disable-next-line react/prop-types
