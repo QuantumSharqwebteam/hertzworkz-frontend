@@ -1,4 +1,4 @@
-import LogoImg from '/logo.svg';
+import Logo from "../Logo";
 import { Link } from "react-router-dom";
 
 
@@ -9,7 +9,7 @@ export default function ContactFooter() {
 
             <div className="py-6 flex flex-col items-center text-center mt-14">
                 <div className="mb-4">
-                <Link to="/">  <img src={LogoImg} alt="Hertzworkz Logo" className="h-12" /></Link>
+                <Link to="/">  <Logo barsClassName="h-3.5 w-auto" textClassName="h-7 w-auto" /></Link>
                 </div>
 
                 <nav className="flex flex-wrap justify-center px-3 sm:justify-between gap-4 text-[14px] font-normal font-segoe mt-3 mb-6 text-footer">

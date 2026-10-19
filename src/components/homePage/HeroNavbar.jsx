@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "/logo.svg";
+import Logo from "../Logo";
 
 const links = [
   { to: "/", label: "Home" },
@@ -26,7 +26,7 @@ export default function HeroNavbar({ onLight = false }) {
         }`}>
         <nav aria-label="Main" className="flex items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <Link to="/" onClick={close} aria-label="Hertzworkz home" className={`rounded-full ${focusRing}`}>
-            <img src={logo} alt="Hertzworkz" className="h-10 w-auto" />
+            <Logo barsClassName="h-2.5 w-auto" textClassName="h-4 w-auto" />
           </Link>
 
           <ul className="hidden md:flex items-center gap-6 lg:gap-10">

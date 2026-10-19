@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "/logo.svg";
+import Logo from "../Logo";
 import services from "../servicePage/servicesData";
 
 const COMPANY_LINKS = [
@@ -14,7 +14,7 @@ export default function SiteFooter() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link to="/" className="inline-block">
-            <img src={logo} alt="Hertzworkz" className="h-10 w-auto" />
+            <Logo barsClassName="h-3 w-auto" textClassName="h-6 w-auto" />
           </Link>
           <div className="mt-4 space-y-2 text-sm text-gray-400">
             <a href="mailto:hertzworkzpvt@gmail.com" className="flex items-center gap-2 hover:text-white">

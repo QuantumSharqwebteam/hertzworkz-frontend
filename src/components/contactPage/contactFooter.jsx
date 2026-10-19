@@ -1,5 +1,5 @@
 import { FaEnvelope, FaPhone, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
-import logo from "/logo.svg";
+import Logo from "../Logo";
 
 const SERVICES_LINKS = [
     "Web/App Design",
@@ -21,7 +21,7 @@ export default function ContactFooter() {
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 pt-16 sm:grid-cols-2 sm:px-12 lg:grid-cols-4 lg:px-16">
                 <div>
                     <a href="/">
-                        <img src={logo} alt="Hertzworkz" className="h-10 w-auto" />
+                        <Logo barsClassName="h-3 w-auto" textClassName="h-6 w-auto" />
                     </a>
                     <div className="mt-4 space-y-2 text-sm text-gray-400">
                         <a href="mailto:hertzworkzpvt@gmail.com" className="flex items-center gap-2 hover:text-white">
