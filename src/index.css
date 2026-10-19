@@ -1,6 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --glow-color: #b8391a;
+  --accent-start: #ff7a33;
+  --accent-end: #ff4d2e;
+  --text-warm: #f1e4de;
+
+  --mv-card-bg: #101015;
+  --mv-icon-tile-bg: #2a1710;
+  --mv-icon-color: #ff5a1f;
+  --mv-active-start: #fb7a18;
+  --mv-active-end: #ef4444;
+}
+
+/* Mission/Vision cards (About page): the active-state gradient can't be
+   transitioned directly, so it lives on a ::before layered under the content
+   and only its opacity animates - see AboutMissionVision.jsx. */
+.mv-card {
+  position: relative;
+  background-color: var(--mv-card-bg);
+}
+.mv-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(160deg, var(--mv-active-start), var(--mv-active-end));
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.mv-card.is-active::before {
+  opacity: 1;
+}
+.mv-card .mv-icon-tile {
+  background-color: var(--mv-icon-tile-bg);
+  transition: background-color 0.5s ease-in-out;
+}
+.mv-card.is-active .mv-icon-tile {
+  background-color: #000;
+}
+.mv-card.mv-no-motion::before,
+.mv-card.mv-no-motion .mv-icon-tile {
+  transition: none;
+}
+
 @layer utilities {
   .glow-effect {
     text-shadow: 

@@ -7,7 +7,7 @@ const links = [
   { to: "/service", label: "Services" },
   { to: "/product", label: "Products" },
   { to: "/career", label: "Careers" },
-  { to: "/#about", label: "About Us" },
+  { to: "/about", label: "About Us" },
 ];
 
 const focusRing =
@@ -21,20 +21,20 @@ export default function HeroNavbar({ onLight = false }) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:pt-6 font-manrope">
-      <div className={`relative mx-auto max-w-5xl rounded-full border backdrop-blur-md shadow-lg ${
-          onLight ? "border-white/10 bg-ink/90" : "border-white/20 bg-white/5"
+      <div className={`relative mx-auto w-[min(70%,1000px)] rounded-full border backdrop-blur-md shadow-lg ${
+          onLight ? "border-white/[0.12] bg-black/70" : "border-white/20 bg-white/5"
         }`}>
-        <nav aria-label="Main" className="flex items-center justify-between gap-4 px-4 py-2 sm:px-6">
+        <nav aria-label="Main" className="flex items-center justify-between gap-4 px-3 py-1.5 sm:px-5">
           <Link to="/" onClick={close} aria-label="Hertzworkz home" className={`rounded-full ${focusRing}`}>
-            <Logo barsClassName="h-2.5 w-auto" textClassName="h-4 w-auto" />
+            <Logo barsClassName="h-2 w-auto" textClassName="h-3.5 w-auto" />
           </Link>
 
-          <ul className="hidden md:flex items-center gap-6 lg:gap-10">
+          <ul className="hidden md:flex items-center gap-5 lg:gap-8">
             {links.map((item) => (
               <li key={item.label}>
                 <Link
                   to={item.to}
-                  className={`rounded text-xs font-medium uppercase tracking-wider text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white ${focusRing}`}
+                  className={`rounded text-[10px] font-semibold uppercase tracking-wide text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing}`}
                 >
                   {item.label}
                 </Link>
@@ -44,7 +44,7 @@ export default function HeroNavbar({ onLight = false }) {
 
           <Link
             to="/contact"
-            className={`hidden md:inline-block rounded-full bg-brand-gradient px-5 py-2 text-xs font-medium uppercase tracking-wider text-white transition-opacity hover:opacity-90 ${focusRing}`}
+            className={`hidden md:inline-block rounded-full bg-gradient-to-r from-[color:var(--accent-start)] to-[color:var(--accent-end)] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:text-[11px] ${focusRing}`}
           >
             Contact Us
           </Link>

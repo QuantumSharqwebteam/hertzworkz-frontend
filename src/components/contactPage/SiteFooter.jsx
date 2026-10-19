@@ -3,7 +3,7 @@ import Logo from "../Logo";
 import services from "../servicePage/servicesData";
 
 const COMPANY_LINKS = [
-  { to: "/#about", label: "About Us" },
+  { to: "/about", label: "About Us" },
   { to: "/product", label: "Products" },
   { to: "/career", label: "Careers" },
 ];
