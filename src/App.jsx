@@ -1,15 +1,35 @@
 import React,{useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import HomeMain from "./components/homePage/homeMain"
 import ProductsMain from "./components/productsPage/productsMain";
 import CareerMain from './components/careerPage/careerMain';
 import ApplicationMain from './components/applicationPage/applicationMain';
 import ContactMain from './components/contactPage/contactMain';
 import ScrollToTop from './components/ScrollToTop';
+import IntroSplash from './components/IntroSplash';
 import ServicesGrid from "./components/servicePage/ServicesGrid";
 import ServiceDetail from "./components/servicePage/ServiceDetail";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+function AppRoutes() {
+  const location = useLocation();
+  return (
+    <>
+      <IntroSplash key={location.key} />
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomeMain />} />
+        <Route path="/product" element={<ProductsMain />} />
+        <Route path="/career" element={<CareerMain />} />
+        <Route path="/service" element={<ServicesGrid />} />
+        <Route path="/contact" element={<ContactMain />} />
+        <Route path="/application" element={<ApplicationMain />} />
+        <Route path="/service/:slug" element={<ServiceDetail />} />
+      </Routes>
+    </>
+  );
+}
 
 export default function App() {
 
@@ -24,16 +44,7 @@ export default function App() {
     <>
       <div className=''>
         <Router>
-          <ScrollToTop />
-          <Routes>
-          <Route path="/" element={<HomeMain />} />
-            <Route path="/product" element={<ProductsMain />} /> 
-            <Route path="/career" element={<CareerMain />} />
-            <Route path="/service" element={<ServicesGrid />} />
-            <Route path="/contact" element={<ContactMain />} />
-            <Route path="/application" element={<ApplicationMain />} />
-            <Route path="/service/:slug" element={<ServiceDetail />} />
-          </Routes>
+          <AppRoutes />
         </Router>
       </div>
     </>
