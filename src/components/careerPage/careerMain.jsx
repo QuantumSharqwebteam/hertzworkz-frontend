@@ -8,8 +8,13 @@ export default function CareerMain() {
         <>
             <HeroNavbar onLight />
             <OurTeam />
-            <CurrentOpenings />
-            <ContactFooter />
+            {/* bg-ink wrapper extends through ContactFooter: its own margin-top
+                sits outside the footer's background, so without this the page's
+                global body background image shows through that gap. */}
+            <div className="bg-ink">
+                <CurrentOpenings />
+                <ContactFooter />
+            </div>
         </>
     )
 }

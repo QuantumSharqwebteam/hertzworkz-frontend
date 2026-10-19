@@ -63,12 +63,15 @@ export default function HomeMain() {
             <ProcessPipeline />
             <ApproachMerge />
             <ServicesSection />
+            {/* bg-ink wrapper extends through ContactFooter: its own mt-28 is a margin
+                that sits outside the footer's background, so without this the page's
+                global body background image shows through that gap. */}
             <div className="relative isolate overflow-hidden bg-ink">
                 <CtaGlowBackground />
                 <IdeasCta />
                 <PartnersAndSupporters />
+                <ContactFooter />
             </div>
-            <ContactFooter />
         </div>
     )
 }
