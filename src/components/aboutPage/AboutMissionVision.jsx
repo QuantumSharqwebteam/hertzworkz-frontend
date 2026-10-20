@@ -70,9 +70,9 @@ export default function AboutMissionVision() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black px-4 pb-24 pt-20 font-manrope sm:px-6 sm:pb-[150px] sm:pt-[120px]"
+      className="flex min-h-screen items-center bg-black px-4 pb-24 pt-20 font-manrope sm:px-6 sm:pb-[150px] sm:pt-[120px]"
     >
-      <div className="mx-auto flex max-w-[865px] flex-col gap-[30px]">
+      <div className="mx-auto flex w-full max-w-[865px] flex-col gap-[30px]">
         {CARDS.map(({ id, title, description, Icon }, index) => (
           <div
             key={id}

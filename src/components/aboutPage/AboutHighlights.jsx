@@ -36,8 +36,8 @@ export default function AboutHighlights() {
   }, []);
 
   return (
-    <section className="bg-black px-[6%] py-20 font-manrope sm:px-[8%] sm:py-28 lg:px-[10%]">
-      <div className="mx-auto flex max-w-5xl flex-col gap-16 sm:gap-20">
+    <section className="flex min-h-screen items-center bg-black px-[6%] py-20 font-manrope sm:px-[8%] sm:py-28 lg:px-[10%]">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 sm:gap-20">
         {ROWS.map(({ heading, description, align }) => {
           const isRight = align === "right";
           return (
