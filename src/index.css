@@ -46,6 +46,29 @@
   transition: none;
 }
 
+/* Desktop nav links (HeroNavbar.jsx): same gradient-pill treatment as the Contact
+   Us button, faded in/out on hover/focus via an opacity-animated ::before layer -
+   a plain background-image swap can't transition smoothly, same reasoning as the
+   .mv-card rule above. */
+.nav-link {
+  position: relative;
+  z-index: 0;
+}
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+.nav-link:hover::before,
+.nav-link:focus-visible::before {
+  opacity: 1;
+}
+
 @layer utilities {
   .glow-effect {
     text-shadow: 

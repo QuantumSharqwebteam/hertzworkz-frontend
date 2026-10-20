@@ -34,7 +34,7 @@ export default function HeroNavbar({ onLight = false }) {
               <li key={item.label}>
                 <Link
                   to={item.to}
-                  className={`rounded text-[10px] font-semibold uppercase tracking-wide text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing}`}
+                  className={`nav-link inline-block rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing}`}
                 >
                   {item.label}
                 </Link>
