@@ -37,13 +37,10 @@ const CARDS = [
 ];
 
 // Mission/Vision cards below the About hero (Figma node 5233:14501 section).
-// The highlighted card tracks scroll position (whichever card crosses the
-// viewport's vertical center via a thin IntersectionObserver "line"), with
-// hover/tap able to override it.
+// A card is only highlighted while the mouse is actually over it (or tapped,
+// as the touch-device equivalent of hover) - never from scroll position alone.
 export default function AboutMissionVision() {
   const sectionRef = useRef(null);
-  const cardRefs = useRef([]);
-  const [scrollActive, setScrollActive] = useState(0);
   const [hoverActive, setHoverActive] = useState(null);
   const [visible, setVisible] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -63,28 +60,12 @@ export default function AboutMissionVision() {
     );
     if (sectionRef.current) sectionObserver.observe(sectionRef.current);
 
-    // rootMargin shrinks the observer's root to a single horizontal line at
-    // the viewport's vertical center - whichever card currently crosses that
-    // line is the one "at center" and becomes active.
-    const centerObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setScrollActive(Number(entry.target.dataset.index));
-          }
-        });
-      },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
-    );
-    cardRefs.current.forEach((el) => el && centerObserver.observe(el));
-
     return () => {
       sectionObserver.disconnect();
-      centerObserver.disconnect();
     };
   }, []);
 
-  const activeIndex = hoverActive ?? scrollActive;
+  const activeIndex = hoverActive;
 
   return (
     <section
@@ -95,8 +76,6 @@ export default function AboutMissionVision() {
         {CARDS.map(({ id, title, description, Icon }, index) => (
           <div
             key={id}
-            ref={(el) => (cardRefs.current[index] = el)}
-            data-index={index}
             onMouseEnter={() => setHoverActive(index)}
             onMouseLeave={() => setHoverActive(null)}
             onClick={() => setHoverActive((current) => (current === index ? null : index))}
