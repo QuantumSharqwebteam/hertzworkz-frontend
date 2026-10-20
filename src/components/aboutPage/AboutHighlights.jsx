@@ -36,27 +36,27 @@ export default function AboutHighlights() {
   }, []);
 
   return (
-    <section className="flex min-h-screen items-center bg-black px-[6%] py-20 font-manrope sm:px-[8%] sm:py-28 lg:px-[10%]">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 sm:gap-20">
+    <section className="flex min-h-screen items-center overflow-x-hidden bg-black px-6 py-20 font-manrope sm:px-12 sm:py-28 lg:px-16">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 sm:gap-20">
         {ROWS.map(({ heading, description, align }) => {
           const isRight = align === "right";
           return (
             <div
               key={heading}
               data-aos={reducedMotion ? undefined : isRight ? "fade-right" : "fade-left"}
-              className={isRight ? "text-left sm:text-right" : "text-left"}
+              className={isRight ? "text-left lg:text-right" : "text-left"}
             >
               <div
-                className={`flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6 ${
-                  isRight ? "sm:flex-row-reverse" : ""
+                className={`flex flex-col gap-3 sm:gap-6 lg:flex-row lg:items-center ${
+                  isRight ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                <h3 className="text-xl font-bold text-white sm:shrink-0 sm:text-[1.75rem]">{heading}</h3>
-                <span aria-hidden="true" className="h-px w-16 bg-[color:var(--accent-start)] sm:w-auto sm:flex-1" />
+                <h3 className="text-xl font-bold text-white sm:text-[1.75rem] lg:shrink-0">{heading}</h3>
+                <span aria-hidden="true" className="h-px w-16 bg-[color:var(--accent-start)] lg:w-auto lg:flex-1" />
               </div>
               <p
                 className={`mt-4 max-w-2xl text-base leading-[1.55] text-[color:var(--text-warm)] ${
-                  isRight ? "sm:ml-auto" : ""
+                  isRight ? "lg:ml-auto" : ""
                 }`}
               >
                 {description}

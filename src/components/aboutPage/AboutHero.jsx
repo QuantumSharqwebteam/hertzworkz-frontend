@@ -12,7 +12,7 @@ export default function AboutHero() {
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[color:var(--glow-color)] blur-[90px]"
       />
 
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-10 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:text-left">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:text-left">
         <div>
           <h1 className="mx-auto max-w-[24ch] text-[1.75rem] font-normal leading-[1.3] text-white sm:text-[2rem] lg:mx-0 lg:text-[2.4rem]">
             Excellence is not just what we deliver, it&rsquo;s who we are
