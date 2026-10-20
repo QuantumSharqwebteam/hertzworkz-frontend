@@ -1,6 +1,7 @@
 import HeroNavbar from "../homePage/HeroNavbar";
 import AboutHero from "./AboutHero";
 import AboutMissionVision from "./AboutMissionVision";
+import AboutHighlights from "./AboutHighlights";
 import ContactFooter from "../contactPage/contactFooter";
 
 export default function AboutMain() {
@@ -9,6 +10,7 @@ export default function AboutMain() {
       <HeroNavbar onLight />
       <AboutHero />
       <AboutMissionVision />
+      <AboutHighlights />
       {/* overflow-hidden bg-ink: without it, ContactFooter's own margin-top collapses
           through this wrapper (standard CSS margin-collapse) and the page's global body
           background image shows through the gap (see the same fix on Home/Career/Application).
