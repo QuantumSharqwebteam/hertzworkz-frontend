@@ -18,7 +18,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const initialForm = { name: "", phone: "", email: "", service: "", message: "" };
 
 const fieldClass =
-  "w-full rounded-md border border-transparent bg-lightGray px-4 py-3 text-sm text-black placeholder:text-gray-500 focus:border-lightOrange focus:outline-none focus:ring-1 focus:ring-lightOrange";
+  "w-full rounded-md border border-transparent bg-lightGray px-4 py-3 text-sm text-black placeholder:text-gray-500 focus:border-lightOrange focus:outline-none focus:ring-1 focus:ring-lightOrange max-md:rounded-lg";
 
 export default function ContactForm() {
   const [form, setForm] = useState(initialForm);
@@ -56,9 +56,9 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="grid grid-cols-1 gap-x-16 gap-y-8 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} noValidate className="grid grid-cols-1 gap-x-16 gap-y-8 sm:grid-cols-2 max-md:gap-y-3">
       <div>
-        <label htmlFor="contact-name" className="mb-3 block text-base font-medium text-black">
+        <label htmlFor="contact-name" className="mb-3 block text-base font-medium text-black max-md:mb-1 max-md:text-lg">
           Name
         </label>
         <input
@@ -79,7 +79,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-phone" className="mb-3 block text-base font-medium text-black">
+        <label htmlFor="contact-phone" className="mb-3 block text-base font-medium text-black max-md:mb-1 max-md:text-lg">
           Phone Number
         </label>
         <input
@@ -93,7 +93,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-email" className="mb-3 block text-base font-medium text-black">
+        <label htmlFor="contact-email" className="mb-3 block text-base font-medium text-black max-md:mb-1 max-md:text-lg">
           Email
         </label>
         <input
@@ -114,7 +114,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-service" className="mb-3 block text-base font-medium text-black">
+        <label htmlFor="contact-service" className="mb-3 block text-base font-medium text-black max-md:mb-1 max-md:text-lg">
           Service
         </label>
         <ServiceSelect
@@ -126,7 +126,7 @@ export default function ContactForm() {
       </div>
 
       <div className="sm:col-span-2">
-        <label htmlFor="contact-message" className="mb-3 block text-base font-medium text-black">
+        <label htmlFor="contact-message" className="mb-3 block text-base font-medium text-black max-md:mb-1 max-md:text-lg">
           Message
         </label>
         <textarea
@@ -150,9 +150,10 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="rounded-full bg-brand-gradient px-8 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-full bg-brand-gradient px-8 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 max-md:px-4"
         >
-          {status === "submitting" ? "Sending…" : "Send"}
+          <span className="md:hidden">{status === "submitting" ? "Sending…" : "Send message →"}</span>
+          <span className="hidden md:inline">{status === "submitting" ? "Sending…" : "Send"}</span>
         </button>
         {status === "success" && (
           <p role="status" className="mt-3 text-sm text-green-700">
