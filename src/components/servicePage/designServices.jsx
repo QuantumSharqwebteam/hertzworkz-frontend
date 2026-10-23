@@ -1,4 +1,76 @@
+/* eslint-disable react/prop-types */
+import { useRef } from "react";
+import { useScrollActiveOnMobile } from "../../hooks/useScrollActiveOnMobile";
+
+// Mirrors a design-step card's hover title/icon/divider colors on a
+// touch/mobile viewport once it scrolls into view - see
+// useScrollActiveOnMobile. Separate component so each card in the
+// steps.map() below gets its own scroll-into-view ref/state (each card's
+// `group` is per-card, matching its own real hover behavior on desktop).
+function DesignStepCard({ step }) {
+  const ref = useRef(null);
+  const active = useScrollActiveOnMobile(ref);
+
+  return (
+    <div
+      ref={ref}
+      data-aos="fade-up"
+      className={`flex flex-col items-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group ${
+        active ? "shadow-lg" : ""
+      }`}
+    >
+      <h2 className={`text-[22px] font-bold flex items-center gap-2 group-hover:text-[#fe5d26] transition-all duration-300 ${active ? "!text-[#fe5d26]" : ""}`}>
+        <span className="icon">
+          <img
+            src={step.icon}
+            alt="Research Icon"
+            className={`transition-all duration-300 group-hover:brightness-0 group-hover:filter-orange ${active ? "brightness-0 filter-orange" : ""}`}
+          />
+        </span>
+        {step.title}
+      </h2>
+      <hr className={`border-t border-gray-500 border-[1px] w-full mt-2 mb-4 group-hover:border-[#fe5d26] ${active ? "!border-[#fe5d26]" : ""}`} />
+      <p className="text-gray-500 text-xl text-start leading-8">{step.description}</p>
+    </div>
+  );
+}
+
+// Mirrors a "Web Application" list item's hover border/text state on a
+// touch/mobile viewport once it scrolls into view - see
+// useScrollActiveOnMobile. Separate component for the same reason as
+// DesignStepCard above: each item's `group` is per-item.
+function WebAppListItem({ item, index }) {
+  const ref = useRef(null);
+  const active = useScrollActiveOnMobile(ref);
+
+  return (
+    <div
+      ref={ref}
+      className={`w-full sm:w-[48%] lg:w-[23%] h-[134px] flex items-center text-left-[20px] justify-between gap-3 px-4 py-2 border-2 border-gray-600
+                rounded-3xl group hover:border-blue-500 transition-transform duration-300 ${active ? "!border-blue-500" : ""}`}
+    >
+      <span
+        className={`text-lg sm:text-[24px] lg:text-xl  text-[#86868b] font-medium
+             group-hover:text-blue-500 group-hover:scale-110 group-hover:font-normal group-hover:text-2xl
+             group-active:scale-150 transition-transform duration-700 ease-out ${
+               active ? "!text-blue-500 scale-110 !font-normal !text-2xl" : ""
+             }`}
+      >
+        {index + 1}. {item}
+      </span>
+    </div>
+  );
+}
+
 const DesignServices = () => {
+  // The "Application Design Stages" grid below uses one `group` on the
+  // whole grid container (not per-card), so hovering anywhere in it already
+  // moves/scales every card together on desktop - mirror that same
+  // single-trigger behavior on mobile with one ref/active state for the
+  // grid, instead of one per card.
+  const designStagesGridRef = useRef(null);
+  const designStagesGridActive = useScrollActiveOnMobile(designStagesGridRef);
+
   const boxes = [
     { title: "User Interface", icon: <img
       src="/assets/images/mobapp1.svg"
@@ -177,26 +249,7 @@ return (
    <div className="bg-black text-white py-10 px-8 md:px-20">
       <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-3">
         {steps.map((step, index) => (
-          <div
-            data-aos="fade-up"
-            key={index}
-            className="flex flex-col items-start rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group"
-          > 
-          <h2 className="text-[22px] font-bold flex items-center gap-2 group-hover:text-[#fe5d26] transition-all duration-300">
-      <span className="icon">
-        <img
-          src={step.icon}
-          alt="Research Icon"
-          className="transition-all duration-300 group-hover:brightness-0 group-hover:filter-orange"
-        />
-      </span>
-      {step.title}
-    </h2>
-    <hr className="border-t border-gray-500 border-[1px] w-full mt-2 mb-4 group-hover:border-[#fe5d26]" />
-    <p className="text-gray-500 text-xl text-start leading-8">
-     {step.description}
-    </p>
-      </div>
+          <DesignStepCard key={index} step={step} />
         ))}
     </div>
 
@@ -241,28 +294,7 @@ return (
 
   <div data-aos="fade-left" className="flex flex-wrap justify-center items-center gap-4">
   {items.map((item, index) => (
-    <div
-      key={index}
-      className="w-full sm:w-[48%] lg:w-[23%] h-[134px] flex items-center text-left-[20px] justify-between gap-3 px-4 py-2 border-2 border-gray-600 
-                rounded-3xl group hover:border-blue-500 transition-transform duration-300"
-    >
-      {/* Text */}
-    
-      <span 
-  className="text-lg sm:text-[24px] lg:text-xl  text-[#86868b] font-medium 
-             group-hover:text-blue-500 group-hover:scale-110 group-hover:font-normal group-hover:text-2xl
-             group-active:scale-150 transition-transform duration-700 ease-out "
->
-  {index + 1}. {item}
-</span>
-
-      {/* Arrow */}
-      {/* <span className="text-2xl rotate-[90deg] sm:text-3xl text-[#86868b] rounded-lg transform transition-transform duration-700 
-                       group-hover:text-blue-500  group-hover:translate-y-[-10px] sm:group-hover:translate-y-[-20px] lg:group-hover:translate-y-[-40px] 
-                       group-hover:rotate-[-1deg]">
-         ▲
-      </span> */}
-    </div>
+    <WebAppListItem key={index} item={item} index={index} />
   ))}
 </div>
 
@@ -274,7 +306,7 @@ return (
 </h1>
 
 
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 p-6 sm:p-12 lg:p-20 group">
+<div ref={designStagesGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 p-6 sm:p-12 lg:p-20 group">
   {[
     { src: "/assets/images/Analysis.png", alt: "Analysis", title: "Analysis" },
     { src: "/assets/images/Design.png", alt: "Design", title: "Design" },
@@ -287,22 +319,36 @@ return (
       key={index}
       className={`bg-black border-neutral-400 text-center w-full sm:w-[220px] h-auto border-[0.5px] p-4 sm:p-[12px] gap-4 transform transition-transform duration-500 ${
         index === 0 || index === 2
-          ? "group-hover:translate-y-[-30px]" 
+          ? "group-hover:translate-y-[-30px]"
           : index === 1
-          ? "group-hover:translate-y-[-60px]" 
+          ? "group-hover:translate-y-[-60px]"
           : index === 3 || index === 5
-          ? "group-hover:translate-y-[30px]" 
+          ? "group-hover:translate-y-[30px]"
           : index === 4
-          ? "group-hover:translate-y-[60px]" 
+          ? "group-hover:translate-y-[60px]"
           : ""
-      } group-hover:scale-135 group-hover:scale-135`} 
+      } group-hover:scale-135 group-hover:scale-135 ${
+        designStagesGridActive
+          ? `scale-135 ${
+              index === 0 || index === 2
+                ? "translate-y-[-30px]"
+                : index === 1
+                ? "translate-y-[-60px]"
+                : index === 3 || index === 5
+                ? "translate-y-[30px]"
+                : index === 4
+                ? "translate-y-[60px]"
+                : ""
+            }`
+          : ""
+      }`}
     >
       <img
         src={item.src}
         alt={item.alt}
-        className="w-[150px] sm:w-[200px] h-auto mx-auto transition-transform duration-500 group-hover:scale-140"
+        className={`w-[150px] sm:w-[200px] h-auto mx-auto transition-transform duration-500 group-hover:scale-140 ${designStagesGridActive ? "scale-140" : ""}`}
       />
-      <p className="font-bold text-lg sm:text-xl mt-4 text-white transition-transform duration-500 group-hover:scale-140">
+      <p className={`font-bold text-lg sm:text-xl mt-4 text-white transition-transform duration-500 group-hover:scale-140 ${designStagesGridActive ? "scale-140" : ""}`}>
         {item.title}
       </p>
     </div>

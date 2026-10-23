@@ -1,3 +1,30 @@
+/* eslint-disable react/prop-types */
+import { useRef } from "react";
+import { useScrollActiveOnMobile } from "../../hooks/useScrollActiveOnMobile";
+
+// Mirrors the card's `hover:rounded-lg` on a touch/mobile viewport once it
+// scrolls into view (see useScrollActiveOnMobile) - a separate component so
+// each card in the grid below gets its own scroll-into-view ref/state.
+// eslint-disable-next-line react-refresh/only-export-components
+function BlockchainCard({ service }) {
+  const ref = useRef(null);
+  const active = useScrollActiveOnMobile(ref);
+
+  return (
+    <div
+      ref={ref}
+      data-aos="flip-up"
+      className={`bg-[#090909] border border-[#222222] w-[177.59px] h-[143.2px] sm:w-auto sm:h-auto hover:rounded-lg shadow-lg p-6 text-center transition duration-300 ${
+        active ? "rounded-lg" : ""
+      }`}
+    >
+      <div className="mb-4">
+        <img src={service.icon} alt={service.title} className="w-12 h-12 mx-auto" />
+      </div>
+      <h3 className="text-[#f0f0f0] mt-[10px] text-sm sm:text-base font-medium">{service.title}</h3>
+    </div>
+  );
+}
 
 const blockChain = () => {
   const blockchain = [
@@ -125,20 +152,7 @@ const blockChain = () => {
   <div className="max-h-screen flex items-center justify-center max-w-screen ">
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-6 lg:gap-12  p-1 mr-1 md:p-6 max-w-screen transform-all duration-300 x-overflow-hidden">
       {blockchain.map((service) => (
-        <div
-          data-aos="flip-up"
-          key={service.id}
-          className="bg-[#090909] border border-[#222222] w-[177.59px] h-[143.2px] sm:w-auto sm:h-auto hover:rounded-lg shadow-lg p-6 text-center transition duration-300"
-        >
-          <div className="mb-4">
-            <img
-              src={service.icon}
-              alt={service.title}
-              className="w-12 h-12 mx-auto"
-            />
-          </div>
-          <h3 className="text-[#f0f0f0] mt-[10px] text-sm sm:text-base font-medium">{service.title}</h3>
-        </div>
+        <BlockchainCard key={service.id} service={service} />
       ))}
     </div>
   </div>

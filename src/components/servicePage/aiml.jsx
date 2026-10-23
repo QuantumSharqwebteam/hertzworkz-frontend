@@ -1,4 +1,65 @@
+/* eslint-disable react/prop-types */
+import { useRef } from "react";
+import { useScrollActiveOnMobile } from "../../hooks/useScrollActiveOnMobile";
+
+// Mirrors an AI/ML card's hover shadow/border/icon/heading state on a
+// touch/mobile viewport once it scrolls into view - see
+// useScrollActiveOnMobile. Separate component so each card rendered by the
+// [...Array(4)].map() below gets its own scroll-into-view ref/state (each
+// card's `group` is per-card, matching its own real hover behavior on
+// desktop).
+function AimlCard({ heading, description, image, index }) {
+  const ref = useRef(null);
+  const active = useScrollActiveOnMobile(ref);
+
+  return (
+    <div
+      ref={ref}
+      data-aos="fade-right"
+      className={`group relative w-full max-w-[274.5px] h-auto bg-[#FFFFFF0D] p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-0 mx-auto hover:border-2 hover:border-blue-500 ${
+        active ? "shadow-xl border-2 border-blue-500" : ""
+      }`}
+    >
+      <div
+        className={`absolute top-1 left-4 transform transition-transform duration-0 group-hover:scale-50 group-hover:translate-x-[-10px] group-hover:translate-y-[-10px] ${
+          active ? "scale-50 translate-x-[-10px] translate-y-[-10px]" : ""
+        }`}
+      >
+        <img
+          src={image}
+          alt={`icon-${index + 1}`}
+          className="w-[100px] h-[100px] sm:w-[90px] sm:h-[90px] md:w-[100px] md:h-[100px] lg:w-[110px] lg:h-[110px]"
+        />
+      </div>
+      <div className={`mt-20 group-hover:mt-12 ${active ? "!mt-12" : ""}`}>
+        <h3
+          className={`text-[16px] font-semibold text-left bg-gradient-to-l from-[#6C63FF66] to-[#6C63FF] text-transparent bg-clip-text transition-all duration-0 group-hover:text-[23px] sm:text-[18px] md:text-[20px] lg:text-[20px] ${
+            active ? "!text-[23px]" : ""
+          }`}
+          style={{
+            textShadow: "0 0 4px rgba(108, 99, 255, 0.5), 0 0 6px rgba(108, 99, 255, 0.3)",
+          }}
+        >
+          {heading}
+        </h3>
+        <div className="h-[1px] w-20 bg-white mt-6 mb-4"></div>
+        <p className="text-gray-300 text-left text-[14.75px] sm:text-[15px] md:text-[16px] lg:text-[14.75px]">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const AimlServices = () => {
+  // "Section 1"/"Section 2" below (static JSX, not a .map(), so these can
+  // be called directly here) - mirrors each section's hover
+  // heading/gap/image-filter/paragraph state on a touch/mobile viewport
+  // once it scrolls into view. See useScrollActiveOnMobile.
+  const section1Ref = useRef(null);
+  const section1Active = useScrollActiveOnMobile(section1Ref);
+  const section2Ref = useRef(null);
+  const section2Active = useScrollActiveOnMobile(section2Ref);
 
   const HorizontalLine = () => {
     return (
@@ -63,37 +124,7 @@ const AimlServices = () => {
       ];
 
       return (
-        <div
-          data-aos="fade-right"
-          key={index}
-          className="group relative w-full max-w-[274.5px] h-auto bg-[#FFFFFF0D] p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-0 mx-auto hover:border-2 hover:border-blue-500 "
-        >
-          {/* Icon container */}
-          <div
-            className="absolute top-1 left-4 transform transition-transform duration-0 group-hover:scale-50 group-hover:translate-x-[-10px] group-hover:translate-y-[-10px]"
-          >
-            <img
-  src={images[index]}
-  alt={`icon-${index + 1}`} // Correctly enclosed in backticks
-  className="w-[100px] h-[100px] sm:w-[90px] sm:h-[90px] md:w-[100px] md:h-[100px] lg:w-[110px] lg:h-[110px]"
-/>
-
-          </div>
-          <div className="mt-20 group-hover:mt-12"> {/* Reduced margin-top during hover */}
-            <h3
-              className="text-[16px] font-semibold text-left bg-gradient-to-l from-[#6C63FF66] to-[#6C63FF] text-transparent bg-clip-text transition-all duration-0 group-hover:text-[23px] sm:text-[18px] md:text-[20px] lg:text-[20px]"
-              style={{
-                textShadow: "0 0 4px rgba(108, 99, 255, 0.5), 0 0 6px rgba(108, 99, 255, 0.3)"
-              }}
-            >
-              {headings[index]}
-            </h3>
-            <div className="h-[1px] w-20 bg-white mt-6 mb-4"></div>
-            <p className="text-gray-300 text-left text-[14.75px] sm:text-[15px] md:text-[16px] lg:text-[14.75px]">
-              {descriptions[index]}
-            </p>
-          </div>
-        </div>
+        <AimlCard key={index} heading={headings[index]} description={descriptions[index]} image={images[index]} index={index} />
       );
     })}
   </div>
@@ -178,7 +209,7 @@ const AimlServices = () => {
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 max-w-6xl mx-auto mt-20 gap-y-4 lg:h-96">
     {/* Section 1 */}
-    <div className="flex flex-col items-center relative group mt-12 ">
+    <div ref={section1Ref} className="flex flex-col items-center relative group mt-12 ">
       {/* SVG Image Positioned at the Top-Right of Heading */}
       <img
         src="/assets/images/SVG (2).svg"
@@ -186,11 +217,11 @@ const AimlServices = () => {
         className="absolute top-[-80px] md:top-[-100px] left-[35px] w-[55.39px] h-[48.18px]"
       />
       {/* Heading */}
-      <h2 className="text-xl text-[22.5px] mb-4 relative transition-all duration-300 transform group-hover:text-[32px] text-center md:text-left">
+      <h2 className={`text-xl text-[22.5px] mb-4 relative transition-all duration-300 transform group-hover:text-[32px] text-center md:text-left ${section1Active ? "!text-[32px]" : ""}`}>
         Plug-and-Play AI Solutions
       </h2>
 
-      <div className="relative flex items-center justify-center gap-12 mt-10 group-hover:gap-8">
+      <div className={`relative flex items-center justify-center gap-12 mt-10 group-hover:gap-8 ${section1Active ? "!gap-8" : ""}`}>
         <img
           src="/assets/images/line1.svg"
           alt="feature"
@@ -201,7 +232,9 @@ const AimlServices = () => {
           <img
             src="/assets/images/feature1.svg"
             alt="feature"
-            className="transition-all duration-300 group-hover:filter group-hover:sepia group-hover:saturate-150 group-hover:brightness-110 object-contain"
+            className={`transition-all duration-300 group-hover:filter group-hover:sepia group-hover:saturate-150 group-hover:brightness-110 object-contain ${
+              section1Active ? "filter sepia saturate-150 brightness-110" : ""
+            }`}
           />
         </div>
 
@@ -212,7 +245,7 @@ const AimlServices = () => {
         />
       </div>
 
-      <p className="text-gray-400 text-left mt-12 text-base transition-all duration-300 transform group-hover:text-xl group-hover:mt-6  md:text-left ">
+      <p className={`text-gray-400 text-left mt-12 text-base transition-all duration-300 transform group-hover:text-xl group-hover:mt-6  md:text-left ${section1Active ? "!text-xl !mt-6" : ""}`}>
         Unlike traditional AI platforms, our AI/ML solutions don’t
         require extensive technical expertise. Designed for a seamless plug-and-play experience, our platform empowers businesses to harness
         the capabilities of Artificial Intelligence and Machine Learning
@@ -221,7 +254,7 @@ const AimlServices = () => {
     </div>
 
     {/* Section 2 */}
-    <div className="flex flex-col items-center relative group mt-12 lg:h-96">
+    <div ref={section2Ref} className="flex flex-col items-center relative group mt-12 lg:h-96">
       {/* SVG Image Positioned at the Top-Right of Heading */}
       <img
         src="/assets/images/SVG (2).svg"
@@ -229,11 +262,11 @@ const AimlServices = () => {
         className="absolute top-[-80px] md:top-[-100px] left-[35px] w-[55.39px] h-[48.18px]"
       />
       {/* Heading */}
-      <h2 className="text-xl text-[22.5px] mb-4 relative transition-all duration-300 transform group-hover:text-[32px] text-center md:text-left">
+      <h2 className={`text-xl text-[22.5px] mb-4 relative transition-all duration-300 transform group-hover:text-[32px] text-center md:text-left ${section2Active ? "!text-[32px]" : ""}`}>
         Automating Processes
       </h2>
 
-      <div className="relative flex items-center justify-center gap-12 mt-10 group-hover:gap-8">
+      <div className={`relative flex items-center justify-center gap-12 mt-10 group-hover:gap-8 ${section2Active ? "!gap-8" : ""}`}>
         <img
           src="/assets/images/line1.svg"
           alt="feature"
@@ -244,7 +277,9 @@ const AimlServices = () => {
           <img
             src="/assets/images/feature2.svg"
             alt="feature"
-            className="transition-all duration-300 group-hover:filter group-hover:sepia group-hover:saturate-150 group-hover:brightness-110 object-contain"
+            className={`transition-all duration-300 group-hover:filter group-hover:sepia group-hover:saturate-150 group-hover:brightness-110 object-contain ${
+              section2Active ? "filter sepia saturate-150 brightness-110" : ""
+            }`}
           />
         </div>
 
@@ -255,7 +290,7 @@ const AimlServices = () => {
         />
       </div>
 
-      <p className="text-gray-400 text-left mt-12 text-base transition-all duration-300 transform group-hover:text-xl group-hover:mt-6  md:text-left">
+      <p className={`text-gray-400 text-left mt-12 text-base transition-all duration-300 transform group-hover:text-xl group-hover:mt-6  md:text-left ${section2Active ? "!text-xl !mt-6" : ""}`}>
         From automating processes to making data-driven decisions, our solutions cater to users of all skill levels,
         enabling them to unlock valuable insights and transform
         their operations with minimal effort. Embrace innovation

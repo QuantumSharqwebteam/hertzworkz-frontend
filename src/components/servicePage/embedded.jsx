@@ -1,7 +1,22 @@
+import { useRef } from "react";
 import Embedded  from "/assets/images/emb.svg";
+import { useScrollActiveOnMobile } from "../../hooks/useScrollActiveOnMobile";
 
 const EmbeddedSystems = () => {
-
+  // One ref/active state per card below (static JSX, not a .map(), so these
+  // can be called directly here) - mirrors each card's hover border/scale
+  // and its "+" -> "x" icon swap on a touch/mobile viewport once it scrolls
+  // into view. See useScrollActiveOnMobile; desktop/pointer devices are
+  // untouched, since `active` only ever becomes true on a real no-hover
+  // viewport.
+  const card1Ref = useRef(null);
+  const card1Active = useScrollActiveOnMobile(card1Ref);
+  const card2Ref = useRef(null);
+  const card2Active = useScrollActiveOnMobile(card2Ref);
+  const card3Ref = useRef(null);
+  const card3Active = useScrollActiveOnMobile(card3Ref);
+  const card4Ref = useRef(null);
+  const card4Active = useScrollActiveOnMobile(card4Ref);
 
   const HorizontalLine = () => {
     return (
@@ -33,7 +48,13 @@ const EmbeddedSystems = () => {
   <div data-aos="fade-left" class="flex ">
 
     <div className="max-h-screen">
-    <div data-aos="fade-right"  class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-auto mx-auto md:w-4/5 mb-4">
+    <div
+      ref={card1Ref}
+      data-aos="fade-right"
+      class={`group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-auto mx-auto md:w-4/5 mb-4 ${
+        card1Active ? "!border-[#fe5d26] scale-105" : ""
+      }`}
+    >
       <div>
         <div class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
           <img src="/assets/images/emb1.svg" alt="Custom Development" class="w-[40px] h-[40px]" />
@@ -44,15 +65,25 @@ const EmbeddedSystems = () => {
         </p>
       </div>
       <div class="mt-4 flex justify-end">
-        <div class="w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300">
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] group-hover:hidden" />
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block" />
+        <div
+          class={`w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300 ${
+            card1Active ? "!bg-white" : ""
+          }`}
+        >
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] group-hover:hidden ${card1Active ? "hidden" : ""}`} />
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block ${card1Active ? "!block" : ""}`} />
           </div>
       </div>
     </div>
 
     
-    <div data-aos="fade-right" class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between md:w-4/5 mx-auto overflow-hidden ">
+    <div
+      ref={card2Ref}
+      data-aos="fade-right"
+      class={`group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between md:w-4/5 mx-auto overflow-hidden ${
+        card2Active ? "!border-[#fe5d26] scale-105" : ""
+      }`}
+    >
       <div>
         <div class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
           <img src="/assets/images/emb2.svg" alt="Firmware Design" class="w-[40px] h-[40px]" />
@@ -63,9 +94,13 @@ const EmbeddedSystems = () => {
         </p>
       </div>
       <div class="mt-4 flex justify-end">
-        <div class="w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300">
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] group-hover:hidden" />
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block" />
+        <div
+          class={`w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300 ${
+            card2Active ? "!bg-white" : ""
+          }`}
+        >
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] group-hover:hidden ${card2Active ? "hidden" : ""}`} />
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block ${card2Active ? "!block" : ""}`} />
           </div>
       </div>
     </div>
@@ -77,7 +112,13 @@ const EmbeddedSystems = () => {
 
 
    <div className="">
-    <div data-aos="fade-right" class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-auto lg:mx-auto md:w-4/5 mb-4 ml-2" >
+    <div
+      ref={card3Ref}
+      data-aos="fade-right"
+      class={`group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6 flex flex-col justify-between h-auto lg:mx-auto md:w-4/5 mb-4 ml-2 ${
+        card3Active ? "!border-[#fe5d26] scale-105" : ""
+      }`}
+    >
       <div>
         <div class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
           <img src="/assets/images/emb3.svg" alt="IoT Solutions" class="w-[40px] h-[40px]" />
@@ -88,15 +129,25 @@ const EmbeddedSystems = () => {
         </p>
       </div>
       <div class="mt-4 flex justify-end">
-        <div class="w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300">
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] group-hover:hidden" />
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block" />
+        <div
+          class={`w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300 ${
+            card3Active ? "!bg-white" : ""
+          }`}
+        >
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] group-hover:hidden ${card3Active ? "hidden" : ""}`} />
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block ${card3Active ? "!block" : ""}`} />
           </div>
       </div>
     </div>
 
     
-    <div data-aos="fade-right" class="group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6  flex flex-col justify-between md:w-4/5 ml-2 lg:mx-auto ">
+    <div
+      ref={card4Ref}
+      data-aos="fade-right"
+      class={`group border border-gray-700 hover:border-[#fe5d26] hover:scale-105 transition-transform duration-300 rounded-lg p-6  flex flex-col justify-between md:w-4/5 ml-2 lg:mx-auto ${
+        card4Active ? "!border-[#fe5d26] scale-105" : ""
+      }`}
+    >
       <div>
         <div class="flex items-center justify-center w-12 h-12 bg-black rounded-md mb-4">
           <img src="/assets/images/emb4.svg" alt="Testing and Optimization" class="w-[40px] h-[40px]" />
@@ -107,9 +158,13 @@ const EmbeddedSystems = () => {
         </p>
       </div>
       <div class="mt-4 flex justify-end">
-        <div class="w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300">
-          <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] group-hover:hidden" />
-            <img src="/assets/images/cross.svg" alt="Add Icon" class="w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block" />
+        <div
+          class={`w-[36px] h-[36px] flex items-center justify-center bg-[#fe5d26] group-hover:bg-white text-black rounded-full transition-colors duration-300 ${
+            card4Active ? "!bg-white" : ""
+          }`}
+        >
+          <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] group-hover:hidden ${card4Active ? "hidden" : ""}`} />
+            <img src="/assets/images/cross.svg" alt="Add Icon" class={`w-[15px] h-[15px] rotate-[45deg] hidden group-hover:block ${card4Active ? "!block" : ""}`} />
         </div>
       </div>
     </div>
