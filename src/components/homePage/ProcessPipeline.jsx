@@ -32,15 +32,21 @@ const cardAnim = (inView) => `${cardBase} ${inView ? "animate-card-up motion-red
 
 const ringAnim = (inView) => `motion-reduce:opacity-100 ${inView ? "animate-ring-sequence motion-reduce:animate-none" : "opacity-0"}`;
 
-// Scroll-position hook: flips to true once ~15% of the viewport height is
-// covered by the section, then stops listening (plays once per visit).
-// Checks directly in the scroll handler, no requestAnimationFrame throttle -
-// rAF can be delayed/skipped (backgrounded tabs, battery saver, etc.), which
-// could cause this to never fire even when clearly scrolled into view. The
-// check is one cheap getBoundingClientRect call, so there's no real cost to
-// running it on every scroll event directly. (Previously used
-// IntersectionObserver, which proved unreliable, missing the crossing on
-// some real scroll patterns - matches the pattern ApproachMerge.jsx uses.)
+// Scroll-position hook: flips to true once ~15% of the element is covered by
+// the viewport, then stops listening (plays once per visit). Used both for
+// the whole desktop/funnel graph (a tall container, so 15% of it is always
+// capped at 15% of the viewport - same threshold this hook has always used)
+// and for each individual mobile step (a short element, where 15% of the
+// viewport would rarely fit inside such a small card at all - this is why
+// the threshold is relative to min(viewport, element) height rather than a
+// flat 15% of the viewport). Checks directly in the scroll handler, no
+// requestAnimationFrame throttle - rAF can be delayed/skipped (backgrounded
+// tabs, battery saver, etc.), which could cause this to never fire even
+// when clearly scrolled into view. The check is one cheap
+// getBoundingClientRect call, so there's no real cost to running it on
+// every scroll event directly. (Previously used IntersectionObserver, which
+// proved unreliable, missing the crossing on some real scroll patterns -
+// matches the pattern ApproachMerge.jsx uses.)
 function useInViewOnce(ref) {
   const [inView, setInView] = useState(false);
   useEffect(() => {
@@ -51,7 +57,8 @@ function useInViewOnce(ref) {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
       const visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
-      if (visible > vh * 0.15) setInView(true);
+      const threshold = Math.min(vh, rect.height) * 0.15;
+      if (visible > threshold) setInView(true);
     };
     check();
     window.addEventListener("scroll", check, { passive: true });
@@ -281,7 +288,48 @@ function Desktop({ inView }) {
   );
 }
 
+// Each mobile step (and the hub) tracks its own scroll-into-view state via
+// its own ref, instead of sharing the section-level `inView` - so a step
+// animates in exactly when it individually scrolls into the viewport, not
+// all at once when the section first appears. Same proven scroll-check
+// hook as the shared one, just one instance per step. No per-item
+// animationDelay here (unlike the desktop cards): the stagger there exists
+// because every desktop card reveals at the same instant off one shared
+// trigger, but each mobile step already has its own trigger moment, so an
+// extra delay would just lag the animation behind the step actually
+// entering the viewport.
+function MobileHub() {
+  const ref = useRef(null);
+  const inView = useInViewOnce(ref);
+  return (
+    <li ref={ref} aria-hidden="true" className="relative">
+      <Hub className="h-20 w-20" delayMs={0} inView={inView} />
+    </li>
+  );
+}
+
+function MobileStep({ kind }) {
+  const ref = useRef(null);
+  const inView = useInViewOnce(ref);
+  return (
+    <li ref={ref} className={`relative flex flex-col items-center gap-3 bg-ink py-1 text-center ${cardAnim(inView)}`}>
+      {kind === "launch" ? (
+        <div className="rounded-[2.5rem] border border-lightOrange p-4 shadow-[0_0_30px_rgba(254,93,38,0.45)]">
+          <GlassCard kind={kind} className="h-24 w-48 bg-ink" />
+        </div>
+      ) : (
+        <GlassCard kind={kind} className="h-20 w-40 bg-ink" />
+      )}
+      <Badge>{STAGES[kind].label}</Badge>
+      <p className="max-w-[16rem] text-sm leading-snug text-gray-300">{STAGES[kind].caption}</p>
+    </li>
+  );
+}
+
 // Below lg: small funnel SVG, then one stage per row joined by a vertical wire.
+// The funnel SVG is a single decorative graphic, so it stays tied to the
+// shared section-level `inView` (plays once as the section appears); only
+// the step list below it animates per-item.
 function Mobile({ inView }) {
   const order = ["ideas", "plan", "hub", "design", "build", "launch"];
   return (
@@ -308,30 +356,7 @@ function Mobile({ inView }) {
       </svg>
       <ol className="relative flex flex-col items-center gap-10 pt-2">
         <span aria-hidden="true" className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/30" />
-        {order.map((k, i) => {
-          const delayMs = CARD_DELAY_MS + i * CARD_STAGGER_MS;
-          return k === "hub" ? (
-            <li key={k} aria-hidden="true" className="relative">
-              <Hub className="h-20 w-20" delayMs={delayMs} inView={inView} />
-            </li>
-          ) : (
-            <li
-              key={k}
-              style={delayStyle(delayMs)}
-              className={`relative flex flex-col items-center gap-3 bg-ink py-1 text-center ${cardAnim(inView)}`}
-            >
-              {k === "launch" ? (
-                <div className="rounded-[2.5rem] border border-lightOrange p-4 shadow-[0_0_30px_rgba(254,93,38,0.45)]">
-                  <GlassCard kind={k} className="h-24 w-48 bg-ink" />
-                </div>
-              ) : (
-                <GlassCard kind={k} className="h-20 w-40 bg-ink" />
-              )}
-              <Badge>{STAGES[k].label}</Badge>
-              <p className="max-w-[16rem] text-sm leading-snug text-gray-300">{STAGES[k].caption}</p>
-            </li>
-          );
-        })}
+        {order.map((k) => (k === "hub" ? <MobileHub key={k} /> : <MobileStep key={k} kind={k} />))}
       </ol>
     </div>
   );
