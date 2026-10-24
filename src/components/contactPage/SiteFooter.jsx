@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+
+// Twitter and Privacy Policy/Terms of Service have no real destination yet (no account
+// URL, no /privacy-policy or /terms-of-service route), so they stay as non-navigating
+// placeholders until those destinations exist. LinkedIn and Instagram are real.
 import Logo from "../Logo";
 import services from "../servicePage/servicesData";
 
@@ -77,14 +81,47 @@ export default function SiteFooter({ contactMobile = false }) {
         </div>
         <div className="mt-4 border-b border-white/20 pb-4"><p className="text-xs font-semibold uppercase">Follow us</p><div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-gray-400">
           <a href="https://www.linkedin.com/company/hertzworkz-private-limited/" target="_blank" rel="noreferrer" className="flex items-center gap-2"><span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/5 text-white"><FaLinkedinIn /></span>LinkedIn</a>
-          <a href="#" className="flex items-center gap-2"><span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/5 text-white"><FaInstagram /></span>Instagram</a>
+          <a href="https://www.instagram.com/hertzworkz/" target="_blank" rel="noreferrer" className="flex items-center gap-2"><span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/5 text-white"><FaInstagram /></span>Instagram</a>
           <a href="#" className="flex items-center gap-2"><span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/5 text-white"><FaXTwitter /></span>Twitter / X</a>
         </div></div>
       </div>}
 
-      <p className={`mx-auto mt-12 max-w-6xl border-t border-white/10 pt-6 text-center text-xs text-gray-500 ${contactMobile ? "max-md:hidden" : ""}`}>
-        © {new Date().getFullYear()} Hertzworkz. All rights reserved.
-      </p>
+      <div className={`mx-auto mt-12 max-w-6xl border-t border-white/10 pt-6 ${contactMobile ? "max-md:hidden" : ""}`}>
+        <div className="flex flex-col items-center justify-between gap-4 text-xs text-gray-500 sm:flex-row">
+          <div className="flex items-center gap-3">
+            <span>Follow us</span>
+            <a
+              href="https://www.linkedin.com/company/hertzworkz-private-limited/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+            >
+              <FaLinkedinIn aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.instagram.com/hertzworkz/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+            >
+              <FaInstagram aria-hidden="true" />
+            </a>
+            <a href="#" aria-label="Twitter" className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
+              <FaXTwitter aria-hidden="true" />
+            </a>
+          </div>
+
+          <p className="order-first sm:order-none">© {new Date().getFullYear()} Hertzworkz. All rights reserved.</p>
+
+          <div className="flex items-center gap-3">
+            <a href="#" className="hover:text-white">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" className="hover:text-white">Terms of Service</a>
+          </div>
+        </div>
+      </div>
       {contactMobile && <div className="mx-auto hidden max-w-6xl items-center justify-between border-t border-white/10 pt-4 text-[10px] text-gray-500 max-md:flex"><span>© {new Date().getFullYear()} Hertzworkz. All rights reserved.</span><span className="flex gap-3"><a href="#">Privacy Policy</a><a href="#">Terms of Services</a></span></div>}
     </footer>
   );

@@ -1,6 +1,6 @@
 import DesignServices from '../servicePage/designServices';
 import Navbar from "../navbar"
-import ContactFooter from '../contactPage/contactFooter';
+import SiteFooter from '../contactPage/SiteFooter';
 
 export default function WebDesign() {
   const HorizontalLine = () => {
@@ -63,7 +63,7 @@ export default function WebDesign() {
         {/* Additional Components */}
         <DesignServices />
         </section>
-        <ContactFooter />
+        <SiteFooter />
       
     </>
   );

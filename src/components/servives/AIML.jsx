@@ -5,7 +5,7 @@ import EmbeddedSystems from '../servicePage/embedded';
 import BlockChain from '../servicePage/blockChain'
 import OurStory from '../servicePage/ourStory';
 import DesignStages from '../servicePage/Applicationdesignstages';
-import ContactFooter from '../contactPage/contactFooter';
+import SiteFooter from '../contactPage/SiteFooter';
 
 export default function AiMl() {
   const HorizontalLine = () => {
@@ -32,7 +32,7 @@ export default function AiMl() {
         </section>
         
         
-        <ContactFooter />
+        <SiteFooter />
       
     </>
   );
