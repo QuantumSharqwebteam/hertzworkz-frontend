@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types -- repo has no prop-types dependency; LogoBox is file-local */
+/* eslint-disable react/prop-types -- repo has no prop-types dependency; LogoBox/MarqueeRow are file-local */
 
 // Each logo sits in a fixed-size box so a missing file never shifts the layout.
 const CLIENT_LOGOS = [
@@ -21,10 +21,29 @@ const SUPPORTER_LOGOS = [
   { src: "/assets/images/supporters/gov-emblem.png", alt: "Government of India" },
 ];
 
-function LogoBox({ src, alt }) {
+function LogoBox({ src, alt, hidden = false }) {
   return (
-    <div className="flex h-14 w-32 shrink-0 items-center justify-center sm:w-36">
-      <img src={src} alt={alt} className="max-h-12 max-w-full object-contain" />
+    <div aria-hidden={hidden || undefined} className="flex h-14 w-32 shrink-0 items-center justify-center sm:w-36">
+      <img src={src} alt={hidden ? "" : alt} className="max-h-12 max-w-full object-contain" />
+    </div>
+  );
+}
+
+// Renders the logo list twice back-to-back so animate-marquee can shift exactly
+// -50% and loop seamlessly; the duplicate copy is aria-hidden to avoid double
+// announcing the same logos to screen readers. motion-reduce freezes the track,
+// leaving the first (non-hidden) copy visible as a static, readable row.
+function MarqueeRow({ logos }) {
+  return (
+    <div className="mt-10 overflow-hidden">
+      <div className="flex w-max animate-marquee items-center gap-x-10 motion-reduce:animate-none hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
+        {logos.map((logo) => (
+          <LogoBox key={logo.alt} src={logo.src} alt={logo.alt} />
+        ))}
+        {logos.map((logo) => (
+          <LogoBox key={`${logo.alt}-dup`} src={logo.src} alt={logo.alt} hidden />
+        ))}
+      </div>
     </div>
   );
 }
@@ -36,11 +55,7 @@ export default function PartnersAndSupporters() {
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
           Trusted by leading industry partners in
         </h2>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 overflow-x-auto">
-          {CLIENT_LOGOS.map((logo) => (
-            <LogoBox key={logo.alt} src={logo.src} alt={logo.alt} />
-          ))}
-        </div>
+        <MarqueeRow logos={CLIENT_LOGOS} />
       </div>
 
       {/* Figma (node 5233:16746) leaves ~517px of empty space here on desktop, so the
@@ -49,11 +64,7 @@ export default function PartnersAndSupporters() {
           between the two logo rows instead of fading behind empty space. */}
       <div className="mx-auto mt-16 max-w-6xl sm:mt-28 lg:mt-[32rem]">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">Supported &amp; Recognized By</h2>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 overflow-x-auto">
-          {SUPPORTER_LOGOS.map((logo) => (
-            <LogoBox key={logo.alt} src={logo.src} alt={logo.alt} />
-          ))}
-        </div>
+        <MarqueeRow logos={SUPPORTER_LOGOS} />
       </div>
     </section>
   );

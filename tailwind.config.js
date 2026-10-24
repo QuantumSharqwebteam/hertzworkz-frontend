@@ -106,6 +106,12 @@ export default {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.4' },
         },
+        // Track renders the logo list twice back-to-back; shifting exactly -50% moves
+        // past one full set, so the loop restarts with no visible seam.
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'sphere-pulse': 'sphere-pulse 10s ease-in-out infinite',
@@ -118,6 +124,7 @@ export default {
         'ring-in': 'ring-in 600ms ease-out both',
         'ring-pulse': 'ring-pulse 4s ease-in-out infinite',
         'ring-sequence': 'ring-in 600ms ease-out 900ms both, ring-pulse 4s ease-in-out 1500ms infinite',
+        marquee: 'marquee 30s linear infinite',
       },
     },
   },
