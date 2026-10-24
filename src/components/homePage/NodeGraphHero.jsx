@@ -206,6 +206,7 @@ export default function NodeGraphHero() {
 
   return (
     <section
+      id="node-graph"
       aria-labelledby="graph-heading"
       className="relative min-h-screen w-full overflow-hidden bg-white font-manrope"
     >

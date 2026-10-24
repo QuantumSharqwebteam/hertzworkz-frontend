@@ -1,34 +1,19 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
 /**
- * Full-screen intro. Calls `onGetStarted` exactly once: after AUTO_DELAY_MS, or immediately
- * when the CTA is clicked, whichever comes first. The parent owns the view swap and fade.
+ * Permanent hero section at the top of the homepage.
  * - `data-hero-step` marks this screen for future observers.
  * - `id` is the anchor for this section.
+ * - "Get Started" smoothly scrolls to the section right below the hero.
  */
-const AUTO_DELAY_MS = 6000;
 
 // Props are plain JS (no prop-types dependency), so skip the prop-types rule here.
 // eslint-disable-next-line react/prop-types
-export default function Hero({ id = "hero", onGetStarted, step = "hero" }) {
-  const hasTransitioned = useRef(false);
-  const timer = useRef(null);
-  // Latest callback lives in a ref so `transition` stays stable and the effect never re-arms the timer.
-  const latest = useRef(onGetStarted);
-  latest.current = onGetStarted;
-
-  const transition = useCallback(() => {
-    if (hasTransitioned.current) return;
-    hasTransitioned.current = true;
-    clearTimeout(timer.current);
-    if (latest.current) latest.current();
+export default function Hero({ id = "hero", step = "hero" }) {
+  const scrollToNext = useCallback(() => {
+    document.getElementById("node-graph")?.scrollIntoView({ behavior: "smooth" });
   }, []);
-
-  useEffect(() => {
-    timer.current = setTimeout(transition, AUTO_DELAY_MS);
-    return () => clearTimeout(timer.current);
-  }, [transition]);
 
   return (
     <main>
@@ -54,7 +39,7 @@ export default function Hero({ id = "hero", onGetStarted, step = "hero" }) {
             </p>
             <button
               type="button"
-              onClick={transition}
+              onClick={scrollToNext}
               className="group relative mt-8 inline-flex items-center gap-3 overflow-hidden rounded-full bg-brand-gradient py-1.5 pl-6 pr-1.5 text-lg font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               {/* Crossfades to the hover gradient instead of just dimming, matching the reference animation */}
