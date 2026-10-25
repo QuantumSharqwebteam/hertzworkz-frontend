@@ -11,18 +11,19 @@ const CENTER_INDEX = 4;
 const IDLE_HEIGHT_MULTIPLIER = 1.6; // idle pill height = W * this
 // Final burst height per pill (as a multiple of W), left to right.
 const FINAL_HEIGHT_MULTIPLIERS = [1.8, 4, 8.5, 6.3, 1.7, 4.2, 7.3, 3.7, 1.7];
-// CSS custom-property names for each pill's color, left to right (orange-red,
-// yellow, green, purple, pink repeat at indices 5-8 per the reference clip).
+// CSS custom-property names for each pill's color, left to right - matches
+// Logo.jsx's bar colors exactly (orange, yellow, green, blue, pink, then
+// orange/yellow/green/blue repeat for the remaining four).
 const PILL_COLOR_VARS = [
   "--pl-orange",
   "--pl-yellow",
   "--pl-green",
-  "--pl-purple",
+  "--pl-blue",
   "--pl-pink",
   "--pl-orange",
   "--pl-yellow",
   "--pl-green",
-  "--pl-purple",
+  "--pl-blue",
 ];
 
 const BURST_STAGGER_MS = 25; // delay per ring outward from the center bar
@@ -82,7 +83,27 @@ export default function Preloader() {
           setTimeout(() => setMounted(false), T_UNMOUNT),
         ];
     timersRef.current = timers;
-    return () => timers.forEach(clearTimeout);
+
+    // Failsafe: if the page loads hidden (a backgrounded tab, or a browser/CDN
+    // prerendering it ahead of activation), these setTimeouts can be throttled
+    // or silently reset by the time the tab is actually shown, leaving the
+    // overlay stuck on screen forever with nothing left to unmount it. Catch
+    // up instantly the moment the tab becomes visible if we're already past
+    // when this should have finished.
+    const mountedAt = performance.now();
+    const totalDurationMs = reducedMotion ? REDUCED_HOLD_MS + REDUCED_EXIT_MS : T_UNMOUNT;
+    const catchUpIfOverdue = () => {
+      if (document.visibilityState === "visible" && performance.now() - mountedAt >= totalDurationMs) {
+        setIsVisible(false);
+        setMounted(false);
+      }
+    };
+    document.addEventListener("visibilitychange", catchUpIfOverdue);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      document.removeEventListener("visibilitychange", catchUpIfOverdue);
+    };
   }, [reducedMotion]);
 
   if (!mounted) return null;
@@ -94,7 +115,7 @@ export default function Preloader() {
         "--pl-orange": "#ff5a1f",
         "--pl-yellow": "#f5c518",
         "--pl-green": "#4caf50",
-        "--pl-purple": "#7c5ce0",
+        "--pl-blue": "#4280EF",
         "--pl-pink": "#e0307a",
         "--pl-brand-orange": "#ff7a00",
         "--pl-w": "clamp(12px, 1.3vw, 22px)",
