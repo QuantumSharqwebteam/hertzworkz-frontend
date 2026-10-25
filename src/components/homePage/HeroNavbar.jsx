@@ -38,7 +38,7 @@ export default function HeroNavbar({ onLight = false }) {
             <Logo barsClassName="h-2 w-auto" textClassName="h-3.5 w-auto" />
           </Link>
 
-          <ul className="hidden md:flex items-center gap-5 lg:gap-8">
+          <ul className="hidden items-center gap-5 lg:flex lg:gap-8">
             {links.map((item) => {
               const active = isLinkActive(pathname, item.to);
               return (
@@ -46,7 +46,7 @@ export default function HeroNavbar({ onLight = false }) {
                   <Link
                     to={item.to}
                     aria-current={active ? "page" : undefined}
-                    className={`nav-link inline-block rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing} ${active ? "is-active text-white" : "text-gray-300"}`}
+                    className={`nav-link inline-block whitespace-nowrap rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing} ${active ? "is-active text-white" : "text-gray-300"}`}
                   >
                     {item.label}
                   </Link>
@@ -58,14 +58,14 @@ export default function HeroNavbar({ onLight = false }) {
           <Link
             to="/contact"
             aria-current={contactActive ? "page" : undefined}
-            className={`hidden md:inline-block rounded-full bg-gradient-to-r from-[color:var(--accent-start)] to-[color:var(--accent-end)] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:text-[11px] ${focusRing}`}
+            className={`hidden whitespace-nowrap rounded-full bg-gradient-to-r from-[color:var(--accent-start)] to-[color:var(--accent-end)] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:text-[11px] lg:inline-block ${focusRing}`}
           >
             Contact Us
           </Link>
 
           <button
             type="button"
-            className={`md:hidden rounded-full p-2 text-white ${focusRing}`}
+            className={`rounded-full p-2 text-white lg:hidden ${focusRing}`}
             aria-expanded={open}
             aria-controls="hero-mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -84,7 +84,7 @@ export default function HeroNavbar({ onLight = false }) {
 
         <ul
           id="hero-mobile-menu"
-          className={`${open ? "flex" : "hidden"} md:hidden absolute left-0 right-0 top-full mt-2 flex-col gap-1 rounded-3xl border border-white/20 bg-ink/90 p-4 backdrop-blur-md`}
+          className={`${open ? "flex" : "hidden"} absolute left-0 right-0 top-full mt-2 flex-col gap-1 rounded-3xl border border-white/20 bg-ink/90 p-4 backdrop-blur-md lg:hidden`}
         >
           {links.map((item) => {
             const active = isLinkActive(pathname, item.to);
