@@ -179,38 +179,22 @@ const SCATTER_SLOTS = [
   { left: 357, top: 640, size: "h-20 w-20" },
 ];
 
-// Filter-style tabs shown right below the hero. Visual-only tab selection (no labeled
-// tab maps cleanly to a circle below - "Texture" vs "Textura" - so clicking just
-// highlights, it doesn't filter the showcase).
+// Filter-style pills shown right below the hero. Purely decorative - static
+// labels, all shown identically, nothing is clickable or hoverable, and none
+// of it filters the showcase.
 const TABS = ["Texture", "Madi App", "Vitalyolk App", "Safe Nest"];
 
 function ProductTabs() {
-  const [active, setActive] = useState(TABS[0]);
   return (
-    <div
-      role="tablist"
-      aria-label="Products"
-      className="grid grid-cols-2 place-items-center gap-4 px-6 py-16 sm:flex sm:flex-wrap sm:justify-center sm:px-12"
-    >
-      {TABS.map((tab) => {
-        const isActive = tab === active;
-        return (
-          <button
-            key={tab}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            onClick={() => setActive(tab)}
-            className={`w-full rounded-full px-8 py-3 text-base font-medium shadow-[0_8px_24px_rgba(255,255,255,0.12)] transition-colors sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
-              isActive
-                ? "border-2 border-lightOrange bg-white text-lightOrange"
-                : "border-2 border-transparent bg-white text-gray-700 hover:border-lightOrange/40"
-            }`}
-          >
-            {tab}
-          </button>
-        );
-      })}
+    <div className="grid grid-cols-2 place-items-center gap-4 px-6 py-16 sm:flex sm:flex-wrap sm:justify-center sm:px-12">
+      {TABS.map((tab) => (
+        <span
+          key={tab}
+          className="w-full rounded-full border-2 border-transparent bg-white px-8 py-3 text-base font-medium text-gray-700 shadow-[0_8px_24px_rgba(255,255,255,0.12)] sm:w-auto"
+        >
+          {tab}
+        </span>
+      ))}
     </div>
   );
 }
