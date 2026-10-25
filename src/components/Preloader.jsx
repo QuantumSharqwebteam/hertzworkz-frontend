@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 // Full-screen page-load intro: 9 idle "dot" pills reveal, hold, burst upward into a
 // waveform while the "HertzworkZ" wordmark fades in, hold again, then the whole
 // overlay crossfades out and unmounts. Mounted once at the app root (see App.jsx) -
-// not per-route - so it plays once per full page load only.
+// not per-route - so it plays once per full page load by default, and can be
+// replayed on demand by dispatching `PRELOADER_REPLAY_EVENT`.
 //
 // All durations/sizes are named constants so the timeline is easy to retune.
 const PILL_COUNT = 9;
@@ -39,6 +40,10 @@ const T_UNMOUNT = 2300; // exit fade duration ~300ms
 const REDUCED_HOLD_MS = 700;
 const REDUCED_EXIT_MS = 300;
 
+// Dispatch this on `window` (e.g. from a logo click) to replay the intro
+// animation from the top, even after it has already finished once.
+export const PRELOADER_REPLAY_EVENT = "preloader:replay";
+
 export default function Preloader() {
   // Read synchronously (matchMedia is available immediately) so there's no flash
   // of full-motion behavior before switching to the reduced variant.
@@ -48,7 +53,22 @@ export default function Preloader() {
   const [isVisible, setIsVisible] = useState(false); // drives the overlay's single fade-in/out transition
   const [burst, setBurst] = useState(reducedMotion); // pills at final height + wordmark shown
   const [mounted, setMounted] = useState(true);
+  const [runId, setRunId] = useState(0); // bumped on each replay to rerun the fade-in/timeline effects below
   const timersRef = useRef([]);
+
+  // Let anything in the app (e.g. the navbar logo) restart the intro from the
+  // top, even after it already finished once and unmounted itself.
+  useEffect(() => {
+    const replay = () => {
+      timersRef.current.forEach(clearTimeout);
+      setMounted(true);
+      setIsVisible(false);
+      setBurst(reducedMotion);
+      setRunId((id) => id + 1);
+    };
+    window.addEventListener(PRELOADER_REPLAY_EVENT, replay);
+    return () => window.removeEventListener(PRELOADER_REPLAY_EVENT, replay);
+  }, [reducedMotion]);
 
   // Lock page scroll for as long as the overlay is actually visible (`mounted`, not
   // just the enclosing component instance - that never truly unmounts, it just
@@ -69,7 +89,7 @@ export default function Preloader() {
   useEffect(() => {
     const raf = requestAnimationFrame(() => setIsVisible(true));
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [runId]);
 
   useEffect(() => {
     const timers = reducedMotion
@@ -104,7 +124,7 @@ export default function Preloader() {
       timers.forEach(clearTimeout);
       document.removeEventListener("visibilitychange", catchUpIfOverdue);
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, runId]);
 
   if (!mounted) return null;
 
@@ -125,25 +145,20 @@ export default function Preloader() {
       }`}
     >
       <div className="flex origin-center scale-[0.6] flex-col items-center sm:scale-100">
-        <div
-          className="flex items-center justify-center"
-          style={{ gap: "calc(var(--pl-w) * 1.2)" }}
-        >
+        <div className="flex items-center justify-center" style={{ gap: "calc(var(--pl-w) * 1.2)" }}>
           {Array.from({ length: PILL_COUNT }, (_, i) => {
             const distanceFromCenter = Math.abs(i - CENTER_INDEX);
-            const scale = burst ? FINAL_HEIGHT_MULTIPLIERS[i] / IDLE_HEIGHT_MULTIPLIER : 1;
+            const multiplier = burst ? FINAL_HEIGHT_MULTIPLIERS[i] : IDLE_HEIGHT_MULTIPLIER;
             return (
               <span
                 key={i}
                 style={{
                   width: "var(--pl-w)",
-                  height: "calc(var(--pl-w) * 1.6)",
+                  height: `calc(var(--pl-w) * ${multiplier})`,
                   backgroundColor: `var(${PILL_COLOR_VARS[i]})`,
-                  transform: `scaleY(${scale})`,
-                  transformOrigin: "center",
                   transition: reducedMotion
                     ? "none"
-                    : `transform ${BURST_DURATION_MS}ms ease-out ${distanceFromCenter * BURST_STAGGER_MS}ms`,
+                    : `height ${BURST_DURATION_MS}ms ease-out ${distanceFromCenter * BURST_STAGGER_MS}ms`,
                   boxShadow: "inset 1px 1px 1.5px rgba(255,255,255,0.45)",
                 }}
                 className="block rounded-full"
@@ -159,7 +174,7 @@ export default function Preloader() {
             transition: reducedMotion ? "opacity 300ms ease-out" : `opacity ${WORDMARK_FADE_MS}ms ease-out, filter ${WORDMARK_FADE_MS}ms ease-out`,
             marginTop: "var(--pl-w)",
           }}
-          className="text-3xl font-bold font-manrope sm:text-4xl"
+          className="text-4xl font-bold font-manrope sm:text-5xl"
         >
           <span style={{ color: "var(--pl-brand-orange)" }}>H</span>
           <span className="text-white">ertzwork</span>

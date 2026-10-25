@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../Logo";
+import { PRELOADER_REPLAY_EVENT } from "../Preloader";
 
 const links = [
   { to: "/", label: "Home" },
@@ -34,7 +35,15 @@ export default function HeroNavbar({ onLight = false }) {
           onLight ? "border-white/[0.12] bg-black/70" : "border-white/20 bg-white/5"
         }`}>
         <nav aria-label="Main" className="flex items-center justify-between gap-4 px-3 py-1.5 sm:px-5">
-          <Link to="/" onClick={close} aria-label="Hertzworkz home" className={`rounded-full ${focusRing}`}>
+          <Link
+            to="/"
+            onClick={() => {
+              close();
+              window.dispatchEvent(new Event(PRELOADER_REPLAY_EVENT));
+            }}
+            aria-label="Hertzworkz home"
+            className={`rounded-full ${focusRing}`}
+          >
             <Logo barsClassName="h-2 w-auto" textClassName="h-3.5 w-auto" />
           </Link>
 
@@ -45,6 +54,9 @@ export default function HeroNavbar({ onLight = false }) {
                 <li key={item.label}>
                   <Link
                     to={item.to}
+                    onClick={() => {
+                      if (item.to === "/" && pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     aria-current={active ? "page" : undefined}
                     className={`nav-link inline-block whitespace-nowrap rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing} ${active ? "is-active text-white" : "text-gray-300"}`}
                   >
@@ -92,7 +104,10 @@ export default function HeroNavbar({ onLight = false }) {
               <li key={item.label}>
                 <Link
                   to={item.to}
-                  onClick={close}
+                  onClick={() => {
+                    close();
+                    if (item.to === "/" && pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   aria-current={active ? "page" : undefined}
                   className={`nav-link block rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white ${focusRing} ${active ? "is-active text-white" : "text-gray-300"}`}
                 >
