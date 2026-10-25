@@ -32,6 +32,9 @@ const CULTURE_ROWS = [
   },
 ];
 
+// Split once per word for the hero heading's word-stagger reveal (see <h1> below).
+const HEADING_WORDS = "Welcome to Hertzworkz, Where Vision Meets Opportunity!".split(" ");
+
 export default function OurTeam() {
   const [opened, setOpened] = useState(false);
   useEffect(() => {
@@ -53,7 +56,18 @@ export default function OurTeam() {
         />
 
         <h1 className="mx-auto mt-8 max-w-3xl text-2xl font-medium leading-snug sm:text-3xl lg:text-[2.2rem]">
-          Welcome to Hertzworkz, Where Vision Meets Opportunity!
+          {HEADING_WORDS.map((word, i) => (
+            <span key={`${word}-${i}`}>
+              <span
+                className={`inline-block transition-[opacity,transform] duration-300 ease-linear motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none ${
+                  opened ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                }`}
+                style={{ transitionDelay: `${i * 45}ms` }}
+              >
+                {word}
+              </span>{" "}
+            </span>
+          ))}
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-lightGray sm:text-base">
           We believe our strength lies in our talented, passionate team. Join us to innovate, collaborate, and shape
