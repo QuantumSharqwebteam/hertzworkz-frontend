@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../Logo";
 
 const links = [
@@ -13,11 +13,20 @@ const links = [
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
 
+// "/" only matches the exact home path; every other link also matches its own
+// nested routes (e.g. "/service/some-slug" keeps "Services" marked active).
+function isLinkActive(pathname, to) {
+  if (to === "/") return pathname === "/";
+  return pathname === to || pathname.startsWith(`${to}/`);
+}
+
 // `onLight` swaps the glass pill for a dark one so it reads on a white page.
 // eslint-disable-next-line react/prop-types
 export default function HeroNavbar({ onLight = false }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const { pathname } = useLocation();
+  const contactActive = pathname === "/contact";
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:pt-6 font-manrope">
@@ -30,20 +39,25 @@ export default function HeroNavbar({ onLight = false }) {
           </Link>
 
           <ul className="hidden md:flex items-center gap-5 lg:gap-8">
-            {links.map((item) => (
-              <li key={item.label}>
-                <Link
-                  to={item.to}
-                  className={`nav-link inline-block rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing}`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {links.map((item) => {
+              const active = isLinkActive(pathname, item.to);
+              return (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    aria-current={active ? "page" : undefined}
+                    className={`nav-link inline-block rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white sm:text-[11px] ${focusRing} ${active ? "is-active text-white" : "text-gray-300"}`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <Link
             to="/contact"
+            aria-current={contactActive ? "page" : undefined}
             className={`hidden md:inline-block rounded-full bg-gradient-to-r from-[color:var(--accent-start)] to-[color:var(--accent-end)] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:text-[11px] ${focusRing}`}
           >
             Contact Us
@@ -72,21 +86,26 @@ export default function HeroNavbar({ onLight = false }) {
           id="hero-mobile-menu"
           className={`${open ? "flex" : "hidden"} md:hidden absolute left-0 right-0 top-full mt-2 flex-col gap-1 rounded-3xl border border-white/20 bg-ink/90 p-4 backdrop-blur-md`}
         >
-          {links.map((item) => (
-            <li key={item.label}>
-              <Link
-                to={item.to}
-                onClick={close}
-                className={`block rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-wider text-gray-300 transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white ${focusRing}`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {links.map((item) => {
+            const active = isLinkActive(pathname, item.to);
+            return (
+              <li key={item.label}>
+                <Link
+                  to={item.to}
+                  onClick={close}
+                  aria-current={active ? "page" : undefined}
+                  className={`nav-link block rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-wider transition-colors duration-[250ms] ease-in-out hover:text-white focus-visible:text-white ${focusRing} ${active ? "is-active text-white" : "text-gray-300"}`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
           <li>
             <Link
               to="/contact"
               onClick={close}
+              aria-current={contactActive ? "page" : undefined}
               className={`mt-2 block rounded-full bg-brand-gradient px-5 py-2 text-center text-sm font-medium uppercase tracking-wider text-white ${focusRing}`}
             >
               Contact Us

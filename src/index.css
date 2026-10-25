@@ -65,7 +65,8 @@
   transition: opacity 0.25s ease-in-out;
 }
 .nav-link:hover::before,
-.nav-link:focus-visible::before {
+.nav-link:focus-visible::before,
+.nav-link.is-active::before {
   opacity: 1;
 }
 
