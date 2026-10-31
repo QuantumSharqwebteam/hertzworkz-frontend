@@ -1,70 +1,56 @@
 import { useEffect, useState } from "react";
 import JobCard from "./JobCard";
+import ApplyModal from "./ApplyModal";
 
-const JOBS_API_URL = import.meta.env.VITE_JOBS_API_URL || "/api/jobs";
+const CAREERS_API_BASE = import.meta.env.VITE_CAREERS_API_BASE_URL || "https://ecg4jls448.execute-api.us-east-1.amazonaws.com";
+const OPENINGS_API_URL = `${CAREERS_API_BASE}/opening/getAll`;
 
-// Icons stay local to the frontend (the API returns an `icon` key, e.g.
-// "ui-design", instead of a React component) - same source files the static
-// jobsData.jsx used to ship, just keyed by name now.
-const ICON_BASE = "/assets/images/career/icons";
-
-function iconComponent(src) {
-  // eslint-disable-next-line react/display-name, react/prop-types -- anonymous icon component named by its call site below; repo has no prop-types dependency
-  return ({ className }) => <img src={src} alt="" aria-hidden="true" className={className} />;
+// The real openings API has no per-role icon (unlike the old hardcoded
+// jobsData.jsx), so every card shares one generic icon.
+// eslint-disable-next-line react/prop-types -- repo has no prop-types dependency
+function GenericIcon({ className }) {
+  return <img src="/assets/images/career/icons/ui-design.svg" alt="" aria-hidden="true" className={className} />;
 }
 
-const DEFAULT_ICON = iconComponent(`${ICON_BASE}/ui-design.svg`);
-const ICON_COMPONENTS = {
-  "ui-design": DEFAULT_ICON,
-  "ux-designer": iconComponent(`${ICON_BASE}/ux-designer.svg`),
-  "design-head": iconComponent(`${ICON_BASE}/design-head.svg`),
-  "frontend-developer": iconComponent(`${ICON_BASE}/frontend-developer.svg`),
-  "backend-developer": iconComponent(`${ICON_BASE}/backend-developer.svg`),
-  "fullstack-developer": iconComponent(`${ICON_BASE}/fullstack-developer.svg`),
-  "ba-manager": iconComponent(`${ICON_BASE}/ba-manager.svg`),
-  "project-manager": iconComponent(`${ICON_BASE}/project-manager.svg`),
-  "hr-manager": iconComponent(`${ICON_BASE}/hr-manager.svg`),
-  "qa-tester": iconComponent(`${ICON_BASE}/qa-tester.svg`),
-  // Figma reuses the "square-dashed-mouse-pointer" icon for SQL/Manual Tester too.
-  "sql-tester": DEFAULT_ICON,
-  "manual-tester": DEFAULT_ICON,
-};
-
-function resolveIcon(key) {
-  return ICON_COMPONENTS[key] || DEFAULT_ICON;
+function formatType(type) {
+  if (!type) return "";
+  return type.charAt(0).toUpperCase() + type.slice(1);
 }
 
-// Groups the flat job list the API returns back into the category sections
-// CurrentOpenings used to get for free from jobsData.jsx's shape, preserving
-// the order categories first appear in.
-function groupByCategory(jobs) {
+// Groups the flat opening list by department, preserving the order
+// departments first appear in - same shape CurrentOpenings used to get for
+// free from the old hardcoded jobsData.jsx's category groups.
+function groupByDepartment(openings) {
   const order = [];
-  const byCategory = new Map();
-  for (const job of jobs) {
-    if (!byCategory.has(job.category)) {
-      order.push(job.category);
-      byCategory.set(job.category, { category: job.category, metaLabel: job.metaLabel, jobs: [] });
+  const byDepartment = new Map();
+  for (const opening of openings) {
+    const department = opening.department || "Other";
+    if (!byDepartment.has(department)) {
+      order.push(department);
+      byDepartment.set(department, []);
     }
-    byCategory.get(job.category).jobs.push(job);
+    byDepartment.get(department).push(opening);
   }
-  return order.map((category) => byCategory.get(category));
+  return order.map(department => ({ department, openings: byDepartment.get(department) }));
 }
 
 export default function CurrentOpenings() {
-  const [jobs, setJobs] = useState(null); // null = loading, [] = loaded but empty
+  const [openings, setOpenings] = useState(null); // null = loading, [] = loaded but empty
   const [error, setError] = useState(false);
+  const [applyingTo, setApplyingTo] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
 
-    fetch(JOBS_API_URL)
-      .then((res) => {
+    fetch(OPENINGS_API_URL)
+      .then(res => {
         if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
         return res.json();
       })
-      .then((body) => {
-        // The backend's sendResponse() puts the payload in `message`, not `data`.
-        if (!cancelled) setJobs(Array.isArray(body.message) ? body.message : []);
+      .then(body => {
+        if (cancelled) return;
+        const all = Array.isArray(body.data) ? body.data : [];
+        setOpenings(all.filter(opening => opening.status === "Active"));
       })
       .catch(() => {
         if (!cancelled) setError(true);
@@ -75,7 +61,7 @@ export default function CurrentOpenings() {
     };
   }, []);
 
-  const categories = jobs ? groupByCategory(jobs) : [];
+  const departments = openings ? groupByDepartment(openings) : [];
 
   return (
     <div className="bg-ink font-manrope text-white">
@@ -93,33 +79,35 @@ export default function CurrentOpenings() {
       </header>
 
       <div className="space-y-16 px-6 pb-24 sm:px-12 lg:px-16">
-        {jobs === null && !error && <p className="text-base text-lightGray">Loading open roles…</p>}
+        {openings === null && !error && <p className="text-base text-lightGray">Loading open roles…</p>}
         {error && <p className="text-base text-lightGray">Couldn&rsquo;t load open roles right now. Please try again later.</p>}
-        {jobs !== null && !error && categories.length === 0 && (
+        {openings !== null && !error && departments.length === 0 && (
           <p className="text-base text-lightGray">No open positions right now. Check back soon.</p>
         )}
 
-        {categories.map(({ category, metaLabel, jobs: categoryJobs }) => (
-          <section key={category} data-aos="fade-up">
+        {departments.map(({ department, openings: deptOpenings }) => (
+          <section key={department} data-aos="fade-up">
             <h3 className="mb-8 text-2xl font-semibold uppercase tracking-wide text-white sm:text-3xl lg:text-[2rem]">
-              {category}
+              {department}
             </h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {categoryJobs.map((job) => (
+              {deptOpenings.map(opening => (
                 <JobCard
-                  key={job.id ?? job.title}
-                  category={metaLabel ?? category}
-                  title={job.title}
-                  description={job.description}
-                  Icon={resolveIcon(job.icon)}
-                  applyHref={job.applyHref}
-                  fast={category === "Design"}
+                  key={opening.openingId}
+                  category={department}
+                  title={opening.title}
+                  description={opening.jobDescription}
+                  Icon={GenericIcon}
+                  meta={[formatType(opening.type), opening.location].filter(Boolean).join(" • ")}
+                  onApply={() => setApplyingTo(opening)}
                 />
               ))}
             </div>
           </section>
         ))}
       </div>
+
+      {applyingTo && <ApplyModal job={applyingTo} onClose={() => setApplyingTo(null)} />}
     </div>
   );
 }
