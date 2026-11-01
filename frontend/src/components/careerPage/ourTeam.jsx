@@ -37,9 +37,13 @@ const HEADING_WORDS = "Welcome to Hertzworkz, Where Vision Meets Opportunity!".s
 
 export default function OurTeam() {
   const [opened, setOpened] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   useEffect(() => {
     const raf = requestAnimationFrame(() => setOpened(true));
     return () => cancelAnimationFrame(raf);
+  }, []);
+  useEffect(() => {
+    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
 
   return (
@@ -85,9 +89,9 @@ export default function OurTeam() {
       <div data-aos="zoom-out" className="mt-16 px-4 pb-20 sm:px-8 lg:px-16">
         <h2 className="text-center text-3xl font-medium text-white sm:text-4xl">Why Work at Hertzworkz?</h2>
 
-        <div className="mt-10 flex flex-col gap-5">
-          {CULTURE_ROWS.map((row) => (
-            <CultureRow key={row.title} {...row} />
+        <div className="mx-auto mt-10 flex w-full max-w-6xl flex-col gap-16 sm:gap-20">
+          {CULTURE_ROWS.map(row => (
+            <CultureRow key={row.title} {...row} reducedMotion={reducedMotion} />
           ))}
         </div>
       </div>
@@ -95,28 +99,27 @@ export default function OurTeam() {
   );
 }
 
+// Same zig-zag text layout as AboutHighlights.jsx (About page) - heading +
+// underline + paragraph, alternating alignment with aos fade-left/fade-right -
+// kept in sync with that component rather than sharing it directly since the
+// two pages' row data/shape differ (title/body here vs heading/description there).
 // eslint-disable-next-line react/prop-types -- repo has no prop-types dependency; CultureRow is file-local
-function CultureRow({ title, body, align }) {
+function CultureRow({ title, body, align, reducedMotion }) {
   const isRight = align === "right";
   return (
-    <div className={`flex ${isRight ? "justify-end" : "justify-start"}`}>
+    <div
+      data-aos={reducedMotion ? undefined : isRight ? "fade-right" : "fade-left"}
+      className={isRight ? "text-left lg:text-right" : "text-left"}
+    >
       <div
-        tabIndex={0}
-        className={`group w-full px-8 py-8 transition-[filter,transform] duration-500 ease-linear hover:brightness-125 hover:scale-[1.015] focus-visible:brightness-125 focus-visible:scale-[1.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lightOrange focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:focus-visible:scale-100 sm:w-5/6 sm:px-12 sm:py-10 ${
-          isRight ? "rounded-l-[2.5rem] text-right" : "rounded-r-[2.5rem] text-left"
-        }`}
-        style={{ background: "linear-gradient(180deg, rgba(141,54,26,0.15) 0%, rgba(168,52,52,0.5) 100%)" }}
+        className={`flex flex-col gap-3 sm:gap-6 lg:flex-row lg:items-center ${isRight ? "lg:flex-row-reverse" : ""}`}
       >
-        <h3
-          className={`flex items-center gap-2 text-xl font-medium text-white sm:text-2xl ${
-            isRight ? "flex-row-reverse" : ""
-          }`}
-        >
-          <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
-          {title}
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-white/90 sm:text-base">{body}</p>
+        <h3 className="text-xl font-bold text-white sm:text-[1.75rem] lg:shrink-0">{title}</h3>
+        <span aria-hidden="true" className="h-px w-16 bg-[color:var(--accent-start)] lg:w-auto lg:flex-1" />
       </div>
+      <p className={`mt-4 max-w-2xl text-base leading-[1.55] text-lightGray ${isRight ? "lg:ml-auto" : ""}`}>
+        {body}
+      </p>
     </div>
   );
 }
