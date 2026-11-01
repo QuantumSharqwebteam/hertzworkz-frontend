@@ -112,15 +112,9 @@ export default {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
-        // One-time hero arc entrance: a full spin that decelerates to a stop, landing
-        // back on rotate(360deg) - visually identical to the resting rotate(0deg) state.
-        'arc-spin-in': {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
-        // Runs first, before arc-spin-in: the arc rises from below and fades in.
-        // Duration/gap here must match ARC_SLIDE_DURATION_MS/ARC_SEQUENCE_GAP_MS in
-        // Hero.jsx, which times when the rotation starts afterwards.
+        // One-time hero arc entrance: rises from below and fades in. Duration/gap here
+        // must match ARC_SLIDE_DURATION_MS/ARC_SEQUENCE_GAP_MS in Hero.jsx, which times
+        // when scroll-driven control of the wheel starts afterwards.
         'arc-slide-up': {
           '0%': { transform: 'translateY(18%)', opacity: '0' },
           '100%': { transform: 'translateY(0%)', opacity: '1' },
@@ -138,11 +132,6 @@ export default {
         'ring-pulse': 'ring-pulse 4s ease-in-out infinite',
         'ring-sequence': 'ring-in 600ms ease-out 900ms both, ring-pulse 4s ease-in-out 1500ms infinite',
         marquee: 'marquee 30s linear infinite',
-        // Wheel-like: fast at first, decelerating smoothly to a stop (cubic ease-out).
-        // No CSS delay here - Hero.jsx adds this class only once the preloader overlay
-        // has actually finished, so the spin is never hidden behind it.
-        'arc-spin-in': 'arc-spin-in 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1 both',
-        // Runs before arc-spin-in (see Hero.jsx's ARC_SLIDE_DURATION_MS/ARC_SEQUENCE_GAP_MS).
         'arc-slide-up': 'arc-slide-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) both',
       },
     },
