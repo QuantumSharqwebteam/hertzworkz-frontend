@@ -1,5 +1,6 @@
 import { FaArrowRight } from "react-icons/fa6";
 import heroBg from "/assets/images/products/hero-bg.webp";
+import Typewriter from "../Typewriter";
 
 // New starting point for the Products page, replacing the old section stack. Both CTAs
 // have no confirmed destination yet, so they're inert (href="#"), matching the pattern
@@ -18,11 +19,13 @@ export default function ProductsHero() {
           id="products-hero-heading"
           className="text-4xl font-extrabold uppercase leading-tight text-white sm:text-5xl lg:text-6xl"
         >
-          Products That Turn Ideas Into Real Solutions
+          <Typewriter text="Products That Turn Ideas Into Real Solutions" speed={60} />
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
-          We design and build digital products that solve real business problems — from textile management to
-          AI-powered analytics.
+          <Typewriter
+            text="We design and build digital products that solve real business problems — from textile management to AI-powered analytics."
+            speed={20}
+          />
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

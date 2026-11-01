@@ -1,7 +1,12 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import HeroNavbar from "../homePage/HeroNavbar";
 import SiteFooter from "../contactPage/SiteFooter";
+import Typewriter from "../Typewriter";
 import { getServiceBySlug } from "./servicesData";
+
+const HEADING_SPEED = 55;
+const TAGLINE_SPEED = 35;
+const DESCRIPTION_SPEED = 15;
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -22,15 +27,17 @@ export default function ServiceDetail() {
           <div className="mt-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <img src={service.icon} alt="" aria-hidden="true" className="mx-auto h-auto w-full max-w-sm object-contain" />
 
-            <div>
-              <h1 className="text-4xl font-semibold text-white sm:text-5xl">{service.label}</h1>
+            <div key={slug}>
+              <h1 className="text-4xl font-semibold text-white sm:text-5xl">
+                <Typewriter text={service.label} speed={HEADING_SPEED} />
+              </h1>
               <p className="mt-6 text-xl font-medium text-white">
-                {service.tagline[0]}
+                <Typewriter text={service.tagline[0]} speed={TAGLINE_SPEED} />
                 <br />
-                {service.tagline[1]}
+                <Typewriter text={service.tagline[1]} speed={TAGLINE_SPEED} />
               </p>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
-                {service.description}
+                <Typewriter text={service.description} speed={DESCRIPTION_SPEED} />
               </p>
               <Link
                 to="/contact"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Typewriter from "../Typewriter";
 import {
   FaUsers,
   FaCalendarCheck,
@@ -388,10 +389,11 @@ export default function ProductsShowcase() {
             <>
               <img src={hubDiagram} alt="" aria-hidden="true" className="mx-auto w-full max-w-lg lg:mx-0" />
               <p className="mx-auto mt-10 max-w-lg text-base leading-relaxed text-gray-300 sm:text-lg lg:mx-0">
-                Our products are designed to empower businesses across industries. Whether you&rsquo;re managing
-                textiles, healthcare, logistics, or poultry, our solutions simplify operations, enhance user
-                experiences, and drive efficiency. Combining advanced features with intuitive design, our web and
-                mobile applications cater to the unique needs of modern enterprises.
+                <Typewriter
+                  text="Our products are designed to empower businesses across industries. Whether you're managing textiles, healthcare, logistics, or poultry, our solutions simplify operations, enhance user experiences, and drive efficiency. Combining advanced features with intuitive design, our web and mobile applications cater to the unique needs of modern enterprises."
+                  triggerOnView
+                  speed={15}
+                />
               </p>
             </>
           )}

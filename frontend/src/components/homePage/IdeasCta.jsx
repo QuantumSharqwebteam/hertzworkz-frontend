@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
+import Typewriter from "../Typewriter";
 
 // Scroll-position hook: flips to true as soon as the element's top edge
 // enters the viewport (not after it's already well into view), so the
@@ -54,12 +55,12 @@ export default function IdeasCta() {
         }`}
       >
         <h2 id="ideas-cta-heading" className="text-3xl font-medium leading-tight text-white sm:text-4xl">
-          Ideas are easy. Building them is not.
+          <Typewriter text="Ideas are easy. Building them is not." trigger={inView} speed={60} />
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
-          Have an idea worth building?
+          <Typewriter text="Have an idea worth building?" trigger={inView} speed={25} />
           <br />
-          Let&apos;s turn it into something real.
+          <Typewriter text="Let's turn it into something real." trigger={inView} speed={25} />
         </p>
 
         <a

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Typewriter from "../Typewriter";
 
 /**
  * Pinned scroll section: three circles (Explore/Create/Deliver) hold in place,
@@ -123,9 +124,15 @@ export default function ApproachMerge() {
             className="pointer-events-none absolute left-1/2 top-1/2 flex aspect-square w-[min(90vw,44rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-brand-gradient px-10 text-center"
             style={{ opacity: finalIn }}
           >
-            <p className="text-2xl font-medium text-white sm:text-4xl">We bring it together.</p>
+            <p className="text-2xl font-medium text-white sm:text-4xl">
+              <Typewriter text="We bring it together." trigger={finalIn >= 1} speed={55} />
+            </p>
             <p className="mt-4 max-w-sm text-sm text-white/90 sm:text-base">
-              We explore what&apos;s possible, create what matters, and deliver solutions built to make an impact.
+              <Typewriter
+                text="We explore what's possible, create what matters, and deliver solutions built to make an impact."
+                trigger={finalIn >= 1}
+                speed={22}
+              />
             </p>
           </div>
         </div>

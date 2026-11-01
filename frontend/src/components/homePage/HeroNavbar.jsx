@@ -44,7 +44,7 @@ export default function HeroNavbar({ onLight = false }) {
             aria-label="Hertzworkz home"
             className={`rounded-full ${focusRing}`}
           >
-            <Logo barsClassName="h-2 w-auto" textClassName="h-3.5 w-auto" />
+            <Logo barsClassName="h-5 w-auto" textClassName="h-5 w-auto" />
           </Link>
 
           <ul className="hidden items-center gap-5 lg:flex lg:gap-8">

@@ -64,7 +64,7 @@ export default function AboutFAQ() {
                     <span
                       className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors duration-200 sm:h-12 sm:w-12 ${
                         isOpen
-                          ? "border-white bg-white text-black"
+                          ? "border-transparent bg-brand-gradient text-white"
                           : "border-white/30 text-white"
                       }`}
                     >

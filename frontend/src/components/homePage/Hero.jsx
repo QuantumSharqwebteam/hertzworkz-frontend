@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { FaArrowRight } from "react-icons/fa6";
+import Typewriter from "../Typewriter";
 
 /**
  * Permanent hero section at the top of the homepage.
@@ -32,10 +33,13 @@ export default function Hero({ id = "hero", step = "hero" }) {
         <div className="mx-auto w-full max-w-7xl">
           <div className="max-w-xl xl:max-w-2xl">
             <h1 id="hero-heading" className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
-              We Build Technology That Moves Businesses Forward.
+              <Typewriter text="We Build Technology That Moves Businesses Forward." speed={70} />
             </h1>
             <p className="mt-4 max-w-lg text-base text-gray-300 sm:text-lg">
-              We design and build technology that solves real business problems and turns ideas into products that work.
+              <Typewriter
+                text="We design and build technology that solves real business problems and turns ideas into products that work."
+                speed={25}
+              />
             </p>
             <button
               type="button"
