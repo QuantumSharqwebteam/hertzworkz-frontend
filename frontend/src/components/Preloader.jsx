@@ -44,6 +44,22 @@ const REDUCED_EXIT_MS = 300;
 // animation from the top, even after it has already finished once.
 export const PRELOADER_REPLAY_EVENT = "preloader:replay";
 
+// Fired once the overlay has fully unmounted (nothing left covering the page).
+// Anything timed to "after page load" - like the hero arc's entrance spin -
+// should wait for this instead of guessing a fixed CSS delay, since this
+// overlay's own timeline can change independently later.
+export const PRELOADER_DONE_EVENT = "preloader:done";
+
+// Module-level (not component state) so a component that mounts *after* the
+// preloader has already finished - e.g. navigating back to "/" later in the
+// same page session, since this overlay only plays once and never remounts -
+// can check synchronously instead of waiting forever for an event that will
+// not fire again.
+let preloaderDone = false;
+export function isPreloaderDone() {
+  return preloaderDone;
+}
+
 export default function Preloader() {
   // Read synchronously (matchMedia is available immediately) so there's no flash
   // of full-motion behavior before switching to the reduced variant.
@@ -61,6 +77,7 @@ export default function Preloader() {
   useEffect(() => {
     const replay = () => {
       timersRef.current.forEach(clearTimeout);
+      preloaderDone = false;
       setMounted(true);
       setIsVisible(false);
       setBurst(reducedMotion);
@@ -91,16 +108,24 @@ export default function Preloader() {
     return () => cancelAnimationFrame(raf);
   }, [runId]);
 
+  // Marks the overlay as finished and lets anything waiting (e.g. the hero
+  // arc's entrance spin) know it's safe to start now.
+  const finish = () => {
+    preloaderDone = true;
+    setMounted(false);
+    window.dispatchEvent(new Event(PRELOADER_DONE_EVENT));
+  };
+
   useEffect(() => {
     const timers = reducedMotion
       ? [
           setTimeout(() => setIsVisible(false), REDUCED_HOLD_MS),
-          setTimeout(() => setMounted(false), REDUCED_HOLD_MS + REDUCED_EXIT_MS),
+          setTimeout(finish, REDUCED_HOLD_MS + REDUCED_EXIT_MS),
         ]
       : [
           setTimeout(() => setBurst(true), T_BURST_START),
           setTimeout(() => setIsVisible(false), T_EXIT_START),
-          setTimeout(() => setMounted(false), T_UNMOUNT),
+          setTimeout(finish, T_UNMOUNT),
         ];
     timersRef.current = timers;
 
@@ -115,7 +140,7 @@ export default function Preloader() {
     const catchUpIfOverdue = () => {
       if (document.visibilityState === "visible" && performance.now() - mountedAt >= totalDurationMs) {
         setIsVisible(false);
-        setMounted(false);
+        finish();
       }
     };
     document.addEventListener("visibilitychange", catchUpIfOverdue);
