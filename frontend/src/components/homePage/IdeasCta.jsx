@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import Typewriter from "../Typewriter";
 
@@ -35,8 +36,7 @@ function useInViewOnce(ref) {
 }
 
 // Repeats NodeGraphHero's heading by design (see spec) - this is a secondary CTA, not the
-// page's main heading, so it's an <h2>. The "Get Started" button is a placeholder: no
-// onClick/navigation, same pattern as other inert links added so far.
+// page's main heading, so it's an <h2>. The "Get Started" button navigates to Contact.
 export default function IdeasCta() {
   const contentRef = useRef(null);
   const inView = useInViewOnce(contentRef);
@@ -44,7 +44,7 @@ export default function IdeasCta() {
   return (
     <section
       aria-labelledby="ideas-cta-heading"
-      className="relative px-6 py-24 text-center font-manrope sm:px-12 lg:px-16"
+      className="relative px-6 pb-24 pt-64 text-center font-manrope sm:px-12 lg:px-16"
     >
       {/* translate-y (not just opacity) so the fade reads clearly even on a fast scroll -
           a pure opacity fade was hard to notice during normal scrolling. */}
@@ -63,8 +63,8 @@ export default function IdeasCta() {
           <Typewriter text="Let's turn it into something real." trigger={inView} speed={25} />
         </p>
 
-        <a
-          href="#"
+        <Link
+          to="/contact"
           className="group relative mt-8 inline-flex items-center gap-3 overflow-hidden rounded-full bg-brand-gradient py-1.5 pl-6 pr-1.5 text-lg font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
         >
           <span
@@ -75,7 +75,7 @@ export default function IdeasCta() {
           <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white text-orange-600">
             <FaArrowRight aria-hidden="true" />
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   );

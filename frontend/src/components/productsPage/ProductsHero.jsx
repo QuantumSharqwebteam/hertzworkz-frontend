@@ -1,11 +1,17 @@
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import heroBg from "/assets/images/products/hero-bg.webp";
 import Typewriter from "../Typewriter";
 
-// New starting point for the Products page, replacing the old section stack. Both CTAs
-// have no confirmed destination yet, so they're inert (href="#"), matching the pattern
-// used elsewhere on the site for placeholder buttons.
+// New starting point for the Products page, replacing the old section stack.
+// "Explore Our Products" smoothly scrolls to the showcase section right below.
+// "Start a Project" navigates to Contact.
 export default function ProductsHero() {
+  const scrollToShowcase = useCallback(() => {
+    document.getElementById("products-showcase")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   return (
     <section
       aria-labelledby="products-hero-heading"
@@ -29,8 +35,9 @@ export default function ProductsHero() {
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="#"
+          <button
+            type="button"
+            onClick={scrollToShowcase}
             className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-brand-gradient py-1.5 pl-6 pr-1.5 text-base font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             <span
@@ -41,14 +48,14 @@ export default function ProductsHero() {
             <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white text-orange-600">
               <FaArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
             </span>
-          </a>
+          </button>
 
-          <a
-            href="#"
+          <Link
+            to="/contact"
             className="rounded-full border border-white/25 px-6 py-2.5 text-base font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Start a Project
-          </a>
+          </Link>
         </div>
       </div>
     </section>

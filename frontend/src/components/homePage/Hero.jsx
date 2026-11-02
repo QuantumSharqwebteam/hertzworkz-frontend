@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import Typewriter from "../Typewriter";
 import { PRELOADER_DONE_EVENT, isPreloaderDone } from "../Preloader";
@@ -8,15 +9,13 @@ import arc from "/assets/arc.png";
  * Permanent hero section at the top of the homepage.
  * - `data-hero-step` marks this screen for future observers.
  * - `id` is the anchor for this section.
- * - "Get Started" smoothly scrolls to the section right below the hero.
+ * - "Get Started" navigates to the Contact page.
  */
 
 // Props are plain JS (no prop-types dependency), so skip the prop-types rule here.
 // eslint-disable-next-line react/prop-types
 export default function Hero({ id = "hero", step = "hero" }) {
-  const scrollToNext = useCallback(() => {
-    document.getElementById("node-graph")?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  const navigate = useNavigate();
 
   // Arc entrance: slides up from below and fades in, once the preloader is gone - no
   // rotation on load (that one-time 360deg spin was removed per request; only the
@@ -212,7 +211,7 @@ export default function Hero({ id = "hero", step = "hero" }) {
           </p>
           <button
             type="button"
-            onClick={scrollToNext}
+            onClick={() => navigate("/contact")}
             className="group relative mt-8 inline-flex items-center gap-3 overflow-hidden rounded-full bg-brand-gradient py-1.5 pl-6 pr-1.5 text-lg font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             {/* Crossfades to the hover gradient instead of just dimming, matching the reference animation */}

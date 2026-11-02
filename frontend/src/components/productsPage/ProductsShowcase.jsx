@@ -253,7 +253,7 @@ export default function ProductsShowcase() {
   const scattered = ALL_PRODUCTS.filter((item) => item.name !== selected);
 
   return (
-    <section aria-label="Our products" className="bg-ink font-manrope">
+    <section id="products-showcase" aria-label="Our products" className="bg-ink font-manrope">
       <ProductTabs />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-12 lg:grid-cols-2 lg:px-16">
