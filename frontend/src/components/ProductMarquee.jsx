@@ -5,12 +5,11 @@ import "./ProductMarquee.css";
 const DURATION = "24s"; // one full loop of the marquee
 const DIRECTION = "normal"; // "normal" or "reverse" - keeps travel direction constant
 const TILT = "0deg"; // "auto" rotates each pill to follow the curve, or a fixed angle (buttons stay upright)
-const PATH =
-  'path("M -150 150 C 100 190, 250 190, 450 90 S 750 30, 950 80 S 1300 110, 1450 70")';
-const CONTAINER_HEIGHT = 220; // px
+const PATH = 'path("M -150 40 L 1450 40")';
+const CONTAINER_HEIGHT = 80; // px
 
-// Infinite marquee of decorative pills travelling along a wavy curved
-// offset-path - purely visual, not clickable. Items are duplicated and
+// Infinite marquee of decorative pills travelling along a single straight
+// line offset-path - purely visual, not clickable. Items are duplicated and
 // evenly spaced with negative animation-delay so the path never looks empty.
 // A reduced-motion fallback (simple wrapped row, no animation) is swapped in
 // purely via the CSS media query in ProductMarquee.css.
