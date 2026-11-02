@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 
 // Scroll-position hook: flips to true as soon as the element's top edge
 // enters the viewport (not after it's already well into view), so the
@@ -55,12 +56,12 @@ export default function IdeasCta() {
         }`}
       >
         <h2 id="ideas-cta-heading" className="text-3xl font-medium leading-tight text-white sm:text-4xl">
-          <Typewriter text="Ideas are easy. Building them is not." trigger={inView} speed={60} />
+          <TiltReveal text="Ideas are easy. Building them is not." trigger={inView} />
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
-          <Typewriter text="Have an idea worth building?" trigger={inView} speed={25} />
+          <RevealText text="Have an idea worth building?" trigger={inView} />
           <br />
-          <Typewriter text="Let's turn it into something real." trigger={inView} speed={25} />
+          <RevealText text="Let's turn it into something real." trigger={inView} />
         </p>
 
         <Link

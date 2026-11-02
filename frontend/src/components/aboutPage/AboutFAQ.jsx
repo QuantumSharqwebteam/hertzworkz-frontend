@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RevealText from "../RevealText";
 
 const FAQS = [
   {
@@ -83,7 +84,7 @@ export default function AboutFAQ() {
                 >
                   <div className="overflow-hidden">
                     <p className="max-w-2xl pb-6 text-base leading-[1.55] text-[color:var(--text-warm)] sm:pb-8">
-                      {answer}
+                      <RevealText text={answer} trigger={isOpen} />
                     </p>
                   </div>
                 </div>

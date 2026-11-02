@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Typewriter from "../Typewriter";
+import RevealText from "../RevealText";
+import ProductMarquee from "../ProductMarquee";
 import {
   FaUsers,
   FaCalendarCheck,
@@ -180,25 +181,15 @@ const SCATTER_SLOTS = [
   { left: 357, top: 640, size: "h-20 w-20" },
 ];
 
-// Filter-style pills shown right below the hero. Purely decorative - static
-// labels, all shown identically, nothing is clickable or hoverable, and none
-// of it filters the showcase.
-const TABS = ["Texture", "Madi App", "Vitalyolk App", "Safe Nest"];
-
-function ProductTabs() {
-  return (
-    <div className="grid grid-cols-2 place-items-center gap-4 px-6 py-16 sm:flex sm:flex-wrap sm:justify-center sm:px-12">
-      {TABS.map((tab) => (
-        <span
-          key={tab}
-          className="w-full rounded-full border-2 border-transparent bg-white px-8 py-3 text-base font-medium text-gray-700 shadow-[0_8px_24px_rgba(255,255,255,0.12)] sm:w-auto"
-        >
-          {tab}
-        </span>
-      ))}
-    </div>
-  );
-}
+// Filter-style pills shown right below the hero, purely decorative - an
+// infinite marquee (ProductMarquee) travelling along a wavy path. `value` is
+// just a stable React key; `label` is the display text.
+const TABS = [
+  { label: "Texture", value: "Textura" },
+  { label: "Madi App", value: "Medi App" },
+  { label: "Vitalyolk App", value: "VitalYolk" },
+  { label: "Safe Nest", value: "Safe Nest" },
+];
 
 // Circle size/offset constants shared by both columns so the stagger lines up.
 // Shrinks in place (rather than collapsing into a new row) once a product is
@@ -254,7 +245,9 @@ export default function ProductsShowcase() {
 
   return (
     <section id="products-showcase" aria-label="Our products" className="bg-ink font-manrope">
-      <ProductTabs />
+      <div className="px-6 py-16 sm:px-12">
+        <ProductMarquee tabs={TABS} />
+      </div>
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-12 lg:grid-cols-2 lg:px-16">
         <div className="relative">
@@ -389,10 +382,9 @@ export default function ProductsShowcase() {
             <>
               <img src={hubDiagram} alt="" aria-hidden="true" className="mx-auto w-full max-w-lg lg:mx-0" />
               <p className="mx-auto mt-10 max-w-lg text-base leading-relaxed text-gray-300 sm:text-lg lg:mx-0">
-                <Typewriter
+                <RevealText
                   text="Our products are designed to empower businesses across industries. Whether you're managing textiles, healthcare, logistics, or poultry, our solutions simplify operations, enhance user experiences, and drive efficiency. Combining advanced features with intuitive design, our web and mobile applications cater to the unique needs of modern enterprises."
                   triggerOnView
-                  speed={15}
                 />
               </p>
             </>

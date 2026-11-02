@@ -2,11 +2,11 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import HeroNavbar from "../homePage/HeroNavbar";
 import SiteFooter from "../contactPage/SiteFooter";
 import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 import { getServiceBySlug } from "./servicesData";
 
-const HEADING_SPEED = 55;
 const TAGLINE_SPEED = 35;
-const DESCRIPTION_SPEED = 15;
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -29,7 +29,7 @@ export default function ServiceDetail() {
 
             <div key={slug}>
               <h1 className="text-4xl font-semibold text-white sm:text-5xl">
-                <Typewriter text={service.label} speed={HEADING_SPEED} />
+                <TiltReveal text={service.label} />
               </h1>
               <p className="mt-6 text-xl font-medium text-white">
                 <Typewriter text={service.tagline[0]} speed={TAGLINE_SPEED} />
@@ -37,7 +37,7 @@ export default function ServiceDetail() {
                 <Typewriter text={service.tagline[1]} speed={TAGLINE_SPEED} />
               </p>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
-                <Typewriter text={service.description} speed={DESCRIPTION_SPEED} />
+                <RevealText text={service.description} />
               </p>
               <Link
                 to="/contact"

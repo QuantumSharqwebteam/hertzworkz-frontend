@@ -2,7 +2,8 @@ import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import heroBg from "/assets/images/products/hero-bg.webp";
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 
 // New starting point for the Products page, replacing the old section stack.
 // "Explore Our Products" smoothly scrolls to the showcase section right below.
@@ -25,13 +26,10 @@ export default function ProductsHero() {
           id="products-hero-heading"
           className="text-4xl font-extrabold uppercase leading-tight text-white sm:text-5xl lg:text-6xl"
         >
-          <Typewriter text="Products That Turn Ideas Into Real Solutions" speed={60} />
+          <TiltReveal text="Products That Turn Ideas Into Real Solutions" />
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-300 sm:text-lg">
-          <Typewriter
-            text="We design and build digital products that solve real business problems — from textile management to AI-powered analytics."
-            speed={20}
-          />
+          <RevealText text="We design and build digital products that solve real business problems — from textile management to AI-powered analytics." />
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

@@ -10,6 +10,7 @@ import Preloader from './components/Preloader';
 import ServicesGrid from "./components/servicePage/ServicesGrid";
 import ServiceDetail from "./components/servicePage/ServiceDetail";
 import AboutMain from "./components/aboutPage/aboutMain";
+import TypewriterShowcase from "./components/TypewriterShowcase";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -26,6 +27,7 @@ function AppRoutes() {
         <Route path="/application" element={<ApplicationMain />} />
         <Route path="/service/:slug" element={<ServiceDetail />} />
         <Route path="/about" element={<AboutMain />} />
+        <Route path="/typewriter-demo" element={<TypewriterShowcase />} />
       </Routes>
     </>
   );

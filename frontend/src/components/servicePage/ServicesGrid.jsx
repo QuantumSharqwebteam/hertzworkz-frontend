@@ -1,6 +1,8 @@
 import HeroNavbar from "../homePage/HeroNavbar";
 import SiteFooter from "../contactPage/SiteFooter";
 import ServiceScatterIcon from "./ServiceScatterIcon";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 import services from "./servicesData";
 
 // Scatter positions (% of a 1440x1792 reference frame) traced from Figma node
@@ -44,10 +46,10 @@ export default function ServicesGrid() {
             style={{ left: `${HEADING_POSITION.left}%`, top: `${HEADING_POSITION.top}%` }}
           >
             <h1 id="services-heading" className="text-4xl font-semibold text-white sm:text-5xl">
-              What we build.
+              <TiltReveal text="What we build." triggerOnView />
             </h1>
             <p className="mt-4 text-base text-gray-300 sm:text-lg">
-              From intelligent systems to digital experiences.
+              <RevealText text="From intelligent systems to digital experiences." triggerOnView />
             </p>
           </div>
 

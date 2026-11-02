@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 
 // Wire geometry is drawn in a 1235x370 box traced from the design; HTML cards are placed in % of it.
 const W = 1235;
@@ -375,13 +376,12 @@ export default function ProcessPipeline() {
     >
       <div className="mx-auto max-w-3xl text-center">
         <h2 id="process-heading" className="text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-5xl">
-          <Typewriter text="Businesses don’t struggle because they lack ideas." triggerOnView speed={60} />
+          <TiltReveal text="Businesses don’t struggle because they lack ideas." triggerOnView />
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-base text-gray-300 sm:text-lg">
-          <Typewriter
+          <RevealText
             text="They struggle to turn those ideas into technology that is useful, scalable, and built to last."
             triggerOnView
-            speed={25}
           />
         </p>
       </div>

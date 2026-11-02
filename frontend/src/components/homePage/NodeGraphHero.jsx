@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types -- repo has no prop-types dependency; Tooltip is file-local */
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 
 // Diameters scale with viewport width (proportions traced from the design), with a pixel floor for phones.
 const SIZE = {
@@ -213,13 +214,12 @@ export default function NodeGraphHero() {
     >
       <div className="relative z-20 mx-auto max-w-4xl px-4 pt-28 text-center sm:pt-32">
         <h2 id="graph-heading" className="text-3xl font-medium leading-tight text-black sm:text-4xl">
-          <Typewriter text="Ideas are easy. Building them is not." triggerOnView speed={60} />
+          <TiltReveal text="Ideas are easy. Building them is not." triggerOnView />
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-800 sm:mt-8 sm:text-lg">
-          <Typewriter
+          <RevealText
             text="Every business has an idea. Turning that idea into something people can actually use takes the right technology, design, and execution."
             triggerOnView
-            speed={20}
           />
         </p>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 
 /**
  * Pinned scroll section: three circles (Explore/Create/Deliver) hold in place,
@@ -125,13 +126,12 @@ export default function ApproachMerge() {
             style={{ opacity: finalIn }}
           >
             <p className="text-2xl font-medium text-white sm:text-4xl">
-              <Typewriter text="We bring it together." trigger={finalIn >= 1} speed={55} />
+              <TiltReveal text="We bring it together." trigger={finalIn >= 1} />
             </p>
             <p className="mt-4 max-w-sm text-sm text-white/90 sm:text-base">
-              <Typewriter
+              <RevealText
                 text="We explore what's possible, create what matters, and deliver solutions built to make an impact."
                 trigger={finalIn >= 1}
-                speed={22}
               />
             </p>
           </div>

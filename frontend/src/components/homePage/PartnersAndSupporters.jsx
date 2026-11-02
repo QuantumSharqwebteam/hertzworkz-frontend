@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types -- repo has no prop-types dependency; LogoBox/MarqueeRow are file-local */
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
 
 // Each logo sits in a fixed-size box so a missing file never shifts the layout.
 const CLIENT_LOGOS = [
@@ -54,7 +54,7 @@ export default function PartnersAndSupporters() {
     <section className="relative px-6 py-20 font-manrope sm:px-12 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
-          <Typewriter text="Trusted by leading industry partners in" triggerOnView speed={50} />
+          <TiltReveal text="Trusted by leading industry partners in" triggerOnView />
         </h2>
         <MarqueeRow logos={CLIENT_LOGOS} />
       </div>
@@ -65,7 +65,7 @@ export default function PartnersAndSupporters() {
           between the two logo rows instead of fading behind empty space. */}
       <div className="mx-auto mt-16 max-w-6xl sm:mt-28 lg:mt-[32rem]">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
-          <Typewriter text="Supported & Recognized By" triggerOnView speed={50} />
+          <TiltReveal text="Supported & Recognized By" triggerOnView />
         </h2>
         <MarqueeRow logos={SUPPORTER_LOGOS} />
       </div>

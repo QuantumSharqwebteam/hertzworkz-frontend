@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
-import Typewriter from "../Typewriter";
+import TiltReveal from "../TiltReveal";
+import RevealText from "../RevealText";
 import { PRELOADER_DONE_EVENT, isPreloaderDone } from "../Preloader";
 import arc from "/assets/arc.png";
 
@@ -201,12 +202,17 @@ export default function Hero({ id = "hero", step = "hero" }) {
             id="hero-heading"
             className="text-4xl font-medium leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            <Typewriter text="We Build Technology That Moves Businesses Forward." speed={70} />
+            <TiltReveal text="We Build Technology That Moves Businesses Forward." trigger={arcSlide} />
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base text-gray-400 sm:text-lg">
-            <Typewriter
+            {/* startDelay matches when the headline's last word finishes settling
+                (7 words * 35ms step + 550ms duration = 760ms), so this starts
+                right as the headline is done, same sequencing as the rest of
+                the hero's entrance. */}
+            <RevealText
               text="We design and build technology that solves real business problems and turns ideas into products that work."
-              speed={25}
+              trigger={arcSlide}
+              startDelay={760}
             />
           </p>
           <button
