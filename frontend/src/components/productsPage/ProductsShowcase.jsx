@@ -14,12 +14,29 @@ import {
   FaBell,
   FaCompass,
   FaWeightScale,
+  FaIdCard,
+  FaBatteryFull,
+  FaRoute,
+  FaScaleBalanced,
+  FaPhoneVolume,
+  FaWallet,
+  FaFileInvoiceDollar,
+  FaHeartPulse,
+  FaCode,
+  FaRocket,
 } from "react-icons/fa6";
 import textura from "/assets/images/products/circles/textura.webp";
 import mediApp from "/assets/images/products/circles/medi-app.webp";
 import vitalyolk from "/assets/images/products/circles/vitalyolk.webp";
 import safeNest from "/assets/images/products/circles/safe-nest.webp";
 import leadRecycling from "/assets/images/products/circles/lead-recycling.webp";
+import hrms from "/assets/images/products/circles/hrms.webp";
+import fleetPulse from "/assets/images/products/circles/fleet-pulse.webp";
+import millGate from "/assets/images/products/circles/mill-gate.webp";
+import lawyerSathi from "/assets/images/products/circles/lawyer-sathi.webp";
+import seyalworkz from "/assets/images/products/circles/seyalworkz.webp";
+import neocare from "/assets/images/products/circles/neocare.webp";
+import phlux from "/assets/images/products/circles/phlux.webp";
 import hubDiagram from "/assets/images/products/hub-diagram.webp";
 
 // Detail content for the click-to-expand interaction (reference/howrigballs .mp4),
@@ -168,12 +185,209 @@ const PRODUCT_DETAILS = {
       },
     ],
   },
+  HRMS: {
+    tagline: "A Connected Digital Experience for Workforce Management",
+    description:
+      "HRMS centralizes employee profiles, leave, attendance, and payroll into one internal platform, helping the People team manage the full employee lifecycle without juggling spreadsheets.",
+    tags: ["PLATFORM: WEB", "INDUSTRY: INTERNAL / HR", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaUsers,
+        title: "Employee Database",
+        description: "Centralized profiles with role-based access for every team member.",
+      },
+      {
+        Icon: FaCalendarCheck,
+        title: "Leave & Attendance",
+        description: "Track leave requests and attendance in real time.",
+      },
+      {
+        Icon: FaWallet,
+        title: "Payroll Processing",
+        description: "Automate salary runs and payroll calculations.",
+      },
+      {
+        Icon: FaChartLine,
+        title: "Performance Tracking",
+        description: "Assign tasks and monitor performance across teams.",
+      },
+    ],
+  },
+  FleetPulse: {
+    tagline: "A Connected Digital Experience for Fleet Operations",
+    description:
+      "FleetPulse pairs smart hardware with a web and mobile platform to monitor vehicle health, driver safety, and route efficiency, giving fleet operators one real-time view of their entire fleet.",
+    tags: ["PLATFORM: HARDWARE + WEB & MOBILE", "INDUSTRY: LOGISTICS", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaRoute,
+        title: "Route Optimization",
+        description: "AI-powered planning with real-time multi-stop adjustments.",
+      },
+      {
+        Icon: FaShieldHalved,
+        title: "Driver & Safety Monitoring",
+        description: "Behaviour analytics, geo-fencing, and emergency alerts.",
+      },
+      {
+        Icon: FaBatteryFull,
+        title: "EV Fleet Integration",
+        description: "Battery health tracking and charging optimization.",
+      },
+      {
+        Icon: FaBolt,
+        title: "Predictive Maintenance",
+        description: "AI-based service alerts before issues become breakdowns.",
+      },
+    ],
+  },
+  "Mill Gate": {
+    tagline: "A Connected Digital Experience for Industrial Security & Workforce Management",
+    description:
+      "Mill Gate is a role-based mobile app for managing employees, guest entries, leave, and security logs across mill and industrial sites, giving every role the tools specific to their work.",
+    tags: ["PLATFORM: MOBILE-FIRST", "INDUSTRY: INDUSTRIAL / MANUFACTURING", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaIdCard,
+        title: "Guest & Entry Logging",
+        description: "Security logs employee and guest entry and exit in real time.",
+      },
+      {
+        Icon: FaCalendarCheck,
+        title: "Leave & Attendance",
+        description: "Employees apply for leave and track attendance from their phone.",
+      },
+      {
+        Icon: FaBell,
+        title: "Role-Based Alerts",
+        description: "Managers approve requests and monitor latecomers instantly.",
+      },
+      {
+        Icon: FaChartLine,
+        title: "Operations Oversight",
+        description: "Admins get analytics across guest, issue, and dispatch reporting.",
+      },
+    ],
+  },
+  "Lawyer Sathi": {
+    tagline: "Instant Legal Protection, One Tap Away",
+    description:
+      "Lawyer Sathi connects citizens facing sudden legal emergencies with verified regional lawyers through live video, turning a single tap into immediate, protective legal assistance.",
+    tags: ["PLATFORM: MOBILE", "INDUSTRY: LEGAL TECH", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaPhoneVolume,
+        title: "Instant Trigger",
+        description: "A single tap launches an SOS request for legal help.",
+      },
+      {
+        Icon: FaVideo,
+        title: "Live Lawyer Assistance",
+        description: "Encrypted video streaming connects a verified lawyer instantly.",
+      },
+      {
+        Icon: FaScaleBalanced,
+        title: "Verified Network",
+        description: "Smart assignment to a verified, regional legal professional.",
+      },
+      {
+        Icon: FaShieldHalved,
+        title: "Evidence Capture",
+        description: "Secure cloud streaming gathers digital evidence as it happens.",
+      },
+    ],
+  },
+  Seyalworkz: {
+    tagline: "A Financial Co-Pilot for the Indian Business Ecosystem",
+    description:
+      "Seyalworkz brings live cash-flow monitoring, AI-powered predictive insights, and automated GST/TDS compliance together, helping businesses catch risks before they become costly mistakes.",
+    tags: ["PLATFORM: WEB", "INDUSTRY: FINTECH", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaChartLine,
+        title: "Live Business Health",
+        description: "Track cash flow, profit margins, and expenses in real time.",
+      },
+      {
+        Icon: FaFileInvoiceDollar,
+        title: "Auto GST/TDS Filing",
+        description: "Prepares and files returns directly from transaction data.",
+      },
+      {
+        Icon: FaBell,
+        title: "Deadline Guardian",
+        description: "Proactive reminders for MSME, GST, and TDS obligations.",
+      },
+      {
+        Icon: FaWallet,
+        title: "Anomaly Detection",
+        description: "Flags duplicate payments and vendor overcharges automatically.",
+      },
+    ],
+  },
+  Neocare: {
+    tagline: "A Connected Digital Experience for Maternal Health Monitoring",
+    description:
+      "Neocare combines 24/7 passive wrist monitoring with medical-grade calibration, giving clinicians and community health workers a continuous view from early risk alerts to clinical action.",
+    tags: ["PLATFORM: WEARABLE + WEB & MOBILE", "INDUSTRY: HEALTHCARE", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaHeartPulse,
+        title: "Continuous Monitoring",
+        description: "24/7 passive wrist monitoring with medical-grade calibration.",
+      },
+      {
+        Icon: FaChartLine,
+        title: "Clinical Dashboards",
+        description: "Clinicians track live BP trends and long-term risk scores.",
+      },
+      {
+        Icon: FaBell,
+        title: "Early Risk Alerts",
+        description: "Community health workers respond quickly to flagged alerts.",
+      },
+      {
+        Icon: FaUsers,
+        title: "Role-Based Access",
+        description: "Separate views for clinicians, health workers, and patients.",
+      },
+    ],
+  },
+  Phlux: {
+    tagline: "The Vibe Coding Platform & Marketplace — From Thought to App",
+    description:
+      "Phlux lets anyone describe an app in plain English and get a working prototype instantly, then learn, refine, and ship it to web, Android, and iOS with one-click deploy and a creator marketplace.",
+    tags: ["PLATFORM: WEB & MOBILE", "INDUSTRY: EDTECH / DEV TOOLS", "FOCUS: DIGITAL PRODUCT DESIGN"],
+    features: [
+      {
+        Icon: FaCode,
+        title: "AI Vibe Coding Studio",
+        description: "Describe an app in plain English and get a working prototype.",
+      },
+      {
+        Icon: FaRocket,
+        title: "One-Click Deploy",
+        description: "Ship to web, PWA, Android, and iOS from a single project.",
+      },
+      {
+        Icon: FaUsers,
+        title: "Skill Missions",
+        description: "Curriculum-aligned learning with XP, badges, and teacher dashboards.",
+      },
+      {
+        Icon: FaChartLine,
+        title: "Creator Marketplace",
+        description: "Sell what you build with an 80% revenue share.",
+      },
+    ],
+  },
 };
 
 // Fixed pixel offsets (relative to the panel's own fixed 448px width, not the
-// stage - see the scatter block below for why) for the 4 circles that aren't
-// selected. Every product has exactly 4 features, so the panel's height - and
-// therefore these slots - stay valid no matter which product is selected.
+// stage - see the scatter block below for why) for the 4 circles shown around
+// the panel once a product is selected. There are now more than 4 products
+// total, so `scattered` below is sliced down to these 4 slots rather than
+// grown to match - the reference layout only ever had 4 scatter positions.
 const SCATTER_SLOTS = [
   { left: 520, top: 40, size: "h-16 w-16" },
   { left: 511, top: 453, size: "h-20 w-20" },
@@ -189,6 +403,13 @@ const TABS = [
   { label: "Madi App", value: "Medi App" },
   { label: "Vitalyolk App", value: "VitalYolk" },
   { label: "Safe Nest", value: "Safe Nest" },
+  { label: "HRMS", value: "HRMS" },
+  { label: "FleetPulse", value: "FleetPulse" },
+  { label: "Mill Gate", value: "Mill Gate" },
+  { label: "Lawyer Sathi", value: "Lawyer Sathi" },
+  { label: "Seyalworkz", value: "Seyalworkz" },
+  { label: "Neocare", value: "Neocare" },
+  { label: "Phlux", value: "Phlux" },
 ];
 
 // Circle size/offset constants shared by both columns so the stagger lines up.
@@ -203,12 +424,19 @@ const circleShrunkSize = "w-16 opacity-80 sm:w-20";
 const LEFT_COLUMN = [
   { name: "Medi App", img: mediApp },
   { name: "Safe Nest", img: safeNest },
+  { name: "HRMS", img: hrms },
+  { name: "Mill Gate", img: millGate },
+  { name: "Seyalworkz", img: seyalworkz },
+  { name: "Phlux", img: phlux },
 ];
 
 const RIGHT_COLUMN = [
   { name: "Textura", img: textura },
   { name: "VitalYolk", img: vitalyolk },
   { name: "Lead Recycling Software", img: leadRecycling },
+  { name: "FleetPulse", img: fleetPulse },
+  { name: "Lawyer Sathi", img: lawyerSathi },
+  { name: "Neocare", img: neocare },
 ];
 
 const ALL_PRODUCTS = [...LEFT_COLUMN, ...RIGHT_COLUMN];
@@ -242,6 +470,10 @@ export default function ProductsShowcase() {
   const detail = selected ? PRODUCT_DETAILS[selected] : null;
   const selectedItem = ALL_PRODUCTS.find((item) => item.name === selected);
   const scattered = ALL_PRODUCTS.filter((item) => item.name !== selected);
+  // Only 4 fixed-position slots exist (see SCATTER_SLOTS) for the xl+ layout,
+  // so cap the absolutely-positioned set at 4 even though more products may
+  // be left over; the wrapped-row fallback below xl shows the full list.
+  const scatteredForSlots = scattered.slice(0, SCATTER_SLOTS.length);
 
   return (
     <section id="products-showcase" aria-label="Our products" className="bg-ink font-manrope">
@@ -316,7 +548,7 @@ export default function ProductsShowcase() {
                   for these fixed offsets to fit; narrower windows use the wrapped-row
                   fallback below instead. */}
               <div className="hidden xl:contents">
-                {scattered.map((item, index) => {
+                {scatteredForSlots.map((item, index) => {
                   const slot = SCATTER_SLOTS[index];
                   return (
                     <img
