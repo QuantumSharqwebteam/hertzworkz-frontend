@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types -- repo has no prop-types dependency; Tooltip is file-local */
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { FaPalette, FaMicrochip, FaRocket } from "react-icons/fa6";
 import TiltReveal from "../TiltReveal";
 import RevealText from "../RevealText";
 
@@ -64,6 +65,7 @@ const NODES = [
     title: "Design",
     subtitle: "Turn ideas into experiences people understand",
     body: "We shape intuitive interfaces and user journeys around real needs, making complex products simple to use.",
+    Icon: FaPalette,
   },
   {
     id: "technology",
@@ -74,6 +76,7 @@ const NODES = [
     title: "Technology",
     subtitle: "Build with the right technology.",
     body: "From web and mobile to AI, blockchain, and embedded systems, we choose the technology that fits the problem",
+    Icon: FaMicrochip,
   },
   {
     id: "execution",
@@ -84,6 +87,7 @@ const NODES = [
     title: "Execution",
     subtitle: "Take it from concept to something real.",
     body: "We bring design and engineering together to build, test, and launch products that work beyond the idea.",
+    Icon: FaRocket,
   },
 ];
 
@@ -289,10 +293,12 @@ export default function NodeGraphHero() {
               >
                 <span
                   style={dot}
-                  className={`block rounded-full bg-lightOrange transition-[transform,box-shadow] duration-200 ${
+                  className={`flex items-center justify-center rounded-full bg-lightOrange ring-2 ring-white transition-[transform,box-shadow] duration-200 ${
                     isActive ? "scale-110 shadow-[0_0_30px_8px] shadow-lightOrange/50" : `scale-100 ${shadow}`
                   }`}
-                />
+                >
+                  <node.Icon aria-hidden="true" className="h-[45%] w-[45%] text-white" />
+                </span>
               </button>
               <Tooltip node={node} active={isActive} containerRef={containerRef} />
             </div>

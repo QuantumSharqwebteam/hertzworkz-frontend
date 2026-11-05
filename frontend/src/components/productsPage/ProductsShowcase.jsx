@@ -485,7 +485,11 @@ export default function ProductsShowcase() {
         <ProductMarquee tabs={TABS} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-8 lg:grid-cols-2 lg:px-10">
+      {/* items-start (not items-center) on lg+: there are now 12 circles stacked across
+          two columns, so the left column is much taller than the right column's
+          diagram + text - centering it against that height pushed it far down the
+          page instead of keeping it level with the top of the circle grid. */}
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-8 lg:grid-cols-2 lg:items-start lg:px-10">
         <div className="relative">
           {detail ? (
             // Fixed coordinates (measured off the reference screenshot) instead of flex
