@@ -68,7 +68,7 @@ export default function CurrentOpenings() {
       <header
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
-        className="px-6 pb-12 pt-20 text-left sm:px-12 lg:px-16"
+        className="px-6 pb-12 pt-20 text-left sm:px-8 lg:px-10"
       >
         <h2 className="max-w-4xl text-3xl font-semibold sm:text-4xl">Current Openings</h2>
         <p className="mt-3 max-w-2xl text-base text-lightGray">
@@ -78,7 +78,7 @@ export default function CurrentOpenings() {
         </p>
       </header>
 
-      <div className="space-y-16 px-6 pb-24 sm:px-12 lg:px-16">
+      <div className="space-y-16 px-6 pb-24 sm:px-8 lg:px-10">
         {openings === null && !error && <p className="text-base text-lightGray">Loading open roles…</p>}
         {error && <p className="text-base text-lightGray">Couldn&rsquo;t load open roles right now. Please try again later.</p>}
         {openings !== null && !error && departments.length === 0 && (

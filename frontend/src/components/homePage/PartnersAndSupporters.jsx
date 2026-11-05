@@ -30,19 +30,31 @@ function LogoBox({ src, alt, hidden = false }) {
   );
 }
 
-// Renders the logo list twice back-to-back so animate-marquee can shift exactly
+// animate-marquee shifts the track by exactly -50%, so each half must be wide
+// enough to fill the widest expected viewport - otherwise, once the scroll
+// nears the end of a short logo list, the track runs out of content before the
+// loop wraps and a blank gap flashes in. Repeating the list until each half
+// has ~20 logos keeps a half comfortably wider than any screen.
+const MIN_LOGOS_PER_SET = 20;
+function buildLogoSet(logos) {
+  const copies = Math.ceil(MIN_LOGOS_PER_SET / logos.length);
+  return Array.from({ length: copies }, () => logos).flat();
+}
+
+// Renders the logo set twice back-to-back so animate-marquee can shift exactly
 // -50% and loop seamlessly; the duplicate copy is aria-hidden to avoid double
 // announcing the same logos to screen readers. motion-reduce freezes the track,
 // leaving the first (non-hidden) copy visible as a static, readable row.
 function MarqueeRow({ logos }) {
+  const set = buildLogoSet(logos);
   return (
     <div className="mt-10 overflow-hidden">
       <div className="flex w-max animate-marquee items-center gap-x-10 motion-reduce:animate-none hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
-        {logos.map((logo) => (
-          <LogoBox key={logo.alt} src={logo.src} alt={logo.alt} />
+        {set.map((logo, i) => (
+          <LogoBox key={`${logo.alt}-${i}`} src={logo.src} alt={logo.alt} />
         ))}
-        {logos.map((logo) => (
-          <LogoBox key={`${logo.alt}-dup`} src={logo.src} alt={logo.alt} hidden />
+        {set.map((logo, i) => (
+          <LogoBox key={`${logo.alt}-${i}-dup`} src={logo.src} alt={logo.alt} hidden />
         ))}
       </div>
     </div>
@@ -51,24 +63,27 @@ function MarqueeRow({ logos }) {
 
 export default function PartnersAndSupporters() {
   return (
-    <section className="relative px-6 py-20 font-manrope sm:px-12 lg:px-16">
-      <div className="mx-auto max-w-6xl">
+    // No horizontal padding on the section itself (unlike the heading wrappers
+    // below) - MarqueeRow is a direct child so it can reach the true screen
+    // edges, same approach as the Products page marquee fix.
+    <section className="relative py-20 font-manrope">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
           <TiltReveal text="Trusted by leading industry partners in" triggerOnView />
         </h2>
-        <MarqueeRow logos={CLIENT_LOGOS} />
       </div>
+      <MarqueeRow logos={CLIENT_LOGOS} />
 
       {/* Figma (node 5233:16746) leaves ~517px of empty space here on desktop, so the
           CTA glow's bottom arc fades out gracefully instead of cutting through content -
           our previous mt-20 was far too tight, making the arc look like it was slicing
           between the two logo rows instead of fading behind empty space. */}
-      <div className="mx-auto mt-16 max-w-6xl sm:mt-28 lg:mt-[32rem]">
+      <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-28 sm:px-8 lg:mt-[32rem] lg:px-10">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
           <TiltReveal text="Supported & Recognized By" triggerOnView />
         </h2>
-        <MarqueeRow logos={SUPPORTER_LOGOS} />
       </div>
+      <MarqueeRow logos={SUPPORTER_LOGOS} />
     </section>
   );
 }

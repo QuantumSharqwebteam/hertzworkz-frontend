@@ -18,8 +18,8 @@ export default function ServiceDetail() {
     <div className="bg-ink font-manrope">
       <HeroNavbar />
 
-      <section className="px-6 pb-20 pt-32 sm:px-12 sm:pt-36 lg:px-16">
-        <div className="mx-auto max-w-6xl">
+      <section className="px-6 pb-20 pt-32 sm:px-8 sm:pt-36 lg:px-10">
+        <div className="mx-auto max-w-7xl">
           <Link to="/service" className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white">
             <span aria-hidden="true">←</span> Back to Services
           </Link>

@@ -14,7 +14,7 @@ import SiteFooter from "../contactPage/SiteFooter";
 export default function HomeMain() {
     return (
         <div>
-            <HeroNavbar />
+            <HeroNavbar highContrast />
             <Hero />
             {/* <ModelViewer  glbUrl="/logo2.glb"  /> */}
             <NodeGraphHero />

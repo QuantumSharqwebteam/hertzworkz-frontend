@@ -37,8 +37,8 @@ export default function AboutFAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="bg-black px-6 py-20 font-manrope sm:px-12 sm:py-28 lg:px-16">
-      <div className="mx-auto w-full max-w-6xl">
+    <section className="bg-black px-6 py-20 font-manrope sm:px-8 sm:py-28 lg:px-10">
+      <div className="w-full">
         <h2 className="text-4xl font-bold text-white sm:text-5xl">FAQ</h2>
 
         <div className="mt-16 border-t border-white/10 sm:mt-20">

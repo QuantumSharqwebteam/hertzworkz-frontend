@@ -75,8 +75,8 @@ const COMPANY_LINKS = [
 
 export default function SiteFooter({ contactMobile = false }) {
   return (
-    <footer className={`border-t border-white/10 bg-ink px-6 pb-10 pt-16 font-manrope text-white sm:px-12 lg:px-16 ${contactMobile ? "max-md:pt-6 max-md:pb-6" : ""}`}>
-      <div className={`mx-auto grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 ${contactMobile ? "max-md:hidden" : ""}`}>
+    <footer className={`border-t border-white/10 bg-ink px-6 pb-10 pt-16 font-manrope text-white sm:px-8 lg:px-10 ${contactMobile ? "max-md:pt-6 max-md:pb-6" : ""}`}>
+      <div className={`mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 ${contactMobile ? "max-md:hidden" : ""}`}>
         <div>
           <Link to="/" className="inline-block">
             <Logo barsClassName="h-3 w-auto" textClassName="h-6 w-auto" />
@@ -146,39 +146,44 @@ export default function SiteFooter({ contactMobile = false }) {
         </div></div>
       </div>}
 
-      <div className={`mx-auto mt-12 max-w-6xl border-t border-white/10 pt-6 ${contactMobile ? "max-md:hidden" : ""}`}>
-        <div className="flex flex-col items-center justify-between gap-4 text-xs text-gray-500 sm:flex-row">
-          <div className="flex items-center gap-3">
-            <span>Follow us</span>
-            <a
-              href="https://www.linkedin.com/company/hertzworkz-private-limited/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
-            >
-              <FaLinkedinIn aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.instagram.com/hertzworkz/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
-            >
-              <FaInstagram aria-hidden="true" />
-            </a>
-            <a href="#" aria-label="Twitter" className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
-              <FaXTwitter aria-hidden="true" />
-            </a>
-          </div>
+      {/* The divider line itself lives on this full-width wrapper (no max-w/mx-auto),
+          so it spans the footer's full padding box instead of the narrower content
+          max-width - only the row inside is constrained to match the columns above. */}
+      <div className={`mt-12 border-t border-white/10 ${contactMobile ? "max-md:hidden" : ""}`}>
+        <div className="mx-auto max-w-7xl pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-xs text-gray-500 sm:flex-row">
+            <div className="flex items-center gap-3">
+              <span>Follow us</span>
+              <a
+                href="https://www.linkedin.com/company/hertzworkz-private-limited/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+              >
+                <FaLinkedinIn aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.instagram.com/hertzworkz/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
+              >
+                <FaInstagram aria-hidden="true" />
+              </a>
+              <a href="#" aria-label="Twitter" className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
+                <FaXTwitter aria-hidden="true" />
+              </a>
+            </div>
 
-          <p className="order-first sm:order-none">© {new Date().getFullYear()} Hertzworkz. All rights reserved.</p>
+            <p className="order-first sm:order-none">© {new Date().getFullYear()} Hertzworkz. All rights reserved.</p>
 
-          <div className="flex items-center gap-3">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <span>|</span>
-            <a href="#" className="hover:text-white">Terms of Service</a>
+            <div className="flex items-center gap-3">
+              <a href="#" className="hover:text-white">Privacy Policy</a>
+              <span>|</span>
+              <a href="#" className="hover:text-white">Terms of Service</a>
+            </div>
           </div>
         </div>
       </div>

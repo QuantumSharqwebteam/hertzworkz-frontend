@@ -22,18 +22,26 @@ function isLinkActive(pathname, to) {
 }
 
 // `onLight` swaps the glass pill for a dark one so it reads on a white page.
+// `highContrast` is for the opposite problem - a dark but visually busy
+// background (the home hero's node-graph) where the default 5%-opacity glass
+// is still too transparent to read against; it darkens the pill without
+// going as opaque as `onLight`'s white-page treatment.
 // eslint-disable-next-line react/prop-types
-export default function HeroNavbar({ onLight = false }) {
+export default function HeroNavbar({ onLight = false, highContrast = false }) {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   const { pathname } = useLocation();
   const contactActive = pathname === "/contact";
 
+  const pillBackground = onLight
+    ? "border-white/[0.12] bg-black/70"
+    : highContrast
+      ? "border-white/15 bg-black/55"
+      : "border-white/20 bg-white/5";
+
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:pt-6 font-manrope">
-      <div className={`relative mx-auto w-[min(70%,1000px)] rounded-full border backdrop-blur-md shadow-lg ${
-          onLight ? "border-white/[0.12] bg-black/70" : "border-white/20 bg-white/5"
-        }`}>
+      <div className={`relative mx-auto w-[min(76%,1080px)] rounded-full border backdrop-blur-md shadow-lg ${pillBackground}`}>
         <nav aria-label="Main" className="flex items-center justify-between gap-4 px-3 py-1.5 sm:px-5">
           <Link
             to="/"

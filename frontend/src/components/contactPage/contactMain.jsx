@@ -9,12 +9,12 @@ export default function ContactMain() {
         <div className="bg-background font-manrope">
             <HeroNavbar onLight />
 
-            <section aria-labelledby="contact-heading" className="relative px-6 pb-20 pt-32 sm:px-12 sm:pt-36 lg:px-16 max-md:px-6 max-md:pb-6 max-md:pt-20">
+            <section aria-labelledby="contact-heading" className="relative px-6 pb-20 pt-32 sm:px-8 sm:pt-36 lg:px-10 max-md:px-6 max-md:pb-6 max-md:pt-20">
                 {/* Centers the form against a reasonable max-width instead of letting it hug the
                     section's left padding with the rest of the width left empty on large screens;
                     HangingPhone is positioned relative to this same container so it lands beside
                     the form instead of at a fixed offset from the viewport edge. */}
-                <div className="relative mx-auto max-w-6xl">
+                <div className="relative mx-auto max-w-7xl">
                     <HangingPhone />
                     <div className="max-w-2xl">
                         <p className="mb-1 text-sm font-semibold uppercase text-lightOrange md:hidden">LET&apos;S TALK</p>

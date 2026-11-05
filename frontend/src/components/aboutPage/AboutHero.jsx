@@ -6,7 +6,7 @@ import RevealText from "../RevealText";
 // no glow.
 export default function AboutHero() {
   return (
-    <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-black px-[6%] pb-16 pt-28 font-manrope sm:px-[8%] sm:pt-32 lg:px-[10%]">
+    <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-black px-[4%] pb-16 pt-28 font-manrope sm:px-[6%] sm:pt-32 lg:px-[8%]">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:text-left">
         <div>
           <h1 className="mx-auto max-w-[24ch] text-[1.75rem] font-normal leading-[1.3] text-white sm:text-[2rem] lg:mx-0 lg:text-[2.4rem]">

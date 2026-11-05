@@ -6,8 +6,8 @@ import services from "../servicePage/servicesData";
 // (not <h1>) since Hero already owns the page's one <h1>.
 export default function ServicesSection() {
   return (
-    <section aria-labelledby="home-services-heading" className="bg-ink px-6 py-20 sm:px-12 lg:px-16">
-      <div className="mx-auto max-w-6xl">
+    <section aria-labelledby="home-services-heading" className="bg-ink px-6 py-20 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl">
         <p className="text-sm font-medium text-lightOrange sm:text-base">
           From Strategy To Execution, We Build What Your Business Needs.
         </p>

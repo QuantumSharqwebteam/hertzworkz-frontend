@@ -86,10 +86,10 @@ export default function OurTeam() {
         </p>
       </div>
 
-      <div data-aos="zoom-out" className="mt-16 px-4 pb-20 sm:px-8 lg:px-16">
+      <div data-aos="zoom-out" className="mt-16 px-6 pb-20 sm:px-8 lg:px-10">
         <h2 className="text-center text-3xl font-medium text-white sm:text-4xl">Why Work at Hertzworkz?</h2>
 
-        <div className="mx-auto mt-10 flex w-full max-w-6xl flex-col gap-16 sm:gap-20">
+        <div className="mt-10 flex w-full flex-col gap-16 sm:gap-20">
           {CULTURE_ROWS.map(row => (
             <CultureRow key={row.title} {...row} reducedMotion={reducedMotion} />
           ))}

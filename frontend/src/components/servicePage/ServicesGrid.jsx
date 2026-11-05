@@ -36,7 +36,7 @@ export default function ServicesGrid() {
     <div className="bg-ink font-manrope">
       <HeroNavbar />
 
-      <section aria-labelledby="services-heading" className="px-6 pb-16 pt-28 sm:px-12 sm:pt-32 lg:px-16">
+      <section aria-labelledby="services-heading" className="px-6 pb-16 pt-28 sm:px-8 sm:pt-32 lg:px-10">
         {/* Below lg: the Figma scatter layout is desktop-only, so this falls back to a
             simple centered single-column stack (heading, then each icon in turn). At
             lg+ the same elements switch to absolute positioning within the frame. */}

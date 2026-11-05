@@ -245,11 +245,15 @@ export default function ProductsShowcase() {
 
   return (
     <section id="products-showcase" aria-label="Our products" className="bg-ink font-manrope">
-      <div className="px-6 py-16 sm:px-12">
+      {/* No horizontal padding here (unlike the grid below) - the marquee needs
+          the section's full width to actually reach the screen edges. Bottom
+          padding is larger than the top so the marquee doesn't feel cramped
+          against the product circles grid directly below it. */}
+      <div className="pt-16 pb-28 sm:pb-32 lg:pb-40">
         <ProductMarquee tabs={TABS} />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-12 lg:grid-cols-2 lg:px-16">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 sm:px-8 lg:grid-cols-2 lg:px-10">
         <div className="relative">
           {detail ? (
             // Fixed coordinates (measured off the reference screenshot) instead of flex
@@ -340,7 +344,7 @@ export default function ProductsShowcase() {
             </div>
           ) : (
             <div className="flex flex-col items-center gap-10 sm:flex-row sm:items-start sm:justify-center sm:gap-6 lg:gap-10">
-              <div className="flex flex-col gap-10 sm:gap-14 sm:pt-16 lg:pt-24">
+              <div className="flex flex-col gap-10 sm:gap-14 sm:pt-20 lg:pt-28">
                 {LEFT_COLUMN.map((item) => (
                   <ProductCircle key={item.name} {...item} onClick={() => setSelected(item.name)} />
                 ))}
@@ -354,7 +358,7 @@ export default function ProductsShowcase() {
           )}
         </div>
 
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:pl-20 lg:text-left">
           {detail ? (
             <>
               <div className="flex items-center justify-center gap-3 lg:justify-start">
