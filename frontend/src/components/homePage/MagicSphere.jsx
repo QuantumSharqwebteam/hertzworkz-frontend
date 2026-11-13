@@ -2,8 +2,9 @@
 import { useEffect, useRef } from "react";
 
 // WebGL fragment shader for a mouse-reactive, flowing lava/magma sphere.
-// Confined to its parent's box (meant to sit behind content inside a
-// rounded-full, overflow-hidden circle) rather than the full viewport.
+// Transparent outside the sphere/glow (real alpha, not an opaque near-black
+// fill) - the parent no longer needs to clip it to a circle; the shader's own
+// shape and falloff are what make it round.
 const VERTEX_SRC = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
 
 const FRAGMENT_SRC = `precision highp float;
@@ -32,12 +33,24 @@ vec3 rim(vec2 p,vec2 m,float t){
 }
 void main(){
   vec2 uv=(gl_FragCoord.xy-.5*uRes)/uRes.y;
-  float R=.44*(1.+.035*uH*uReact);
+  float R=.36*(1.+.035*uH*uReact);
   vec2 p=(uv-uM*R*.05*uH*uReact)/R;
   float d=length(p),px=1.5/(uRes.y*R),t=uT;
-  vec3 col=vec3(.035,.035,.04)*(1.-.3*length(uv));
   vec3 rc=rim(p,uM,t);
-  col+=rc*exp(-max(d-1.,0.)*45.)*.1*(1.+uH);
+  // Radial window reaching 0 at the canvas's inscribed circle (uv radius .5),
+  // not a rectangular one - the glow is still bright when it reaches a
+  // straight canvas edge (especially boosted by uH on hover), and a
+  // rectangular fade cuts that off in a visible straight line/square frame.
+  float edgeFade=1.-smoothstep(.36,.5,length(uv));
+  edgeFade*=edgeFade;
+  // Wide, soft falloff (was *45., tight enough to need an opaque background to
+  // hide its own hard edge) - this alone drives the glow's alpha outside the
+  // sphere, so it fades to true transparency instead of a flat color.
+  float glow=clamp(exp(-max(d-1.,0.)*7.)*(1.+uH),0.,1.)*edgeFade;
+  float cov=1.-smoothstep(1.-px,1.+px,d); // sphere's own anti-aliased coverage
+  // Glow is ADDED light (premultiplied, alpha stays 0 outside the sphere), so the
+  // page background is never darkened or dimmed around the sphere.
+  vec3 col=rc*glow*glow*.6;
   if(d<1.+px){
     float z=sqrt(max(1.-d*d,0.));
     vec2 q=p/(.55+.45*z);
@@ -51,10 +64,18 @@ void main(){
     vec3 n=vec3(p,z);
     vec3 L=normalize(vec3(mix(vec2(-.35,.45),uM*.9,uH),1.));
     inn+=vec3(1.,.9,.8)*pow(max(dot(reflect(-L,n),vec3(0,0,1)),0.),40.)*(.08+.14*uH);
-    col=mix(col,inn,1.-smoothstep(1.-px,1.+px,d));
+    col=mix(col,inn,cov);
   }
-  col+=(hash(gl_FragCoord.xy+fract(t)*91.)-.5)*.035*uGrain;
-  gl_FragColor=vec4(col,1.);
+  // Alpha = sphere coverage only. Outside the sphere alpha is 0 and only the
+  // additive glow colour is written, so there is no dark fill and no box:
+  // premultiplied "over" compositing reduces to result = src_rgb + dst when
+  // alpha is 0, i.e. pure additive light with no dimming of the page behind
+  // it (using max(cov, glow) here was the bug - any alpha > 0 in the glow
+  // region multiplies the page background by (1 - alpha), which is exactly
+  // what was dimming it into a visible ring).
+  float gm=max(cov,glow*glow);
+  col+=(hash(gl_FragCoord.xy+fract(t)*91.)-.5)*.035*uGrain*gm;
+  gl_FragColor=vec4(max(col,0.),cov);
 }`;
 
 export default function MagicSphere({ speed = 1, reactivity = 1, grain = true }) {
@@ -63,8 +84,14 @@ export default function MagicSphere({ speed = 1, reactivity = 1, grain = true })
   useEffect(() => {
     const cv = canvasRef.current;
     if (!cv) return undefined;
-    const gl = cv.getContext("webgl", { antialias: false, alpha: false });
+    const gl = cv.getContext("webgl", { antialias: false, alpha: true, premultipliedAlpha: true });
     if (!gl) return undefined;
+    if (!gl.getContextAttributes()?.alpha) {
+      // A browser/driver can silently grant an opaque context even when alpha
+      // is requested (or a stale context could be reused across HMR despite
+      // the key above) - this would bring back the opaque background/box.
+      console.warn("MagicSphere: WebGL context is opaque (alpha: false) - sphere background will not be transparent.");
+    }
 
     const compile = (type, src) => {
       const shader = gl.createShader(type);
@@ -112,7 +139,7 @@ export default function MagicSphere({ speed = 1, reactivity = 1, grain = true })
 
     const move = (e) => {
       const r = cv.getBoundingClientRect();
-      const R = r.height * 0.44;
+      const R = r.height * 0.36;
       let x = (e.clientX - r.left - r.width / 2) / R;
       let y = -(e.clientY - r.top - r.height / 2) / R;
       const len = Math.hypot(x, y);
@@ -160,5 +187,11 @@ export default function MagicSphere({ speed = 1, reactivity = 1, grain = true })
     };
   }, [speed, reactivity, grain]);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="block h-full w-full" />;
+  // key: a canvas's WebGL context attributes (alpha, premultipliedAlpha, ...)
+  // are fixed at its first getContext() call and can't be changed afterward -
+  // if Vite HMR ever reuses this exact <canvas> DOM node across an edit here,
+  // getContext would silently hand back the OLD (opaque) context instead of a
+  // new transparent one. The key guarantees a fresh node, and therefore a
+  // fresh context, whenever this component itself remounts.
+  return <canvas key="alpha-canvas" ref={canvasRef} aria-hidden="true" className="block h-full w-full" />;
 }

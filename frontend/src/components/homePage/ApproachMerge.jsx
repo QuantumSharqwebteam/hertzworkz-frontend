@@ -91,6 +91,12 @@ export default function ApproachMerge() {
             const isHub = key === "create";
             const shiftX = (left - 50) * merge;
             const shiftY = (top - 54) * merge;
+            // Fades 18% faster than finalIn itself (not just 1 - finalIn) so it hits
+            // true 0 opacity with margin before finalIn settles near 1 - otherwise its
+            // dark bg-approach-sphere gradient (scaled 1.35x larger) shows as a faint
+            // dark ring around the final sphere at almost any resting scroll position,
+            // since 1 - finalIn only reaches exactly 0 right at finalIn === 1.
+            const circleOpacity = appear * (isHub ? Math.max(0, 1 - finalIn / 0.82) : 1 - merge);
             return (
               <div
                 key={key}
@@ -107,9 +113,11 @@ export default function ApproachMerge() {
                   top: `${top - shiftY}%`,
                   width: size,
                   height: size,
-                  // The hub circle fades out as the final circle fades in, so it never
-                  // shows through at the edges once the final circle sits on top of it.
-                  opacity: appear * (isHub ? Math.max(0, 1 - finalIn) : 1 - merge),
+                  opacity: circleOpacity,
+                  // Belt-and-suspenders on top of circleOpacity reaching true 0: once the
+                  // hub is faded out, drop it from compositing entirely so no rounding/
+                  // GPU-blending edge case can ever let its dark gradient show through.
+                  visibility: isHub && circleOpacity <= 0 ? "hidden" : "visible",
                   transform: `translate(-50%, -50%) scale(${1 + (isHub ? merge * 0.35 : 0)})`,
                 }}
               >
@@ -123,22 +131,31 @@ export default function ApproachMerge() {
             );
           })}
 
-          {/* Final merged hub: the sphere canvas reveals the closing statement.
-              Scale is fixed (not animated) so the rounded edge never lands on a
-              fractional pixel - an animated scale on a border-radius circle leaves
-              a hairline sub-pixel seam where the page background shows through.
-              Background is bg-ink (not bg-brand-gradient) so that same hairline
-              seam, where the canvas's own near-black edge meets the clip, is
-              invisible against the section's near-black backdrop. */}
+          {/* Final merged hub: the sphere canvas itself reveals the closing statement.
+              No rounded-full/overflow-hidden/bg-ink clip here any more - the shader is
+              now truly transparent outside the sphere/glow (see MagicSphere.jsx), so
+              there's no dark fill left for a clip to turn into a visible ring. The
+              container is a square sized so the visible sphere (R=.36, i.e. 72% of the
+              canvas - deliberately roomy so the glow has space to fade out before the
+              canvas edge, instead of being cut off in a visible square frame) still
+              comes out to min(90vw,44rem): 44rem / 0.72 = 61rem. Scale is fixed (not
+              animated) so nothing here ever lands on a fractional pixel. */}
           <div
             aria-hidden={finalIn < 0.5}
-            data-cursor-fill-circle="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 flex aspect-square w-[min(90vw,44rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center overflow-hidden rounded-full bg-ink px-10 text-center"
+            className="pointer-events-none absolute left-1/2 top-1/2 flex aspect-square w-[min(125vw,61rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center px-10 text-center"
             style={{ opacity: finalIn }}
           >
             <div className="absolute inset-0">
               <MagicSphere speed={1.1} reactivity={1.2} />
             </div>
+            {/* Invisible circle matching the sphere's own visible size (72% of this
+                square), so cursor fill-detection still sees a circle exactly the size
+                of the sphere rather than this element's full square bounding box. */}
+            <div
+              aria-hidden="true"
+              data-cursor-fill-circle="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[72%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            />
             <p className="relative z-10 text-2xl font-medium text-white sm:text-4xl">
               <TiltReveal text="We bring it together." trigger={finalIn >= 1} />
             </p>

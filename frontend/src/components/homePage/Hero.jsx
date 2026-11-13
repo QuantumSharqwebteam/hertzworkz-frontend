@@ -233,7 +233,7 @@ export default function Hero({ id = "hero", step = "hero" }) {
         id={id}
         data-hero-step={step}
         aria-labelledby="hero-heading"
-        className="sticky top-0 isolate flex h-[calc(100vh-160px)] w-full flex-col items-center justify-start overflow-hidden bg-ink px-4 pb-8 pt-[max(7rem,19vh)] text-center font-manrope sm:px-8 lg:px-12"
+        className="sticky top-0 isolate flex h-[calc(100vh-90px)] w-full flex-col items-center justify-start overflow-hidden bg-ink px-4 pb-8 pt-[max(7rem,19vh)] text-center font-manrope sm:px-8 lg:px-12"
       >
         {/* Background layer: diagonal light beams (top-left), a dim orange orb, and a
             vignette - all behind the content, all decorative. */}
