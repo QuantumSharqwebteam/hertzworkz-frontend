@@ -9,7 +9,11 @@ import MagicSphere from "./MagicSphere";
  * Progress (0-1) is derived from how far the viewport has scrolled through the
  * oversized wrapper while its inner content stays sticky.
  */
-const SECTION_VH = 260;
+const SECTION_VH = 320;
+// The merge/reveal animation finishes at this fraction of scroll progress;
+// the remaining (1 - ANIM_END) is a hold where the final sphere stays pinned
+// on screen. Hold length is about (SECTION_VH - 100) * (1 - ANIM_END) vh.
+const ANIM_END = 0.68;
 
 const clamp01 = (n) => Math.min(1, Math.max(0, n));
 const phase = (p, start, end) => clamp01((p - start) / (end - start));
@@ -75,8 +79,9 @@ export default function ApproachMerge() {
     );
   }
 
-  const merge = phase(progress, 0.55, 0.88);
-  const finalIn = phase(progress, 0.74, 0.96);
+  const animProgress = clamp01(progress / ANIM_END);
+  const merge = phase(animProgress, 0.55, 0.88);
+  const finalIn = phase(animProgress, 0.74, 0.96);
 
   return (
     <section aria-labelledby="approach-heading" className="relative bg-ink">
@@ -87,7 +92,7 @@ export default function ApproachMerge() {
           </h2>
 
           {CIRCLES.map(({ key, label, left, top, size, delay }) => {
-            const appear = phase(progress, delay[0], delay[1]);
+            const appear = phase(animProgress, delay[0], delay[1]);
             const isHub = key === "create";
             const shiftX = (left - 50) * merge;
             const shiftY = (top - 54) * merge;
