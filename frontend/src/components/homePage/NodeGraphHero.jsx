@@ -295,7 +295,12 @@ export default function NodeGraphHero() {
     <section
       id="node-graph"
       aria-labelledby="graph-heading"
-      className="relative min-h-screen w-full overflow-hidden bg-white font-manrope"
+      // Hero is pinned (sticky) and shortened so this section's rounded top
+      // corners already peek above the fold at rest; scrolling slides this
+      // section up over Hero while --hero-reveal-arc (written by Hero's own
+      // scroll effect) shrinks the corner radius from 56px down to a flat edge.
+      className="relative z-[2] min-h-screen w-full overflow-hidden bg-white font-manrope"
+      style={{ borderRadius: "var(--hero-reveal-arc, 56px) var(--hero-reveal-arc, 56px) 0 0" }}
     >
       {/* pointer-events-none: this box is wide/tall enough to overlap the hub
           buttons in the graph layer below on shorter viewports, and would

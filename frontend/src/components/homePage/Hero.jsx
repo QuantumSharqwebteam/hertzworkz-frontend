@@ -148,6 +148,84 @@ export default function Hero({ id = "hero", step = "hero" }) {
     };
   }, [arcEntranceDone]);
 
+  // Scroll reveal: the hero pins in place (sticky, shortened by CURVE_PEEK_PX so
+  // that much of NodeGraphHero's curved top already shows at rest) while
+  // NodeGraphHero slides up over it. --hero-reveal-p (0->1) and
+  // --hero-reveal-arc (CURVE_PEEK_PX->0) are written onto the document root so
+  // any component can read them in plain CSS, no prop drilling needed -
+  // NodeGraphHero's border-radius arc flattens as --hero-reveal-arc shrinks,
+  // and this section's own content fades/lifts as --hero-reveal-p grows.
+  // A scroll near either end of that short pin zone "glides" (eased, animated
+  // scrollTo) the rest of the way open or closed, so the reveal always
+  // finishes in one smooth motion instead of leaving it half-played.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const heroEl = heroSectionRef.current;
+    if (!heroEl) return undefined;
+    const root = document.documentElement;
+
+    const MAX_ARC = 56; // px - matches NodeGraphHero's --hero-reveal-arc fallback
+    const TRIGGER = 0.12; // finishes by itself after 12% of the reveal
+    let animating = false;
+    let lastY = 0;
+    let idleTimer;
+
+    const paint = () => {
+      const p = Math.min(1, window.scrollY / heroEl.offsetHeight);
+      const eased = p * p * (3 - 2 * p); // slow start, slow finish
+      root.style.setProperty("--hero-reveal-p", p);
+      root.style.setProperty("--hero-reveal-arc", `${MAX_ARC * (1 - eased)}px`);
+    };
+
+    const glideTo = (target) => {
+      if (animating) return;
+      animating = true;
+      root.style.overflow = "hidden"; // pause user scroll while it plays
+      const from = window.scrollY;
+      const start = performance.now();
+      const duration = 450 + (450 * Math.abs(target - from)) / heroEl.offsetHeight;
+
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        const e = t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+        window.scrollTo(0, from + (target - from) * e);
+        paint();
+        if (t < 1) {
+          requestAnimationFrame(step);
+          return;
+        }
+        animating = false;
+        root.style.overflow = "";
+        lastY = window.scrollY;
+      };
+      requestAnimationFrame(step);
+    };
+
+    const onScroll = () => {
+      paint();
+      const y = window.scrollY;
+      const down = y > lastY;
+      lastY = y;
+      clearTimeout(idleTimer);
+      const zone = heroEl.offsetHeight;
+      if (animating || y <= 0 || y >= zone) return;
+      if (down && y > zone * TRIGGER) glideTo(zone);
+      else if (!down && y < zone * (1 - TRIGGER)) glideTo(0);
+      else if (y < zone * TRIGGER) idleTimer = setTimeout(() => glideTo(0), 180);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    paint();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      clearTimeout(idleTimer);
+      root.style.overflow = "";
+      root.style.removeProperty("--hero-reveal-p");
+      root.style.removeProperty("--hero-reveal-arc");
+    };
+  }, []);
+
   return (
     <main>
       <section
@@ -155,7 +233,7 @@ export default function Hero({ id = "hero", step = "hero" }) {
         id={id}
         data-hero-step={step}
         aria-labelledby="hero-heading"
-        className="relative isolate flex h-screen w-full flex-col items-center justify-start overflow-hidden bg-ink px-4 pb-8 pt-[max(7rem,19vh)] text-center font-manrope sm:px-8 lg:px-12"
+        className="sticky top-0 isolate flex h-[calc(100vh-160px)] w-full flex-col items-center justify-start overflow-hidden bg-ink px-4 pb-8 pt-[max(7rem,19vh)] text-center font-manrope sm:px-8 lg:px-12"
       >
         {/* Background layer: diagonal light beams (top-left), a dim orange orb, and a
             vignette - all behind the content, all decorative. */}
@@ -197,7 +275,13 @@ export default function Hero({ id = "hero", step = "hero" }) {
           </div>
         </div>
 
-        <div className="hero-content relative z-10 mx-auto w-full max-w-3xl">
+        <div
+          className="hero-content relative z-10 mx-auto w-full max-w-3xl"
+          style={{
+            opacity: "calc(1 - var(--hero-reveal-p, 0) * 0.7)",
+            transform: "translateY(calc(var(--hero-reveal-p, 0) * -48px))",
+          }}
+        >
           <h1
             id="hero-heading"
             data-cursor-fill="true"
