@@ -119,6 +119,10 @@ export default {
           '0%': { transform: 'translateY(18%)', opacity: '0' },
           '100%': { transform: 'translateY(0%)', opacity: '1' },
         },
+        'dot-glow': {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(254,93,38,0.55)' },
+          '50%': { boxShadow: '0 0 18px 6px rgba(254,93,38,0.55)' },
+        },
       },
       animation: {
         'sphere-pulse': 'sphere-pulse 10s ease-in-out infinite',
@@ -133,6 +137,7 @@ export default {
         'ring-sequence': 'ring-in 600ms ease-out 900ms both, ring-pulse 4s ease-in-out 1500ms infinite',
         marquee: 'marquee 30s linear infinite',
         'arc-slide-up': 'arc-slide-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) both',
+        'dot-glow': 'dot-glow 2.4s ease-in-out infinite',
       },
     },
   },

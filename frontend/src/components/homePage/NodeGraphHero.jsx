@@ -1,6 +1,17 @@
 /* eslint-disable react/prop-types -- repo has no prop-types dependency; Tooltip is file-local */
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { FaPalette, FaMicrochip, FaRocket } from "react-icons/fa6";
+import {
+  FaPalette,
+  FaMicrochip,
+  FaRocket,
+  FaMobileScreenButton,
+  FaCloud,
+  FaShieldHalved,
+  FaChartLine,
+  FaMagnifyingGlass,
+  FaHeadset,
+  FaGaugeHigh,
+} from "react-icons/fa6";
 import TiltReveal from "../TiltReveal";
 import RevealText from "../RevealText";
 
@@ -18,32 +29,102 @@ const SIZE = {
 // "ghost" anchors so lines run past the edges. Interactive nodes carry tooltip copy.
 const NODES = [
   // Right cluster
-  { id: "r1", x: 85, y: 12, size: "md", kind: "orange" },
+  {
+    id: "r1",
+    x: 85,
+    y: 12,
+    size: "md",
+    kind: "orange",
+    title: "Mobile Apps",
+    subtitle: "Native and cross-platform, built to feel right.",
+    body: "iOS, Android, or both from one codebase, we build mobile apps that are fast, reliable, and easy to maintain.",
+    Icon: FaMobileScreenButton,
+  },
   { id: "r2", x: 96, y: 20, size: "sm", kind: "black" },
-  { id: "r3", x: 80, y: 32, size: "md2", kind: "orange" },
+  {
+    id: "r3",
+    x: 80,
+    y: 32,
+    size: "md2",
+    kind: "orange",
+    title: "Performance",
+    subtitle: "Fast by default, not as an afterthought.",
+    body: "We profile and tune the parts that matter, so pages load fast and apps stay responsive under real traffic.",
+    Icon: FaGaugeHigh,
+  },
   { id: "r4", x: 77, y: 41, size: "xs", kind: "orange" },
-  { id: "r5", x: 86, y: 41, size: "md2", kind: "orange" },
+  {
+    id: "r5",
+    x: 86,
+    y: 41,
+    size: "md2",
+    kind: "orange",
+    title: "Cloud Infra",
+    subtitle: "Architecture that scales with you.",
+    body: "We design cloud infrastructure that grows with demand, stays resilient under load, and keeps running costs under control.",
+    Icon: FaCloud,
+  },
   { id: "r6", x: 94, y: 45, size: "sm", kind: "black" },
   { id: "r7", x: 81, y: 53, size: "sm", kind: "black" },
   { id: "r8", x: 59, y: 64, size: "sm", kind: "orange" },
-  { id: "r9", x: 89.5, y: 70, size: "md", kind: "orange" },
+  {
+    id: "r9",
+    x: 89.5,
+    y: 70,
+    size: "md",
+    kind: "orange",
+    title: "Security",
+    subtitle: "Protection built into every layer.",
+    body: "From authentication to data handling, we bake security into the architecture instead of bolting it on afterward.",
+    Icon: FaShieldHalved,
+  },
   { id: "r10", x: 65, y: 75, size: "sm", kind: "orange" },
   { id: "r11", x: 55.5, y: 74, size: "xs", kind: "orange" },
   { id: "r12", x: 84.5, y: 83, size: "sm", kind: "black" },
   { id: "r13", x: 91, y: 83, size: "xs", kind: "orange" },
   { id: "r14", x: 70, y: 92, size: "sm", kind: "orange" },
   { id: "r15", x: 77.5, y: 99, size: "xs", kind: "orange" },
-  { id: "r16", x: 57, y: 90.5, size: "md", kind: "orange" },
+  {
+    id: "r16",
+    x: 57,
+    y: 90.5,
+    size: "md",
+    kind: "orange",
+    title: "Analytics",
+    subtitle: "Dashboards that tell you what's working.",
+    body: "We surface the metrics that matter so decisions are backed by data, not guesswork.",
+    Icon: FaChartLine,
+  },
   // Left cluster
   { id: "l1", x: 13, y: 27, size: "sm", kind: "orange" },
   { id: "l2", x: 9, y: 33, size: "sm", kind: "black" },
-  { id: "l3", x: 5, y: 40, size: "md", kind: "orange" },
+  {
+    id: "l3",
+    x: 5,
+    y: 40,
+    size: "md",
+    kind: "orange",
+    title: "Discovery",
+    subtitle: "Understand the problem before we build.",
+    body: "We start with research, not assumptions, mapping users, goals, and constraints before a single screen gets designed.",
+    Icon: FaMagnifyingGlass,
+  },
   { id: "l4", x: 15, y: 46, size: "sm", kind: "black" },
   { id: "l5", x: 27.5, y: 62, size: "sm", kind: "black" },
   { id: "l6", x: 22, y: 74, size: "sm", kind: "black" },
   { id: "l7", x: 0.5, y: 66, size: "sm", kind: "orange" },
   { id: "l8", x: 30, y: 80, size: "sm", kind: "orange" },
-  { id: "l9", x: 12, y: 88.5, size: "key", kind: "orange" },
+  {
+    id: "l9",
+    x: 12,
+    y: 88.5,
+    size: "key",
+    kind: "orange",
+    title: "Support",
+    subtitle: "We stay on after launch.",
+    body: "Ongoing support, monitoring, and maintenance so the product keeps running smoothly long after it ships.",
+    Icon: FaHeadset,
+  },
   { id: "l10", x: 37, y: 92.5, size: "sm", kind: "orange" },
   { id: "l11", x: 32, y: 98, size: "xs", kind: "black" },
   // Off-screen anchors (not drawn)
@@ -216,7 +297,11 @@ export default function NodeGraphHero() {
       aria-labelledby="graph-heading"
       className="relative min-h-screen w-full overflow-hidden bg-white font-manrope"
     >
-      <div className="relative z-20 mx-auto max-w-4xl px-4 pt-28 text-center sm:pt-32">
+      {/* pointer-events-none: this box is wide/tall enough to overlap the hub
+          buttons in the graph layer below on shorter viewports, and would
+          otherwise block hover/clicks on them even across its empty padding -
+          nothing in here (plain text) needs pointer events. */}
+      <div className="pointer-events-none relative z-20 mx-auto max-w-4xl px-4 pt-28 text-center sm:pt-32">
         <h2 id="graph-heading" className="text-3xl font-medium leading-tight text-black sm:text-4xl">
           <TiltReveal text="Ideas are easy. Building them is not." triggerOnView />
         </h2>
@@ -257,7 +342,7 @@ export default function NodeGraphHero() {
           const shadow =
             node.kind === "black" ? "shadow-[0_4px_10px_rgba(0,0,0,0.18)]" : "shadow-[0_6px_16px_rgba(0,0,0,0.18)]";
 
-          if (node.kind !== "key") {
+          if (!node.title) {
             return (
               <span
                 key={node.id}
@@ -294,7 +379,9 @@ export default function NodeGraphHero() {
                 <span
                   style={dot}
                   className={`flex items-center justify-center rounded-full bg-lightOrange ring-2 ring-white transition-[transform,box-shadow] duration-200 ${
-                    isActive ? "scale-110 shadow-[0_0_30px_8px] shadow-lightOrange/50" : `scale-100 ${shadow}`
+                    isActive
+                      ? "scale-110 shadow-[0_0_30px_8px] shadow-lightOrange/50"
+                      : `scale-100 ${shadow} animate-dot-glow`
                   }`}
                 >
                   <node.Icon aria-hidden="true" className="h-[45%] w-[45%] text-white" />

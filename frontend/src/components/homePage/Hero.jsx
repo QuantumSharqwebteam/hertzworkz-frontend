@@ -200,11 +200,12 @@ export default function Hero({ id = "hero", step = "hero" }) {
         <div className="hero-content relative z-10 mx-auto w-full max-w-3xl">
           <h1
             id="hero-heading"
+            data-cursor-fill="true"
             className="text-4xl font-medium leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
             <TiltReveal text="We Build Technology That Moves Businesses Forward." trigger={arcSlide} />
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-base text-gray-400 sm:text-lg">
+          <p data-cursor-fill="true" className="mx-auto mt-6 max-w-xl text-base text-gray-400 sm:text-lg">
             {/* startDelay matches when the headline's last word finishes settling
                 (7 words * 35ms step + 550ms duration = 760ms), so this starts
                 right as the headline is done, same sequencing as the rest of

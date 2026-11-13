@@ -78,7 +78,7 @@ export default function PartnersAndSupporters() {
           CTA glow's bottom arc fades out gracefully instead of cutting through content -
           our previous mt-20 was far too tight, making the arc look like it was slicing
           between the two logo rows instead of fading behind empty space. */}
-      <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-28 sm:px-8 lg:mt-[32rem] lg:px-10">
+     <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-28 sm:px-8 lg:mt-56 lg:px-10">
         <h2 className="text-center text-2xl font-medium text-gray-300 sm:text-3xl">
           <TiltReveal text="Supported & Recognized By" triggerOnView />
         </h2>

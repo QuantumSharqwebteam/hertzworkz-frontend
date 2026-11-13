@@ -11,6 +11,7 @@ import ServicesGrid from "./components/servicePage/ServicesGrid";
 import ServiceDetail from "./components/servicePage/ServiceDetail";
 import AboutMain from "./components/aboutPage/aboutMain";
 import TypewriterShowcase from "./components/TypewriterShowcase";
+import CustomCursor from "./components/CustomCursor";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -45,6 +46,7 @@ export default function App() {
   return (
     <>
       <Preloader />
+      <CustomCursor />
       <div className=''>
         <Router>
           <AppRoutes />

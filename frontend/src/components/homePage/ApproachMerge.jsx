@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import TiltReveal from "../TiltReveal";
 import RevealText from "../RevealText";
+import MagicSphere from "./MagicSphere";
 
 /**
  * Pinned scroll section: three circles (Explore/Create/Deliver) hold in place,
@@ -80,7 +81,7 @@ export default function ApproachMerge() {
   return (
     <section aria-labelledby="approach-heading" className="relative bg-ink">
       <div ref={wrapperRef} style={{ height: `${SECTION_VH}vh` }}>
-        <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
+        <div data-cursor-zone="sphere" className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
           <h2 id="approach-heading" className="sr-only">
             We bring exploration, creation, and delivery together.
           </h2>
@@ -94,7 +95,13 @@ export default function ApproachMerge() {
               <div
                 key={key}
                 aria-hidden="true"
-                className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-approach-sphere shadow-[0_0_60px_10px_rgba(0,0,0,0.5)]"
+                className={`pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-approach-sphere ${
+                  // The hub circle sits directly behind the final sphere while both are
+                  // fading (see opacity below); its own dark box-shadow would otherwise
+                  // show through as a ghost ring/halo on top of the sphere during that
+                  // overlap, so only the two outer circles (which nothing else covers) get it.
+                  isHub ? "" : "shadow-[0_0_60px_10px_rgba(0,0,0,0.5)]"
+                }`}
                 style={{
                   left: `${left - shiftX}%`,
                   top: `${top - shiftY}%`,
@@ -116,19 +123,26 @@ export default function ApproachMerge() {
             );
           })}
 
-          {/* Final merged hub: brand-gradient circle revealing the closing statement.
+          {/* Final merged hub: the sphere canvas reveals the closing statement.
               Scale is fixed (not animated) so the rounded edge never lands on a
               fractional pixel - an animated scale on a border-radius circle leaves
-              a hairline sub-pixel seam where the page background shows through. */}
+              a hairline sub-pixel seam where the page background shows through.
+              Background is bg-ink (not bg-brand-gradient) so that same hairline
+              seam, where the canvas's own near-black edge meets the clip, is
+              invisible against the section's near-black backdrop. */}
           <div
             aria-hidden={finalIn < 0.5}
-            className="pointer-events-none absolute left-1/2 top-1/2 flex aspect-square w-[min(90vw,44rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-brand-gradient px-10 text-center"
+            data-cursor-fill-circle="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 flex aspect-square w-[min(90vw,44rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center overflow-hidden rounded-full bg-ink px-10 text-center"
             style={{ opacity: finalIn }}
           >
-            <p className="text-2xl font-medium text-white sm:text-4xl">
+            <div className="absolute inset-0">
+              <MagicSphere speed={1.1} reactivity={1.2} />
+            </div>
+            <p className="relative z-10 text-2xl font-medium text-white sm:text-4xl">
               <TiltReveal text="We bring it together." trigger={finalIn >= 1} />
             </p>
-            <p className="mt-4 max-w-sm text-sm text-white/90 sm:text-base">
+            <p className="relative z-10 mt-4 max-w-sm text-sm text-white/90 sm:text-base">
               <RevealText
                 text="We explore what's possible, create what matters, and deliver solutions built to make an impact."
                 trigger={finalIn >= 1}
