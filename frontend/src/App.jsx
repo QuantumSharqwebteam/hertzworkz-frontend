@@ -12,6 +12,8 @@ import ServiceDetail from "./components/servicePage/ServiceDetail";
 import AboutMain from "./components/aboutPage/aboutMain";
 import TypewriterShowcase from "./components/TypewriterShowcase";
 import CustomCursor from "./components/CustomCursor";
+import PrivacyPolicy from "./components/legalPage/PrivacyPolicy";
+import TermsOfService from "./components/legalPage/TermsOfService";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -28,6 +30,8 @@ function AppRoutes() {
         <Route path="/application" element={<ApplicationMain />} />
         <Route path="/service/:slug" element={<ServiceDetail />} />
         <Route path="/about" element={<AboutMain />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/typewriter-demo" element={<TypewriterShowcase />} />
       </Routes>
     </>

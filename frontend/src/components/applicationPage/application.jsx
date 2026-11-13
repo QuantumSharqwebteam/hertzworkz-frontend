@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function Application() {
     return (
@@ -99,13 +100,13 @@ export default function Application() {
                                 />
                                 <span className="ml-3 text-sm text-gray-400">
                                     I agree with{" "}
-                                    <a href="#" className="text-blue-500 underline">
+                                    <Link to="/terms-of-service" className="text-blue-500 underline">
                                         Terms of Use
-                                    </a>{" "}
+                                    </Link>{" "}
                                     and{" "}
-                                    <a href="#" className="text-blue-500 underline">
+                                    <Link to="/privacy-policy" className="text-blue-500 underline">
                                         Privacy Policy
-                                    </a>
+                                    </Link>
                                 </span>
                             </div>
                             <button

@@ -2,9 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
-// Twitter and Privacy Policy/Terms of Service have no real destination yet (no account
-// URL, no /privacy-policy or /terms-of-service route), so they stay as non-navigating
-// placeholders until those destinations exist. LinkedIn and Instagram are real.
+// Twitter has no account URL yet, so it stays as a non-navigating placeholder.
+// LinkedIn, Instagram, Privacy Policy and Terms of Service are real.
 import Logo from "../Logo";
 import services from "../servicePage/servicesData";
 
@@ -180,14 +179,14 @@ export default function SiteFooter({ contactMobile = false }) {
             <p className="order-first sm:order-none">© {new Date().getFullYear()} Hertzworkz. All rights reserved.</p>
 
             <div className="flex items-center gap-3">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
+              <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white">Terms of Service</a>
+              <Link to="/terms-of-service" className="hover:text-white">Terms of Service</Link>
             </div>
           </div>
         </div>
       </div>
-      {contactMobile && <div className="mx-auto hidden max-w-6xl items-center justify-between border-t border-white/10 pt-4 text-[10px] text-gray-500 max-md:flex"><span>© {new Date().getFullYear()} Hertzworkz. All rights reserved.</span><span className="flex gap-3"><a href="#">Privacy Policy</a><a href="#">Terms of Services</a></span></div>}
+      {contactMobile && <div className="mx-auto hidden max-w-6xl items-center justify-between border-t border-white/10 pt-4 text-[10px] text-gray-500 max-md:flex"><span>© {new Date().getFullYear()} Hertzworkz. All rights reserved.</span><span className="flex gap-3"><Link to="/privacy-policy">Privacy Policy</Link><Link to="/terms-of-service">Terms of Services</Link></span></div>}
     </footer>
   );
 }
