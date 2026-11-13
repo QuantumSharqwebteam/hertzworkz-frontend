@@ -46,7 +46,7 @@ void main(){
   // Wide, soft falloff (was *45., tight enough to need an opaque background to
   // hide its own hard edge) - this alone drives the glow's alpha outside the
   // sphere, so it fades to true transparency instead of a flat color.
-  float glow=clamp(exp(-max(d-1.,0.)*7.)*(1.+uH),0.,1.)*edgeFade;
+  float glow=clamp(exp(-max(d-1.,0.)*7.)*uH*uH*(3.-2.*uH),0.,1.)*edgeFade;
   float cov=1.-smoothstep(1.-px,1.+px,d); // sphere's own anti-aliased coverage
   // Glow is ADDED light (premultiplied, alpha stays 0 outside the sphere), so the
   // page background is never darkened or dimmed around the sphere.
