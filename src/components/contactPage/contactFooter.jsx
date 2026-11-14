@@ -179,9 +179,9 @@ export default function ContactFooter() {
                 </div>
 
                 <div className="flex items-center space-x-4 pb-5 md:pb-0">
-                    <a href="#" className="hover:opacity-80">Privacy Policy</a>
+                    <Link to="/privacy-policy" className="hover:opacity-80">Privacy Policy</Link>
                     <span>|</span>
-                    <a href="#" className="hover:opacity-80">Terms of Service</a>
+                    <Link to="/terms-of-service" className="hover:opacity-80">Terms of Service</Link>
                 </div>
             </div>
 
